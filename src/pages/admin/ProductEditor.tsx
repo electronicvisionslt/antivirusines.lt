@@ -44,6 +44,8 @@ const ProductEditor = () => {
             free_version: data.free_version ?? false, trial_available: data.trial_available ?? false,
             seo_title: data.seo_title ?? '', meta_description: data.meta_description ?? '',
             canonical_url: data.canonical_url ?? '',
+            product_category: (data as any).product_category ?? 'antivirus',
+            is_active: (data as any).is_active ?? true,
           });
           setPros((data.pros as string[]) ?? []);
           setCons((data.cons as string[]) ?? []);
