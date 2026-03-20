@@ -33,12 +33,6 @@ export interface Category {
   faq: { q: string; a: string }[];
 }
 
-export interface ComparisonProduct {
-  name: string;
-  rating: number;
-  price: string;
-  features: Record<string, string | boolean>;
-}
 
 export const authors: Record<string, Author> = {
   'jonas-kazlauskas': {
