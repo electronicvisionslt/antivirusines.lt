@@ -346,36 +346,53 @@ const ArticleEditor = () => {
           {/* Product links */}
           <div>
             <Label className="text-base font-semibold mb-2 block">Susiję produktai (affiliate CTA)</Label>
-            <p className="text-xs text-muted-foreground mb-2">Pirmas pažymėtas produktas bus rodomas kaip pagrindinis CTA straipsnyje.</p>
+            <p className="text-xs text-muted-foreground mb-2">Pažymėkite susijusius produktus ir pasirinkite pagrindinį CTA produktą.</p>
             <div className="space-y-2">
-              {/* Show linked products first (ordered), then unlinked */}
+              {/* Show linked products first, then unlinked */}
               {[...allProducts].sort((a, b) => {
-                const aLinked = linkedProductIds.indexOf(a.id);
-                const bLinked = linkedProductIds.indexOf(b.id);
-                if (aLinked >= 0 && bLinked >= 0) return aLinked - bLinked;
-                if (aLinked >= 0) return -1;
-                if (bLinked >= 0) return 1;
+                const aLinked = linkedProductIds.includes(a.id);
+                const bLinked = linkedProductIds.includes(b.id);
+                if (aLinked && !bLinked) return -1;
+                if (!aLinked && bLinked) return 1;
                 return 0;
-              }).map(p => (
-                <label key={p.id} className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={linkedProductIds.includes(p.id)}
-                    onChange={e => {
-                      if (e.target.checked) {
-                        setLinkedProductIds(prev => [...prev, p.id]);
-                      } else {
-                        setLinkedProductIds(prev => prev.filter(id => id !== p.id));
-                      }
-                    }}
-                    className="rounded border-border"
-                  />
-                  <span className="text-sm text-foreground">
-                    {p.name}
-                    {linkedProductIds.indexOf(p.id) === 0 && <span className="ml-1.5 text-xs text-primary font-medium">(pagrindinis)</span>}
-                  </span>
-                </label>
-              ))}
+              }).map(p => {
+                const isLinked = linkedProductIds.includes(p.id);
+                const isPrimary = primaryProductId === p.id;
+                return (
+                  <div key={p.id} className={`flex items-center gap-3 rounded-lg px-3 py-2 ${isLinked ? 'bg-secondary/40' : ''}`}>
+                    <input
+                      type="checkbox"
+                      checked={isLinked}
+                      onChange={e => {
+                        if (e.target.checked) {
+                          setLinkedProductIds(prev => [...prev, p.id]);
+                          // Auto-set primary if first product
+                          if (linkedProductIds.length === 0) setPrimaryProductId(p.id);
+                        } else {
+                          setLinkedProductIds(prev => prev.filter(id => id !== p.id));
+                          if (isPrimary) setPrimaryProductId(null);
+                        }
+                      }}
+                      className="rounded border-border shrink-0"
+                    />
+                    <span className="text-sm text-foreground flex-1">{p.name}</span>
+                    {isLinked && (
+                      <label className="flex items-center gap-1.5 cursor-pointer shrink-0">
+                        <input
+                          type="radio"
+                          name="primary-product"
+                          checked={isPrimary}
+                          onChange={() => setPrimaryProductId(p.id)}
+                          className="accent-primary"
+                        />
+                        <span className={`text-xs ${isPrimary ? 'text-primary font-semibold' : 'text-muted-foreground'}`}>
+                          Pagrindinis CTA
+                        </span>
+                      </label>
+                    )}
+                  </div>
+                );
+              })}
               {allProducts.length === 0 && (
                 <p className="text-sm text-muted-foreground">Nėra produktų. Sukurkite produktą pirmiausia.</p>
               )}
