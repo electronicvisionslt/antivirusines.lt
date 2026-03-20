@@ -126,11 +126,11 @@ const ArticleEditor = () => {
 
     let error;
     if (isNew) {
-      const res = await supabase.from('articles').insert(payload).select('id').single();
+      const res = await supabase.from('articles').insert(payload as any).select('id').single();
       error = res.error;
       if (!error && res.data) navigate(`/admin/articles/${(res.data as any).id}`, { replace: true });
     } else {
-      const res = await supabase.from('articles').update(payload).eq('id', id!);
+      const res = await supabase.from('articles').update(payload as any).eq('id', id!);
       error = res.error;
     }
 
