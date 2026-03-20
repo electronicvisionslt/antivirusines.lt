@@ -17,7 +17,7 @@ const CategoryPage = () => {
     return (
       <PageLayout>
         <div className="container py-16 text-center">
-          <h1 className="text-2xl font-bold">Puslapis nerastas</h1>
+          <h1 className="font-heading text-2xl font-bold">Puslapis nerastas</h1>
         </div>
       </PageLayout>
     );
@@ -32,16 +32,20 @@ const CategoryPage = () => {
         <Breadcrumbs path={cleanPath} />
 
         <ScrollReveal>
-          <div className={`rounded-xl ${category.heroColor} p-8 md:p-12 mb-10`}>
-            <h1 className="font-serif text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4">{category.title}</h1>
-            <p className="text-muted-foreground max-w-2xl leading-relaxed">{category.description}</p>
+          <div className="relative rounded-2xl overflow-hidden border border-border/40 p-8 md:p-12 mb-12">
+            <div className="absolute inset-0 gradient-mesh" />
+            <div className="absolute inset-0 bg-card/40" />
+            <div className="relative">
+              <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4">{category.title}</h1>
+              <p className="text-muted-foreground max-w-2xl leading-relaxed">{category.description}</p>
+            </div>
           </div>
         </ScrollReveal>
 
         {categoryArticles.length > 0 && (
-          <section className="mb-12">
+          <section className="mb-14">
             <ScrollReveal>
-              <h2 className="text-2xl font-bold text-foreground mb-6">Straipsniai ir gidai</h2>
+              <h2 className="font-heading text-2xl font-bold text-foreground mb-6">Straipsniai ir gidai</h2>
             </ScrollReveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {categoryArticles.map((a, i) => (
