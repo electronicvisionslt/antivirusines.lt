@@ -335,13 +335,12 @@ export function useComparisonProducts(category = 'antivirus') {
   return useQuery({
     queryKey: ['comparison-products', category],
     queryFn: async (): Promise<PublicProduct[]> => {
-      const query = supabase
+      const { data } = await (supabase
         .from('products')
-        .select('*')
+        .select('*') as any)
+        .eq('product_category', category)
+        .eq('is_active', true)
         .order('rating', { ascending: false });
-      // Filter by new columns (not yet in generated types)
-      (query as any).eq('product_category', category).eq('is_active', true);
-      const { data } = await query;
       return ((data as any[]) || []).map(mapDbProduct);
     },
     staleTime: 60_000,
