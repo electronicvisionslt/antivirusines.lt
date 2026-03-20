@@ -59,7 +59,7 @@ const MediaLibrary = () => {
 
   const handleDelete = async (item: MediaItem) => {
     if (!confirm('Ištrinti failą?')) return;
-    await supabase.storage.from('media').remove([item.file_name]);
+    await supabase.storage.from('media').remove([item.file_path]);
     await supabase.from('media').delete().eq('id', item.id);
     toast.success('Failas ištrintas');
     load();
