@@ -307,6 +307,8 @@ export interface PublicProduct {
   affiliateDisclosure: string | null;
   features: Record<string, string | boolean>;
   supportedPlatforms: string[];
+  logoUrl: string | null;
+  heroImageUrl: string | null;
 }
 
 function mapDbProduct(p: any): PublicProduct {
