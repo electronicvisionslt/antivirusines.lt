@@ -1,5 +1,5 @@
 import PageLayout from '@/components/site/PageLayout';
-import Breadcrumbs from '@/components/site/Breadcrumbs';
+import Breadcrumbs, { type BreadcrumbItem } from '@/components/site/Breadcrumbs';
 import ScrollReveal from '@/components/site/ScrollReveal';
 import ArticleCard from '@/components/content/ArticleCard';
 import ComparisonTable from '@/components/content/ComparisonTable';
