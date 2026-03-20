@@ -74,9 +74,12 @@ const ArticleEditor = () => {
           setSections((data.sections as unknown as SectionItem[]) ?? []);
         }
       });
-      // Load linked products
-      supabase.from('article_products').select('product_id').eq('article_id', id).then(({ data: links }) => {
-        setLinkedProductIds((links || []).map(l => l.product_id));
+      // Load linked products with sort_order
+      supabase.from('article_products').select('product_id, sort_order').eq('article_id', id).order('sort_order', { ascending: true }).then(({ data: links }) => {
+        const ids = (links || []).map((l: any) => l.product_id);
+        setLinkedProductIds(ids);
+        // Primary = sort_order 0 (first)
+        if (ids.length > 0) setPrimaryProductId(ids[0]);
       });
     }
   }, [id, isNew]);
