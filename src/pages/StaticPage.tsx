@@ -2,12 +2,18 @@ import { useLocation } from 'react-router-dom';
 import PageLayout from '@/components/site/PageLayout';
 import Breadcrumbs from '@/components/site/Breadcrumbs';
 import ScrollReveal from '@/components/site/ScrollReveal';
+import { usePageMeta } from '@/hooks/usePageMeta';
 import { staticPages } from '@/data/mockData';
 
 const StaticPage = () => {
   const { pathname } = useLocation();
   const cleanPath = pathname.replace(/\/$/, '');
   const page = staticPages[cleanPath];
+
+  usePageMeta({
+    title: page?.title || 'Puslapis nerastas',
+    description: page ? undefined : undefined,
+  });
 
   if (!page) {
     return (

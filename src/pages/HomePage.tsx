@@ -6,7 +6,10 @@ import CategoryCard from '@/components/content/CategoryCard';
 import ArticleCard from '@/components/content/ArticleCard';
 import ComparisonTable from '@/components/content/ComparisonTable';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
-import { articles, comparisonProducts } from '@/data/mockData';
+import { usePageMeta } from '@/hooks/usePageMeta';
+import { useHomepageArticles } from '@/hooks/usePublicData';
+import { articles as mockArticles, authors as mockAuthors, comparisonProducts } from '@/data/mockData';
+import type { PublicArticle } from '@/types/content';
 
 const featuredPaths = [
   '/antivirusines-programos/nemokamos',
