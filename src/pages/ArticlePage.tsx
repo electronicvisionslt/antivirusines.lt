@@ -10,6 +10,7 @@ import FAQAccordion from '@/components/content/FAQAccordion';
 import RelatedArticles from '@/components/content/RelatedArticles';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
+import { useArticleProducts } from '@/hooks/usePublicData';
 import type { PublicArticle } from '@/types/content';
 
 interface Props {
