@@ -42,12 +42,14 @@ const ArticleEditor = () => {
 
   useEffect(() => {
     const loadRefs = async () => {
-      const [c, a] = await Promise.all([
+      const [c, a, p] = await Promise.all([
         supabase.from('categories').select('id, name').order('name'),
         supabase.from('authors').select('id, name').order('name'),
+        supabase.from('products').select('id, name').order('name'),
       ]);
       setCategories(c.data ?? []);
       setAuthors(a.data ?? []);
+      setAllProducts(p.data ?? []);
     };
     loadRefs();
 
