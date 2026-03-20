@@ -1,9 +1,8 @@
-import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield } from 'lucide-react';
 
-const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
-  <footer ref={ref} className="border-t border-border/50 mt-20 bg-card/50">
+const SiteFooter = () => (
+  <footer className="border-t border-border/50 mt-20 bg-card/50">
     <div className="container py-14">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
@@ -56,8 +55,6 @@ const SiteFooter = forwardRef<HTMLElement>((_, ref) => (
       </div>
     </div>
   </footer>
-));
-
-SiteFooter.displayName = 'SiteFooter';
+);
 
 export default SiteFooter;

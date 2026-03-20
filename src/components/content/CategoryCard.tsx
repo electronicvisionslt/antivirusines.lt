@@ -23,7 +23,7 @@ const CategoryCard = ({ path, title, description }: CategoryCardProps) => {
       to={path}
       className="group flex items-start gap-4 p-5 rounded-xl border border-border/60 bg-card glow-border glow-border-hover transition-all duration-300 active:scale-[0.98]"
     >
-      <div className="shrink-0 w-11 h-11 rounded-lg bg-primary/8 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
+      <div className="shrink-0 w-11 h-11 rounded-lg bg-primary/10 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
         <Icon className="w-5 h-5" />
       </div>
       <div className="flex-1 min-w-0">
