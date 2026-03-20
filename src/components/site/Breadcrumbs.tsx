@@ -1,9 +1,36 @@
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
-import { getBreadcrumbs } from '@/data/mockData';
 
-const Breadcrumbs = ({ path }: { path: string }) => {
-  const crumbs = getBreadcrumbs(path);
+export interface BreadcrumbItem {
+  label: string;
+  path: string;
+}
+
+interface Props {
+  path: string;
+  /** Pre-resolved breadcrumb items. When provided, skips slug-based guessing. */
+  items?: BreadcrumbItem[];
+}
+
+/**
+ * Builds breadcrumbs from explicit items or falls back to path-segment parsing.
+ */
+function buildCrumbs(path: string, items?: BreadcrumbItem[]): BreadcrumbItem[] {
+  if (items && items.length > 0) return items;
+
+  // Fallback: split path into segments and use slug as label
+  const crumbs: BreadcrumbItem[] = [{ label: 'Pradžia', path: '/' }];
+  const segments = path.split('/').filter(Boolean);
+  let currentPath = '';
+  for (const seg of segments) {
+    currentPath += '/' + seg;
+    crumbs.push({ label: seg, path: currentPath });
+  }
+  return crumbs;
+}
+
+const Breadcrumbs = ({ path, items }: Props) => {
+  const crumbs = buildCrumbs(path, items);
 
   return (
     <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground mb-6">

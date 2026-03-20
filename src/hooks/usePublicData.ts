@@ -118,10 +118,13 @@ export function usePublicArticle(path: string) {
         if (dbArticle.category_id) {
           const { data: cat } = await supabase
             .from('categories')
-            .select('path')
+            .select('path, name')
             .eq('id', dbArticle.category_id)
             .maybeSingle();
-          if (cat) article.categoryPath = cat.path;
+          if (cat) {
+            article.categoryPath = cat.path;
+            article.categoryTitle = cat.name;
+          }
         }
 
         // Resolve related articles by IDs
