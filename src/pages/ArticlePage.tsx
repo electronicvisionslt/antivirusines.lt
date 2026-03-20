@@ -1,6 +1,6 @@
 import { Calendar } from 'lucide-react';
 import PageLayout from '@/components/site/PageLayout';
-import Breadcrumbs from '@/components/site/Breadcrumbs';
+import Breadcrumbs, { type BreadcrumbItem } from '@/components/site/Breadcrumbs';
 import ScrollReveal from '@/components/site/ScrollReveal';
 import TableOfContents from '@/components/content/TableOfContents';
 import AuthorBox from '@/components/content/AuthorBox';
