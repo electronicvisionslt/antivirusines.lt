@@ -39,10 +39,20 @@ const ArticlePage = ({ article }: Props) => {
 
   const showToc = article.showToc !== false && article.sections.length > 1;
 
+  // Build breadcrumbs with human-readable labels
+  const breadcrumbItems: BreadcrumbItem[] = [{ label: 'Pradžia', path: '/' }];
+  if (article.categoryPath) {
+    breadcrumbItems.push({
+      label: article.categoryTitle || article.categoryPath.split('/').filter(Boolean).pop() || '',
+      path: article.categoryPath,
+    });
+  }
+  breadcrumbItems.push({ label: article.title, path: article.path });
+
   return (
     <PageLayout>
       <article className="container py-8" itemScope itemType="https://schema.org/Article">
-        <Breadcrumbs path={article.path} />
+        <Breadcrumbs path={article.path} items={breadcrumbItems} />
 
         <ScrollReveal>
           {/* Hero */}
