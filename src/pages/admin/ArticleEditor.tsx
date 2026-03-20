@@ -150,12 +150,16 @@ const ArticleEditor = () => {
       error = res.error;
     }
 
-    // Save product links
+    // Save product links with explicit primary (sort_order 0)
     if (!error && articleId) {
       await supabase.from('article_products').delete().eq('article_id', articleId);
       if (linkedProductIds.length > 0) {
+        // Primary product gets sort_order 0, rest get 1+
+        const ordered = primaryProductId && linkedProductIds.includes(primaryProductId)
+          ? [primaryProductId, ...linkedProductIds.filter(id => id !== primaryProductId)]
+          : linkedProductIds;
         await supabase.from('article_products').insert(
-          linkedProductIds.map((pid, index) => ({ article_id: articleId!, product_id: pid, sort_order: index } as any))
+          ordered.map((pid, index) => ({ article_id: articleId!, product_id: pid, sort_order: index } as any))
         );
       }
     }
