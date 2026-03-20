@@ -340,7 +340,7 @@ export function useComparisonProducts(category = 'antivirus') {
         .select('*')
         .eq('product_category' as any, category)
         .eq('is_active' as any, true)
-        .order('rating', { ascending: false });
+        .order('rating', { ascending: false }) as { data: any[] | null };
       return (data || []).map(mapDbProduct);
     },
     staleTime: 60_000,

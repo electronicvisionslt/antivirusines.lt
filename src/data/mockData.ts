@@ -255,12 +255,6 @@ export const articles: Record<string, Article> = {
   },
 };
 
-export const comparisonProducts: ComparisonProduct[] = [
-  { name: 'Norton 360', rating: 4.8, price: 'Nuo €29,99/m.', features: { 'Realaus laiko apsauga': true, 'VPN': true, 'Slaptažodžių tvarkyklė': true, 'Tėvų kontrolė': true, 'Debesų saugykla': '50 GB' } },
-  { name: 'Bitdefender Total Security', rating: 4.7, price: 'Nuo €34,99/m.', features: { 'Realaus laiko apsauga': true, 'VPN': true, 'Slaptažodžių tvarkyklė': true, 'Tėvų kontrolė': true, 'Debesų saugykla': false } },
-  { name: 'Kaspersky Plus', rating: 4.5, price: 'Nuo €24,99/m.', features: { 'Realaus laiko apsauga': true, 'VPN': true, 'Slaptažodžių tvarkyklė': true, 'Tėvų kontrolė': false, 'Debesų saugykla': false } },
-  { name: 'Avast Free', rating: 4.2, price: 'Nemokamai', features: { 'Realaus laiko apsauga': true, 'VPN': false, 'Slaptažodžių tvarkyklė': false, 'Tėvų kontrolė': false, 'Debesų saugykla': false } },
-];
 
 export const navLinks = [
   { label: 'Antivirusinės', path: '/antivirusines-programos' },

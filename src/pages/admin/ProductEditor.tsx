@@ -110,6 +110,19 @@ const ProductEditor = () => {
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2"><Switch checked={form.free_version} onCheckedChange={v => set('free_version', v)} /><Label>Nemokama versija</Label></div>
             <div className="flex items-center gap-2"><Switch checked={form.trial_available} onCheckedChange={v => set('trial_available', v)} /><Label>Bandomasis laikotarpis</Label></div>
+            <div className="flex items-center gap-2"><Switch checked={form.is_active} onCheckedChange={v => set('is_active', v)} /><Label>Aktyvus</Label></div>
+          </div>
+          <div>
+            <Label>Produkto kategorija</Label>
+            <Select value={form.product_category} onValueChange={v => set('product_category', v)}>
+              <SelectTrigger className="mt-1"><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="antivirus">Antivirusinės</SelectItem>
+                <SelectItem value="parental-control">Tėvų kontrolė</SelectItem>
+                <SelectItem value="password-manager">Slaptažodžių tvarkyklė</SelectItem>
+                <SelectItem value="vpn">VPN</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
           <div>
             <div className="flex items-center justify-between mb-2"><Label>Platformos</Label><Button variant="ghost" size="sm" onClick={() => setPlatforms([...platforms, ''])}><Plus className="w-4 h-4" /></Button></div>
