@@ -335,13 +335,14 @@ export function useComparisonProducts(category = 'antivirus') {
   return useQuery({
     queryKey: ['comparison-products', category],
     queryFn: async (): Promise<PublicProduct[]> => {
-      const { data } = await (supabase
-        .from('products')
-        .select('*') as any)
+      // product_category and is_active are DB columns added via migration;
+      // generated types may lag — cast the builder to bypass strict checking
+      const query = supabase.from('products').select('*') as any;
+      const { data } = await query
         .eq('product_category', category)
         .eq('is_active', true)
         .order('rating', { ascending: false });
-      return ((data as any[]) || []).map(mapDbProduct);
+      return (data || []).map((p: any) => mapDbProduct(p));
     },
     staleTime: 60_000,
   });
@@ -352,22 +353,23 @@ export function useArticleProducts(articleId: string | undefined) {
     queryKey: ['article-products', articleId],
     queryFn: async (): Promise<PublicProduct[]> => {
       if (!articleId) return [];
+      // sort_order may not be in generated types — use targeted cast
       const { data: links } = await supabase
         .from('article_products')
-        .select('product_id, sort_order' as any)
+        .select('product_id, sort_order')
         .eq('article_id', articleId)
-        .order('sort_order' as any, { ascending: true });
+        .order('sort_order', { ascending: true });
       if (!links || links.length === 0) return [];
-      const productIds = (links as any[]).map(l => l.product_id);
+      const productIds = links.map(l => l.product_id);
       const { data: products } = await supabase
         .from('products')
         .select('*')
         .in('id', productIds);
       if (!products) return [];
-      // Preserve sort_order from junction table
-      const orderMap = new Map((links as any[]).map((l, i) => [l.product_id, l.sort_order ?? i]));
+      // Preserve sort_order: primary product (sort_order 0) comes first
+      const orderMap = new Map(links.map((l, i) => [l.product_id, l.sort_order ?? i]));
       return products
-        .map(mapDbProduct)
+        .map((p: any) => mapDbProduct(p))
         .sort((a, b) => (orderMap.get(a.id) ?? 99) - (orderMap.get(b.id) ?? 99));
     },
     enabled: !!articleId,
