@@ -48,14 +48,17 @@ export type Database = {
         Row: {
           article_id: string
           product_id: string
+          sort_order: number
         }
         Insert: {
           article_id: string
           product_id: string
+          sort_order?: number
         }
         Update: {
           article_id?: string
           product_id?: string
+          sort_order?: number
         }
         Relationships: [
           {
@@ -335,11 +338,13 @@ export type Database = {
           free_version: boolean | null
           hero_image_url: string | null
           id: string
+          is_active: boolean
           logo_url: string | null
           long_description: string | null
           meta_description: string | null
           name: string
           pricing_summary: string | null
+          product_category: string
           pros: string[] | null
           rating: number | null
           seo_title: string | null
@@ -362,11 +367,13 @@ export type Database = {
           free_version?: boolean | null
           hero_image_url?: string | null
           id?: string
+          is_active?: boolean
           logo_url?: string | null
           long_description?: string | null
           meta_description?: string | null
           name: string
           pricing_summary?: string | null
+          product_category?: string
           pros?: string[] | null
           rating?: number | null
           seo_title?: string | null
@@ -389,11 +396,13 @@ export type Database = {
           free_version?: boolean | null
           hero_image_url?: string | null
           id?: string
+          is_active?: boolean
           logo_url?: string | null
           long_description?: string | null
           meta_description?: string | null
           name?: string
           pricing_summary?: string | null
+          product_category?: string
           pros?: string[] | null
           rating?: number | null
           seo_title?: string | null

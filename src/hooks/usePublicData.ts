@@ -331,15 +331,17 @@ function mapDbProduct(p: any): PublicProduct {
   };
 }
 
-export function useComparisonProducts() {
+export function useComparisonProducts(category = 'antivirus') {
   return useQuery({
-    queryKey: ['comparison-products'],
+    queryKey: ['comparison-products', category],
     queryFn: async (): Promise<PublicProduct[]> => {
-      const { data } = await supabase
+      const { data } = await (supabase
         .from('products')
-        .select('*')
+        .select('*') as any)
+        .eq('product_category', category)
+        .eq('is_active', true)
         .order('rating', { ascending: false });
-      return (data || []).map(mapDbProduct);
+      return ((data as any[]) || []).map(mapDbProduct);
     },
     staleTime: 60_000,
   });
@@ -352,16 +354,21 @@ export function useArticleProducts(articleId: string | undefined) {
       if (!articleId) return [];
       const { data: links } = await supabase
         .from('article_products')
-        .select('product_id')
-        .eq('article_id', articleId);
+        .select('product_id, sort_order' as any)
+        .eq('article_id', articleId)
+        .order('sort_order' as any, { ascending: true });
       if (!links || links.length === 0) return [];
-      const productIds = links.map(l => l.product_id);
+      const productIds = (links as any[]).map(l => l.product_id);
       const { data: products } = await supabase
         .from('products')
         .select('*')
-        .in('id', productIds)
-        .order('rating', { ascending: false });
-      return (products || []).map(mapDbProduct);
+        .in('id', productIds);
+      if (!products) return [];
+      // Preserve sort_order from junction table
+      const orderMap = new Map((links as any[]).map((l, i) => [l.product_id, l.sort_order ?? i]));
+      return products
+        .map(mapDbProduct)
+        .sort((a, b) => (orderMap.get(a.id) ?? 99) - (orderMap.get(b.id) ?? 99));
     },
     enabled: !!articleId,
     staleTime: 60_000,
