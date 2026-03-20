@@ -86,7 +86,7 @@ const ArticleEditor = () => {
     if (!form.title.trim()) { toast.error('Įveskite pavadinimą'); return; }
     setSaving(true);
 
-    let status = form.status;
+    let status: 'draft' | 'published' | 'archived' = form.status as 'draft' | 'published' | 'archived';
     if (publishAction === 'publish') status = 'published';
     if (publishAction === 'unpublish') status = 'draft';
 
@@ -103,13 +103,13 @@ const ArticleEditor = () => {
       pros, cons, faq: JSON.parse(JSON.stringify(faq)),
       sections: JSON.parse(JSON.stringify(sections)),
       published_at: status === 'published' ? new Date().toISOString() : null,
-    };
+    } as any;
 
     let error;
     if (isNew) {
       const res = await supabase.from('articles').insert(payload).select('id').single();
       error = res.error;
-      if (!error && res.data) navigate(`/admin/articles/${res.data.id}`, { replace: true });
+      if (!error && res.data) navigate(`/admin/articles/${(res.data as any).id}`, { replace: true });
     } else {
       const res = await supabase.from('articles').update(payload).eq('id', id!);
       error = res.error;
