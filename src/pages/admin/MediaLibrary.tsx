@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 interface MediaItem {
   id: string;
   file_name: string;
+  file_path: string;
   file_url: string;
   alt_text: string;
   mime_type: string | null;
