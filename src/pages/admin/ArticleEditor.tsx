@@ -100,8 +100,8 @@ const ArticleEditor = () => {
       seo_title: form.seo_title || null, meta_description: form.meta_description || null,
       canonical_url: form.canonical_url || null, og_title: form.og_title || null,
       og_description: form.og_description || null, og_image: form.og_image || null,
-      pros, cons, faq: faq as unknown as Record<string, unknown>[],
-      sections: sections as unknown as Record<string, unknown>[],
+      pros, cons, faq: JSON.parse(JSON.stringify(faq)),
+      sections: JSON.parse(JSON.stringify(sections)),
       published_at: status === 'published' ? new Date().toISOString() : null,
     };
 
