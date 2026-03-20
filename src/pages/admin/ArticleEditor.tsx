@@ -26,6 +26,7 @@ const ArticleEditor = () => {
   const [authors, setAuthors] = useState<{ id: string; name: string }[]>([]);
   const [allProducts, setAllProducts] = useState<{ id: string; name: string }[]>([]);
   const [linkedProductIds, setLinkedProductIds] = useState<string[]>([]);
+  const [primaryProductId, setPrimaryProductId] = useState<string | null>(null);
 
   const [form, setForm] = useState({
     title: '', slug: '', path: '', excerpt: '', body: '',
