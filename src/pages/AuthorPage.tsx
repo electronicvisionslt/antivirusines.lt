@@ -1,13 +1,30 @@
 import { useParams } from 'react-router-dom';
+import { Loader2 } from 'lucide-react';
 import PageLayout from '@/components/site/PageLayout';
 import Breadcrumbs from '@/components/site/Breadcrumbs';
 import ScrollReveal from '@/components/site/ScrollReveal';
 import ArticleCard from '@/components/content/ArticleCard';
-import { authors, getArticlesByAuthor } from '@/data/mockData';
+import { usePublicAuthor } from '@/hooks/usePublicData';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 const AuthorPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const author = slug ? authors[slug] : undefined;
+  const { data: author, isLoading } = usePublicAuthor(slug || '');
+
+  usePageMeta({
+    title: author?.seoTitle || author?.name || 'Autorius',
+    description: author?.metaDescription || author?.bio || undefined,
+  });
+
+  if (isLoading) {
+    return (
+      <PageLayout>
+        <div className="container py-16 flex justify-center">
+          <Loader2 className="w-6 h-6 animate-spin text-primary" />
+        </div>
+      </PageLayout>
+    );
+  }
 
   if (!author) {
     return (
@@ -18,8 +35,6 @@ const AuthorPage = () => {
       </PageLayout>
     );
   }
-
-  const authorArticles = getArticlesByAuthor(author.slug);
 
   return (
     <PageLayout>
@@ -47,13 +62,13 @@ const AuthorPage = () => {
           </div>
         </ScrollReveal>
 
-        {authorArticles.length > 0 && (
+        {author.articles && author.articles.length > 0 && (
           <section>
             <ScrollReveal>
               <h2 className="font-heading text-2xl font-bold text-foreground mb-6">Straipsniai</h2>
             </ScrollReveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {authorArticles.map((a, i) => (
+              {author.articles.map((a, i) => (
                 <ScrollReveal key={a.path} delay={i * 80}>
                   <ArticleCard article={a} />
                 </ScrollReveal>
