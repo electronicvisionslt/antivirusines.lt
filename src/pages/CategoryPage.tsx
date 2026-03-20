@@ -5,6 +5,7 @@ import ArticleCard from '@/components/content/ArticleCard';
 import ComparisonTable from '@/components/content/ComparisonTable';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
+import AntivirusLandingPage from '@/pages/AntivirusLandingPage';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import { useComparisonProducts } from '@/hooks/usePublicData';
 import type { PublicCategory } from '@/types/content';
@@ -14,6 +15,11 @@ interface Props {
 }
 
 const CategoryPage = ({ category }: Props) => {
+  // Flagship landing pages get their own dedicated component
+  if (category.path === '/antivirusines-programos') {
+    return <AntivirusLandingPage category={category} />;
+  }
+
   usePageMeta({
     title: category.seoTitle || category.title,
     description: category.metaDescription || category.description,
@@ -21,8 +27,6 @@ const CategoryPage = ({ category }: Props) => {
     noindex: category.noindex,
   });
 
-  const showComparison = category.path === '/antivirusines-programos';
-  const { data: comparisonProducts } = useComparisonProducts();
   const categoryArticles = category.articles || [];
 
   return (
@@ -57,12 +61,6 @@ const CategoryPage = ({ category }: Props) => {
               ))}
             </div>
           </section>
-        )}
-
-        {showComparison && comparisonProducts && comparisonProducts.length > 0 && (
-          <ScrollReveal>
-            <ComparisonTable products={comparisonProducts} />
-          </ScrollReveal>
         )}
 
         {category.faq.length > 0 && (
