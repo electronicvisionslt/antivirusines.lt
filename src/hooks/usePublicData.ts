@@ -330,6 +330,8 @@ function mapDbProduct(p: any): PublicProduct {
     affiliateDisclosure: p.affiliate_disclosure,
     features: (p.features as Record<string, string | boolean>) || {},
     supportedPlatforms: p.supported_platforms || [],
+    logoUrl: p.logo_url || null,
+    heroImageUrl: p.hero_image_url || null,
   };
 }
 
