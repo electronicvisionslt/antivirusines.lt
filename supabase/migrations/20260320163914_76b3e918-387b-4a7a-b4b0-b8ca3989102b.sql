@@ -1,0 +1,1 @@
+ALTER TABLE articles ADD CONSTRAINT articles_path_unique UNIQUE (path);
