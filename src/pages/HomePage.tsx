@@ -38,7 +38,7 @@ const HomePage = () => (
       <div className="container relative py-20 md:py-28">
         <ScrollReveal>
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-xs font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-5 px-3 py-1.5 rounded-full bg-primary/8 border border-primary/10">
+            <div className="inline-flex items-center gap-2 text-xs font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/10">
               <Shield className="w-3.5 h-3.5" />
               <span>Nepriklausomos apžvalgos nuo 2024</span>
             </div>
