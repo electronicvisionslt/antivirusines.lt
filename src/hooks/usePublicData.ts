@@ -286,3 +286,84 @@ export function useHomepageArticles() {
     staleTime: 60_000,
   });
 }
+
+// ─── Public comparison products ───
+
+export interface PublicProduct {
+  id: string;
+  slug: string;
+  name: string;
+  brand: string;
+  rating: number;
+  pricingSummary: string;
+  freeVersion: boolean;
+  trialAvailable: boolean;
+  bestFor: string;
+  shortDescription: string;
+  pros: string[];
+  cons: string[];
+  verdict: string;
+  affiliateUrl: string | null;
+  affiliateDisclosure: string | null;
+  features: Record<string, string | boolean>;
+  supportedPlatforms: string[];
+}
+
+function mapDbProduct(p: any): PublicProduct {
+  return {
+    id: p.id,
+    slug: p.slug,
+    name: p.name,
+    brand: p.brand || '',
+    rating: Number(p.rating) || 0,
+    pricingSummary: p.pricing_summary || '',
+    freeVersion: p.free_version || false,
+    trialAvailable: p.trial_available || false,
+    bestFor: p.best_for || '',
+    shortDescription: p.short_description || '',
+    pros: p.pros || [],
+    cons: p.cons || [],
+    verdict: p.verdict || '',
+    affiliateUrl: p.affiliate_url,
+    affiliateDisclosure: p.affiliate_disclosure,
+    features: (p.features as Record<string, string | boolean>) || {},
+    supportedPlatforms: p.supported_platforms || [],
+  };
+}
+
+export function useComparisonProducts() {
+  return useQuery({
+    queryKey: ['comparison-products'],
+    queryFn: async (): Promise<PublicProduct[]> => {
+      const { data } = await supabase
+        .from('products')
+        .select('*')
+        .order('rating', { ascending: false });
+      return (data || []).map(mapDbProduct);
+    },
+    staleTime: 60_000,
+  });
+}
+
+export function useArticleProducts(articleId: string | undefined) {
+  return useQuery({
+    queryKey: ['article-products', articleId],
+    queryFn: async (): Promise<PublicProduct[]> => {
+      if (!articleId) return [];
+      const { data: links } = await supabase
+        .from('article_products')
+        .select('product_id')
+        .eq('article_id', articleId);
+      if (!links || links.length === 0) return [];
+      const productIds = links.map(l => l.product_id);
+      const { data: products } = await supabase
+        .from('products')
+        .select('*')
+        .in('id', productIds)
+        .order('rating', { ascending: false });
+      return (products || []).map(mapDbProduct);
+    },
+    enabled: !!articleId,
+    staleTime: 60_000,
+  });
+}

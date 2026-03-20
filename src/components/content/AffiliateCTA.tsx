@@ -4,10 +4,11 @@ interface AffiliateCTAProps {
   productName: string;
   description: string;
   price?: string;
+  affiliateUrl?: string | null;
   ctaText?: string;
 }
 
-const AffiliateCTA = ({ productName, description, price, ctaText = 'Išbandyti dabar' }: AffiliateCTAProps) => (
+const AffiliateCTA = ({ productName, description, price, affiliateUrl, ctaText = 'Išbandyti dabar' }: AffiliateCTAProps) => (
   <div className="my-8 rounded-xl border border-primary/15 bg-primary/[0.03] p-6 glow-border relative overflow-hidden">
     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
     <div className="flex flex-col sm:flex-row sm:items-center gap-5">
@@ -17,10 +18,22 @@ const AffiliateCTA = ({ productName, description, price, ctaText = 'Išbandyti d
         <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{description}</p>
         {price && <p className="text-sm font-semibold text-foreground mt-2">{price}</p>}
       </div>
-      <button className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-heading font-semibold rounded-lg hover:bg-accent/90 transition-all duration-200 active:scale-[0.97] text-sm glow-accent">
-        {ctaText}
-        <ExternalLink className="w-4 h-4" />
-      </button>
+      {affiliateUrl ? (
+        <a
+          href={affiliateUrl}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-heading font-semibold rounded-lg hover:bg-accent/90 transition-all duration-200 active:scale-[0.97] text-sm glow-accent"
+        >
+          {ctaText}
+          <ExternalLink className="w-4 h-4" />
+        </a>
+      ) : (
+        <span className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-accent/50 text-accent-foreground font-heading font-semibold rounded-lg text-sm cursor-default">
+          {ctaText}
+          <ExternalLink className="w-4 h-4" />
+        </span>
+      )}
     </div>
     <p className="text-[11px] text-muted-foreground/60 mt-4 pt-3 border-t border-border/40">* Ši nuoroda yra affiliate partnerio nuoroda. Jums tai nekainuoja papildomai.</p>
   </div>
