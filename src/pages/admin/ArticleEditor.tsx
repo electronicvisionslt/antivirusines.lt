@@ -338,8 +338,17 @@ const ArticleEditor = () => {
           {/* Product links */}
           <div>
             <Label className="text-base font-semibold mb-2 block">Susiję produktai (affiliate CTA)</Label>
+            <p className="text-xs text-muted-foreground mb-2">Pirmas pažymėtas produktas bus rodomas kaip pagrindinis CTA straipsnyje.</p>
             <div className="space-y-2">
-              {allProducts.map(p => (
+              {/* Show linked products first (ordered), then unlinked */}
+              {[...allProducts].sort((a, b) => {
+                const aLinked = linkedProductIds.indexOf(a.id);
+                const bLinked = linkedProductIds.indexOf(b.id);
+                if (aLinked >= 0 && bLinked >= 0) return aLinked - bLinked;
+                if (aLinked >= 0) return -1;
+                if (bLinked >= 0) return 1;
+                return 0;
+              }).map(p => (
                 <label key={p.id} className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
@@ -353,7 +362,10 @@ const ArticleEditor = () => {
                     }}
                     className="rounded border-border"
                   />
-                  <span className="text-sm text-foreground">{p.name}</span>
+                  <span className="text-sm text-foreground">
+                    {p.name}
+                    {linkedProductIds.indexOf(p.id) === 0 && <span className="ml-1.5 text-xs text-primary font-medium">(pagrindinis)</span>}
+                  </span>
                 </label>
               ))}
               {allProducts.length === 0 && (
