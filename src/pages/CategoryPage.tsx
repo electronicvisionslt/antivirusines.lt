@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom';
 import PageLayout from '@/components/site/PageLayout';
 import Breadcrumbs from '@/components/site/Breadcrumbs';
 import ScrollReveal from '@/components/site/ScrollReveal';
@@ -6,30 +5,29 @@ import ArticleCard from '@/components/content/ArticleCard';
 import ComparisonTable from '@/components/content/ComparisonTable';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
-import { categories, articles, comparisonProducts } from '@/data/mockData';
+import { usePageMeta } from '@/hooks/usePageMeta';
+import { comparisonProducts } from '@/data/mockData';
+import type { PublicCategory } from '@/types/content';
 
-const CategoryPage = () => {
-  const { pathname } = useLocation();
-  const cleanPath = pathname.replace(/\/$/, '');
-  const category = categories[cleanPath];
+interface Props {
+  category: PublicCategory;
+}
 
-  if (!category) {
-    return (
-      <PageLayout>
-        <div className="container py-16 text-center">
-          <h1 className="font-heading text-2xl font-bold">Puslapis nerastas</h1>
-        </div>
-      </PageLayout>
-    );
-  }
+const CategoryPage = ({ category }: Props) => {
+  usePageMeta({
+    title: category.seoTitle || category.title,
+    description: category.metaDescription || category.description,
+    canonicalUrl: category.canonicalUrl || undefined,
+    noindex: category.noindex,
+  });
 
-  const categoryArticles = category.articlePaths.map(p => articles[p]).filter(Boolean);
-  const showComparison = cleanPath === '/antivirusines-programos';
+  const showComparison = category.path === '/antivirusines-programos';
+  const categoryArticles = category.articles || [];
 
   return (
     <PageLayout>
       <div className="container py-8">
-        <Breadcrumbs path={cleanPath} />
+        <Breadcrumbs path={category.path} />
 
         <ScrollReveal>
           <div className="relative rounded-2xl overflow-hidden border border-border/40 p-8 md:p-12 mb-12">

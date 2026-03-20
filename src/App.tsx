@@ -7,10 +7,9 @@ import { AuthProvider } from "@/hooks/useAuth";
 import ProtectedRoute from "@/components/admin/ProtectedRoute";
 
 import HomePage from "./pages/HomePage";
-import CategoryPage from "./pages/CategoryPage";
-import ArticlePage from "./pages/ArticlePage";
 import AuthorPage from "./pages/AuthorPage";
 import StaticPage from "./pages/StaticPage";
+import DynamicPage from "./pages/DynamicPage";
 import NotFound from "./pages/NotFound";
 
 // Admin pages
@@ -38,17 +37,9 @@ const App = () => (
           <Routes>
             {/* Public routes */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/antivirusines-programos" element={<CategoryPage />} />
-            <Route path="/tevu-kontrole" element={<CategoryPage />} />
-            <Route path="/slaptazodziu-saugumas" element={<CategoryPage />} />
-            <Route path="/antivirusines-programos/nemokamos" element={<ArticlePage />} />
-            <Route path="/antivirusines-programos/telefonui" element={<ArticlePage />} />
-            <Route path="/antivirusines-programos/kompiuteriui" element={<ArticlePage />} />
-            <Route path="/tevu-kontrole/vaiko-telefone" element={<ArticlePage />} />
-            <Route path="/virusai/kompiuterinis-virusas" element={<ArticlePage />} />
-            <Route path="/virusai/virusas-telefone" element={<ArticlePage />} />
-            <Route path="/saugumo-patarimai/saugus-darbas-kompiuteriu" element={<ArticlePage />} />
             <Route path="/autoriai/:slug" element={<AuthorPage />} />
+
+            {/* Static pages */}
             <Route path="/apie" element={<StaticPage />} />
             <Route path="/kontaktai" element={<StaticPage />} />
             <Route path="/affiliate-atskleidimas" element={<StaticPage />} />
@@ -67,6 +58,10 @@ const App = () => (
             <Route path="/admin/products" element={<ProtectedRoute><ProductsList /></ProtectedRoute>} />
             <Route path="/admin/products/:id" element={<ProtectedRoute><ProductEditor /></ProtectedRoute>} />
             <Route path="/admin/media" element={<ProtectedRoute><MediaLibrary /></ProtectedRoute>} />
+
+            {/* Dynamic catch-all: resolves articles and categories from DB + mock fallback */}
+            <Route path="/:slug" element={<DynamicPage />} />
+            <Route path="/:parent/:slug" element={<DynamicPage />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

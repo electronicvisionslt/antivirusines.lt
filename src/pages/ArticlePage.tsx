@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom';
 import { Calendar } from 'lucide-react';
 import PageLayout from '@/components/site/PageLayout';
 import Breadcrumbs from '@/components/site/Breadcrumbs';
@@ -10,34 +9,53 @@ import AffiliateCTA from '@/components/content/AffiliateCTA';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import RelatedArticles from '@/components/content/RelatedArticles';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
-import { articles, authors } from '@/data/mockData';
+import { usePageMeta } from '@/hooks/usePageMeta';
+import type { PublicArticle } from '@/types/content';
 
-const ArticlePage = () => {
-  const { pathname } = useLocation();
-  const cleanPath = pathname.replace(/\/$/, '');
-  const article = articles[cleanPath];
+interface Props {
+  article: PublicArticle;
+}
 
-  if (!article) {
-    return (
-      <PageLayout>
-        <div className="container py-16 text-center">
-          <h1 className="font-heading text-2xl font-bold">Straipsnis nerastas</h1>
-        </div>
-      </PageLayout>
-    );
-  }
+const ArticlePage = ({ article }: Props) => {
+  usePageMeta({
+    title: article.seoTitle || article.title,
+    description: article.metaDescription || article.excerpt,
+    canonicalUrl: article.canonicalUrl || undefined,
+    ogTitle: article.ogTitle || article.title,
+    ogDescription: article.ogDescription || article.excerpt,
+    ogImage: article.ogImage || undefined,
+    noindex: article.noindex,
+  });
 
-  const author = authors[article.authorSlug];
+  const author = article.authorName
+    ? {
+        slug: article.authorSlug,
+        name: article.authorName,
+        initials: article.authorInitials || '',
+        bio: article.authorBio || '',
+        expertise: article.authorExpertise || [],
+      }
+    : null;
+
+  const showToc = article.showToc !== false && article.sections.length > 1;
 
   return (
     <PageLayout>
       <article className="container py-8" itemScope itemType="https://schema.org/Article">
-        <Breadcrumbs path={cleanPath} />
+        <Breadcrumbs path={article.path} />
 
         <ScrollReveal>
           {/* Hero */}
           <div className="relative rounded-2xl overflow-hidden border border-border/40 p-8 md:p-12 mb-10">
-            <div className="absolute inset-0 gradient-mesh" />
+            {article.featuredImage ? (
+              <img
+                src={article.featuredImage}
+                alt={article.featuredImageAlt || article.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : (
+              <div className="absolute inset-0 gradient-mesh" />
+            )}
             <div className="absolute inset-0 bg-card/40" />
             <div className="relative">
               <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
@@ -63,13 +81,15 @@ const ArticlePage = () => {
               <TrustDisclosure compact />
             </ScrollReveal>
 
-            <ScrollReveal>
-              <div className="lg:hidden">
-                <TableOfContents items={article.sections.map(s => ({ id: s.id, title: s.title }))} />
-              </div>
-            </ScrollReveal>
+            {showToc && (
+              <ScrollReveal>
+                <div className="lg:hidden">
+                  <TableOfContents items={article.sections.map(s => ({ id: s.id, title: s.title }))} />
+                </div>
+              </ScrollReveal>
+            )}
 
-            {/* Article body */}
+            {/* Article body - sections */}
             <div className="prose-article">
               {article.sections.map((section, i) => (
                 <ScrollReveal key={section.id} delay={i * 60}>
@@ -77,10 +97,17 @@ const ArticlePage = () => {
                   <p>{section.content}</p>
                 </ScrollReveal>
               ))}
+
+              {/* If body field exists (from CMS), render it */}
+              {article.body && article.sections.length === 0 && (
+                <ScrollReveal>
+                  <div dangerouslySetInnerHTML={{ __html: article.body }} />
+                </ScrollReveal>
+              )}
             </div>
 
             {/* Pros/Cons */}
-            {article.pros && article.cons && (
+            {article.pros && article.cons && article.pros.length > 0 && article.cons.length > 0 && (
               <ScrollReveal>
                 <ProsConsList pros={article.pros} cons={article.cons} />
               </ScrollReveal>
@@ -124,7 +151,7 @@ const ArticlePage = () => {
             )}
 
             {/* Related */}
-            {article.relatedPaths && (
+            {article.relatedPaths && article.relatedPaths.length > 0 && (
               <ScrollReveal>
                 <RelatedArticles paths={article.relatedPaths} />
               </ScrollReveal>
@@ -132,14 +159,16 @@ const ArticlePage = () => {
           </div>
 
           {/* Sidebar TOC (desktop) */}
-          <aside className="hidden lg:block">
-            <div className="sticky top-24">
-              <TableOfContents items={article.sections.map(s => ({ id: s.id, title: s.title }))} />
-              <div className="mt-6">
-                <TrustDisclosure compact />
+          {showToc && (
+            <aside className="hidden lg:block">
+              <div className="sticky top-24">
+                <TableOfContents items={article.sections.map(s => ({ id: s.id, title: s.title }))} />
+                <div className="mt-6">
+                  <TrustDisclosure compact />
+                </div>
               </div>
-            </div>
-          </aside>
+            </aside>
+          )}
         </div>
       </article>
     </PageLayout>

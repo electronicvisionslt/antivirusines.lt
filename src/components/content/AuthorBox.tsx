@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
-import { Author } from '@/data/mockData';
 
-const AuthorBox = ({ author, compact = false }: { author: Author; compact?: boolean }) => {
+interface AuthorData {
+  slug: string;
+  name: string;
+  initials: string;
+  bio: string;
+  expertise: string[];
+}
+
+const AuthorBox = ({ author, compact = false }: { author: AuthorData; compact?: boolean }) => {
   if (compact) {
     return (
       <Link to={`/autoriai/${author.slug}`} className="inline-flex items-center gap-2 hover:text-primary transition-colors duration-200">
