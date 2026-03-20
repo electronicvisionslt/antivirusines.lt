@@ -22,7 +22,7 @@ const AffiliateCTA = ({ productName, description, price, affiliateUrl, ctaText =
         <a
           href={affiliateUrl}
           target="_blank"
-          rel="noopener noreferrer nofollow"
+          rel="nofollow sponsored noopener noreferrer"
           className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-heading font-semibold rounded-lg hover:bg-accent/90 transition-all duration-200 active:scale-[0.97] text-sm glow-accent"
         >
           {ctaText}

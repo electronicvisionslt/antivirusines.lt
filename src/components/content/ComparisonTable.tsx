@@ -24,8 +24,8 @@ const ComparisonTable = ({ products, title = 'Antivirusinių programų palyginim
             {products.map((product, i) => (
               <tr key={product.id || product.name} className={`${i < products.length - 1 ? 'border-b border-border/40' : ''} hover:bg-secondary/20 transition-colors duration-150`}>
                 <td className="p-4 font-medium text-foreground">
-                  {product.affiliateUrl ? (
-                    <a href={product.affiliateUrl} target="_blank" rel="noopener noreferrer nofollow" className="hover:text-primary transition-colors">
+                {product.affiliateUrl ? (
+                    <a href={product.affiliateUrl} target="_blank" rel="nofollow sponsored noopener noreferrer" className="hover:text-primary transition-colors">
                       {product.name}
                     </a>
                   ) : product.name}
