@@ -18,6 +18,8 @@ interface Props {
 }
 
 const ArticlePage = ({ article }: Props) => {
+  const { data: articleProducts } = useArticleProducts(article.id);
+
   usePageMeta({
     title: article.seoTitle || article.title,
     description: article.metaDescription || article.excerpt,
