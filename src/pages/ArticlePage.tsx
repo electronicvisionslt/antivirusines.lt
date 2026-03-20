@@ -137,14 +137,17 @@ const ArticlePage = ({ article }: Props) => {
               </ScrollReveal>
             )}
 
-            {/* CTA */}
-            <ScrollReveal>
-              <AffiliateCTA
-                productName="Norton 360"
-                description="Visapusiška apsauga kompiuteriui, telefonui ir planšetei. Apima antivirusinę, VPN ir slaptažodžių tvarkyklę."
-                price="Nuo €29,99/m."
-              />
-            </ScrollReveal>
+            {/* CTA - from linked products */}
+            {articleProducts && articleProducts.length > 0 && (
+              <ScrollReveal>
+                <AffiliateCTA
+                  productName={articleProducts[0].name}
+                  description={articleProducts[0].shortDescription}
+                  price={articleProducts[0].pricingSummary}
+                  affiliateUrl={articleProducts[0].affiliateUrl}
+                />
+              </ScrollReveal>
+            )}
 
             {/* FAQ */}
             {article.faq.length > 0 && (
