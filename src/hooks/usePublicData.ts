@@ -28,7 +28,73 @@ function parseSections(sections: Json | null): { id: string; title: string; cont
 }
 
 function generateInitials(name: string): string {
+  if (!name) return '??';
   return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+}
+
+function mapDbArticle(a: any, categoryPath = ''): PublicArticle {
+  const author = a.authors;
+  return {
+    id: a.id,
+    slug: a.slug,
+    path: a.path,
+    title: a.title,
+    excerpt: a.excerpt || '',
+    body: a.body || '',
+    authorSlug: author?.slug || '',
+    authorName: author?.name || '',
+    authorInitials: author?.initials || generateInitials(author?.name || ''),
+    authorBio: author?.bio || '',
+    authorExpertise: author?.expertise || [],
+    categoryPath,
+    updatedAt: a.updated_at?.split('T')[0] || '',
+    publishedAt: a.published_at?.split('T')[0] || undefined,
+    readTime: a.read_time || '',
+    featuredImage: a.featured_image,
+    featuredImageAlt: a.featured_image_alt,
+    articleType: a.article_type || 'guide',
+    sections: parseSections(a.sections),
+    faq: parseFaq(a.faq),
+    pros: a.pros || [],
+    cons: a.cons || [],
+    verdict: a.verdict,
+    relatedPaths: (a.related_article_ids as string[] | null) || [],
+    seoTitle: a.seo_title,
+    metaDescription: a.meta_description,
+    canonicalUrl: a.canonical_url,
+    ogTitle: a.og_title,
+    ogDescription: a.og_description,
+    ogImage: a.og_image,
+    noindex: a.noindex || false,
+    showToc: a.show_toc ?? true,
+  };
+}
+
+function mockToPublic(path: string): PublicArticle | null {
+  const mock = mockArticles[path];
+  if (!mock) return null;
+  const mockAuthor = mockAuthors[mock.authorSlug];
+  return {
+    slug: mock.slug,
+    path: mock.path,
+    title: mock.title,
+    excerpt: mock.excerpt,
+    authorSlug: mock.authorSlug,
+    authorName: mockAuthor?.name || '',
+    authorInitials: mockAuthor?.initials || '',
+    authorBio: mockAuthor?.bio || '',
+    authorExpertise: mockAuthor?.expertise || [],
+    categoryPath: mock.categoryPath,
+    updatedAt: mock.updatedAt,
+    readTime: mock.readTime,
+    sections: mock.sections,
+    faq: mock.faq,
+    pros: mock.pros,
+    cons: mock.cons,
+    verdict: mock.verdict,
+    relatedPaths: mock.relatedPaths,
+    showToc: true,
+  };
 }
 
 // ─── Article by path ───
@@ -37,7 +103,7 @@ export function usePublicArticle(path: string) {
   return useQuery({
     queryKey: ['public-article', path],
     queryFn: async (): Promise<PublicArticle | null> => {
-      // Try DB first
+      // Try DB first — RLS already filters to published-only for anon users
       const { data: dbArticle } = await supabase
         .from('articles')
         .select('*, authors(*)')
@@ -46,68 +112,33 @@ export function usePublicArticle(path: string) {
         .maybeSingle();
 
       if (dbArticle) {
-        const author = dbArticle.authors as any;
-        return {
-          id: dbArticle.id,
-          slug: dbArticle.slug,
-          path: dbArticle.path,
-          title: dbArticle.title,
-          excerpt: dbArticle.excerpt || '',
-          body: dbArticle.body || '',
-          authorSlug: author?.slug || '',
-          authorName: author?.name || '',
-          authorInitials: author?.initials || generateInitials(author?.name || ''),
-          authorBio: author?.bio || '',
-          authorExpertise: author?.expertise || [],
-          categoryPath: '',
-          updatedAt: dbArticle.updated_at?.split('T')[0] || '',
-          publishedAt: dbArticle.published_at?.split('T')[0] || undefined,
-          readTime: dbArticle.read_time || '',
-          featuredImage: dbArticle.featured_image,
-          featuredImageAlt: dbArticle.featured_image_alt,
-          articleType: dbArticle.article_type || 'guide',
-          sections: parseSections(dbArticle.sections),
-          faq: parseFaq(dbArticle.faq),
-          pros: dbArticle.pros || [],
-          cons: dbArticle.cons || [],
-          verdict: dbArticle.verdict,
-          relatedPaths: [],
-          seoTitle: dbArticle.seo_title,
-          metaDescription: dbArticle.meta_description,
-          canonicalUrl: dbArticle.canonical_url,
-          ogTitle: dbArticle.og_title,
-          ogDescription: dbArticle.og_description,
-          ogImage: dbArticle.og_image,
-          noindex: dbArticle.noindex || false,
-          showToc: dbArticle.show_toc ?? true,
-        };
+        const article = mapDbArticle(dbArticle);
+
+        // Resolve category path for breadcrumbs
+        if (dbArticle.category_id) {
+          const { data: cat } = await supabase
+            .from('categories')
+            .select('path')
+            .eq('id', dbArticle.category_id)
+            .maybeSingle();
+          if (cat) article.categoryPath = cat.path;
+        }
+
+        // Resolve related articles by IDs
+        if (dbArticle.related_article_ids && (dbArticle.related_article_ids as string[]).length > 0) {
+          const { data: relatedArticles } = await supabase
+            .from('articles')
+            .select('path')
+            .in('id', dbArticle.related_article_ids as string[])
+            .eq('status', 'published');
+          article.relatedPaths = relatedArticles?.map(r => r.path) || [];
+        }
+
+        return article;
       }
 
       // Fallback to mock data
-      const mock = mockArticles[path];
-      if (!mock) return null;
-      const mockAuthor = mockAuthors[mock.authorSlug];
-      return {
-        slug: mock.slug,
-        path: mock.path,
-        title: mock.title,
-        excerpt: mock.excerpt,
-        authorSlug: mock.authorSlug,
-        authorName: mockAuthor?.name || '',
-        authorInitials: mockAuthor?.initials || '',
-        authorBio: mockAuthor?.bio || '',
-        authorExpertise: mockAuthor?.expertise || [],
-        categoryPath: mock.categoryPath,
-        updatedAt: mock.updatedAt,
-        readTime: mock.readTime,
-        sections: mock.sections,
-        faq: mock.faq,
-        pros: mock.pros,
-        cons: mock.cons,
-        verdict: mock.verdict,
-        relatedPaths: mock.relatedPaths,
-        showToc: true,
-      };
+      return mockToPublic(path);
     },
     staleTime: 60_000,
   });
@@ -134,24 +165,9 @@ export function usePublicCategory(path: string) {
           .eq('status', 'published')
           .order('published_at', { ascending: false });
 
-        const articles: PublicArticle[] = (catArticles || []).map((a: any) => {
-          const author = a.authors;
-          return {
-            id: a.id,
-            slug: a.slug,
-            path: a.path,
-            title: a.title,
-            excerpt: a.excerpt || '',
-            authorSlug: author?.slug || '',
-            authorName: author?.name || '',
-            authorInitials: author?.initials || generateInitials(author?.name || ''),
-            categoryPath: path,
-            updatedAt: a.updated_at?.split('T')[0] || '',
-            readTime: a.read_time || '',
-            sections: [],
-            faq: [],
-          };
-        });
+        const articles: PublicArticle[] = (catArticles || []).map((a: any) =>
+          mapDbArticle(a, path)
+        );
 
         return {
           id: dbCat.id,
@@ -171,25 +187,8 @@ export function usePublicCategory(path: string) {
       const mock = mockCategories[path];
       if (!mock) return null;
       const mockArts = mock.articlePaths
-        .map(p => mockArticles[p])
-        .filter(Boolean)
-        .map(a => {
-          const author = mockAuthors[a.authorSlug];
-          return {
-            slug: a.slug,
-            path: a.path,
-            title: a.title,
-            excerpt: a.excerpt,
-            authorSlug: a.authorSlug,
-            authorName: author?.name || '',
-            authorInitials: author?.initials || '',
-            categoryPath: a.categoryPath,
-            updatedAt: a.updatedAt,
-            readTime: a.readTime,
-            sections: [],
-            faq: [],
-          };
-        });
+        .map(p => mockToPublic(p))
+        .filter(Boolean) as PublicArticle[];
 
       return {
         slug: mock.path.split('/').filter(Boolean).pop() || '',
@@ -220,26 +219,14 @@ export function usePublicAuthor(slug: string) {
       if (dbAuthor) {
         const { data: authorArticles } = await supabase
           .from('articles')
-          .select('*')
+          .select('*, authors(*)')
           .eq('author_id', dbAuthor.id)
           .eq('status', 'published')
           .order('published_at', { ascending: false });
 
-        const articles: PublicArticle[] = (authorArticles || []).map((a: any) => ({
-          id: a.id,
-          slug: a.slug,
-          path: a.path,
-          title: a.title,
-          excerpt: a.excerpt || '',
-          authorSlug: dbAuthor.slug,
-          authorName: dbAuthor.name,
-          authorInitials: dbAuthor.initials || generateInitials(dbAuthor.name),
-          categoryPath: '',
-          updatedAt: a.updated_at?.split('T')[0] || '',
-          readTime: a.read_time || '',
-          sections: [],
-          faq: [],
-        }));
+        const articles: PublicArticle[] = (authorArticles || []).map((a: any) =>
+          mapDbArticle(a)
+        );
 
         return {
           id: dbAuthor.id,
@@ -258,20 +245,7 @@ export function usePublicAuthor(slug: string) {
       // Fallback to mock
       const mock = mockAuthors[slug];
       if (!mock) return null;
-      const mockArts = getMockArticlesByAuthor(slug).map(a => ({
-        slug: a.slug,
-        path: a.path,
-        title: a.title,
-        excerpt: a.excerpt,
-        authorSlug: a.authorSlug,
-        authorName: mock.name,
-        authorInitials: mock.initials,
-        categoryPath: a.categoryPath,
-        updatedAt: a.updatedAt,
-        readTime: a.readTime,
-        sections: [],
-        faq: [],
-      }));
+      const mockArts = getMockArticlesByAuthor(slug).map(a => mockToPublic(a.path)).filter(Boolean) as PublicArticle[];
 
       return {
         slug: mock.slug,
@@ -300,28 +274,10 @@ export function useHomepageArticles() {
         .limit(10);
 
       if (data && data.length > 0) {
-        return data.map((a: any) => {
-          const author = a.authors;
-          return {
-            id: a.id,
-            slug: a.slug,
-            path: a.path,
-            title: a.title,
-            excerpt: a.excerpt || '',
-            authorSlug: author?.slug || '',
-            authorName: author?.name || '',
-            authorInitials: author?.initials || generateInitials(author?.name || ''),
-            categoryPath: '',
-            updatedAt: a.updated_at?.split('T')[0] || '',
-            readTime: a.read_time || '',
-            featuredImage: a.featured_image,
-            sections: [],
-            faq: [],
-          } as PublicArticle;
-        });
+        return data.map((a: any) => mapDbArticle(a));
       }
 
-      // Fallback: return mock articles
+      // Fallback: return null to signal "use mock data"
       return null;
     },
     staleTime: 60_000,

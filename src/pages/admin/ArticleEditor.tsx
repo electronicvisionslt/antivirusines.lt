@@ -84,6 +84,7 @@ const ArticleEditor = () => {
 
   const save = async (publishAction?: 'publish' | 'unpublish') => {
     if (!form.title.trim()) { toast.error('Įveskite pavadinimą'); return; }
+    if (!form.slug.trim()) { toast.error('Slug laukas privalomas'); return; }
     setSaving(true);
 
     let status: 'draft' | 'published' | 'archived' = form.status as 'draft' | 'published' | 'archived';
@@ -91,7 +92,19 @@ const ArticleEditor = () => {
     if (publishAction === 'unpublish') status = 'draft';
 
     const path = form.path || `/${form.slug}`;
-    const payload = {
+
+    // Only set published_at when first publishing
+    let published_at: string | null = null;
+    if (status === 'published') {
+      if (publishAction === 'publish') {
+        // Explicitly publishing — set timestamp
+        published_at = new Date().toISOString();
+      }
+      // If already published and just saving, don't change published_at
+      // (it will keep its current DB value since we omit it from the update)
+    }
+
+    const payload: Record<string, unknown> = {
       title: form.title, slug: form.slug, path, excerpt: form.excerpt, body: form.body,
       featured_image: form.featured_image || null, featured_image_alt: form.featured_image_alt || null,
       article_type: form.article_type, category_id: form.category_id || null,
@@ -102,16 +115,22 @@ const ArticleEditor = () => {
       og_description: form.og_description || null, og_image: form.og_image || null,
       pros, cons, faq: JSON.parse(JSON.stringify(faq)),
       sections: JSON.parse(JSON.stringify(sections)),
-      published_at: status === 'published' ? new Date().toISOString() : null,
-    } as any;
+    };
+
+    // Only include published_at when explicitly changing publish state
+    if (publishAction === 'publish') {
+      payload.published_at = published_at;
+    } else if (publishAction === 'unpublish') {
+      payload.published_at = null;
+    }
 
     let error;
     if (isNew) {
-      const res = await supabase.from('articles').insert(payload).select('id').single();
+      const res = await supabase.from('articles').insert(payload as any).select('id').single();
       error = res.error;
       if (!error && res.data) navigate(`/admin/articles/${(res.data as any).id}`, { replace: true });
     } else {
-      const res = await supabase.from('articles').update(payload).eq('id', id!);
+      const res = await supabase.from('articles').update(payload as any).eq('id', id!);
       error = res.error;
     }
 

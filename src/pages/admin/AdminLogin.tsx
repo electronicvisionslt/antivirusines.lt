@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
@@ -11,40 +11,12 @@ import { toast } from 'sonner';
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [setupSecret, setSetupSecret] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [hasAdmin, setHasAdmin] = useState<boolean | null>(null);
   const [isSetup, setIsSetup] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Check if any admin exists - use the edge function approach
-    // Since user_roles SELECT requires admin, we check by trying to invoke the setup function status
-    const checkAdminExists = async () => {
-      try {
-        const { data, error } = await supabase.functions.invoke('setup-admin', {
-          method: 'POST',
-          body: { email: 'check@check.check', password: 'checkcheck' },
-        });
-        // If we get "admin already exists" error, hasAdmin = true
-        if (error || data?.error?.includes('jau egzistuoja')) {
-          setHasAdmin(true);
-        } else {
-          // If the function would succeed, an admin was just created — roll back not possible
-          // So this approach is flawed. Instead let's use a simpler check.
-          setHasAdmin(true);
-        }
-      } catch {
-        // If edge function not deployed yet, assume setup mode
-        setHasAdmin(false);
-      }
-    };
-
-    // Simpler approach: try to count authors (public table) as a proxy
-    // Actually, just show both options and let the edge function gate it
-    setHasAdmin(null); // Will show login by default, setup as toggle
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,10 +24,20 @@ const AdminLogin = () => {
     setLoading(true);
 
     if (isSetup) {
-      // Create first admin via edge function
+      if (!setupSecret.trim()) {
+        setError('Nustatymo kodas privalomas');
+        setLoading(false);
+        return;
+      }
+      if (password.length < 8) {
+        setError('Slaptažodis turi būti bent 8 simbolių');
+        setLoading(false);
+        return;
+      }
+
       try {
         const { data, error: fnError } = await supabase.functions.invoke('setup-admin', {
-          body: { email, password },
+          body: { email, password, setup_secret: setupSecret },
         });
 
         if (fnError) {
@@ -70,11 +52,10 @@ const AdminLogin = () => {
           return;
         }
 
-        // Admin created, now sign in
         toast.success('Administratorius sukurtas!');
         const { error: signInError } = await signIn(email, password);
         if (signInError) {
-          setError('Administratorius sukurtas, bet nepavyko prisijungti. Bandykite prisijungti.');
+          setError('Administratorius sukurtas. Prisijunkite naudodami formą.');
           setIsSetup(false);
           setLoading(false);
           return;
@@ -85,7 +66,6 @@ const AdminLogin = () => {
         setLoading(false);
       }
     } else {
-      // Normal login
       const { error } = await signIn(email, password);
       if (error) {
         setError('Neteisingi prisijungimo duomenys');
@@ -110,6 +90,23 @@ const AdminLogin = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {isSetup && (
+            <div>
+              <Label htmlFor="setup-secret">Nustatymo kodas</Label>
+              <Input
+                id="setup-secret"
+                type="password"
+                value={setupSecret}
+                onChange={e => setSetupSecret(e.target.value)}
+                required
+                placeholder="ADMIN_SETUP_SECRET reikšmė"
+                className="mt-1"
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Šis kodas nustatytas serveryje kaip ADMIN_SETUP_SECRET
+              </p>
+            </div>
+          )}
           <div>
             <Label htmlFor="email">El. paštas</Label>
             <Input
@@ -131,7 +128,7 @@ const AdminLogin = () => {
               onChange={e => setPassword(e.target.value)}
               required
               autoComplete={isSetup ? 'new-password' : 'current-password'}
-              minLength={isSetup ? 6 : undefined}
+              minLength={isSetup ? 8 : undefined}
               className="mt-1"
             />
           </div>
