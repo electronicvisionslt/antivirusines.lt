@@ -1,0 +1,38 @@
+import { Link } from 'react-router-dom';
+import { ChevronRight, Shield, Users, Key, Bug, BookOpen } from 'lucide-react';
+
+const iconMap: Record<string, any> = {
+  '/antivirusines-programos': Shield,
+  '/tevu-kontrole': Users,
+  '/slaptazodziu-saugumas': Key,
+  '/virusai/kompiuterinis-virusas': Bug,
+  '/saugumo-patarimai/saugus-darbas-kompiuteriu': BookOpen,
+};
+
+interface CategoryCardProps {
+  path: string;
+  title: string;
+  description: string;
+}
+
+const CategoryCard = ({ path, title, description }: CategoryCardProps) => {
+  const Icon = iconMap[path] || Shield;
+
+  return (
+    <Link
+      to={path}
+      className="group flex items-start gap-4 p-5 bg-card rounded-lg border shadow-sm hover:shadow-md transition-[box-shadow,transform] duration-200 active:scale-[0.98]"
+    >
+      <div className="shrink-0 w-11 h-11 rounded-lg bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+        <Icon className="w-5 h-5" />
+      </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">{title}</h3>
+        <p className="text-sm text-muted-foreground line-clamp-2">{description}</p>
+      </div>
+      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary shrink-0 mt-0.5 transition-colors" />
+    </Link>
+  );
+};
+
+export default CategoryCard;
