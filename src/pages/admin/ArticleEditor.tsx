@@ -73,6 +73,10 @@ const ArticleEditor = () => {
           setSections((data.sections as unknown as SectionItem[]) ?? []);
         }
       });
+      // Load linked products
+      supabase.from('article_products').select('product_id').eq('article_id', id).then(({ data: links }) => {
+        setLinkedProductIds((links || []).map(l => l.product_id));
+      });
     }
   }, [id, isNew]);
 
