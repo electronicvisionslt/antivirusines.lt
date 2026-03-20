@@ -7,22 +7,8 @@ import ArticleCard from '@/components/content/ArticleCard';
 import ComparisonTable from '@/components/content/ComparisonTable';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
-import { useHomepageArticles } from '@/hooks/usePublicData';
-import { articles as mockArticles, authors as mockAuthors, comparisonProducts } from '@/data/mockData';
+import { useHomepageArticles, useComparisonProducts } from '@/hooks/usePublicData';
 import type { PublicArticle } from '@/types/content';
-
-const featuredPaths = [
-  '/antivirusines-programos/nemokamos',
-  '/antivirusines-programos/kompiuteriui',
-  '/tevu-kontrole/vaiko-telefone',
-];
-
-const latestPaths = [
-  '/virusai/kompiuterinis-virusas',
-  '/virusai/virusas-telefone',
-  '/saugumo-patarimai/saugus-darbas-kompiuteriu',
-  '/antivirusines-programos/telefonui',
-];
 
 const categoryLinks = [
   { path: '/antivirusines-programos', title: 'Antivirusinės programos', description: 'Apžvalgos, palyginimai ir rekomendacijos geriausiai apsaugai.' },
@@ -32,26 +18,6 @@ const categoryLinks = [
   { path: '/saugumo-patarimai/saugus-darbas-kompiuteriu', title: 'Saugumo patarimai', description: 'Praktiniai kibernetinio saugumo patarimai kiekvienam.' },
 ];
 
-function mockToPublic(path: string): PublicArticle | null {
-  const mock = mockArticles[path];
-  if (!mock) return null;
-  const author = mockAuthors[mock.authorSlug];
-  return {
-    slug: mock.slug,
-    path: mock.path,
-    title: mock.title,
-    excerpt: mock.excerpt,
-    authorSlug: mock.authorSlug,
-    authorName: author?.name || '',
-    authorInitials: author?.initials || '',
-    categoryPath: mock.categoryPath,
-    updatedAt: mock.updatedAt,
-    readTime: mock.readTime,
-    sections: [],
-    faq: [],
-  };
-}
-
 const HomePage = () => {
   usePageMeta({
     title: 'Antivirusinių programų apžvalgos ir saugumo gidai',
@@ -59,15 +25,11 @@ const HomePage = () => {
   });
 
   const { data: dbArticles } = useHomepageArticles();
+  const { data: comparisonProducts } = useComparisonProducts();
 
-  // Use DB articles if available, otherwise mock
-  const featured = dbArticles
-    ? dbArticles.slice(0, 3)
-    : featuredPaths.map(mockToPublic).filter(Boolean) as PublicArticle[];
-
-  const latest = dbArticles
-    ? dbArticles.slice(3, 7)
-    : latestPaths.map(mockToPublic).filter(Boolean) as PublicArticle[];
+  const allArticles = dbArticles || [];
+  const featured = allArticles.slice(0, 3);
+  const latest = allArticles.slice(3, 7);
 
   return (
     <PageLayout>
@@ -128,50 +90,56 @@ const HomePage = () => {
       </section>
 
       {/* Featured articles */}
-      <section className="container py-16">
-        <ScrollReveal>
-          <div className="flex items-center justify-between mb-7">
-            <h2 className="font-heading text-2xl font-bold text-foreground">Populiariausi straipsniai</h2>
-            <Link to="/antivirusines-programos" className="text-sm text-primary font-heading font-medium hover:underline hidden sm:inline-flex items-center gap-1 transition-colors duration-200">
-              Visi straipsniai <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </ScrollReveal>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {featured.map((a, i) => (
-            <ScrollReveal key={a.path} delay={i * 90}>
-              <ArticleCard article={a} />
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
-
-      {/* Comparison */}
-      <section className="container py-16">
-        <ScrollReveal>
-          <ComparisonTable products={comparisonProducts} />
-        </ScrollReveal>
-      </section>
-
-      {/* Latest guides */}
-      <section className="relative border-y border-border/30">
-        <div className="absolute inset-0 bg-card/30" />
-        <div className="container relative py-16">
+      {featured.length > 0 && (
+        <section className="container py-16">
           <ScrollReveal>
-            <div className="flex items-center gap-2.5 mb-7">
-              <TrendingUp className="w-5 h-5 text-primary/60" />
-              <h2 className="font-heading text-2xl font-bold text-foreground">Naujausi gidai</h2>
+            <div className="flex items-center justify-between mb-7">
+              <h2 className="font-heading text-2xl font-bold text-foreground">Populiariausi straipsniai</h2>
+              <Link to="/antivirusines-programos" className="text-sm text-primary font-heading font-medium hover:underline hidden sm:inline-flex items-center gap-1 transition-colors duration-200">
+                Visi straipsniai <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {latest.map((a, i) => (
-              <ScrollReveal key={a.path} delay={i * 70}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {featured.map((a, i) => (
+              <ScrollReveal key={a.path} delay={i * 90}>
                 <ArticleCard article={a} />
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* Comparison */}
+      {comparisonProducts && comparisonProducts.length > 0 && (
+        <section className="container py-16">
+          <ScrollReveal>
+            <ComparisonTable products={comparisonProducts} />
+          </ScrollReveal>
+        </section>
+      )}
+
+      {/* Latest guides */}
+      {latest.length > 0 && (
+        <section className="relative border-y border-border/30">
+          <div className="absolute inset-0 bg-card/30" />
+          <div className="container relative py-16">
+            <ScrollReveal>
+              <div className="flex items-center gap-2.5 mb-7">
+                <TrendingUp className="w-5 h-5 text-primary/60" />
+                <h2 className="font-heading text-2xl font-bold text-foreground">Naujausi gidai</h2>
+              </div>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {latest.map((a, i) => (
+                <ScrollReveal key={a.path} delay={i * 70}>
+                  <ArticleCard article={a} />
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Trust */}
       <section className="container py-16">
