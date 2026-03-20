@@ -1,5 +1,5 @@
 import PageLayout from '@/components/site/PageLayout';
-import Breadcrumbs from '@/components/site/Breadcrumbs';
+import Breadcrumbs, { type BreadcrumbItem } from '@/components/site/Breadcrumbs';
 import ScrollReveal from '@/components/site/ScrollReveal';
 import ArticleCard from '@/components/content/ArticleCard';
 import ComparisonTable from '@/components/content/ComparisonTable';
@@ -27,7 +27,10 @@ const CategoryPage = ({ category }: Props) => {
   return (
     <PageLayout>
       <div className="container py-8">
-        <Breadcrumbs path={category.path} />
+        <Breadcrumbs path={category.path} items={[
+          { label: 'Pradžia', path: '/' },
+          { label: category.title, path: category.path },
+        ]} />
 
         <ScrollReveal>
           <div className="relative rounded-2xl overflow-hidden border border-border/40 p-8 md:p-12 mb-12">

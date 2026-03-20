@@ -1,6 +1,6 @@
 import { Calendar } from 'lucide-react';
 import PageLayout from '@/components/site/PageLayout';
-import Breadcrumbs from '@/components/site/Breadcrumbs';
+import Breadcrumbs, { type BreadcrumbItem } from '@/components/site/Breadcrumbs';
 import ScrollReveal from '@/components/site/ScrollReveal';
 import TableOfContents from '@/components/content/TableOfContents';
 import AuthorBox from '@/components/content/AuthorBox';
@@ -39,10 +39,20 @@ const ArticlePage = ({ article }: Props) => {
 
   const showToc = article.showToc !== false && article.sections.length > 1;
 
+  // Build breadcrumbs with human-readable labels
+  const breadcrumbItems: BreadcrumbItem[] = [{ label: 'Pradžia', path: '/' }];
+  if (article.categoryPath) {
+    breadcrumbItems.push({
+      label: article.categoryTitle || article.categoryPath.split('/').filter(Boolean).pop() || '',
+      path: article.categoryPath,
+    });
+  }
+  breadcrumbItems.push({ label: article.title, path: article.path });
+
   return (
     <PageLayout>
       <article className="container py-8" itemScope itemType="https://schema.org/Article">
-        <Breadcrumbs path={article.path} />
+        <Breadcrumbs path={article.path} items={breadcrumbItems} />
 
         <ScrollReveal>
           {/* Hero */}

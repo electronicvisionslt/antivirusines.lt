@@ -16,6 +16,7 @@ export interface PublicArticle {
   authorBio?: string;
   authorExpertise?: string[];
   categoryPath: string;
+  categoryTitle?: string;
   updatedAt: string;
   publishedAt?: string;
   readTime: string;
