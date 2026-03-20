@@ -1,8 +1,9 @@
 import { Check, X, Star } from 'lucide-react';
-import { ComparisonProduct } from '@/data/mockData';
+import type { PublicProduct } from '@/hooks/usePublicData';
 
-const ComparisonTable = ({ products, title = 'Antivirusinių programų palyginimas' }: { products: ComparisonProduct[]; title?: string }) => {
-  const featureKeys = products.length > 0 ? Object.keys(products[0].features) : [];
+const ComparisonTable = ({ products, title = 'Antivirusinių programų palyginimas' }: { products: PublicProduct[]; title?: string }) => {
+  if (products.length === 0) return null;
+  const featureKeys = Object.keys(products[0].features);
 
   return (
     <section className="my-10">
@@ -21,15 +22,21 @@ const ComparisonTable = ({ products, title = 'Antivirusinių programų palyginim
           </thead>
           <tbody>
             {products.map((product, i) => (
-              <tr key={product.name} className={`${i < products.length - 1 ? 'border-b border-border/40' : ''} hover:bg-secondary/20 transition-colors duration-150`}>
-                <td className="p-4 font-medium text-foreground">{product.name}</td>
+              <tr key={product.id || product.name} className={`${i < products.length - 1 ? 'border-b border-border/40' : ''} hover:bg-secondary/20 transition-colors duration-150`}>
+                <td className="p-4 font-medium text-foreground">
+                  {product.affiliateUrl ? (
+                    <a href={product.affiliateUrl} target="_blank" rel="noopener noreferrer nofollow" className="hover:text-primary transition-colors">
+                      {product.name}
+                    </a>
+                  ) : product.name}
+                </td>
                 <td className="p-4 text-center">
                   <span className="inline-flex items-center gap-1 text-accent font-semibold">
                     <Star className="w-4 h-4 fill-accent" />
                     {product.rating}
                   </span>
                 </td>
-                <td className="p-4 text-center text-muted-foreground whitespace-nowrap">{product.price}</td>
+                <td className="p-4 text-center text-muted-foreground whitespace-nowrap">{product.pricingSummary}</td>
                 {featureKeys.map(k => {
                   const val = product.features[k];
                   return (

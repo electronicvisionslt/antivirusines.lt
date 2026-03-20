@@ -6,7 +6,7 @@ import ComparisonTable from '@/components/content/ComparisonTable';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
-import { comparisonProducts } from '@/data/mockData';
+import { useComparisonProducts } from '@/hooks/usePublicData';
 import type { PublicCategory } from '@/types/content';
 
 interface Props {
@@ -22,6 +22,7 @@ const CategoryPage = ({ category }: Props) => {
   });
 
   const showComparison = category.path === '/antivirusines-programos';
+  const { data: comparisonProducts } = useComparisonProducts();
   const categoryArticles = category.articles || [];
 
   return (
@@ -58,7 +59,7 @@ const CategoryPage = ({ category }: Props) => {
           </section>
         )}
 
-        {showComparison && (
+        {showComparison && comparisonProducts && comparisonProducts.length > 0 && (
           <ScrollReveal>
             <ComparisonTable products={comparisonProducts} />
           </ScrollReveal>

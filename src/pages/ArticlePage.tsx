@@ -10,6 +10,7 @@ import FAQAccordion from '@/components/content/FAQAccordion';
 import RelatedArticles from '@/components/content/RelatedArticles';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
+import { useArticleProducts } from '@/hooks/usePublicData';
 import type { PublicArticle } from '@/types/content';
 
 interface Props {
@@ -17,6 +18,8 @@ interface Props {
 }
 
 const ArticlePage = ({ article }: Props) => {
+  const { data: articleProducts } = useArticleProducts(article.id);
+
   usePageMeta({
     title: article.seoTitle || article.title,
     description: article.metaDescription || article.excerpt,
@@ -134,14 +137,17 @@ const ArticlePage = ({ article }: Props) => {
               </ScrollReveal>
             )}
 
-            {/* CTA */}
-            <ScrollReveal>
-              <AffiliateCTA
-                productName="Norton 360"
-                description="Visapusiška apsauga kompiuteriui, telefonui ir planšetei. Apima antivirusinę, VPN ir slaptažodžių tvarkyklę."
-                price="Nuo €29,99/m."
-              />
-            </ScrollReveal>
+            {/* CTA - from linked products */}
+            {articleProducts && articleProducts.length > 0 && (
+              <ScrollReveal>
+                <AffiliateCTA
+                  productName={articleProducts[0].name}
+                  description={articleProducts[0].shortDescription}
+                  price={articleProducts[0].pricingSummary}
+                  affiliateUrl={articleProducts[0].affiliateUrl}
+                />
+              </ScrollReveal>
+            )}
 
             {/* FAQ */}
             {article.faq.length > 0 && (

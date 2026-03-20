@@ -24,6 +24,8 @@ const ArticleEditor = () => {
   const [saving, setSaving] = useState(false);
   const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
   const [authors, setAuthors] = useState<{ id: string; name: string }[]>([]);
+  const [allProducts, setAllProducts] = useState<{ id: string; name: string }[]>([]);
+  const [linkedProductIds, setLinkedProductIds] = useState<string[]>([]);
 
   const [form, setForm] = useState({
     title: '', slug: '', path: '', excerpt: '', body: '',
@@ -40,12 +42,14 @@ const ArticleEditor = () => {
 
   useEffect(() => {
     const loadRefs = async () => {
-      const [c, a] = await Promise.all([
+      const [c, a, p] = await Promise.all([
         supabase.from('categories').select('id, name').order('name'),
         supabase.from('authors').select('id, name').order('name'),
+        supabase.from('products').select('id, name').order('name'),
       ]);
       setCategories(c.data ?? []);
       setAuthors(a.data ?? []);
+      setAllProducts(p.data ?? []);
     };
     loadRefs();
 
@@ -68,6 +72,10 @@ const ArticleEditor = () => {
           setFaq((data.faq as unknown as FaqItem[]) ?? []);
           setSections((data.sections as unknown as SectionItem[]) ?? []);
         }
+      });
+      // Load linked products
+      supabase.from('article_products').select('product_id').eq('article_id', id).then(({ data: links }) => {
+        setLinkedProductIds((links || []).map(l => l.product_id));
       });
     }
   }, [id, isNew]);
@@ -125,13 +133,27 @@ const ArticleEditor = () => {
     }
 
     let error;
+    let articleId = id;
     if (isNew) {
       const res = await supabase.from('articles').insert(payload as any).select('id').single();
       error = res.error;
-      if (!error && res.data) navigate(`/admin/articles/${(res.data as any).id}`, { replace: true });
+      if (!error && res.data) {
+        articleId = (res.data as any).id;
+        navigate(`/admin/articles/${articleId}`, { replace: true });
+      }
     } else {
       const res = await supabase.from('articles').update(payload as any).eq('id', id!);
       error = res.error;
+    }
+
+    // Save product links
+    if (!error && articleId) {
+      await supabase.from('article_products').delete().eq('article_id', articleId);
+      if (linkedProductIds.length > 0) {
+        await supabase.from('article_products').insert(
+          linkedProductIds.map(pid => ({ article_id: articleId!, product_id: pid }))
+        );
+      }
     }
 
     setSaving(false);
@@ -310,6 +332,33 @@ const ArticleEditor = () => {
             <div className="flex items-center gap-2">
               <Switch checked={form.show_toc} onCheckedChange={v => set('show_toc', v)} />
               <Label>Rodyti turinį</Label>
+            </div>
+          </div>
+
+          {/* Product links */}
+          <div>
+            <Label className="text-base font-semibold mb-2 block">Susiję produktai (affiliate CTA)</Label>
+            <div className="space-y-2">
+              {allProducts.map(p => (
+                <label key={p.id} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={linkedProductIds.includes(p.id)}
+                    onChange={e => {
+                      if (e.target.checked) {
+                        setLinkedProductIds(prev => [...prev, p.id]);
+                      } else {
+                        setLinkedProductIds(prev => prev.filter(id => id !== p.id));
+                      }
+                    }}
+                    className="rounded border-border"
+                  />
+                  <span className="text-sm text-foreground">{p.name}</span>
+                </label>
+              ))}
+              {allProducts.length === 0 && (
+                <p className="text-sm text-muted-foreground">Nėra produktų. Sukurkite produktą pirmiausia.</p>
+              )}
             </div>
           </div>
         </TabsContent>
