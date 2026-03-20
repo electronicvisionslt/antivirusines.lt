@@ -335,12 +335,12 @@ export function useComparisonProducts(category = 'antivirus') {
   return useQuery({
     queryKey: ['comparison-products', category],
     queryFn: async (): Promise<PublicProduct[]> => {
-      // product_category and is_active exist in DB but may not be in generated types yet
-      const { data } = await supabase
-        .from('products')
-        .select('*')
-        .eq('product_category' as any, category)
-        .eq('is_active' as any, true)
+      // product_category and is_active are DB columns added via migration;
+      // generated types may lag — cast the builder to bypass strict checking
+      const query = supabase.from('products').select('*') as any;
+      const { data } = await query
+        .eq('product_category', category)
+        .eq('is_active', true)
         .order('rating', { ascending: false });
       return (data || []).map((p: any) => mapDbProduct(p));
     },
