@@ -331,13 +331,15 @@ function mapDbProduct(p: any): PublicProduct {
   };
 }
 
-export function useComparisonProducts() {
+export function useComparisonProducts(category = 'antivirus') {
   return useQuery({
-    queryKey: ['comparison-products'],
+    queryKey: ['comparison-products', category],
     queryFn: async (): Promise<PublicProduct[]> => {
       const { data } = await supabase
         .from('products')
         .select('*')
+        .eq('product_category' as any, category)
+        .eq('is_active' as any, true)
         .order('rating', { ascending: false });
       return (data || []).map(mapDbProduct);
     },
