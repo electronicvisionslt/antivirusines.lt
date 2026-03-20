@@ -151,7 +151,7 @@ const ArticleEditor = () => {
       await supabase.from('article_products').delete().eq('article_id', articleId);
       if (linkedProductIds.length > 0) {
         await supabase.from('article_products').insert(
-          linkedProductIds.map(pid => ({ article_id: articleId!, product_id: pid }))
+          linkedProductIds.map((pid, index) => ({ article_id: articleId!, product_id: pid, sort_order: index } as any))
         );
       }
     }
