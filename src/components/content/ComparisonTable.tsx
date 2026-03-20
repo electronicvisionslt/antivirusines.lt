@@ -6,22 +6,22 @@ const ComparisonTable = ({ products, title = 'Antivirusinių programų palyginim
 
   return (
     <section className="my-10">
-      <h2 className="text-2xl font-bold text-foreground mb-5">{title}</h2>
-      <div className="overflow-x-auto rounded-lg border bg-card">
+      <h2 className="font-heading text-2xl font-bold text-foreground mb-5">{title}</h2>
+      <div className="overflow-x-auto rounded-xl border border-border/60 bg-card glow-border">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b bg-secondary/50">
-              <th className="text-left p-4 font-semibold text-foreground">Programa</th>
-              <th className="text-center p-4 font-semibold text-foreground">Įvertinimas</th>
-              <th className="text-center p-4 font-semibold text-foreground">Kaina</th>
+            <tr className="border-b border-border/50 bg-secondary/30">
+              <th className="text-left p-4 font-heading font-semibold text-foreground">Programa</th>
+              <th className="text-center p-4 font-heading font-semibold text-foreground">Įvertinimas</th>
+              <th className="text-center p-4 font-heading font-semibold text-foreground">Kaina</th>
               {featureKeys.map(k => (
-                <th key={k} className="text-center p-4 font-semibold text-foreground whitespace-nowrap">{k}</th>
+                <th key={k} className="text-center p-4 font-heading font-semibold text-foreground whitespace-nowrap">{k}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {products.map((product, i) => (
-              <tr key={product.name} className={i < products.length - 1 ? 'border-b' : ''}>
+              <tr key={product.name} className={`${i < products.length - 1 ? 'border-b border-border/40' : ''} hover:bg-secondary/20 transition-colors duration-150`}>
                 <td className="p-4 font-medium text-foreground">{product.name}</td>
                 <td className="p-4 text-center">
                   <span className="inline-flex items-center gap-1 text-accent font-semibold">
@@ -35,7 +35,7 @@ const ComparisonTable = ({ products, title = 'Antivirusinių programų palyginim
                   return (
                     <td key={k} className="p-4 text-center">
                       {val === true ? <Check className="w-5 h-5 text-success mx-auto" /> :
-                       val === false ? <X className="w-5 h-5 text-muted-foreground/40 mx-auto" /> :
+                       val === false ? <X className="w-5 h-5 text-muted-foreground/30 mx-auto" /> :
                        <span className="text-muted-foreground">{val}</span>}
                     </td>
                   );
