@@ -24,6 +24,7 @@ const ProductEditor = () => {
     verdict: '', rating: '0', affiliate_url: '', affiliate_disclosure: '',
     free_version: false, trial_available: false,
     seo_title: '', meta_description: '', canonical_url: '',
+    product_category: 'antivirus', is_active: true,
   });
   const [pros, setPros] = useState<string[]>([]);
   const [cons, setCons] = useState<string[]>([]);
