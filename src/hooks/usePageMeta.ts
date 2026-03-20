@@ -18,7 +18,11 @@ export function usePageMeta(meta: SeoMeta) {
 
     // ── Title ──
     const prevTitle = document.title;
-    document.title = meta.title ? `${meta.title} | ${SITE_NAME}` : SITE_NAME;
+    if (meta.title) {
+      document.title = meta.title.includes(SITE_NAME) ? meta.title : `${meta.title} | ${SITE_NAME}`;
+    } else {
+      document.title = SITE_NAME;
+    }
 
     // ── Meta tags ──
     const managedMetas: { attr: 'name' | 'property'; key: string; content: string | undefined }[] = [
