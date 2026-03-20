@@ -13,7 +13,7 @@ const StaticPage = () => {
     return (
       <PageLayout>
         <div className="container py-16 text-center">
-          <h1 className="text-2xl font-bold">Puslapis nerastas</h1>
+          <h1 className="font-heading text-2xl font-bold">Puslapis nerastas</h1>
         </div>
       </PageLayout>
     );
@@ -24,7 +24,7 @@ const StaticPage = () => {
       <div className="container py-8">
         <Breadcrumbs path={cleanPath} />
         <ScrollReveal>
-          <h1 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-8">{page.title}</h1>
+          <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-8">{page.title}</h1>
         </ScrollReveal>
         <ScrollReveal delay={100}>
           <div

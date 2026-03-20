@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Clock, ArrowRight } from 'lucide-react';
+import { Clock } from 'lucide-react';
 import { Article, authors } from '@/data/mockData';
 
 const ArticleCard = ({ article }: { article: Article }) => {
@@ -8,21 +8,22 @@ const ArticleCard = ({ article }: { article: Article }) => {
   return (
     <Link
       to={article.path}
-      className="group block bg-card rounded-lg border shadow-sm hover:shadow-md transition-[box-shadow,transform] duration-200 overflow-hidden active:scale-[0.98]"
+      className="group block rounded-xl border border-border/60 bg-card glow-border glow-border-hover transition-all duration-300 overflow-hidden active:scale-[0.98]"
     >
-      <div className={`h-40 ${article.heroColor} flex items-center justify-center`}>
-        <span className="text-4xl opacity-30">🛡️</span>
+      <div className="h-36 bg-secondary/50 flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 gradient-mesh opacity-60" />
+        <span className="text-3xl opacity-20 relative z-10">🛡️</span>
       </div>
       <div className="p-5">
-        <h3 className="font-semibold text-foreground leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">
+        <h3 className="font-heading font-semibold text-foreground leading-snug mb-2 group-hover:text-primary transition-colors duration-200 line-clamp-2">
           {article.title}
         </h3>
-        <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{article.excerpt}</p>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
+        <p className="text-sm text-muted-foreground line-clamp-2 mb-4">{article.excerpt}</p>
+        <div className="flex items-center justify-between text-xs text-muted-foreground/70">
           <div className="flex items-center gap-3">
             {author && (
               <span className="flex items-center gap-1.5">
-                <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[10px] font-bold flex items-center justify-center">{author.initials}</span>
+                <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[10px] font-bold flex items-center justify-center border border-primary/20">{author.initials}</span>
                 {author.name}
               </span>
             )}

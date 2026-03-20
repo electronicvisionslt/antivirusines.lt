@@ -13,7 +13,7 @@ const AuthorPage = () => {
     return (
       <PageLayout>
         <div className="container py-16 text-center">
-          <h1 className="text-2xl font-bold">Autorius nerastas</h1>
+          <h1 className="font-heading text-2xl font-bold">Autorius nerastas</h1>
         </div>
       </PageLayout>
     );
@@ -27,17 +27,21 @@ const AuthorPage = () => {
         <Breadcrumbs path={`/autoriai/${author.slug}`} />
 
         <ScrollReveal>
-          <div className="flex flex-col sm:flex-row items-start gap-6 mb-10">
-            <div className="w-20 h-20 rounded-full bg-primary/10 text-primary text-2xl font-bold flex items-center justify-center shrink-0">
-              {author.initials}
-            </div>
-            <div>
-              <h1 className="font-serif text-3xl font-bold text-foreground mb-2">{author.name}</h1>
-              <p className="text-muted-foreground leading-relaxed mb-3 max-w-xl">{author.bio}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {author.expertise.map(e => (
-                  <span key={e} className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium">{e}</span>
-                ))}
+          <div className="relative rounded-2xl overflow-hidden border border-border/40 p-8 md:p-10 mb-12">
+            <div className="absolute inset-0 gradient-mesh opacity-60" />
+            <div className="absolute inset-0 bg-card/40" />
+            <div className="relative flex flex-col sm:flex-row items-start gap-6">
+              <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/15 text-primary text-2xl font-heading font-bold flex items-center justify-center shrink-0">
+                {author.initials}
+              </div>
+              <div>
+                <h1 className="font-heading text-3xl font-bold text-foreground mb-2">{author.name}</h1>
+                <p className="text-muted-foreground leading-relaxed mb-4 max-w-xl">{author.bio}</p>
+                <div className="flex flex-wrap gap-2">
+                  {author.expertise.map(e => (
+                    <span key={e} className="text-xs px-3 py-1 rounded-full bg-secondary border border-border/50 text-secondary-foreground font-medium">{e}</span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -46,7 +50,7 @@ const AuthorPage = () => {
         {authorArticles.length > 0 && (
           <section>
             <ScrollReveal>
-              <h2 className="text-2xl font-bold text-foreground mb-6">Straipsniai</h2>
+              <h2 className="font-heading text-2xl font-bold text-foreground mb-6">Straipsniai</h2>
             </ScrollReveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {authorArticles.map((a, i) => (
