@@ -334,6 +334,33 @@ const ArticleEditor = () => {
               <Label>Rodyti turinį</Label>
             </div>
           </div>
+
+          {/* Product links */}
+          <div>
+            <Label className="text-base font-semibold mb-2 block">Susiję produktai (affiliate CTA)</Label>
+            <div className="space-y-2">
+              {allProducts.map(p => (
+                <label key={p.id} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={linkedProductIds.includes(p.id)}
+                    onChange={e => {
+                      if (e.target.checked) {
+                        setLinkedProductIds(prev => [...prev, p.id]);
+                      } else {
+                        setLinkedProductIds(prev => prev.filter(id => id !== p.id));
+                      }
+                    }}
+                    className="rounded border-border"
+                  />
+                  <span className="text-sm text-foreground">{p.name}</span>
+                </label>
+              ))}
+              {allProducts.length === 0 && (
+                <p className="text-sm text-muted-foreground">Nėra produktų. Sukurkite produktą pirmiausia.</p>
+              )}
+            </div>
+          </div>
         </TabsContent>
 
         <TabsContent value="seo" className="space-y-4">
