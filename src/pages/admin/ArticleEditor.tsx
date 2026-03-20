@@ -133,13 +133,27 @@ const ArticleEditor = () => {
     }
 
     let error;
+    let articleId = id;
     if (isNew) {
       const res = await supabase.from('articles').insert(payload as any).select('id').single();
       error = res.error;
-      if (!error && res.data) navigate(`/admin/articles/${(res.data as any).id}`, { replace: true });
+      if (!error && res.data) {
+        articleId = (res.data as any).id;
+        navigate(`/admin/articles/${articleId}`, { replace: true });
+      }
     } else {
       const res = await supabase.from('articles').update(payload as any).eq('id', id!);
       error = res.error;
+    }
+
+    // Save product links
+    if (!error && articleId) {
+      await supabase.from('article_products').delete().eq('article_id', articleId);
+      if (linkedProductIds.length > 0) {
+        await supabase.from('article_products').insert(
+          linkedProductIds.map(pid => ({ article_id: articleId!, product_id: pid }))
+        );
+      }
     }
 
     setSaving(false);
