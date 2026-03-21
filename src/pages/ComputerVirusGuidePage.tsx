@@ -46,7 +46,7 @@ const spreadMethods = [
   { method: 'Socialinė inžinerija', desc: 'Apgaulės metodai, verčiantys paspausti nuorodą ar įdiegti programą', icon: LinkIcon },
 ];
 
-const protectionTips = [
+const protectionTips: React.ReactNode[] = [
   'Naudokite patikimą antivirusinę programą su realaus laiko apsauga',
   'Reguliariai atnaujinkite operacinę sistemą ir visas programas',
   'Neatidarinėkite įtartinų el. laiškų priedų',

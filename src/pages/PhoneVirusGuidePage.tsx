@@ -43,7 +43,7 @@ const iosProtection = [
   'Įjunkite „Find My iPhone" ir dviejų veiksnių autentifikaciją',
 ];
 
-const preventionTips = [
+const preventionTips: React.ReactNode[] = [
   'Diekite programėles TIK iš Google Play / App Store',
   'Prieš diegiant patikrinkite atsiliepimus ir leidimų sąrašą',
   'Neleiskite diegti iš „nežinomų šaltinių" (Android)',
