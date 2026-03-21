@@ -123,17 +123,15 @@ const SiteHeader = () => {
               if (hasChildren) {
                 return (
                   <div key={link.path}>
-                    <Link
-                      to={link.path}
-                      onClick={() => setMobileOpen(false)}
-                      className={`block px-4 py-2.5 text-sm font-semibold rounded-md transition-all duration-200 ${
+                    <span
+                      className={`block px-4 py-2.5 text-sm font-semibold rounded-md ${
                         isActive
-                          ? 'text-primary bg-primary/8'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+                          ? 'text-primary'
+                          : 'text-muted-foreground'
                       }`}
                     >
                       {link.label}
-                    </Link>
+                    </span>
                     <div className="pl-4 space-y-0.5">
                       {link.children!.map(child => {
                         const childActive = location.pathname === child.path;
