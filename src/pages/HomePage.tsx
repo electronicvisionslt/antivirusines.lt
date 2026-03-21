@@ -15,7 +15,6 @@ const categoryLinks = [
   { path: '/tevu-kontrole', title: 'Tėvų kontrolė', description: 'Sprendimai ir patarimai vaikų saugumui internete.' },
   { path: '/slaptazodziu-saugumas', title: 'Slaptažodžių saugumas', description: 'Kaip kurti, saugoti ir tvarkyti saugius slaptažodžius.' },
   { path: '/virusai/kompiuterinis-virusas', title: 'Virusai ir grėsmės', description: 'Gidai apie kompiuterinius ir mobiliuosius virusus.' },
-  { path: '/saugumo-patarimai/saugus-darbas-kompiuteriu', title: 'Saugumo patarimai', description: 'Praktiniai kibernetinio saugumo patarimai kiekvienam.' },
 ];
 
 const HomePage = () => {
