@@ -341,7 +341,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
         {products.length > 0 && (
           <section id="palyginimas" className="mb-16 scroll-mt-20">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
-              <SectionHeading label="Funkcijų lentelė" title="Detalus palyginimas" subtitle="Visų vertinamų programų funkcijų ir kainų palyginimas vienoje lentelėje." />
+              <SectionHeading title="Detalus palyginimas" subtitle="Visų vertinamų programų funkcijų ir kainų palyginimas vienoje lentelėje." />
               <div className="flex gap-1.5 shrink-0">
                 {filterOpts.map(opt => {
                   const Icon = opt.icon;
