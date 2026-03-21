@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Search, Shield, AlertTriangle, CheckCircle2, Monitor, Clock, ArrowRight,
   Activity, Cpu, HardDrive, Wifi, Eye, FileWarning, Terminal,

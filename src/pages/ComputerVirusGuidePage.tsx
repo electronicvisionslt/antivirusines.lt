@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Bug, Shield, ShieldAlert, AlertTriangle, Lock, Zap, FileWarning,
   HardDrive, Mail, Globe, ChevronRight, CheckCircle2, XCircle,

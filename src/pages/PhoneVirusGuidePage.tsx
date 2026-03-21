@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Smartphone, Shield, AlertTriangle, CheckCircle2, XCircle,
   Clock, ArrowRight, Bug, Battery, Wifi, Download, Eye,
