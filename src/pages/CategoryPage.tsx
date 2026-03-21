@@ -21,6 +21,9 @@ const CategoryPage = ({ category }: Props) => {
   if (category.path === '/antivirusines-programos/nemokamos') {
     return <FreeAntivirusLandingPage category={category} />;
   }
+  if (category.path === '/antivirusines-programos/telefonui') {
+    return <MobileAntivirusLandingPage category={category} />;
+  }
 
   usePageMeta({
     title: category.seoTitle || category.title,
