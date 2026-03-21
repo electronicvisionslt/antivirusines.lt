@@ -153,3 +153,154 @@
     @apply text-primary underline underline-offset-2 hover:text-primary/80 transition-colors;
   }
 }
+
+/* ═══════ CYBER LIGHT THEME — scoped to .cyber-light ═══════ */
+.cyber-light {
+  --cl-bg: 220 20% 97%;
+  --cl-surface: 0 0% 100%;
+  --cl-surface-alt: 215 25% 95%;
+  --cl-border: 215 20% 90%;
+  --cl-border-accent: 195 100% 42%;
+  --cl-text: 220 30% 12%;
+  --cl-text-secondary: 215 15% 45%;
+  --cl-text-muted: 215 12% 60%;
+  --cl-cyan: 195 100% 42%;
+  --cl-cyan-glow: 195 100% 50%;
+  --cl-navy: 220 40% 15%;
+  --cl-green: 155 72% 40%;
+  --cl-red: 0 65% 55%;
+  --cl-amber: 35 95% 55%;
+
+  background-color: hsl(var(--cl-bg));
+  color: hsl(var(--cl-text));
+}
+
+.cyber-light .cl-surface {
+  background-color: hsl(var(--cl-surface));
+  border-color: hsl(var(--cl-border));
+}
+
+.cyber-light .cl-card {
+  background-color: hsl(var(--cl-surface));
+  border: 1px solid hsl(var(--cl-border));
+  box-shadow: 0 1px 3px hsla(220, 30%, 12%, 0.04), 0 4px 12px hsla(220, 30%, 12%, 0.02);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.cyber-light .cl-card:hover {
+  box-shadow: 0 2px 8px hsla(195, 100%, 42%, 0.08), 0 8px 24px hsla(220, 30%, 12%, 0.04);
+  border-color: hsla(195, 100%, 42%, 0.25);
+}
+
+.cyber-light .cl-card-featured {
+  border-color: hsla(195, 100%, 42%, 0.3);
+  box-shadow: 0 0 0 1px hsla(195, 100%, 42%, 0.08), 0 4px 16px hsla(195, 100%, 42%, 0.06);
+}
+
+.cyber-light .cl-grid-bg {
+  background-image:
+    linear-gradient(hsla(195, 100%, 42%, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, hsla(195, 100%, 42%, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.cyber-light .cl-hero-gradient {
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 0%, hsla(195, 100%, 50%, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, hsla(195, 100%, 42%, 0.05) 0%, transparent 70%),
+    hsl(var(--cl-surface));
+}
+
+.cyber-light .cl-scan-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-light .cl-scan-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsla(195, 100%, 50%, 0.4), transparent);
+  animation: cl-scan 4s ease-in-out infinite;
+}
+
+@keyframes cl-scan {
+  0%, 100% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.cyber-light .cl-glow-text {
+  background: linear-gradient(135deg, hsl(195, 100%, 35%), hsl(195, 100%, 45%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cyber-light .cl-tag {
+  background-color: hsla(195, 100%, 42%, 0.08);
+  color: hsl(195, 100%, 35%);
+  border: 1px solid hsla(195, 100%, 42%, 0.15);
+}
+
+.cyber-light .cl-tag-green {
+  background-color: hsla(155, 72%, 40%, 0.08);
+  color: hsl(155, 72%, 35%);
+  border: 1px solid hsla(155, 72%, 40%, 0.15);
+}
+
+.cyber-light .cl-tag-amber {
+  background-color: hsla(35, 95%, 55%, 0.1);
+  color: hsl(30, 80%, 38%);
+  border: 1px solid hsla(35, 95%, 55%, 0.2);
+}
+
+.cyber-light .cl-btn-primary {
+  background: linear-gradient(135deg, hsl(195, 100%, 40%), hsl(195, 100%, 34%));
+  color: white;
+  box-shadow: 0 2px 8px hsla(195, 100%, 42%, 0.25);
+  transition: all 0.2s;
+}
+
+.cyber-light .cl-btn-primary:hover {
+  box-shadow: 0 4px 16px hsla(195, 100%, 42%, 0.35);
+  transform: translateY(-1px);
+}
+
+.cyber-light .cl-btn-outline {
+  border: 1px solid hsla(195, 100%, 42%, 0.3);
+  color: hsl(195, 100%, 35%);
+  transition: all 0.2s;
+}
+
+.cyber-light .cl-btn-outline:hover {
+  background-color: hsla(195, 100%, 42%, 0.06);
+  border-color: hsla(195, 100%, 42%, 0.5);
+}
+
+.cyber-light .cl-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsla(195, 100%, 42%, 0.2), transparent);
+}
+
+.cyber-light .cl-stat-block {
+  background: hsla(215, 25%, 95%, 0.7);
+  border: 1px solid hsla(195, 100%, 42%, 0.1);
+}
+
+.cyber-light .cl-table-header {
+  background: hsla(215, 25%, 95%, 0.6);
+  border-bottom: 2px solid hsla(195, 100%, 42%, 0.15);
+}
+
+.cyber-light .cl-table-row:hover {
+  background-color: hsla(195, 100%, 42%, 0.03);
+}
+
+.cyber-light .cl-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+}
