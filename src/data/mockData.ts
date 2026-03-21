@@ -282,7 +282,16 @@ export const navLinks: { label: string; path: string; children?: { label: string
       { label: 'Ką daryti pamiršus slaptažodį', path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi' },
     ],
   },
-  { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' },
+  {
+    label: 'Virusai',
+    path: '/virusai/kompiuterinis-virusas',
+    children: [
+      { label: 'Kompiuterinis virusas', path: '/virusai/kompiuterinis-virusas' },
+      { label: 'Virusas telefone', path: '/virusai/virusas-telefone' },
+      { label: 'Ar kompiuteryje yra virusas?', path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas' },
+      { label: 'Reklamos virusas telefone', path: '/virusai/reklamos-virusas-telefone' },
+    ],
+  },
 ];
 
 export const staticPages: Record<string, { title: string; content: string }> = {
@@ -356,6 +365,10 @@ export function getBreadcrumbs(path: string): { label: string; path: string }[] 
     'kaip-pakeisti-wifi-slaptazodi': 'WiFi slaptažodis',
     'ka-daryti-pamirsus-slaptazodi': 'Pamirštas slaptažodis',
     'virusai': 'Virusai',
+    'kompiuterinis-virusas': 'Kompiuterinis virusas',
+    'virusas-telefone': 'Virusas telefone',
+    'kaip-patikrinti-ar-kompiuteryje-yra-virusas': 'Viruso patikrinimas',
+    'reklamos-virusas-telefone': 'Reklamos virusas',
     'saugumo-patarimai': 'Saugumo patarimai',
     'autoriai': 'Autoriai',
     'apie': 'Apie mus',
