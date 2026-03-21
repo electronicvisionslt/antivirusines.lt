@@ -1,11 +1,23 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Shield, Search, Menu, X } from 'lucide-react';
+import { Shield, Search, Menu, X, ChevronDown } from 'lucide-react';
 import { navLinks } from '@/data/mockData';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const SiteHeader = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 glass border-b border-border/60">
@@ -19,9 +31,55 @@ const SiteHeader = () => {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-0.5">
+        <nav className="hidden md:flex items-center gap-0.5" ref={dropdownRef}>
           {navLinks.map(link => {
             const isActive = location.pathname === link.path || (link.path !== '/' && location.pathname.startsWith(link.path));
+            const hasChildren = link.children && link.children.length > 0;
+            const isDropdownOpen = openDropdown === link.path;
+
+            if (hasChildren) {
+              return (
+                <div key={link.path} className="relative">
+                  <button
+                    onClick={() => setOpenDropdown(isDropdownOpen ? null : link.path)}
+                    className={`relative flex items-center gap-1 px-3 py-1.5 text-[13px] font-medium rounded-md transition-all duration-200 ${
+                      isActive
+                        ? 'text-primary bg-primary/8'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                    {isActive && (
+                      <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-primary/50 rounded-full" />
+                    )}
+                  </button>
+
+                  {isDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-1 w-56 rounded-lg border border-border/60 bg-card shadow-lg py-1 animate-fade-in z-50">
+                      {link.children!.map(child => {
+                        const childActive = location.pathname === child.path;
+                        return (
+                          <Link
+                            key={child.path}
+                            to={child.path}
+                            onClick={() => setOpenDropdown(null)}
+                            className={`block px-4 py-2 text-[13px] font-medium transition-colors duration-150 ${
+                              childActive
+                                ? 'text-primary bg-primary/8'
+                                : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+                            }`}
+                          >
+                            {child.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={link.path}
@@ -60,6 +118,45 @@ const SiteHeader = () => {
           <div className="container py-2 space-y-0.5">
             {navLinks.map(link => {
               const isActive = location.pathname === link.path || (link.path !== '/' && location.pathname.startsWith(link.path));
+              const hasChildren = link.children && link.children.length > 0;
+
+              if (hasChildren) {
+                return (
+                  <div key={link.path}>
+                    <Link
+                      to={link.path}
+                      onClick={() => setMobileOpen(false)}
+                      className={`block px-4 py-2.5 text-sm font-semibold rounded-md transition-all duration-200 ${
+                        isActive
+                          ? 'text-primary bg-primary/8'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                    <div className="pl-4 space-y-0.5">
+                      {link.children!.map(child => {
+                        const childActive = location.pathname === child.path;
+                        return (
+                          <Link
+                            key={child.path}
+                            to={child.path}
+                            onClick={() => setMobileOpen(false)}
+                            className={`block px-4 py-2 text-[13px] font-medium rounded-md transition-all duration-200 ${
+                              childActive
+                                ? 'text-primary bg-primary/8'
+                                : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+                            }`}
+                          >
+                            {child.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              }
+
               return (
                 <Link
                   key={link.path}
