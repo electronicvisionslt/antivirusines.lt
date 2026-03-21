@@ -91,9 +91,13 @@ export const categories: Record<string, Category> = {
     title: 'Slaptažodžių saugumas',
     description: 'Viskas apie slaptažodžių kūrimą, saugojimą ir tvarkymą. Slaptažodžių tvarkyklių palyginimai ir geriausi saugumo patarimai.',
     heroColor: 'bg-amber-50',
-    articlePaths: [],
+    articlePaths: [
+      '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi',
+      '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi',
+      '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi',
+    ],
     faq: [
-      { q: 'Koks turėtų būti saugus slaptažodis?', a: 'Saugus slaptažodis turėtų būti bent 12 simbolių ilgio, naudoti didžiąsias ir mažąsias raides, skaičius ir specialius simbolius. Venkite asmeninės informacijos.' },
+      { q: 'Koks turėtų būti saugus slaptažodis?', a: 'Saugus slaptažodis turėtų būti bent 15 simbolių ilgio, naudoti passphrase principą. Venkite asmeninės informacijos.' },
       { q: 'Ar verta naudoti slaptažodžių tvarkyklę?', a: 'Taip, slaptažodžių tvarkyklė leidžia naudoti unikalius, sudėtingus slaptažodžius kiekvienai paskyrai, neįsiminant jų visų.' },
     ],
   },
