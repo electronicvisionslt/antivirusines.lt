@@ -282,7 +282,16 @@ export const navLinks: { label: string; path: string; children?: { label: string
       { label: 'Ką daryti pamiršus slaptažodį', path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi' },
     ],
   },
-  { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' },
+  {
+    label: 'Virusai',
+    path: '/virusai/kompiuterinis-virusas',
+    children: [
+      { label: 'Kompiuterinis virusas', path: '/virusai/kompiuterinis-virusas' },
+      { label: 'Virusas telefone', path: '/virusai/virusas-telefone' },
+      { label: 'Ar kompiuteryje yra virusas?', path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas' },
+      { label: 'Reklamos virusas telefone', path: '/virusai/reklamos-virusas-telefone' },
+    ],
+  },
 ];
 
 export const staticPages: Record<string, { title: string; content: string }> = {
