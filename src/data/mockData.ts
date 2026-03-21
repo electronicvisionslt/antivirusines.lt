@@ -268,7 +268,16 @@ export const navLinks: { label: string; path: string; children?: { label: string
     ],
   },
   { label: 'Tėvų kontrolė', path: '/tevu-kontrole' },
-  { label: 'Slaptažodžiai', path: '/slaptazodziu-saugumas' },
+  {
+    label: 'Slaptažodžiai',
+    path: '/slaptazodziu-saugumas',
+    children: [
+      { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' },
+      { label: 'Kaip pakeisti Gmail slaptažodį', path: '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi' },
+      { label: 'Kaip pakeisti WiFi slaptažodį', path: '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi' },
+      { label: 'Ką daryti pamiršus slaptažodį', path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi' },
+    ],
+  },
   { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' },
 ];
 
