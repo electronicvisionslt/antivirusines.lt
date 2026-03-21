@@ -477,7 +477,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 5. BEST BY USE CASE ═══ */}
         <section id="pagal-poreiki" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Pagal poreikį" title="Geriausia antivirusinė pagal poreikį" subtitle="Pasirinkite situaciją — parodysime tinkamiausią sprendimą." className="mb-5" />
+          <SectionHeading title="Geriausia antivirusinė pagal poreikį" subtitle="Pasirinkite situaciją — parodysime tinkamiausią sprendimą." className="mb-5" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
             {useCases.map((uc, i) => {
