@@ -11,12 +11,6 @@ import { usePageMeta } from '@/hooks/usePageMeta';
 import { useComparisonProducts, type PublicProduct } from '@/hooks/usePublicData';
 import { ProductLogo, RatingStars, AffiliateButton } from '@/components/landing/LandingShared';
 
-/* ── Quick picks shown in hero ── */
-const quickPicks = [
-  { label: '🥇 Geriausia visapusiškai', brand: 'Norton 360', path: '/antivirusines-programos' },
-  { label: '💰 Geriausia nemokama', brand: 'Avast Free', path: '/antivirusines-programos/nemokamos' },
-  { label: '📱 Geriausia telefonui', brand: 'ESET Mobile', path: '/antivirusines-programos/telefonui' },
-];
 
 /* ── Hub cards — main content clusters ── */
 const hubCards = [
