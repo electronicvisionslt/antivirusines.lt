@@ -1,0 +1,48 @@
+name: Convert to Astro & Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install conversion dependencies
+        run: |
+          cd scripts
+          npm install @supabase/supabase-js cheerio
+
+      - name: Run conversion script
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/convert-to-astro.mjs
+
+      - name: Install Astro dependencies
+        run: |
+          cd _astro-build
+          npm install
+
+      - name: Build Astro
+        run: |
+          cd _astro-build
+          npm run build
+
+      - name: Deploy to deploy branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_astro-build/dist
+          publish_branch: deploy
+          force_orphan: true
+          commit_message: "Deploy: ${{ github.sha }}"
