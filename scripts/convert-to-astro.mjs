@@ -1211,18 +1211,21 @@ export default defineConfig({
     writePage(page.path, page.content);
   }
 
-  // Category pages (non-flagship get generic template)
+  // Category pages (flagship pages get dedicated templates)
   for (const category of data.categories) {
-    if (FLAGSHIP_PATHS.has(category.path)) {
-      // Flagship pages — for now generate the category fallback
-      // TODO: Add dedicated flagship templates for each landing page
-      console.log(`  ⚡ Flagship: ${category.path} (using category template for now)`);
-    }
-
     const catArticles = articlesByCategory[category.id] || [];
     const segments = category.path.split('/').filter(Boolean);
     const pagePath = segments.join('/') + '.astro';
-    writePage(pagePath, generateCategoryPage(category, catArticles));
+
+    if (category.path === '/antivirusines-programos') {
+      console.log(`  ⚡ Flagship: ${category.path}`);
+      writePage(pagePath, generateAntivirusLandingPage(category, data.products, catArticles));
+    } else if (FLAGSHIP_PATHS.has(category.path)) {
+      console.log(`  ⚡ Flagship: ${category.path} (using category template for now)`);
+      writePage(pagePath, generateCategoryPage(category, catArticles));
+    } else {
+      writePage(pagePath, generateCategoryPage(category, catArticles));
+    }
   }
 
   // Article pages
