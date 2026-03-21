@@ -82,6 +82,80 @@
   }
 }
 
+/* ─── Light page theme override ─── */
+.theme-light {
+  --background: 210 20% 98%;
+  --foreground: 220 25% 12%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 220 25% 12%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 25% 12%;
+
+  --primary: 185 55% 32%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 210 18% 93%;
+  --secondary-foreground: 220 15% 35%;
+
+  --muted: 210 14% 94%;
+  --muted-foreground: 220 10% 46%;
+
+  --accent: 185 60% 28%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 72% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 210 16% 87%;
+  --input: 210 16% 87%;
+  --ring: 185 55% 32%;
+
+  --success: 155 50% 38%;
+  --danger: 0 65% 52%;
+
+  --glow-primary: 185 55% 32%;
+  --glow-accent: 185 60% 28%;
+}
+
+.theme-light .glass {
+  background: hsla(0, 0%, 100%, 0.85);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+}
+
+.theme-light .glass-subtle {
+  background: hsla(0, 0%, 100%, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.theme-light .glow-border {
+  border-color: hsla(210, 16%, 87%, 0.8);
+  box-shadow: 0 1px 3px hsla(220, 20%, 10%, 0.06),
+              0 4px 12px hsla(220, 20%, 10%, 0.04);
+}
+
+.theme-light .glow-border-hover:hover {
+  border-color: hsla(185, 55%, 32%, 0.25);
+  box-shadow: 0 2px 8px hsla(185, 55%, 32%, 0.08),
+              0 8px 24px hsla(220, 20%, 10%, 0.06);
+}
+
+.theme-light .text-gradient-primary {
+  background: linear-gradient(135deg, hsl(185, 55%, 38%), hsl(185, 50%, 28%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.theme-light .gradient-mesh {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, hsla(185, 55%, 32%, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, hsla(185, 60%, 28%, 0.03) 0%, transparent 70%);
+}
+
 @layer utilities {
   .glass {
     background: hsla(225, 14%, 11%, 0.7);

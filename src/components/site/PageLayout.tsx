@@ -3,7 +3,12 @@ import { useLocation } from 'react-router-dom';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
 
-const PageLayout = ({ children }: { children: ReactNode }) => {
+interface PageLayoutProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const PageLayout = ({ children, className }: PageLayoutProps) => {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -11,7 +16,7 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
   }, [pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className={`flex flex-col min-h-screen ${className || ''}`}>
       <SiteHeader />
       <main className="flex-1">{children}</main>
       <SiteFooter />
