@@ -421,7 +421,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 5. USE CASES (column grid) ═══ */}
         <section id="kam-tinka" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Pagal poreikį" title="Geriausia nemokama antivirusinė pagal poreikį" subtitle="Pasirinkite situaciją — parodysime tinkamiausią nemokamą sprendimą." className="mb-5" />
+          <SectionHeading title="Geriausia nemokama antivirusinė pagal poreikį" subtitle="Pasirinkite situaciją — parodysime tinkamiausią nemokamą sprendimą." className="mb-5" />
 
           {(() => {
             const useCaseProducts = useCases.map(uc => {
