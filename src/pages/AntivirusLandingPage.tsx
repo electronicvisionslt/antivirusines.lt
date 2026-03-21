@@ -419,51 +419,49 @@ const AntivirusLandingPage = ({ category }: Props) => {
             {/* Desktop table */}
             {filteredProducts.length > 0 && (
               <>
-                <div className="hidden md:block overflow-x-auto rounded-xl border border-border/60 bg-card elevation-2">
-                  <table className="w-full text-sm">
+                <div className="hidden md:block rounded-xl border border-border/60 bg-card elevation-2">
+                  <table className="w-full text-sm table-fixed">
                     <thead>
                       <tr className="border-b border-border/50" style={{ background: 'hsl(210 18% 96%)' }}>
-                        <th className="text-left p-3.5 font-heading font-semibold text-foreground text-xs w-[200px]">Programa</th>
-                        <th className="text-center p-3.5 font-heading font-semibold text-foreground text-xs w-[90px]">Įvertinimas</th>
-                        <th className="text-center p-3.5 font-heading font-semibold text-foreground text-xs w-[100px]">Kaina</th>
-                        <th className="text-center p-3.5 font-heading font-semibold text-foreground text-xs w-[70px]">Nemokama</th>
-                        <th className="text-center p-3.5 font-heading font-semibold text-foreground text-xs w-[70px]">Bandom.</th>
+                        <th className="text-left p-3 font-heading font-semibold text-foreground text-xs" style={{ width: '22%' }}>Programa</th>
+                        <th className="text-center p-2 font-heading font-semibold text-foreground text-xs" style={{ width: '7%' }}>Balas</th>
+                        <th className="text-center p-2 font-heading font-semibold text-foreground text-xs" style={{ width: '11%' }}>Kaina</th>
+                        <th className="text-center p-2 font-heading font-semibold text-foreground text-xs" style={{ width: '5.5%' }} title="Nemokama versija">Free</th>
                         {featureCols.map(col => (
-                          <th key={col.key} className="text-center p-3.5 font-heading font-semibold text-foreground text-xs whitespace-nowrap">{col.label}</th>
+                          <th key={col.key} className="text-center p-2 font-heading font-semibold text-foreground text-[11px]" style={{ width: `${38 / featureCols.length}%` }}>{col.label}</th>
                         ))}
-                        <th className="text-center p-3.5 font-heading font-semibold text-foreground text-xs w-[80px]">Platf.</th>
-                        <th className="p-3.5 w-[120px]" />
+                        <th className="text-center p-2 font-heading font-semibold text-foreground text-[11px]" style={{ width: '5.5%' }}>Platf.</th>
+                        <th className="p-2" style={{ width: '11%' }} />
                       </tr>
                     </thead>
                     <tbody>
                       {filteredProducts.map((product, i) => (
                         <tr key={product.id}
                             className={`${i < filteredProducts.length - 1 ? 'border-b border-border/30' : ''} hover:bg-primary/[0.02] transition-colors duration-150 ${i === 0 ? 'bg-primary/[0.015]' : ''}`}>
-                          <td className="p-3.5">
-                            <div className="flex items-center gap-2.5">
-                              <ProductLogo product={product} size={24} />
-                              <div>
-                                <p className="font-heading font-semibold text-foreground text-sm leading-tight">{product.name}</p>
-                                <p className="text-[10px] text-muted-foreground leading-tight max-w-[140px] truncate">{product.bestFor}</p>
+                          <td className="p-3">
+                            <div className="flex items-center gap-2">
+                              <ProductLogo product={product} size={20} />
+                              <div className="min-w-0">
+                                <p className="font-heading font-semibold text-foreground text-[13px] leading-tight truncate">{product.name}</p>
+                                <p className="text-[10px] text-muted-foreground leading-tight truncate">{product.bestFor}</p>
                               </div>
                             </div>
                           </td>
-                          <td className="p-3.5 text-center">
-                            <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground">
-                              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />{product.rating.toFixed(1)}
+                          <td className="p-2 text-center">
+                            <span className="inline-flex items-center gap-0.5 text-xs font-bold text-foreground">
+                              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />{product.rating.toFixed(1)}
                             </span>
                           </td>
-                          <td className="p-3.5 text-center text-muted-foreground whitespace-nowrap text-xs font-medium">{product.pricingSummary}</td>
-                          <td className="p-3.5 text-center"><FeatureCheck value={product.freeVersion} /></td>
-                          <td className="p-3.5 text-center"><FeatureCheck value={product.trialAvailable} /></td>
+                          <td className="p-2 text-center text-muted-foreground text-[11px] font-medium">{product.pricingSummary}</td>
+                          <td className="p-2 text-center"><FeatureCheck value={product.freeVersion} /></td>
                           {featureCols.map(col => (
-                            <td key={col.key} className="p-3.5 text-center"><FeatureCheck value={product.features[col.key] ?? false} /></td>
+                            <td key={col.key} className="p-2 text-center"><FeatureCheck value={product.features[col.key] ?? false} /></td>
                           ))}
-                          <td className="p-3.5 text-center">
-                            <span className="text-xs font-medium text-muted-foreground">{product.supportedPlatforms.length}</span>
+                          <td className="p-2 text-center">
+                            <span className="text-[11px] font-medium text-muted-foreground">{product.supportedPlatforms.length}</span>
                           </td>
-                          <td className="p-3.5 text-right">
-                            <AffiliateButton product={product} className="px-3.5 py-1.5 text-xs whitespace-nowrap" />
+                          <td className="p-2 text-right">
+                            <AffiliateButton product={product} className="px-2.5 py-1.5 text-[11px] whitespace-nowrap" />
                           </td>
                         </tr>
                       ))}
