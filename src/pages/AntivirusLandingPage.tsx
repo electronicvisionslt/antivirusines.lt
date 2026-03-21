@@ -153,7 +153,7 @@ const buyerGuide = [
   { q: 'Ar turite vaikų internete?', a: 'Prioritetas — tėvų kontrolė ir turinio filtravimas. Norton ir Bitdefender siūlo stipriausias šeimos kontrolės funkcijas su tėvų kontrole.', icon: Users },
   { q: 'Ar jums svarbus VPN?', a: 'Viešuose Wi-Fi tinkluose VPN būtinas. Daugelis mokamų antivirusinių turi integruotą VPN — paprasčiau ir pigiau nei pirkti atskirai.', icon: Lock },
   { q: 'Koks jūsų biudžetas?', a: 'Nemokamos versijos — bazinė apsauga. Mokamos: 20–60 €/metus. Šeimos planai (iki 15 įrenginių) dažnai kainuoja tiek pat kiek 3 įrenginių licencija.', icon: BarChart3 },
-  { q: 'Paprastumas ar kontrolė?', a: 'Norton, Avast — beveik automatinis veikimas. Bitdefender, Kaspersky — detalesni nustatymai pažengusiems.', icon: Shield },
+  { q: 'Paprastumas ar kontrolė?', a: 'Norton, Avast — beveik automatinis veikimas. ESET, Bitdefender — detalesni nustatymai pažengusiems naudotojams.', icon: Shield },
 ];
 
 /* ═══════════════════════════════════════════ */
