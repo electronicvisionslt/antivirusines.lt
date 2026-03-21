@@ -393,7 +393,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
         {/* Divider */}
         <div className="section-divider mb-12" />
 
-        {/* ═══ 4. COMPARISON TABLE ═══ */}
+        {/* ═══ 4. COMPARISON TABLE — column layout (products = columns) ═══ */}
         {products.length > 0 && (
           <section id="palyginimas" className="mb-16 scroll-mt-20">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
@@ -416,107 +416,115 @@ const AntivirusLandingPage = ({ category }: Props) => {
               <p className="text-sm text-muted-foreground text-center py-8">Nėra produktų pagal pasirinktą filtrą.</p>
             )}
 
-            {/* Desktop table */}
-            {filteredProducts.length > 0 && (
-              <>
-                <div className="hidden md:block rounded-xl border border-border/60 bg-card elevation-2">
-                  <table className="w-full text-sm table-fixed">
-                    <thead>
-                      <tr className="border-b border-border/50" style={{ background: 'hsl(210 18% 96%)' }}>
-                        <th className="text-left p-3 font-heading font-semibold text-foreground text-xs" style={{ width: '22%' }}>Programa</th>
-                        <th className="text-center p-2 font-heading font-semibold text-foreground text-xs" style={{ width: '7%' }}>Balas</th>
-                        <th className="text-center p-2 font-heading font-semibold text-foreground text-xs" style={{ width: '11%' }}>Kaina</th>
-                        <th className="text-center p-2 font-heading font-semibold text-foreground text-xs" style={{ width: '5.5%' }} title="Nemokama versija">Free</th>
-                        {featureCols.map(col => (
-                          <th key={col.key} className="text-center p-2 font-heading font-semibold text-foreground text-[11px]" style={{ width: `${38 / featureCols.length}%` }}>{col.label}</th>
-                        ))}
-                        <th className="text-center p-2 font-heading font-semibold text-foreground text-[11px]" style={{ width: '5.5%' }}>Platf.</th>
-                        <th className="p-2" style={{ width: '11%' }} />
-                      </tr>
-                    </thead>
-                    <tbody>
+            {filteredProducts.length > 0 && (() => {
+              const colCount = filteredProducts.length;
+              const gridCols = `160px repeat(${colCount}, 1fr)`;
+              const comparisonRows: { label: string; render: (p: PublicProduct) => React.ReactNode }[] = [
+                { label: 'Įvertinimas', render: (p) => (
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground">
+                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />{p.rating.toFixed(1)}
+                  </span>
+                )},
+                { label: 'Kaina', render: (p) => (
+                  <span className="text-xs font-medium text-muted-foreground">{p.pricingSummary}</span>
+                )},
+                { label: 'Geriausia kam', render: (p) => (
+                  <span className="text-xs font-semibold text-primary">{p.bestFor}</span>
+                )},
+                { label: 'Nemokama versija', render: (p) => <FeatureCheck value={p.freeVersion} /> },
+                ...featureCols.map(col => ({
+                  label: col.label,
+                  render: (p: PublicProduct) => <FeatureCheck value={p.features[col.key] ?? false} />,
+                })),
+                { label: 'Platformos', render: (p) => (
+                  <span className="text-[11px] text-muted-foreground">{p.supportedPlatforms.join(', ')}</span>
+                )},
+              ];
+
+              return (
+                <>
+                  {/* ── Desktop: column-based grid ── */}
+                  <div className="hidden md:block rounded-xl border border-border/60 bg-card elevation-2 overflow-hidden">
+                    {/* Product header row */}
+                    <div className="grid border-b border-border/50" style={{ gridTemplateColumns: gridCols, background: 'hsl(210 18% 97%)' }}>
+                      <div className="p-3 border-r border-border/30" />
                       {filteredProducts.map((product, i) => (
-                        <tr key={product.id}
-                            className={`${i < filteredProducts.length - 1 ? 'border-b border-border/30' : ''} hover:bg-primary/[0.02] transition-colors duration-150 ${i === 0 ? 'bg-primary/[0.015]' : ''}`}>
-                          <td className="p-3">
-                            <div className="flex items-center gap-2">
-                              <ProductLogo product={product} size={20} />
-                              <div className="min-w-0">
-                                <p className="font-heading font-semibold text-foreground text-[13px] leading-tight truncate">{product.name}</p>
-                                <p className="text-[10px] text-muted-foreground leading-tight truncate">{product.bestFor}</p>
-                              </div>
+                        <div key={product.id} className={`p-4 text-center border-r border-border/30 last:border-r-0 ${i === 0 ? 'bg-primary/[0.04]' : ''}`}>
+                          <div className="flex justify-center mb-2.5">
+                            <ProductLogo product={product} size={38} />
+                          </div>
+                          <p className="font-heading font-bold text-foreground text-[13px] leading-tight mb-1">{product.name}</p>
+                          <p className="text-[10px] text-muted-foreground leading-tight mb-3">{product.pricingSummary}</p>
+                          <AffiliateButton product={product} className="px-3.5 py-1.5 text-[11px] mx-auto" />
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Feature rows */}
+                    {comparisonRows.map((row, ri) => (
+                      <div key={ri} className={`grid items-center border-b border-border/20 last:border-b-0 ${ri % 2 === 0 ? 'bg-muted/[0.12]' : ''}`}
+                           style={{ gridTemplateColumns: gridCols }}>
+                        <div className="p-3 border-r border-border/30">
+                          <span className="text-xs font-heading font-semibold text-foreground">{row.label}</span>
+                        </div>
+                        {filteredProducts.map((product, i) => (
+                          <div key={product.id} className={`p-3 text-center border-r border-border/20 last:border-r-0 ${i === 0 ? 'bg-primary/[0.02]' : ''}`}>
+                            {row.render(product)}
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* ── Mobile: expandable cards ── */}
+                  <div className="md:hidden space-y-2">
+                    {filteredProducts.map((product) => {
+                      const isExpanded = expandedRow === product.id;
+                      return (
+                        <div key={product.id} className="card-premium overflow-hidden">
+                          <button onClick={() => setExpandedRow(isExpanded ? null : product.id)} className="w-full p-3.5 flex items-center gap-3 text-left">
+                            <ProductLogo product={product} size={28} />
+                            <div className="flex-1 min-w-0">
+                              <p className="font-heading font-semibold text-foreground text-sm">{product.name}</p>
+                              <p className="text-[11px] text-muted-foreground">{product.pricingSummary}</p>
                             </div>
-                          </td>
-                          <td className="p-2 text-center">
-                            <span className="inline-flex items-center gap-0.5 text-xs font-bold text-foreground">
+                            <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground">
                               <Star className="w-3 h-3 fill-amber-400 text-amber-400" />{product.rating.toFixed(1)}
                             </span>
-                          </td>
-                          <td className="p-2 text-center text-muted-foreground text-[11px] font-medium">{product.pricingSummary}</td>
-                          <td className="p-2 text-center"><FeatureCheck value={product.freeVersion} /></td>
-                          {featureCols.map(col => (
-                            <td key={col.key} className="p-2 text-center"><FeatureCheck value={product.features[col.key] ?? false} /></td>
-                          ))}
-                          <td className="p-2 text-center">
-                            <span className="text-[11px] font-medium text-muted-foreground">{product.supportedPlatforms.length}</span>
-                          </td>
-                          <td className="p-2 text-right">
-                            <AffiliateButton product={product} className="px-2.5 py-1.5 text-[11px] whitespace-nowrap" />
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-
-                {/* Mobile: expandable cards */}
-                <div className="md:hidden space-y-2">
-                  {filteredProducts.map((product) => {
-                    const isExpanded = expandedRow === product.id;
-                    return (
-                      <div key={product.id} className="card-premium overflow-hidden">
-                        <button onClick={() => setExpandedRow(isExpanded ? null : product.id)} className="w-full p-3.5 flex items-center gap-3 text-left">
-                          <ProductLogo product={product} size={28} />
-                          <div className="flex-1 min-w-0">
-                            <p className="font-heading font-semibold text-foreground text-sm">{product.name}</p>
-                            <p className="text-[11px] text-muted-foreground">{product.pricingSummary}</p>
-                          </div>
-                          <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground">
-                            <Star className="w-3 h-3 fill-amber-400 text-amber-400" />{product.rating.toFixed(1)}
-                          </span>
-                          <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
-                        </button>
-                        {isExpanded && (
-                          <div className="px-3.5 pb-3.5 pt-1 border-t border-border/30 space-y-2.5">
-                            <p className="text-xs text-muted-foreground">{product.bestFor}</p>
-                            <div className="grid grid-cols-2 gap-1.5">
-                              <div className="flex items-center gap-1.5 text-xs"><FeatureCheck value={product.freeVersion} /><span className="text-muted-foreground">Nemokama</span></div>
-                              <div className="flex items-center gap-1.5 text-xs"><FeatureCheck value={product.trialAvailable} /><span className="text-muted-foreground">Bandomoji</span></div>
-                              {featureCols.map(col => (
-                                <div key={col.key} className="flex items-center gap-1.5 text-xs">
-                                  <FeatureCheck value={product.features[col.key] ?? false} /><span className="text-muted-foreground">{col.label}</span>
-                                </div>
-                              ))}
-                            </div>
-                            {product.supportedPlatforms.length > 0 && <PlatformTags platforms={product.supportedPlatforms} />}
-                            {product.pros.length > 0 && (
-                              <ul className="space-y-1">
-                                {product.pros.slice(0, 3).map((pro, j) => (
-                                  <li key={j} className="flex items-start gap-1.5 text-[11px] text-muted-foreground">
-                                    <CheckCircle2 className="w-3 h-3 text-success mt-0.5 shrink-0" />{pro}
-                                  </li>
+                            <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                          </button>
+                          {isExpanded && (
+                            <div className="px-3.5 pb-3.5 pt-1 border-t border-border/30 space-y-2.5">
+                              <p className="text-xs text-muted-foreground">{product.bestFor}</p>
+                              <div className="grid grid-cols-2 gap-1.5">
+                                <div className="flex items-center gap-1.5 text-xs"><FeatureCheck value={product.freeVersion} /><span className="text-muted-foreground">Nemokama</span></div>
+                                <div className="flex items-center gap-1.5 text-xs"><FeatureCheck value={product.trialAvailable} /><span className="text-muted-foreground">Bandomoji</span></div>
+                                {featureCols.map(col => (
+                                  <div key={col.key} className="flex items-center gap-1.5 text-xs">
+                                    <FeatureCheck value={product.features[col.key] ?? false} /><span className="text-muted-foreground">{col.label}</span>
+                                  </div>
                                 ))}
-                              </ul>
-                            )}
-                            <AffiliateButton product={product} className="px-4 py-2.5 text-xs w-full justify-center" label="Gauti pasiūlymą" />
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </>
-            )}
+                              </div>
+                              {product.supportedPlatforms.length > 0 && <PlatformTags platforms={product.supportedPlatforms} />}
+                              {product.pros.length > 0 && (
+                                <ul className="space-y-1">
+                                  {product.pros.slice(0, 3).map((pro, j) => (
+                                    <li key={j} className="flex items-start gap-1.5 text-[11px] text-muted-foreground">
+                                      <CheckCircle2 className="w-3 h-3 text-success mt-0.5 shrink-0" />{pro}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                              <AffiliateButton product={product} className="px-4 py-2.5 text-xs w-full justify-center" label="Gauti pasiūlymą" />
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              );
+            })()}
           </section>
         )}
 
