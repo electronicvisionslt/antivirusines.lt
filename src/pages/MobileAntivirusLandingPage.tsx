@@ -412,7 +412,7 @@ const MobileAntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 5. ANDROID VS iOS ═══ */}
         <section id="android-vs-ios" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Platformų palyginimas" title="Android vs iOS: kuo skiriasi grėsmės?" subtitle="Abi platformos turi skirtingų pažeidžiamumų — štai ką reikia žinoti." className="mb-5" />
+          <SectionHeading title="Android vs iOS: kuo skiriasi grėsmės?" subtitle="Abi platformos turi skirtingų pažeidžiamumų — štai ką reikia žinoti." className="mb-5" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="card-premium-featured p-5">
