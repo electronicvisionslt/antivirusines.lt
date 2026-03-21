@@ -256,8 +256,17 @@ export const articles: Record<string, Article> = {
 };
 
 
-export const navLinks = [
-  { label: 'Antivirusinės', path: '/antivirusines-programos' },
+export const navLinks: { label: string; path: string; children?: { label: string; path: string }[] }[] = [
+  {
+    label: 'Antivirusinės',
+    path: '/antivirusines-programos',
+    children: [
+      { label: 'Geriausios antivirusinės 2026', path: '/antivirusines-programos' },
+      { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos' },
+      { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui' },
+      { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui' },
+    ],
+  },
   { label: 'Tėvų kontrolė', path: '/tevu-kontrole' },
   { label: 'Slaptažodžiai', path: '/slaptazodziu-saugumas' },
   { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' },
