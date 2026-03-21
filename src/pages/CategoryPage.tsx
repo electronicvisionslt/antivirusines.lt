@@ -5,6 +5,7 @@ import ArticleCard from '@/components/content/ArticleCard';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import AntivirusLandingPage from '@/pages/AntivirusLandingPage';
+import FreeAntivirusLandingPage from '@/pages/FreeAntivirusLandingPage';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import type { PublicCategory } from '@/types/content';
 
@@ -15,6 +16,9 @@ interface Props {
 const CategoryPage = ({ category }: Props) => {
   if (category.path === '/antivirusines-programos') {
     return <AntivirusLandingPage category={category} />;
+  }
+  if (category.path === '/antivirusines-programos/nemokamos') {
+    return <FreeAntivirusLandingPage category={category} />;
   }
 
   usePageMeta({
