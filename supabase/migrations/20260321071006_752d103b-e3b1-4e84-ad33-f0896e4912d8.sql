@@ -1,0 +1,4 @@
+UPDATE products SET logo_url = 'https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/norton-logo.png' WHERE slug = 'norton-360';
+UPDATE products SET logo_url = 'https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/bitdefender-logo.png' WHERE slug = 'bitdefender-total-security';
+UPDATE products SET logo_url = 'https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/kaspersky-logo.png' WHERE slug = 'kaspersky-plus';
+UPDATE products SET logo_url = 'https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/avast-logo.png' WHERE slug = 'avast-free';
