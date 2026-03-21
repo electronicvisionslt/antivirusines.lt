@@ -115,7 +115,7 @@ interface UseCaseBlock { icon: typeof Shield; title: string; shortWhy: string; m
 const useCases: UseCaseBlock[] = [
   { icon: Award, title: 'Geriausia visapusiška apsauga', shortWhy: 'Plačiausias funkcijų rinkinys: antivirusas, VPN, slaptažodžių tvarkyklė ir tamsiojo interneto stebėjimas viename pakete.', matchKey: 'Norton', tag: '🥇 Nr. 1' },
   { icon: Zap, title: 'Geriausia nemokama antivirusinė', shortWhy: 'Geriausias grėsmių aptikimas tarp nemokamų alternatyvų, be agresyvios reklamos ir su realaus laiko apsauga.', matchKey: 'Avast', tag: 'Nemokama' },
-  { icon: Users, title: 'Geriausia šeimoms', shortWhy: 'Tėvų kontrolė, iki 15 įrenginių viena licencija ir centralizuotas šeimos valdymas iš vienos paskyros.', matchKey: 'Norton', tag: 'Šeimoms' },
+  { icon: Users, title: 'Geriausia šeimoms', shortWhy: 'Tėvų kontrolė, iki 5 įrenginių viena licencija, debesų saugykla ir centralizuotas šeimos valdymas iš vienos paskyros.', matchKey: 'Norton', tag: 'Šeimoms' },
   { icon: Smartphone, title: 'Geriausia telefonui', shortWhy: 'Dedikuota mobilioji apsauga su anti-theft, anti-phishing ir minimaliu poveikiu baterijai — viena iš nedaugelio su pilna telefono apsauga.', matchKey: 'ESET', tag: 'Mobiliai' },
   { icon: Heart, title: 'Geriausia pradedantiesiems', shortWhy: 'Paprasta sąsaja, automatinis veikimas ir aiškūs pranešimai — instaliuojama per 3 minutes, veikia be nustatymų.', matchKey: 'Norton', tag: 'Lengva' },
 ];
