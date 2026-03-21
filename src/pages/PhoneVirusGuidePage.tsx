@@ -162,9 +162,12 @@ const PhoneVirusGuidePage = ({ category }: Props) => {
                 </li>
               ))}
             </ul>
-            <div className="mt-4 pt-3 border-t border-primary/10">
+            <div className="mt-4 pt-3 border-t border-primary/10 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
               <Link to="/antivirusines-programos/telefonui" className="text-sm font-medium text-primary hover:text-primary/80 inline-flex items-center gap-1 transition-colors">
                 Geriausios antivirusinės telefonui 2026 <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link to="/slaptazodziu-saugumas" className="text-sm font-medium text-primary hover:text-primary/80 inline-flex items-center gap-1 transition-colors">
+                Pakeiskite slaptažodžius po viruso <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>
