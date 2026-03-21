@@ -26,13 +26,13 @@ const DynamicPage = () => {
     );
   }
 
-  // Article takes priority over category if both match (shouldn't happen, but safe)
-  if (article) {
-    return <ArticlePage article={article} />;
-  }
-
+  // Category takes priority — structural/landing pages override articles
   if (category) {
     return <CategoryPage category={category} />;
+  }
+
+  if (article) {
+    return <ArticlePage article={article} />;
   }
 
   return <NotFound />;
