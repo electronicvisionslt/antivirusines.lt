@@ -7,6 +7,7 @@ import TrustDisclosure from '@/components/content/TrustDisclosure';
 import AntivirusLandingPage from '@/pages/AntivirusLandingPage';
 import FreeAntivirusLandingPage from '@/pages/FreeAntivirusLandingPage';
 import MobileAntivirusLandingPage from '@/pages/MobileAntivirusLandingPage';
+import DesktopAntivirusLandingPage from '@/pages/DesktopAntivirusLandingPage';
 import ParentalControlLandingPage from '@/pages/ParentalControlLandingPage';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import type { PublicCategory } from '@/types/content';
@@ -24,6 +25,9 @@ const CategoryPage = ({ category }: Props) => {
   }
   if (category.path === '/antivirusines-programos/telefonui') {
     return <MobileAntivirusLandingPage category={category} />;
+  }
+  if (category.path === '/antivirusines-programos/kompiuteriui') {
+    return <DesktopAntivirusLandingPage category={category} />;
   }
   if (category.path === '/tevu-kontrole') {
     return <ParentalControlLandingPage category={category} />;
