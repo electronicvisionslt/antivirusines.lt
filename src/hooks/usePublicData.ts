@@ -300,6 +300,7 @@ export interface PublicProduct {
   trialAvailable: boolean;
   bestFor: string;
   shortDescription: string;
+  longDescription: string;
   pros: string[];
   cons: string[];
   verdict: string;
