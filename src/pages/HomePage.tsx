@@ -51,10 +51,10 @@ const hubCards = [
 
 /* ── Why trust us ── */
 const trustPoints = [
-  { icon: Eye, title: 'Testuojame realiai', desc: 'Kiekviena programa instaliuojama, tikrinama ir vertinama mūsų komandos.' },
-  { icon: ShieldCheck, title: 'Nepriklausomi', desc: 'Jokio gamintojo nerekomenduojame vien už pinigus — tik pagal kokybę.' },
-  { icon: Globe, title: 'Lietuvių kalba', desc: 'Visa informacija pritaikyta lietuviškai kalbančiai auditorijai.' },
-  { icon: TrendingUp, title: 'Nuolat atnaujiname', desc: 'Duomenys atnaujinami kas ketvirtį pagal naujausius testus.' },
+  { icon: Eye, title: 'Aiškūs kriterijai', desc: 'Lyginame apsaugą, funkcijas, kainą ir naudojimo paprastumą.' },
+  { icon: ShieldCheck, title: 'Patikimi šaltiniai', desc: 'Remiamės žinomų testavimo laboratorijų ir stiprių rinkos šaltinių duomenimis.' },
+  { icon: Globe, title: 'Pritaikyta Lietuvai', desc: 'Informaciją pateikiame aiškiai, lietuviškai ir pagal vietinei auditorijai aktualius poreikius.' },
+  { icon: TrendingUp, title: 'Turinį peržiūrime reguliariai', desc: 'Atnaujiname puslapius, kai keičiasi kainos, funkcijos ar svarbūs testų rezultatai.' },
 ];
 
 /* ── Threat stats ── */
@@ -276,9 +276,9 @@ const HomePage = () => {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-3">
               <Heart className="w-3.5 h-3.5" />
-              <span>Mūsų metodika</span>
+              <span>Mūsų požiūris</span>
             </div>
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">Kodėl mumis pasitikėti?</h2>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">Kaip atrenkame rekomendacijas?</h2>
           </div>
         </ScrollReveal>
 
