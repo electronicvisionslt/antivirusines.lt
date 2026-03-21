@@ -294,19 +294,50 @@ const AntivirusLandingPage = ({ category }: Props) => {
               {top5.map((product, i) => (
                 <div key={product.id}
                      className={`relative overflow-hidden transition-all duration-200 ${i === 0 ? 'card-premium-featured' : 'card-premium'}`}>
-                  {/* Top accent for #1 */}
                   {i === 0 && <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary to-primary/40" />}
 
                   <div className="p-4 md:p-5">
-                    {/* Header row */}
-                    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
-                      {/* Rank + Logo + Name */}
-                      <div className="flex items-center gap-3 md:min-w-[220px]">
+                    {/* ── Desktop: fixed grid layout ── */}
+                    <div className="hidden md:grid md:grid-cols-[32px_52px_200px_120px_100px_1fr_160px] lg:grid-cols-[32px_52px_220px_140px_110px_1fr_170px] items-center gap-x-3">
+                      {/* Col 1: Rank */}
+                      <span className={`font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}`}>
+                        {i + 1}
+                      </span>
+                      {/* Col 2: Logo */}
+                      <ProductLogo product={product} size={36} />
+                      {/* Col 3: Name + best-for */}
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="font-heading font-bold text-foreground text-[15px] leading-tight truncate">{product.name}</h3>
+                          {i === 0 && <span className="chip-primary">Nr. 1</span>}
+                          {product.freeVersion && i !== 0 && <span className="chip-success">Nemokama</span>}
+                        </div>
+                        <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug truncate">{product.bestFor}</p>
+                      </div>
+                      {/* Col 4: Rating */}
+                      <RatingStars rating={product.rating} />
+                      {/* Col 5: Price */}
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-sm font-heading font-bold text-foreground whitespace-nowrap">{product.pricingSummary}</span>
+                      </div>
+                      {/* Col 6: Verdict */}
+                      <p className="text-[12px] text-muted-foreground leading-relaxed line-clamp-4">
+                        {product.verdict || product.shortDescription}
+                      </p>
+                      {/* Col 7: CTA */}
+                      <div className="justify-self-end">
+                        <AffiliateButton product={product} className="px-5 py-2.5 text-sm whitespace-nowrap" label="Gauti pasiūlymą" />
+                      </div>
+                    </div>
+
+                    {/* ── Mobile layout ── */}
+                    <div className="md:hidden">
+                      <div className="flex items-center gap-3">
                         <span className={`font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}`}>
                           {i + 1}
                         </span>
-                        <ProductLogo product={product} size={40} />
-                        <div className="min-w-0">
+                        <ProductLogo product={product} size={36} />
+                        <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2 flex-wrap">
                             <h3 className="font-heading font-bold text-foreground text-[15px] leading-tight">{product.name}</h3>
                             {i === 0 && <span className="chip-primary">Nr. 1</span>}
@@ -315,36 +346,17 @@ const AntivirusLandingPage = ({ category }: Props) => {
                           <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{product.bestFor}</p>
                         </div>
                       </div>
-
-                      {/* Rating + Price — inline on desktop */}
-                      <div className="hidden md:flex items-center gap-5 flex-1">
+                      <div className="flex items-center gap-4 mt-2">
                         <RatingStars rating={product.rating} />
-                        <div className="flex items-baseline gap-1.5">
-                          <span className="text-sm font-heading font-bold text-foreground">{product.pricingSummary}</span>
-                          {product.freeVersion && <span className="chip-success text-[9px]">Free</span>}
-                        </div>
+                        <span className="text-sm font-heading font-bold text-foreground">{product.pricingSummary}</span>
                       </div>
-
-                      {/* Verdict (desktop) */}
-                      <p className="hidden lg:block flex-1 text-[13px] text-muted-foreground leading-relaxed max-w-sm min-h-[3.5rem]">
-                        {product.verdict || product.shortDescription}
-                      </p>
-
-                      {/* CTA */}
-                      <div className="shrink-0">
-                        <AffiliateButton product={product} className="px-5 py-2.5 text-sm w-full md:w-auto" label="Gauti pasiūlymą" />
+                      <div className="mt-2">
+                        <AffiliateButton product={product} className="px-5 py-2.5 text-sm w-full" label="Gauti pasiūlymą" />
                       </div>
                     </div>
 
-                    {/* Mobile: rating + price row */}
-                    <div className="flex items-center gap-4 mt-2 md:hidden">
-                      <RatingStars rating={product.rating} />
-                      <span className="text-sm font-heading font-bold text-foreground">{product.pricingSummary}</span>
-                    </div>
-
-                    {/* Pros / Cons / Features row */}
+                    {/* ── Pros / Cons / Features (both) ── */}
                     <div className="mt-3 pt-3 border-t border-border/30 grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-2">
-                      {/* Pros */}
                       <div>
                         <p className="section-label text-[9px] mb-1.5">Privalumai</p>
                         <ul className="space-y-0.5">
@@ -355,7 +367,6 @@ const AntivirusLandingPage = ({ category }: Props) => {
                           ))}
                         </ul>
                       </div>
-                      {/* Cons */}
                       <div>
                         <p className="section-label text-[9px] mb-1.5">Trūkumai</p>
                         <ul className="space-y-0.5">
@@ -366,7 +377,6 @@ const AntivirusLandingPage = ({ category }: Props) => {
                           ))}
                         </ul>
                       </div>
-                      {/* Features + platforms */}
                       <div>
                         <p className="section-label text-[9px] mb-1.5">Funkcijos</p>
                         <div className="flex flex-wrap gap-x-3 gap-y-1 mb-1.5">
