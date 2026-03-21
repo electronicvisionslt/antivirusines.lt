@@ -564,7 +564,7 @@ const MobileAntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 7. HOW TO CHOOSE ═══ */}
         <section id="kaip-pasirinkti" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Sprendimo gidas" title="Kaip pasirinkti antivirusinę telefonui" subtitle="Atsakykite į šiuos klausimus — ir bus aišku, kuri programa jums tinka geriausiai." className="mb-5" />
+          <SectionHeading title="Kaip pasirinkti antivirusinę telefonui" subtitle="Atsakykite į šiuos klausimus — ir bus aišku, kuri programa jums tinka geriausiai." className="mb-5" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
             {buyerGuide.map((item, i) => {
