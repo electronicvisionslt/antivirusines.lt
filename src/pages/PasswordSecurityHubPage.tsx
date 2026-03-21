@@ -238,7 +238,32 @@ const PasswordSecurityHubPage = ({ category }: Props) => {
           <FAQAccordion items={faqItems} />
         </ScrollReveal>
 
+        {/* ── Cross-cluster links ── */}
         <ScrollReveal delay={350}>
+          <div className="mt-10 mb-6">
+            <h2 className="font-heading text-lg font-bold text-foreground mb-3">Susiję saugumo gidai</h2>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <Link to="/antivirusines-programos"
+                className="group flex items-start gap-3 p-4 bg-card border border-border/50 rounded-xl hover:border-primary/30 transition-colors">
+                <Shield className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="font-heading font-semibold text-sm text-foreground group-hover:text-primary transition-colors">Geriausios antivirusinės programos 2026</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">Antivirusinės apsaugo nuo keyloggerių ir spyware — pagrindinių slaptažodžių vagysčių priežasčių</p>
+                </div>
+              </Link>
+              <Link to="/virusai/kompiuterinis-virusas"
+                className="group flex items-start gap-3 p-4 bg-card border border-border/50 rounded-xl hover:border-primary/30 transition-colors">
+                <AlertTriangle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="font-heading font-semibold text-sm text-foreground group-hover:text-primary transition-colors">Kompiuterinis virusas: tipai ir apsauga</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">Sužinokite, kaip virusai vagia slaptažodžius ir kaip nuo to apsisaugoti</p>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={400}>
           <TrustDisclosure />
         </ScrollReveal>
       </div>
