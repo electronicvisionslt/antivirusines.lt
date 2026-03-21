@@ -324,6 +324,7 @@ function mapDbProduct(p: any): PublicProduct {
     trialAvailable: p.trial_available || false,
     bestFor: p.best_for || '',
     shortDescription: p.short_description || '',
+    longDescription: p.long_description || '',
     pros: p.pros || [],
     cons: p.cons || [],
     verdict: p.verdict || '',
