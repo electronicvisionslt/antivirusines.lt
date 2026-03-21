@@ -104,10 +104,10 @@ const jumpLinks = [
 const pillarFaq: { q: string; a: string }[] = [
   { q: 'Ar verta mokėti už antivirusinę programą?', a: 'Jei saugote kelis įrenginius, naudojate viešus Wi-Fi tinklus arba jums svarbi tėvų kontrolė ir VPN — taip. Mokamos programos siūlo kelių įrenginių apsaugą, prioritetinę pagalbą ir papildomas funkcijas. Baziniam naršymui vienu įrenginiu nemokama versija gali pakakti.' },
   { q: 'Ar pakanka Windows Defender?', a: 'Windows Defender suteikia solidžią bazinę apsaugą ir daugeliui atsargių naudotojų to užtenka. Tačiau jis neturi VPN, slaptažodžių tvarkyklės, tėvų kontrolės ir kelių įrenginių valdymo. Jei turite šeimą ar kelis įrenginius — verta investuoti į specializuotą programą.' },
-  { q: 'Kokia antivirusinė geriausia telefonui?', a: 'Android telefonams rekomenduojame Bitdefender Mobile Security ir Norton Mobile Security — abu siūlo stiprią apsaugą su minimaliu poveikiu baterijai. iOS sistemoje antivirusinės veikia ribočiau, bet naudingos dėl VPN ir phishing blokavimo.' },
+  { q: 'Kokia antivirusinė geriausia telefonui?', a: 'Android telefonams rekomenduojame ESET Home Security — viena iš nedaugelio su pilna telefonų apsauga, anti-theft ir minimaliu poveikiu baterijai. Norton ir Bitdefender taip pat turi mobiliąsias versijas, bet be dedikuotos telefono apsaugos funkcijos.' },
   { q: 'Ar nemokamos antivirusinės programos yra saugios?', a: 'Patikimų gamintojų nemokamos versijos — Avast Free, Bitdefender Free — yra saugios ir efektyvios bazinei apsaugai. Venkite nežinomų nemokamų programų: kai kurios renka duomenis ar rodo agresyvią reklamą.' },
   { q: 'Ar antivirusinė sulėtina kompiuterį?', a: 'Šiuolaikinės antivirusinės turi minimalų poveikį našumui. Geriausi sprendimai kaip Bitdefender ir Norton dirba fone beveik nepastebimi — poveikį galite pajusti tik pilno skenavimo metu.' },
-  { q: 'Kiek įrenginių paprastai apima viena licencija?', a: 'Daugelis mokamų planų apima 3–10 įrenginių. Norton 360 Deluxe siūlo 5 įrenginius, Bitdefender Family Pack — iki 15. Šeimoms verta rinktis planus su didesniu skaičiumi.' },
+  { q: 'Kiek įrenginių paprastai apima viena licencija?', a: 'Daugelis mokamų planų apima 3–10 įrenginių. Norton 360 Deluxe siūlo iki 5 įrenginių, Bitdefender Family Pack — iki 15. Šeimoms verta rinktis planus su didesniu skaičiumi.' },
 ];
 
 /* ── Use cases ── */
@@ -115,7 +115,7 @@ interface UseCaseBlock { icon: typeof Shield; title: string; shortWhy: string; m
 const useCases: UseCaseBlock[] = [
   { icon: Award, title: 'Geriausia visapusiška apsauga', shortWhy: 'Plačiausias funkcijų rinkinys: antivirusas, VPN, slaptažodžių tvarkyklė ir tamsiojo interneto stebėjimas viename pakete.', matchKey: 'Norton', tag: '🥇 Nr. 1' },
   { icon: Zap, title: 'Geriausia nemokama antivirusinė', shortWhy: 'Geriausias grėsmių aptikimas tarp nemokamų alternatyvų, be agresyvios reklamos ir su realaus laiko apsauga.', matchKey: 'Avast', tag: 'Nemokama' },
-  { icon: Users, title: 'Geriausia šeimoms', shortWhy: 'Tėvų kontrolė, iki 15 įrenginių viena licencija ir centralizuotas šeimos valdymas iš vienos paskyros.', matchKey: 'Norton', tag: 'Šeimoms' },
+  { icon: Users, title: 'Geriausia šeimoms', shortWhy: 'Tėvų kontrolė, iki 5 įrenginių viena licencija, debesų saugykla ir centralizuotas šeimos valdymas iš vienos paskyros.', matchKey: 'Norton', tag: 'Šeimoms' },
   { icon: Smartphone, title: 'Geriausia telefonui', shortWhy: 'Dedikuota mobilioji apsauga su anti-theft, anti-phishing ir minimaliu poveikiu baterijai — viena iš nedaugelio su pilna telefono apsauga.', matchKey: 'ESET', tag: 'Mobiliai' },
   { icon: Heart, title: 'Geriausia pradedantiesiems', shortWhy: 'Paprasta sąsaja, automatinis veikimas ir aiškūs pranešimai — instaliuojama per 3 minutes, veikia be nustatymų.', matchKey: 'Norton', tag: 'Lengva' },
 ];
@@ -150,17 +150,17 @@ const filterOpts: { key: FilterKey; label: string; icon: typeof Filter }[] = [
 const buyerGuide = [
   { q: 'Kiek įrenginių norite apsaugoti?', a: 'Vienam įrenginiui gali pakakti nemokamos ar Windows Defender. 2+ įrenginiams — mokamas planas su kelių įrenginių licencija kainuos žymiai pigiau vienam įrenginiui.', icon: Layers },
   { q: 'Ar reikia telefono apsaugos?', a: 'Android yra atviresnė grėsmėms nei iOS. Rinkitės programą su dedikuota mobilia versija ir minimaliu poveikiu baterijai.', icon: Smartphone },
-  { q: 'Ar turite vaikų internete?', a: 'Prioritetas — tėvų kontrolė ir turinio filtravimas. Norton ir Kaspersky siūlo stipriausias šeimos kontrolės funkcijas.', icon: Users },
+  { q: 'Ar turite vaikų internete?', a: 'Prioritetas — tėvų kontrolė ir turinio filtravimas. Norton ir Bitdefender siūlo stipriausias šeimos kontrolės funkcijas su tėvų kontrole.', icon: Users },
   { q: 'Ar jums svarbus VPN?', a: 'Viešuose Wi-Fi tinkluose VPN būtinas. Daugelis mokamų antivirusinių turi integruotą VPN — paprasčiau ir pigiau nei pirkti atskirai.', icon: Lock },
   { q: 'Koks jūsų biudžetas?', a: 'Nemokamos versijos — bazinė apsauga. Mokamos: 20–60 €/metus. Šeimos planai (iki 15 įrenginių) dažnai kainuoja tiek pat kiek 3 įrenginių licencija.', icon: BarChart3 },
-  { q: 'Paprastumas ar kontrolė?', a: 'Norton, Avast — beveik automatinis veikimas. Bitdefender, Kaspersky — detalesni nustatymai pažengusiems.', icon: Shield },
+  { q: 'Paprastumas ar kontrolė?', a: 'Norton, Avast — beveik automatinis veikimas. ESET, Bitdefender — detalesni nustatymai pažengusiems naudotojams.', icon: Shield },
 ];
 
 /* ═══════════════════════════════════════════ */
 
 const AntivirusLandingPage = ({ category }: Props) => {
   usePageMeta({
-    title: category.seoTitle || 'Geriausios antivirusinės programos 2025 — palyginimas ir apžvalgos',
+    title: category.seoTitle || 'Geriausios antivirusinės programos 2026 — palyginimas ir apžvalgos',
     description: category.metaDescription || 'Nepriklausomos antivirusinių programų apžvalgos ir palyginimas. Raskite geriausią antivirusinę savo kompiuteriui, telefonui ar šeimai.',
     canonicalUrl: category.canonicalUrl || undefined,
   });
@@ -206,7 +206,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
           </div>
 
           <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
-            Geriausios antivirusinės programos 2025&nbsp;m.
+            Geriausios antivirusinės programos 2026&nbsp;m.
           </h1>
           <p className="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
             Išanalizavome populiariausias antivirusines programas pagal apsaugos efektyvumą, papildomas funkcijas ir kainą. Žemiau — redakcijos Top&nbsp;5, detalus palyginimas ir patarimai, kaip pasirinkti.
@@ -219,7 +219,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                 <a href="#top-5" className="card-premium-featured p-3.5 flex items-center gap-3 hover-lift group">
                   <ProductLogo product={bestOverall} size={32} />
                   <div className="min-w-0">
-                    <span className="chip-primary mb-1">Geriausia 2025</span>
+                    <span className="chip-primary mb-1">Geriausia 2026</span>
                     <span className="text-sm text-foreground font-semibold block leading-tight">{bestOverall.name}</span>
                     <span className="text-[11px] text-muted-foreground">{bestOverall.pricingSummary}</span>
                   </div>
