@@ -95,20 +95,6 @@ const HomePage = () => {
                 Objektyvūs antivirusinių programų palyginimai, saugumo gidai ir patarimai — viskas lietuvių kalba, be reklaminės šiukšlės.
               </p>
 
-              {/* Quick winner badges */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {quickPicks.map(pick => (
-                  <Link
-                    key={pick.path}
-                    to={pick.path}
-                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-card border border-border/60 hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 group"
-                  >
-                    <span className="text-xs">{pick.label}</span>
-                    <span className="text-xs font-heading font-semibold text-foreground">{pick.brand}</span>
-                    <ChevronRight className="w-3 h-3 text-muted-foreground/40 group-hover:text-primary transition-colors" />
-                  </Link>
-                ))}
-              </div>
 
               <div className="flex flex-wrap gap-3">
                 <Link
