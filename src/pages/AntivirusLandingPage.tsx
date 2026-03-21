@@ -634,7 +634,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                 <BadgeCheck className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <span className="section-label text-[9px] block mb-0.5">Skaidrumas</span>
+                
                 <h2 className="font-heading text-lg font-bold text-foreground">Kaip vertiname antivirusines programas</h2>
                 <p className="text-xs text-muted-foreground mt-0.5">Kiekviena programa vertinama pagal {featureCols.length + 2} kriterijus.</p>
               </div>
