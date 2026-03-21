@@ -327,7 +327,7 @@ const ParentalControlLandingPage = ({ category }: Props) => {
                               const val = product.features[col.key];
                               return (
                                 <span key={col.key} className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
-                                  {val === true ? <Check className="w-3 h-3 text-success" /> : val === false ? <X className="w-3 h-3 text-muted-foreground/25" /> : <Check className="w-3 h-3 text-success" />}
+                                  {val === true ? <Check className="w-3 h-3 text-success" /> : val === false ? <X className="w-3 h-3 text-muted-foreground/25" /> : <span className="text-[10px] text-muted-foreground">{val}</span>}
                                   {col.label}
                                 </span>
                               );
