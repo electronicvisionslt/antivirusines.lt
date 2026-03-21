@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Bug, Shield, ShieldAlert, AlertTriangle, Lock, Zap, FileWarning,
   HardDrive, Mail, Globe, ChevronRight, CheckCircle2, XCircle,
@@ -46,12 +47,12 @@ const spreadMethods = [
   { method: 'Socialinė inžinerija', desc: 'Apgaulės metodai, verčiantys paspausti nuorodą ar įdiegti programą', icon: LinkIcon },
 ];
 
-const protectionTips = [
-  'Naudokite patikimą antivirusinę programą su realaus laiko apsauga',
+const protectionTips: React.ReactNode[] = [
+  <>Naudokite patikimą <Link to="/antivirusines-programos" className="text-primary hover:text-primary/80 font-medium">antivirusinę programą</Link> su realaus laiko apsauga</>,
   'Reguliariai atnaujinkite operacinę sistemą ir visas programas',
   'Neatidarinėkite įtartinų el. laiškų priedų',
   'Atsisiųskite programas tik iš oficialių šaltinių',
-  'Naudokite stiprius, unikalius slaptažodžius su 2FA',
+  <>Naudokite <Link to="/slaptazodziu-saugumas" className="text-primary hover:text-primary/80 font-medium">stiprius, unikalius slaptažodžius</Link> su 2FA</>,
   'Darykite reguliarias atsargines kopijas (3-2-1 taisyklė)',
   'Būkite atsargūs su viešais WiFi tinklais — naudokite VPN',
   'Neišjunkite ugniasienės (firewall)',

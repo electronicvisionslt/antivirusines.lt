@@ -201,6 +201,11 @@ const ForgotPasswordGuidePage = ({ category }: Props) => {
         {/* ── Related ── */}
         <ScrollReveal delay={500}>
           <div className="mt-10 flex flex-col sm:flex-row gap-3">
+            <Link to="/slaptazodziu-saugumas"
+              className="flex-1 p-4 bg-card border border-border/50 rounded-xl hover:border-primary/30 transition-colors group">
+              <span className="text-xs text-muted-foreground">Hub puslapis</span>
+              <h3 className="font-heading font-semibold text-sm text-foreground group-hover:text-primary transition-colors">← Slaptažodžių saugumas</h3>
+            </Link>
             <Link to="/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi"
               className="flex-1 p-4 bg-card border border-border/50 rounded-xl hover:border-primary/30 transition-colors group">
               <span className="text-xs text-muted-foreground">Susijęs gidas</span>

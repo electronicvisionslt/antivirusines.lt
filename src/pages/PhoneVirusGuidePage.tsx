@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Smartphone, Shield, AlertTriangle, CheckCircle2, XCircle,
   Clock, ArrowRight, Bug, Battery, Wifi, Download, Eye,
@@ -43,11 +44,11 @@ const iosProtection = [
   'Įjunkite „Find My iPhone" ir dviejų veiksnių autentifikaciją',
 ];
 
-const preventionTips = [
+const preventionTips: React.ReactNode[] = [
   'Diekite programėles TIK iš Google Play / App Store',
   'Prieš diegiant patikrinkite atsiliepimus ir leidimų sąrašą',
   'Neleiskite diegti iš „nežinomų šaltinių" (Android)',
-  'Naudokite antivirusinę programą su realaus laiko apsauga',
+  <>Naudokite <Link to="/antivirusines-programos/telefonui" className="text-primary hover:text-primary/80 font-medium">antivirusinę programą</Link> su realaus laiko apsauga</>,
   'Neklikinkite nuorodų SMS žinutėse iš nežinomų siuntėjų',
   'Reguliariai atnaujinkite OS ir programėles',
   'Naudokite VPN viešuose WiFi tinkluose',
@@ -161,9 +162,12 @@ const PhoneVirusGuidePage = ({ category }: Props) => {
                 </li>
               ))}
             </ul>
-            <div className="mt-4 pt-3 border-t border-primary/10">
+            <div className="mt-4 pt-3 border-t border-primary/10 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
               <Link to="/antivirusines-programos/telefonui" className="text-sm font-medium text-primary hover:text-primary/80 inline-flex items-center gap-1 transition-colors">
                 Geriausios antivirusinės telefonui 2026 <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link to="/slaptazodziu-saugumas" className="text-sm font-medium text-primary hover:text-primary/80 inline-flex items-center gap-1 transition-colors">
+                Pakeiskite slaptažodžius po viruso <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>

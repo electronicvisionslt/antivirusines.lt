@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Search, Shield, AlertTriangle, CheckCircle2, Monitor, Clock, ArrowRight,
   Activity, Cpu, HardDrive, Wifi, Eye, FileWarning, Terminal,
@@ -205,14 +206,14 @@ const VirusCheckGuidePage = ({ category }: Props) => {
               <Shield className="w-4 h-4 text-primary" /> Po valymo: ką daryti toliau
             </h2>
             <ul className="space-y-2">
-              {[
-                'Pakeiskite visų paskyrų slaptažodžius (ypač banko, el. pašto, soc. tinklų)',
+              {([
+                <><Link to="/slaptazodziu-saugumas" className="text-primary hover:text-primary/80 font-medium">Pakeiskite visų paskyrų slaptažodžius</Link> (ypač banko, el. pašto, soc. tinklų)</>,
                 'Patikrinkite banko operacijas dėl neleistinų veiksmų',
                 'Atnaujinkite operacinę sistemą ir visas programas',
                 'Įjunkite automatinį antivirusinės atnaujinimą',
                 'Padarykite pilną atsarginę kopiją (tik po valymo!)',
-                'Apsvarstykite perėjimą prie mokamos antivirusinės su realaus laiko apsauga',
-              ].map((tip, i) => (
+                <>Apsvarstykite perėjimą prie <Link to="/antivirusines-programos" className="text-primary hover:text-primary/80 font-medium">mokamos antivirusinės</Link> su realaus laiko apsauga</>,
+              ] as React.ReactNode[]).map((tip, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-foreground">
                   <CheckCircle2 className="w-3.5 h-3.5 text-success shrink-0 mt-0.5" />
                   <span>{tip}</span>
