@@ -6,6 +6,7 @@ import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import AntivirusLandingPage from '@/pages/AntivirusLandingPage';
 import FreeAntivirusLandingPage from '@/pages/FreeAntivirusLandingPage';
+import MobileAntivirusLandingPage from '@/pages/MobileAntivirusLandingPage';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import type { PublicCategory } from '@/types/content';
 
@@ -19,6 +20,9 @@ const CategoryPage = ({ category }: Props) => {
   }
   if (category.path === '/antivirusines-programos/nemokamos') {
     return <FreeAntivirusLandingPage category={category} />;
+  }
+  if (category.path === '/antivirusines-programos/telefonui') {
+    return <MobileAntivirusLandingPage category={category} />;
   }
 
   usePageMeta({
