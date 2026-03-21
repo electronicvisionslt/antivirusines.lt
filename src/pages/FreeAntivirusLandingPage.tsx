@@ -101,11 +101,6 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 1. HERO ═══ */}
         <section className="mb-8">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
-            <span className="chip-success"><Zap className="w-3 h-3" />100% nemokamos</span>
-            <span className="chip-primary"><ShieldCheck className="w-3 h-3" />Nepriklausomas palyginimas</span>
-            <span className="text-[11px] text-muted-foreground flex items-center gap-1"><Clock className="w-3 h-3" />Atnaujinta {updatedLabel}</span>
-          </div>
 
           <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
             Geriausios nemokamos antivirusinės programos 2026&nbsp;m.
@@ -169,7 +164,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
         {/* ═══ 3. TOP 5 RECOMMENDATIONS ═══ */}
         {top5.length > 0 && (
           <section id="top-5" className="mb-16 scroll-mt-20">
-            <SectionHeading label="Redakcijos pasirinkimas" title="Top 5 nemokamos antivirusinės programos" subtitle="Geriausios nemokamos antivirusinės, kurios tikrai apsaugo — be jokių mokėjimų." className="mb-6" />
+            <SectionHeading title="Top 5 nemokamos antivirusinės programos" subtitle="Geriausios nemokamos antivirusinės, kurios tikrai apsaugo — be jokių mokėjimų." className="mb-6" />
 
             <div className="space-y-3">
               {top5.map((product, i) => (
@@ -339,7 +334,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
 
           return (
             <section id="palyginimas" className="mb-16 scroll-mt-20">
-              <SectionHeading label="Funkcijų lentelė" title="Nemokamų antivirusinių palyginimas" subtitle="Visų vertinamų nemokamų programų funkcijų palyginimas vienoje lentelėje." className="mb-5" />
+              <SectionHeading title="Nemokamų antivirusinių palyginimas" subtitle="Visų vertinamų nemokamų programų funkcijų palyginimas vienoje lentelėje." className="mb-5" />
 
               {/* ── Desktop: column-based grid ── */}
               <div className="hidden md:block rounded-xl border border-border/60 bg-card elevation-2 overflow-hidden">
@@ -426,7 +421,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 5. USE CASES (column grid) ═══ */}
         <section id="kam-tinka" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Pagal poreikį" title="Geriausia nemokama antivirusinė pagal poreikį" subtitle="Pasirinkite situaciją — parodysime tinkamiausią nemokamą sprendimą." className="mb-5" />
+          <SectionHeading title="Geriausia nemokama antivirusinė pagal poreikį" subtitle="Pasirinkite situaciją — parodysime tinkamiausią nemokamą sprendimą." className="mb-5" />
 
           {(() => {
             const useCaseProducts = useCases.map(uc => {
@@ -521,7 +516,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 6. FREE VS PAID ═══ */}
         <section id="mokama-vs-nemokama" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Svarbus klausimas" title="Ar tikrai pakanka nemokamos antivirusinės?" subtitle="Trumpas atsakymas — priklauso nuo jūsų situacijos." className="mb-5" />
+          <SectionHeading title="Ar tikrai pakanka nemokamos antivirusinės?" subtitle="Trumpas atsakymas — priklauso nuo jūsų situacijos." className="mb-5" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
             <div className="card-premium-featured p-5">
@@ -581,7 +576,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 7. HOW TO CHOOSE ═══ */}
         <section id="kaip-pasirinkti" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Sprendimo gidas" title="Kaip pasirinkti nemokamą antivirusinę" subtitle="Atsakykite į šiuos klausimus — ir bus aišku, kuri nemokama programa jums tinka geriausiai." className="mb-5" />
+          <SectionHeading title="Kaip pasirinkti nemokamą antivirusinę" subtitle="Atsakykite į šiuos klausimus — ir bus aišku, kuri nemokama programa jums tinka geriausiai." className="mb-5" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
             {buyerGuide.map((item, i) => {
@@ -617,7 +612,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
                 <BadgeCheck className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <span className="section-label text-[9px] block mb-0.5">Skaidrumas</span>
+                
                 <h2 className="font-heading text-lg font-bold text-foreground">Kaip vertiname nemokamas antivirusines</h2>
                 <p className="text-xs text-muted-foreground mt-0.5">Kiekviena programa vertinama pagal {featureCols.length} kriterijus, pritaikytus nemokamoms versijoms.</p>
               </div>
@@ -657,7 +652,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
         {/* ═══ 10. RELATED GUIDES ═══ */}
         <section className="mb-16">
           <div className="card-premium p-5 md:p-6">
-            <SectionHeading label="Susiję gidai" title="Kiti naudingi gidai" className="mb-4" />
+            <SectionHeading title="Kiti naudingi gidai" className="mb-4" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
               {relatedGuides.map(guide => {
                 const Icon = guide.icon;
