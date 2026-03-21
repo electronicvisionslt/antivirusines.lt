@@ -167,7 +167,11 @@ const AdwarePhoneGuidePage = ({ category }: Props) => {
                   <span>{tip}</span>
                 </li>
               ))}
-            </ul>
+            <div className="mt-4 pt-3 border-t border-primary/10">
+              <Link to="/antivirusines-programos/nemokamos" className="text-sm font-medium text-primary hover:text-primary/80 inline-flex items-center gap-1 transition-colors">
+                Nemokamos antivirusinės su adware apsauga <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
         </ScrollReveal>
 
