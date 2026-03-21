@@ -197,15 +197,21 @@
   }
 
   .chip-primary {
-    @apply chip bg-primary/8 text-primary border border-primary/12;
+    @apply chip text-primary border;
+    background-color: hsl(var(--primary) / 0.08);
+    border-color: hsl(var(--primary) / 0.12);
   }
 
   .chip-success {
-    @apply chip bg-success/8 text-success border border-success/12;
+    @apply chip text-success border;
+    background-color: hsl(var(--success) / 0.08);
+    border-color: hsl(var(--success) / 0.12);
   }
 
   .chip-muted {
-    @apply chip bg-muted/60 text-muted-foreground border border-border/40;
+    @apply chip text-muted-foreground border;
+    background-color: hsl(var(--muted) / 0.6);
+    border-color: hsl(var(--border) / 0.4);
   }
 
   /* ─── Prose ─── */
