@@ -521,7 +521,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 6. FREE VS PAID ═══ */}
         <section id="nemokama-vs-mokama" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Praktinis gidas" title="Nemokama ar mokama antivirusinė?" subtitle="Atsakymas priklauso nuo jūsų situacijos. Štai praktinis palyginimas." className="mb-5" />
+          <SectionHeading title="Nemokama ar mokama antivirusinė?" subtitle="Atsakymas priklauso nuo jūsų situacijos. Štai praktinis palyginimas." className="mb-5" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
             {/* Free */}
