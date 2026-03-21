@@ -85,8 +85,7 @@ const MobileAntivirusLandingPage = ({ category }: Props) => {
 
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
 
-  const now = new Date();
-  const updatedLabel = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const updatedLabel = useUpdatedLabel();
 
   const bestOverall = products[0];
   const bestFree = products.find(p => p.brand === 'Avira');
