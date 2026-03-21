@@ -396,7 +396,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                   {/* ── Desktop: column-based grid ── */}
                   <div className="hidden md:block rounded-xl border border-border/60 bg-card elevation-2 overflow-hidden">
                     {/* Product header row */}
-                    <div className="grid border-b border-border/50" style={{ gridTemplateColumns: gridCols, background: 'hsl(210 18% 97%)' }}>
+                    <div className="grid border-b border-border/50 bg-muted/30" style={{ gridTemplateColumns: gridCols }}>
                       <div className="p-3 border-r border-border/30" />
                       {filteredProducts.map((product, i) => (
                         <div key={product.id} className={`p-4 text-center border-r border-border/30 last:border-r-0 flex flex-col items-center ${i === 0 ? 'bg-primary/[0.04]' : ''}`}>
