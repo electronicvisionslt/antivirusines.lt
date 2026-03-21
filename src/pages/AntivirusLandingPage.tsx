@@ -182,8 +182,8 @@ const AntivirusLandingPage = ({ category }: Props) => {
   const filteredProducts = useMemo(() => {
     if (activeFilter === 'all') return products;
     if (activeFilter === 'free') return products.filter(p => p.freeVersion);
-    if (activeFilter === 'family') return products.filter(p => p.features['Tėvų kontrolė'] === true);
-    if (activeFilter === 'mobile') return products.filter(p => p.features['Telefonų apsauga'] === true || p.supportedPlatforms.some(pl => pl === 'Android' || pl === 'iOS'));
+    if (activeFilter === 'family') return products.filter(p => !!p.features['Tėvų kontrolė']);
+    if (activeFilter === 'mobile') return products.filter(p => !!p.features['Telefonų apsauga'] || p.supportedPlatforms.some(pl => pl === 'Android' || pl === 'iOS'));
     return products;
   }, [products, activeFilter]);
 
