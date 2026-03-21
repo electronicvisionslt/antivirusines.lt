@@ -298,7 +298,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
 
                   <div className="p-4 md:p-5">
                     {/* ── Desktop: fixed grid layout ── */}
-                    <div className="hidden md:grid md:grid-cols-[32px_52px_200px_120px_100px_1fr_160px] lg:grid-cols-[32px_52px_220px_140px_110px_1fr_170px] items-center gap-x-3">
+                    <div className="hidden md:grid md:grid-cols-[28px_52px_180px_110px_90px_1fr_150px] lg:grid-cols-[28px_52px_200px_120px_100px_1fr_160px] xl:grid-cols-[30px_52px_220px_130px_110px_1fr_170px] items-start gap-x-3">
                       {/* Col 1: Rank */}
                       <span className={`font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}`}>
                         {i + 1}
