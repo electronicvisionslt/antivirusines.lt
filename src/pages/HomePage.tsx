@@ -247,11 +247,11 @@ const HomePage = () => {
 
                     <div className="flex items-center gap-3 mb-4 mt-1">
                       <div className="w-10 h-10 rounded-lg bg-muted/60 border border-border/40 flex items-center justify-center overflow-hidden shrink-0">
-                        <ProductLogo product={product} size="sm" />
+                        <ProductLogo product={product} size={28} />
                       </div>
                       <div>
                         <h3 className="font-heading font-bold text-foreground text-sm">{product.name}</h3>
-                        <RatingStars rating={product.rating} size="sm" />
+                        <RatingStars rating={product.rating} />
                       </div>
                     </div>
 
@@ -268,7 +268,7 @@ const HomePage = () => {
 
                     <div className="flex items-center justify-between pt-3 border-t border-border/40">
                       <span className="text-xs text-muted-foreground">{product.pricingSummary}</span>
-                      <AffiliateButton product={product} size="sm" />
+                      <AffiliateButton product={product} className="text-xs px-3 py-1.5" />
                     </div>
                   </div>
                 </ScrollReveal>
