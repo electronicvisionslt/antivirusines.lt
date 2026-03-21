@@ -150,7 +150,7 @@ const filterOpts: { key: FilterKey; label: string; icon: typeof Filter }[] = [
 const buyerGuide = [
   { q: 'Kiek įrenginių norite apsaugoti?', a: 'Vienam įrenginiui gali pakakti nemokamos ar Windows Defender. 2+ įrenginiams — mokamas planas su kelių įrenginių licencija kainuos žymiai pigiau vienam įrenginiui.', icon: Layers },
   { q: 'Ar reikia telefono apsaugos?', a: 'Android yra atviresnė grėsmėms nei iOS. Rinkitės programą su dedikuota mobilia versija ir minimaliu poveikiu baterijai.', icon: Smartphone },
-  { q: 'Ar turite vaikų internete?', a: 'Prioritetas — tėvų kontrolė ir turinio filtravimas. Norton ir Kaspersky siūlo stipriausias šeimos kontrolės funkcijas.', icon: Users },
+  { q: 'Ar turite vaikų internete?', a: 'Prioritetas — tėvų kontrolė ir turinio filtravimas. Norton ir Bitdefender siūlo stipriausias šeimos kontrolės funkcijas su tėvų kontrole.', icon: Users },
   { q: 'Ar jums svarbus VPN?', a: 'Viešuose Wi-Fi tinkluose VPN būtinas. Daugelis mokamų antivirusinių turi integruotą VPN — paprasčiau ir pigiau nei pirkti atskirai.', icon: Lock },
   { q: 'Koks jūsų biudžetas?', a: 'Nemokamos versijos — bazinė apsauga. Mokamos: 20–60 €/metus. Šeimos planai (iki 15 įrenginių) dažnai kainuoja tiek pat kiek 3 įrenginių licencija.', icon: BarChart3 },
   { q: 'Paprastumas ar kontrolė?', a: 'Norton, Avast — beveik automatinis veikimas. Bitdefender, Kaspersky — detalesni nustatymai pažengusiems.', icon: Shield },
