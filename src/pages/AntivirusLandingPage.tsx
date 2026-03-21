@@ -107,7 +107,7 @@ const pillarFaq: { q: string; a: string }[] = [
   { q: 'Kokia antivirusinė geriausia telefonui?', a: 'Android telefonams rekomenduojame ESET Home Security — viena iš nedaugelio su pilna telefonų apsauga, anti-theft ir minimaliu poveikiu baterijai. Norton ir Bitdefender taip pat turi mobiliąsias versijas, bet be dedikuotos telefono apsaugos funkcijos.' },
   { q: 'Ar nemokamos antivirusinės programos yra saugios?', a: 'Patikimų gamintojų nemokamos versijos — Avast Free, Bitdefender Free — yra saugios ir efektyvios bazinei apsaugai. Venkite nežinomų nemokamų programų: kai kurios renka duomenis ar rodo agresyvią reklamą.' },
   { q: 'Ar antivirusinė sulėtina kompiuterį?', a: 'Šiuolaikinės antivirusinės turi minimalų poveikį našumui. Geriausi sprendimai kaip Bitdefender ir Norton dirba fone beveik nepastebimi — poveikį galite pajusti tik pilno skenavimo metu.' },
-  { q: 'Kiek įrenginių paprastai apima viena licencija?', a: 'Daugelis mokamų planų apima 3–10 įrenginių. Norton 360 Deluxe siūlo iki 5 įrenginių, Bitdefender Family Pack — iki 15. Šeimoms verta rinktis planus su didesniu skaičiumi.' },
+  { q: 'Kiek įrenginių paprastai apima viena licencija?', a: 'Daugelis mokamų planų apima 3–10 įrenginių. Norton 360 Deluxe siūlo iki 5 įrenginių, Norton Premium — iki 10. Bitdefender planai apima 5 įrenginius. Šeimoms verta rinktis planus su didesniu skaičiumi.' },
 ];
 
 /* ── Use cases ── */
@@ -131,10 +131,16 @@ const relatedGuides = [
 
 /* ── Feature columns for comparison ── */
 const featureCols = [
+  { key: 'Realaus laiko apsauga', label: 'Realaus laiko aps.' },
   { key: 'VPN', label: 'VPN' },
   { key: 'Slaptažodžių tvarkyklė', label: 'Slaptažodžiai' },
+  { key: 'Ugniasienė', label: 'Ugniasienė' },
   { key: 'Tėvų kontrolė', label: 'Tėvų kontr.' },
   { key: 'Telefonų apsauga', label: 'Tel. apsauga' },
+  { key: 'Debesų saugykla', label: 'Debesų saug.' },
+  { key: 'Dark web stebėjimas', label: 'Dark web' },
+  { key: 'Tapatybės apsauga', label: 'Tapatybės aps.' },
+  { key: 'Sukčių apsauga', label: 'Sukčių aps.' },
 ];
 
 /* ── Filter options ── */
@@ -176,8 +182,8 @@ const AntivirusLandingPage = ({ category }: Props) => {
   const filteredProducts = useMemo(() => {
     if (activeFilter === 'all') return products;
     if (activeFilter === 'free') return products.filter(p => p.freeVersion);
-    if (activeFilter === 'family') return products.filter(p => p.features['Tėvų kontrolė'] === true);
-    if (activeFilter === 'mobile') return products.filter(p => p.features['Telefonų apsauga'] === true || p.supportedPlatforms.some(pl => pl === 'Android' || pl === 'iOS'));
+    if (activeFilter === 'family') return products.filter(p => !!p.features['Tėvų kontrolė']);
+    if (activeFilter === 'mobile') return products.filter(p => !!p.features['Telefonų apsauga'] || p.supportedPlatforms.some(pl => pl === 'Android' || pl === 'iOS'));
     return products;
   }, [products, activeFilter]);
 
