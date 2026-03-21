@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, TrendingUp, Sparkles } from 'lucide-react';
+import { ArrowRight, Shield, Sparkles } from 'lucide-react';
 import PageLayout from '@/components/site/PageLayout';
 import ScrollReveal from '@/components/site/ScrollReveal';
 import CategoryCard from '@/components/content/CategoryCard';
@@ -8,7 +8,6 @@ import ComparisonTable from '@/components/content/ComparisonTable';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import { useHomepageArticles, useComparisonProducts } from '@/hooks/usePublicData';
-import type { PublicArticle } from '@/types/content';
 
 const categoryLinks = [
   { path: '/antivirusines-programos', title: 'Antivirusinės programos', description: 'Apžvalgos, palyginimai ir rekomendacijos geriausiai apsaugai.' },
@@ -33,35 +32,34 @@ const HomePage = () => {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border/30">
+      <section className="relative overflow-hidden border-b border-border/40">
         <div className="absolute inset-0 gradient-mesh" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-[100px] animate-pulse-glow" />
-        <div className="container relative py-20 md:py-28">
+        <div className="container relative py-16 md:py-24">
           <ScrollReveal>
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 text-xs font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/10">
+              <div className="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-4 px-3 py-1.5 rounded-full bg-primary/8 border border-primary/12">
                 <Shield className="w-3.5 h-3.5" />
                 <span>Nepriklausomos apžvalgos nuo 2024</span>
               </div>
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-foreground leading-[1.08] tracking-tight mb-6">
+              <h1 className="font-heading text-4xl md:text-5xl font-extrabold text-foreground leading-[1.08] tracking-tight mb-5">
                 Apsaugokite savo
                 <br />
                 <span className="text-gradient-primary">skaitmeninį pasaulį</span>
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
+              <p className="text-base text-muted-foreground leading-relaxed mb-7 max-w-xl">
                 Objektyvios antivirusinių programų apžvalgos, saugumo gidai ir patarimai — viskas lietuvių kalba, be reklaminės šiukšlės.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
                   to="/antivirusines-programos"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] text-sm shadow-lg shadow-primary/20"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] text-sm shadow-sm"
                 >
                   Antivirusinių apžvalgos
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   to="/virusai/kompiuterinis-virusas"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-secondary border border-border/60 text-secondary-foreground font-heading font-semibold rounded-lg hover:bg-secondary/80 hover:border-border transition-all duration-200 active:scale-[0.97] text-sm"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-card border border-border/60 text-foreground font-heading font-semibold rounded-lg hover:bg-muted/60 transition-all duration-200 active:scale-[0.97] text-sm"
                 >
                   Virusai ir grėsmės
                 </Link>
@@ -72,16 +70,16 @@ const HomePage = () => {
       </section>
 
       {/* Categories */}
-      <section className="container py-16">
+      <section className="container py-14">
         <ScrollReveal>
-          <div className="flex items-center gap-2.5 mb-7">
-            <Sparkles className="w-5 h-5 text-primary/60" />
-            <h2 className="font-heading text-2xl font-bold text-foreground">Tyrinėkite pagal temą</h2>
+          <div className="flex items-center gap-2 mb-6">
+            <Sparkles className="w-4.5 h-4.5 text-primary/50" />
+            <h2 className="font-heading text-xl font-bold text-foreground">Tyrinėkite pagal temą</h2>
           </div>
         </ScrollReveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {categoryLinks.map((cat, i) => (
-            <ScrollReveal key={cat.path} delay={i * 70}>
+            <ScrollReveal key={cat.path} delay={i * 60}>
               <CategoryCard {...cat} />
             </ScrollReveal>
           ))}
@@ -90,18 +88,18 @@ const HomePage = () => {
 
       {/* Featured articles */}
       {featured.length > 0 && (
-        <section className="container py-16">
+        <section className="container py-14">
           <ScrollReveal>
-            <div className="flex items-center justify-between mb-7">
-              <h2 className="font-heading text-2xl font-bold text-foreground">Populiariausi straipsniai</h2>
-              <Link to="/antivirusines-programos" className="text-sm text-primary font-heading font-medium hover:underline hidden sm:inline-flex items-center gap-1 transition-colors duration-200">
-                Visi straipsniai <ArrowRight className="w-4 h-4" />
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="font-heading text-xl font-bold text-foreground">Populiariausi straipsniai</h2>
+              <Link to="/antivirusines-programos" className="text-sm text-primary font-heading font-medium hover:underline hidden sm:inline-flex items-center gap-1">
+                Visi straipsniai <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {featured.map((a, i) => (
-              <ScrollReveal key={a.path} delay={i * 90}>
+              <ScrollReveal key={a.path} delay={i * 80}>
                 <ArticleCard article={a} />
               </ScrollReveal>
             ))}
@@ -111,7 +109,7 @@ const HomePage = () => {
 
       {/* Comparison */}
       {comparisonProducts && comparisonProducts.length > 0 && (
-        <section className="container py-16">
+        <section className="container py-14">
           <ScrollReveal>
             <ComparisonTable products={comparisonProducts} />
           </ScrollReveal>
@@ -120,18 +118,14 @@ const HomePage = () => {
 
       {/* Latest guides */}
       {latest.length > 0 && (
-        <section className="relative border-y border-border/30">
-          <div className="absolute inset-0 bg-card/30" />
-          <div className="container relative py-16">
+        <section className="border-y border-border/40 bg-muted/30">
+          <div className="container py-14">
             <ScrollReveal>
-              <div className="flex items-center gap-2.5 mb-7">
-                <TrendingUp className="w-5 h-5 text-primary/60" />
-                <h2 className="font-heading text-2xl font-bold text-foreground">Naujausi gidai</h2>
-              </div>
+              <h2 className="font-heading text-xl font-bold text-foreground mb-6">Naujausi gidai</h2>
             </ScrollReveal>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {latest.map((a, i) => (
-                <ScrollReveal key={a.path} delay={i * 70}>
+                <ScrollReveal key={a.path} delay={i * 60}>
                   <ArticleCard article={a} />
                 </ScrollReveal>
               ))}
@@ -141,7 +135,7 @@ const HomePage = () => {
       )}
 
       {/* Trust */}
-      <section className="container py-16">
+      <section className="container py-14">
         <ScrollReveal>
           <TrustDisclosure />
         </ScrollReveal>

@@ -1,13 +1,11 @@
 import PageLayout from '@/components/site/PageLayout';
-import Breadcrumbs, { type BreadcrumbItem } from '@/components/site/Breadcrumbs';
+import Breadcrumbs from '@/components/site/Breadcrumbs';
 import ScrollReveal from '@/components/site/ScrollReveal';
 import ArticleCard from '@/components/content/ArticleCard';
-import ComparisonTable from '@/components/content/ComparisonTable';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import AntivirusLandingPage from '@/pages/AntivirusLandingPage';
 import { usePageMeta } from '@/hooks/usePageMeta';
-import { useComparisonProducts } from '@/hooks/usePublicData';
 import type { PublicCategory } from '@/types/content';
 
 interface Props {
@@ -15,7 +13,6 @@ interface Props {
 }
 
 const CategoryPage = ({ category }: Props) => {
-  // Flagship landing pages get their own dedicated component
   if (category.path === '/antivirusines-programos') {
     return <AntivirusLandingPage category={category} />;
   }
@@ -38,24 +35,20 @@ const CategoryPage = ({ category }: Props) => {
         ]} />
 
         <ScrollReveal>
-          <div className="relative rounded-2xl overflow-hidden border border-border/40 p-8 md:p-12 mb-12">
-            <div className="absolute inset-0 gradient-mesh" />
-            <div className="absolute inset-0 bg-card/40" />
-            <div className="relative">
-              <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4">{category.title}</h1>
-              <p className="text-muted-foreground max-w-2xl leading-relaxed">{category.description}</p>
-            </div>
+          <div className="mb-10 max-w-2xl">
+            <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-3">{category.title}</h1>
+            <p className="text-muted-foreground leading-relaxed">{category.description}</p>
           </div>
         </ScrollReveal>
 
         {categoryArticles.length > 0 && (
-          <section className="mb-14">
+          <section className="mb-12">
             <ScrollReveal>
-              <h2 className="font-heading text-2xl font-bold text-foreground mb-6">Straipsniai ir gidai</h2>
+              <h2 className="font-heading text-xl font-bold text-foreground mb-5">Straipsniai ir gidai</h2>
             </ScrollReveal>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {categoryArticles.map((a, i) => (
-                <ScrollReveal key={a.path} delay={i * 80}>
+                <ScrollReveal key={a.path} delay={i * 70}>
                   <ArticleCard article={a} />
                 </ScrollReveal>
               ))}

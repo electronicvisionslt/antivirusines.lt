@@ -9,33 +9,32 @@ interface AffiliateCTAProps {
 }
 
 const AffiliateCTA = ({ productName, description, price, affiliateUrl, ctaText = 'Išbandyti dabar' }: AffiliateCTAProps) => (
-  <div className="my-8 rounded-xl border border-primary/15 bg-primary/[0.03] p-6 glow-border relative overflow-hidden">
-    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-    <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+  <div className="my-8 rounded-lg border border-primary/12 bg-primary/[0.02] p-5">
+    <div className="flex flex-col sm:flex-row sm:items-center gap-4">
       <div className="flex-1">
-        <p className="text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-1.5">Redakcijos pasirinkimas</p>
-        <h4 className="font-heading font-bold text-foreground text-lg">{productName}</h4>
-        <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{description}</p>
-        {price && <p className="text-sm font-semibold text-foreground mt-2">{price}</p>}
+        <p className="text-[10px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-1">Redakcijos pasirinkimas</p>
+        <h4 className="font-heading font-bold text-foreground text-base">{productName}</h4>
+        <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{description}</p>
+        {price && <p className="text-sm font-semibold text-foreground mt-1.5">{price}</p>}
       </div>
       {affiliateUrl ? (
         <a
           href={affiliateUrl}
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
-          className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-heading font-semibold rounded-lg hover:bg-accent/90 transition-all duration-200 active:scale-[0.97] text-sm glow-accent"
+          className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] text-sm shadow-sm"
         >
           {ctaText}
-          <ExternalLink className="w-4 h-4" />
+          <ExternalLink className="w-3.5 h-3.5" />
         </a>
       ) : (
-        <span className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-accent/50 text-accent-foreground font-heading font-semibold rounded-lg text-sm cursor-default">
+        <span className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-muted text-muted-foreground font-heading font-semibold rounded-lg text-sm cursor-default">
           {ctaText}
-          <ExternalLink className="w-4 h-4" />
+          <ExternalLink className="w-3.5 h-3.5" />
         </span>
       )}
     </div>
-    <p className="text-[11px] text-muted-foreground/60 mt-4 pt-3 border-t border-border/40">* Ši nuoroda yra affiliate partnerio nuoroda. Jums tai nekainuoja papildomai.</p>
+    <p className="text-[10px] text-muted-foreground/50 mt-3 pt-2.5 border-t border-border/40">* Ši nuoroda yra affiliate partnerio nuoroda. Jums tai nekainuoja papildomai.</p>
   </div>
 );
 
