@@ -1,5 +1,5 @@
 import {
-  Star, ExternalLink, Shield, Smartphone, Monitor, ChevronRight, CheckCircle2, XCircle,
+  Shield, Smartphone, Monitor, ChevronRight, CheckCircle2, XCircle,
   Clock, BarChart3, Layers, Award, Heart, Zap, Lock, Users, ChevronDown,
   Check, X, Filter, Laptop, Globe, ShieldCheck, HelpCircle, BadgeCheck, ArrowRight,
 } from 'lucide-react';
@@ -12,83 +12,9 @@ import { useComparisonProducts, type PublicProduct } from '@/hooks/usePublicData
 import type { PublicCategory } from '@/types/content';
 import { Link } from 'react-router-dom';
 import { useState, useMemo } from 'react';
+import { ProductLogo, RatingStars, AffiliateButton, FeatureCheck, PlatformTags, SectionHeading, useUpdatedLabel } from '@/components/landing/LandingShared';
 
 interface Props { category: PublicCategory }
-
-/* ── Helpers ── */
-
-function ProductLogo({ product, size = 40 }: { product: PublicProduct; size?: number }) {
-  if (product.logoUrl) {
-    return (
-      <div className="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden"
-           style={{ width: size + 12, height: size + 12 }}>
-        <img src={product.logoUrl} alt={`${product.name} logotipas`} width={size} height={size} className="object-contain" loading="lazy" />
-      </div>
-    );
-  }
-  return (
-    <div className="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1"
-         style={{ width: size + 12, height: size + 12 }}>
-      <span className="font-heading font-bold text-primary" style={{ fontSize: size * 0.38 }}>
-        {product.brand?.slice(0, 2).toUpperCase() || product.name.slice(0, 2).toUpperCase()}
-      </span>
-    </div>
-  );
-}
-
-function RatingStars({ rating }: { rating: number }) {
-  return (
-    <div className="flex items-center gap-0.5">
-      {[1, 2, 3, 4, 5].map(s => (
-        <Star key={s} className={`w-3.5 h-3.5 ${s <= Math.round(rating) ? 'fill-amber-400 text-amber-400' : 'fill-muted text-muted-foreground/20'}`} />
-      ))}
-      <span className="ml-1.5 text-xs font-bold text-foreground tabular-nums">{rating.toFixed(1)}</span>
-    </div>
-  );
-}
-
-function AffiliateButton({ product, className = '', label }: { product: PublicProduct; className?: string; label?: string }) {
-  if (!product.affiliateUrl) return null;
-  return (
-    <a href={product.affiliateUrl} target="_blank" rel="nofollow sponsored noopener noreferrer"
-       className={`inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary ${className}`}>
-      {label || 'Apsilankyti'}<ExternalLink className="w-3.5 h-3.5" />
-    </a>
-  );
-}
-
-function FeatureCheck({ value }: { value: boolean | string }) {
-  if (value === true) return <Check className="w-4 h-4 text-success mx-auto" />;
-  if (value === false) return <X className="w-4 h-4 text-muted-foreground/25 mx-auto" />;
-  return <span className="text-xs text-muted-foreground">{value}</span>;
-}
-
-function PlatformTags({ platforms }: { platforms: string[] }) {
-  const icons: Record<string, typeof Monitor> = { Windows: Monitor, Mac: Laptop, Android: Smartphone, iOS: Smartphone };
-  return (
-    <div className="flex flex-wrap gap-1">
-      {platforms.slice(0, 4).map(p => {
-        const Icon = icons[p] || Globe;
-        return (
-          <span key={p} className="chip-muted">
-            <Icon className="w-2.5 h-2.5" />{p}
-          </span>
-        );
-      })}
-    </div>
-  );
-}
-
-/* ── Section heading component ── */
-function SectionHeading({ label, title, subtitle, className = '' }: { label?: string; title: string; subtitle?: string; className?: string }) {
-  return (
-    <div className={className}>
-      {label && <span className="section-label mb-2 block">{label}</span>}
-      <h2 className="font-heading text-2xl font-bold text-foreground leading-tight">{title}</h2>
-      {subtitle && <p className="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">{subtitle}</p>}
-    </div>
-  );
-}
 
 /* ── Jump links ── */
 const jumpLinks = [
