@@ -297,42 +297,74 @@ const AntivirusLandingPage = ({ category }: Props) => {
                   {i === 0 && <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary to-primary/40" />}
 
                   <div className="p-4 md:p-5">
-                    {/* ── Desktop: fixed grid layout ── */}
-                    <div className="hidden md:grid md:grid-cols-[28px_52px_180px_110px_90px_1fr_150px] lg:grid-cols-[28px_52px_200px_120px_100px_1fr_160px] xl:grid-cols-[30px_52px_220px_130px_110px_1fr_170px] items-start gap-x-3">
-                      {/* Col 1: Rank */}
+                    {/* ── Desktop: compact header row ── */}
+                    <div className="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
                       <span className={`font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}`}>
                         {i + 1}
                       </span>
-                      {/* Col 2: Logo */}
                       <ProductLogo product={product} size={36} />
-                      {/* Col 3: Name + best-for */}
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="font-heading font-bold text-foreground text-[15px] leading-tight truncate">{product.name}</h3>
+                          <h3 className="font-heading font-bold text-foreground text-[15px] leading-tight">{product.name}</h3>
                           {i === 0 && <span className="chip-primary">Nr. 1</span>}
                           {product.freeVersion && i !== 0 && <span className="chip-success">Nemokama</span>}
                         </div>
-                        <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug truncate">{product.bestFor}</p>
+                        <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{product.bestFor}</p>
                       </div>
-                      {/* Col 4: Rating */}
                       <RatingStars rating={product.rating} />
-                      {/* Col 5: Price */}
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-sm font-heading font-bold text-foreground whitespace-nowrap">{product.pricingSummary}</span>
-                      </div>
-                      {/* Col 6: Verdict */}
-                      <p className="text-[12px] text-muted-foreground leading-relaxed">
-                        {product.verdict || product.shortDescription}
-                      </p>
-                      {/* Col 7: CTA */}
+                      <span className="text-sm font-heading font-bold text-foreground whitespace-nowrap">{product.pricingSummary}</span>
                       <div className="justify-self-end">
                         <AffiliateButton product={product} className="px-5 py-2.5 text-sm whitespace-nowrap" label="Gauti pasiūlymą" />
                       </div>
                     </div>
 
+                    {/* ── Desktop: verdict + details below ── */}
+                    <div className="hidden md:block mt-3 pt-3 border-t border-border/30">
+                      <p className="text-[12.5px] text-muted-foreground leading-relaxed mb-3">
+                        {product.verdict || product.shortDescription}
+                      </p>
+                      <div className="grid grid-cols-3 gap-x-4 gap-y-2">
+                        <div>
+                          <p className="section-label text-[9px] mb-1.5">Privalumai</p>
+                          <ul className="space-y-0.5">
+                            {product.pros.slice(0, 3).map((pro, j) => (
+                              <li key={j} className="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">
+                                <CheckCircle2 className="w-3 h-3 text-success mt-0.5 shrink-0" />{pro}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="section-label text-[9px] mb-1.5">Trūkumai</p>
+                          <ul className="space-y-0.5">
+                            {product.cons.slice(0, 2).map((con, j) => (
+                              <li key={j} className="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">
+                                <XCircle className="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" />{con}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="section-label text-[9px] mb-1.5">Funkcijos</p>
+                          <div className="flex flex-wrap gap-x-3 gap-y-1 mb-1.5">
+                            {featureCols.map(col => {
+                              const val = product.features[col.key];
+                              return (
+                                <span key={col.key} className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
+                                  {val === true ? <Check className="w-3 h-3 text-success" /> : <X className="w-3 h-3 text-muted-foreground/25" />}
+                                  {col.label}
+                                </span>
+                              );
+                            })}
+                          </div>
+                          {product.supportedPlatforms.length > 0 && <PlatformTags platforms={product.supportedPlatforms} />}
+                        </div>
+                      </div>
+                    </div>
+
                     {/* ── Mobile layout ── */}
                     <div className="md:hidden">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 mb-2">
                         <span className={`font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}`}>
                           {i + 1}
                         </span>
@@ -346,52 +378,49 @@ const AntivirusLandingPage = ({ category }: Props) => {
                           <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{product.bestFor}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4 mt-2">
+                      <div className="flex items-center gap-4 mb-2">
                         <RatingStars rating={product.rating} />
                         <span className="text-sm font-heading font-bold text-foreground">{product.pricingSummary}</span>
                       </div>
-                      <div className="mt-2">
-                        <AffiliateButton product={product} className="px-5 py-2.5 text-sm w-full" label="Gauti pasiūlymą" />
-                      </div>
-                    </div>
-
-                    {/* ── Pros / Cons / Features (both) ── */}
-                    <div className="mt-3 pt-3 border-t border-border/30 grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-2">
-                      <div>
-                        <p className="section-label text-[9px] mb-1.5">Privalumai</p>
-                        <ul className="space-y-0.5">
-                          {product.pros.slice(0, 3).map((pro, j) => (
-                            <li key={j} className="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">
-                              <CheckCircle2 className="w-3 h-3 text-success mt-0.5 shrink-0" />{pro}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <p className="section-label text-[9px] mb-1.5">Trūkumai</p>
-                        <ul className="space-y-0.5">
-                          {product.cons.slice(0, 2).map((con, j) => (
-                            <li key={j} className="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">
-                              <XCircle className="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" />{con}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <p className="section-label text-[9px] mb-1.5">Funkcijos</p>
-                        <div className="flex flex-wrap gap-x-3 gap-y-1 mb-1.5">
-                          {featureCols.map(col => {
-                            const val = product.features[col.key];
-                            return (
-                              <span key={col.key} className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
-                                {val === true ? <Check className="w-3 h-3 text-success" /> : <X className="w-3 h-3 text-muted-foreground/25" />}
-                                {col.label}
-                              </span>
-                            );
-                          })}
+                      <p className="text-[12px] text-muted-foreground leading-relaxed mb-2">{product.verdict || product.shortDescription}</p>
+                      <div className="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                        <div>
+                          <p className="section-label text-[9px] mb-1">Privalumai</p>
+                          <ul className="space-y-0.5">
+                            {product.pros.slice(0, 3).map((pro, j) => (
+                              <li key={j} className="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">
+                                <CheckCircle2 className="w-3 h-3 text-success mt-0.5 shrink-0" />{pro}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                        {product.supportedPlatforms.length > 0 && <PlatformTags platforms={product.supportedPlatforms} />}
+                        <div>
+                          <p className="section-label text-[9px] mb-1">Trūkumai</p>
+                          <ul className="space-y-0.5">
+                            {product.cons.slice(0, 2).map((con, j) => (
+                              <li key={j} className="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">
+                                <XCircle className="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" />{con}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="section-label text-[9px] mb-1">Funkcijos</p>
+                          <div className="flex flex-wrap gap-x-3 gap-y-1 mb-1">
+                            {featureCols.map(col => {
+                              const val = product.features[col.key];
+                              return (
+                                <span key={col.key} className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
+                                  {val === true ? <Check className="w-3 h-3 text-success" /> : <X className="w-3 h-3 text-muted-foreground/25" />}
+                                  {col.label}
+                                </span>
+                              );
+                            })}
+                          </div>
+                          {product.supportedPlatforms.length > 0 && <PlatformTags platforms={product.supportedPlatforms} />}
+                        </div>
                       </div>
+                      <AffiliateButton product={product} className="px-5 py-2.5 text-sm w-full" label="Gauti pasiūlymą" />
                     </div>
                   </div>
                 </div>
