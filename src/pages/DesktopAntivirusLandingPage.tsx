@@ -399,7 +399,7 @@ const DesktopAntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 5. WINDOWS VS MAC — unique section ═══ */}
         <section id="windows-vs-mac" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Platformų palyginimas" title="Windows vs Mac: kur didesnė grėsmė?" subtitle="Objektyvus dviejų platformų saugumo palyginimas pagal 2025–2026 m. duomenis." className="mb-5" />
+          <SectionHeading title="Windows vs Mac: kur didesnė grėsmė?" subtitle="Objektyvus dviejų platformų saugumo palyginimas pagal 2025–2026 m. duomenis." className="mb-5" />
 
           {/* Key stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-5">

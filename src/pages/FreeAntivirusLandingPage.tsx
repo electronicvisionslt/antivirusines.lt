@@ -652,7 +652,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
         {/* ═══ 10. RELATED GUIDES ═══ */}
         <section className="mb-16">
           <div className="card-premium p-5 md:p-6">
-            <SectionHeading label="Susiję gidai" title="Kiti naudingi gidai" className="mb-4" />
+            <SectionHeading title="Kiti naudingi gidai" className="mb-4" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
               {relatedGuides.map(guide => {
                 const Icon = guide.icon;
