@@ -1,0 +1,1 @@
+UPDATE products SET logo_url = 'https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/eset-logo.svg' WHERE slug = 'eset-home-security';
