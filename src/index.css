@@ -154,317 +154,256 @@
   }
 }
 
-/* ═══════ CYBER COMMAND — immersive security theme ═══════ */
+/* ═══════════ DIGITAL TRUST LAB — Light Cyber Editorial ═══════════ */
 
-.cyber-cmd {
-  --cy-void: 228 35% 4%;
-  --cy-base: 225 30% 7%;
-  --cy-panel: 225 25% 10%;
-  --cy-panel-hover: 225 22% 13%;
-  --cy-border: 210 20% 16%;
-  --cy-border-glow: 185 100% 50%;
-  --cy-text: 180 10% 88%;
-  --cy-text-dim: 210 12% 52%;
-  --cy-text-muted: 210 10% 35%;
-  --cy-cyan: 185 100% 50%;
-  --cy-cyan-deep: 190 100% 38%;
-  --cy-neon: 145 100% 50%;
-  --cy-amber: 38 100% 55%;
-  --cy-red: 0 80% 58%;
-  --cy-magenta: 320 80% 55%;
+.dtl {
+  --dtl-bg: 210 20% 98%;
+  --dtl-bg-alt: 210 15% 95%;
+  --dtl-surface: 0 0% 100%;
+  --dtl-surface-hover: 210 20% 97%;
+  --dtl-border: 210 18% 90%;
+  --dtl-border-accent: 180 45% 75%;
+  --dtl-text: 215 25% 17%;
+  --dtl-text-secondary: 215 15% 40%;
+  --dtl-text-muted: 215 10% 55%;
+  --dtl-teal: 175 65% 38%;
+  --dtl-teal-light: 175 50% 92%;
+  --dtl-cyan: 188 75% 44%;
+  --dtl-emerald: 160 55% 42%;
+  --dtl-emerald-light: 160 40% 92%;
+  --dtl-navy: 220 30% 22%;
+  --dtl-amber: 38 90% 50%;
+  --dtl-amber-light: 38 80% 93%;
+  --dtl-red: 0 65% 52%;
+  --dtl-red-light: 0 50% 95%;
 
-  background: hsl(var(--cy-void));
-  color: hsl(var(--cy-text));
+  background: hsl(var(--dtl-bg));
+  color: hsl(var(--dtl-text));
   font-family: var(--font-sans);
 }
 
-/* ── Grid / Hex background ── */
-.cyber-cmd .cy-grid {
+/* ── Subtle grid background ── */
+.dtl .dtl-grid {
   background-image:
-    radial-gradient(circle at 1px 1px, hsla(185, 100%, 50%, 0.06) 1px, transparent 0);
-  background-size: 28px 28px;
+    radial-gradient(circle at 1px 1px, hsla(175, 65%, 38%, 0.07) 1px, transparent 0);
+  background-size: 32px 32px;
 }
 
-.cyber-cmd .cy-hex-bg {
-  background:
-    radial-gradient(ellipse 80% 40% at 15% 0%, hsla(185, 100%, 50%, 0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 60% at 85% 100%, hsla(320, 80%, 55%, 0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 30% at 50% 50%, hsla(145, 100%, 50%, 0.02) 0%, transparent 60%);
+/* ── Surface / Card ── */
+.dtl .dtl-card {
+  background: hsl(var(--dtl-surface));
+  border: 1px solid hsl(var(--dtl-border));
+  border-radius: 1rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.dtl .dtl-card:hover {
+  border-color: hsl(var(--dtl-border-accent));
+  box-shadow: 0 4px 20px hsla(175, 65%, 38%, 0.06), 0 1px 3px hsla(215, 25%, 17%, 0.04);
+}
+.dtl .dtl-card-featured {
+  border-color: hsl(var(--dtl-teal));
+  box-shadow: 0 0 0 1px hsla(175, 65%, 38%, 0.1), 0 8px 30px hsla(175, 65%, 38%, 0.08);
 }
 
-/* ── Panel / Card ── */
-.cyber-cmd .cy-panel {
-  background: hsl(var(--cy-panel));
-  border: 1px solid hsl(var(--cy-border));
-  transition: border-color 0.3s, box-shadow 0.3s;
+/* ── Section divider ── */
+.dtl .dtl-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--dtl-border)), transparent);
 }
 
-.cyber-cmd .cy-panel:hover {
-  border-color: hsla(185, 100%, 50%, 0.2);
-  box-shadow:
-    0 0 0 1px hsla(185, 100%, 50%, 0.05),
-    0 4px 20px hsla(228, 35%, 4%, 0.6);
-}
-
-.cyber-cmd .cy-panel-glow {
-  border-color: hsla(185, 100%, 50%, 0.25);
-  box-shadow:
-    0 0 15px hsla(185, 100%, 50%, 0.08),
-    0 0 30px hsla(185, 100%, 50%, 0.03),
-    inset 0 1px 0 hsla(185, 100%, 50%, 0.06);
-}
-
-.cyber-cmd .cy-panel-rank1 {
-  border-color: hsla(38, 100%, 55%, 0.3);
-  box-shadow:
-    0 0 20px hsla(38, 100%, 55%, 0.06),
-    inset 0 1px 0 hsla(38, 100%, 55%, 0.08);
-}
-
-/* ── Scan line animation ── */
-.cyber-cmd .cy-scanline {
-  position: relative;
-  overflow: hidden;
-}
-.cyber-cmd .cy-scanline::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    hsla(185, 100%, 50%, 0.015) 2px,
-    hsla(185, 100%, 50%, 0.015) 4px
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-.cyber-cmd .cy-scanline::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 5%, hsla(185, 100%, 60%, 0.5) 50%, transparent 95%);
-  animation: cy-sweep 5s ease-in-out infinite;
-  z-index: 2;
-  pointer-events: none;
-}
-@keyframes cy-sweep {
-  0% { top: -2px; opacity: 0; }
-  5% { opacity: 1; }
-  95% { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
-}
-
-/* ── Radar pulse ── */
-.cyber-cmd .cy-radar {
-  position: relative;
-}
-.cyber-cmd .cy-radar::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 1px solid hsla(185, 100%, 50%, 0.15);
-  transform: translate(-50%, -50%) scale(0.5);
-  animation: cy-ping 3s ease-out infinite;
-  pointer-events: none;
-}
-@keyframes cy-ping {
-  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
-  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
-}
-
-/* ── Gradient border (holographic) ── */
-.cyber-cmd .cy-holo-border {
-  position: relative;
-  border: 1px solid transparent;
-  background-clip: padding-box;
-}
-.cyber-cmd .cy-holo-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    hsla(185, 100%, 50%, 0.3),
-    hsla(320, 80%, 55%, 0.15),
-    hsla(145, 100%, 50%, 0.2),
-    hsla(185, 100%, 50%, 0.3)
-  );
-  z-index: -1;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  padding: 1px;
-  border-radius: inherit;
-}
-
-/* ── Typography ── */
-.cyber-cmd .cy-mono {
+/* ── Mono font ── */
+.dtl .dtl-mono {
   font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', ui-monospace, monospace;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
-.cyber-cmd .cy-glow-text {
-  color: hsl(var(--cy-cyan));
-  text-shadow: 0 0 10px hsla(185, 100%, 50%, 0.4), 0 0 30px hsla(185, 100%, 50%, 0.15);
-}
-
-.cyber-cmd .cy-gradient-text {
-  background: linear-gradient(135deg, hsl(185, 100%, 55%), hsl(145, 100%, 55%));
+/* ── Gradient text ── */
+.dtl .dtl-gradient-text {
+  background: linear-gradient(135deg, hsl(175, 65%, 38%), hsl(188, 75%, 44%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ── Buttons ── */
-.cyber-cmd .cy-btn {
-  background: linear-gradient(135deg, hsla(185, 100%, 50%, 0.15), hsla(185, 100%, 50%, 0.08));
-  border: 1px solid hsla(185, 100%, 50%, 0.3);
-  color: hsl(var(--cy-cyan));
-  transition: all 0.25s;
-  position: relative;
-  overflow: hidden;
-}
-.cyber-cmd .cy-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, hsla(185, 100%, 50%, 0.1), transparent);
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-.cyber-cmd .cy-btn:hover {
-  border-color: hsla(185, 100%, 50%, 0.5);
-  box-shadow: 0 0 20px hsla(185, 100%, 50%, 0.15), inset 0 0 20px hsla(185, 100%, 50%, 0.05);
-  transform: translateY(-1px);
-}
-.cyber-cmd .cy-btn:hover::before { opacity: 1; }
-
-.cyber-cmd .cy-btn-solid {
-  background: linear-gradient(135deg, hsl(185, 100%, 45%), hsl(190, 100%, 35%));
-  border: 1px solid hsla(185, 100%, 60%, 0.3);
-  color: hsl(var(--cy-void));
+/* ── Primary CTA button ── */
+.dtl .dtl-btn-primary {
+  background: linear-gradient(135deg, hsl(175, 65%, 38%), hsl(180, 60%, 32%));
+  color: hsl(0, 0%, 100%);
   font-weight: 700;
-  box-shadow: 0 2px 12px hsla(185, 100%, 50%, 0.2);
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px hsla(175, 65%, 38%, 0.25);
   transition: all 0.25s;
 }
-.cyber-cmd .cy-btn-solid:hover {
-  box-shadow: 0 4px 24px hsla(185, 100%, 50%, 0.35), 0 0 40px hsla(185, 100%, 50%, 0.1);
+.dtl .dtl-btn-primary:hover {
+  box-shadow: 0 4px 16px hsla(175, 65%, 38%, 0.35);
   transform: translateY(-1px);
 }
 
-/* ── Tags / Badges ── */
-.cyber-cmd .cy-badge {
-  background: hsla(185, 100%, 50%, 0.08);
-  border: 1px solid hsla(185, 100%, 50%, 0.2);
-  color: hsl(var(--cy-cyan));
+/* ── Ghost CTA button ── */
+.dtl .dtl-btn-ghost {
+  background: hsl(var(--dtl-teal-light));
+  color: hsl(var(--dtl-teal));
+  font-weight: 600;
+  border: 1px solid hsla(175, 65%, 38%, 0.2);
+  border-radius: 0.75rem;
+  transition: all 0.25s;
 }
-.cyber-cmd .cy-badge-green {
-  background: hsla(145, 100%, 50%, 0.06);
-  border: 1px solid hsla(145, 100%, 50%, 0.2);
-  color: hsl(var(--cy-neon));
-}
-.cyber-cmd .cy-badge-amber {
-  background: hsla(38, 100%, 55%, 0.08);
-  border: 1px solid hsla(38, 100%, 55%, 0.2);
-  color: hsl(var(--cy-amber));
-}
-.cyber-cmd .cy-badge-magenta {
-  background: hsla(320, 80%, 55%, 0.08);
-  border: 1px solid hsla(320, 80%, 55%, 0.2);
-  color: hsl(var(--cy-magenta));
+.dtl .dtl-btn-ghost:hover {
+  background: hsla(175, 65%, 38%, 0.12);
+  border-color: hsl(var(--dtl-teal));
 }
 
-/* ── Stat blocks ── */
-.cyber-cmd .cy-stat {
-  background: hsla(225, 25%, 10%, 0.8);
-  border: 1px solid hsl(var(--cy-border));
-  position: relative;
+/* ── Badges ── */
+.dtl .dtl-badge {
+  background: hsl(var(--dtl-teal-light));
+  color: hsl(var(--dtl-teal));
+  border: 1px solid hsla(175, 65%, 38%, 0.15);
 }
-.cyber-cmd .cy-stat::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 15%;
-  right: 15%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, hsla(185, 100%, 50%, 0.3), transparent);
+.dtl .dtl-badge-amber {
+  background: hsl(var(--dtl-amber-light));
+  color: hsl(var(--dtl-amber));
+  border: 1px solid hsla(38, 90%, 50%, 0.2);
+}
+.dtl .dtl-badge-emerald {
+  background: hsl(var(--dtl-emerald-light));
+  color: hsl(var(--dtl-emerald));
+  border: 1px solid hsla(160, 55%, 42%, 0.15);
+}
+.dtl .dtl-badge-red {
+  background: hsl(var(--dtl-red-light));
+  color: hsl(var(--dtl-red));
+  border: 1px solid hsla(0, 65%, 52%, 0.15);
+}
+
+/* ── Stats strip ── */
+.dtl .dtl-stat {
+  background: hsl(var(--dtl-surface));
+  border: 1px solid hsl(var(--dtl-border));
+  border-radius: 0.75rem;
 }
 
 /* ── Table ── */
-.cyber-cmd .cy-table-head {
-  background: hsla(225, 25%, 8%, 0.9);
-  border-bottom: 1px solid hsla(185, 100%, 50%, 0.15);
+.dtl .dtl-table-head {
+  background: hsl(var(--dtl-bg-alt));
+  border-bottom: 2px solid hsl(var(--dtl-border));
 }
-.cyber-cmd .cy-table-row {
-  border-bottom: 1px solid hsla(210, 20%, 16%, 0.5);
-  transition: background 0.2s;
+.dtl .dtl-table-row {
+  border-bottom: 1px solid hsl(var(--dtl-border));
+  transition: background 0.15s;
 }
-.cyber-cmd .cy-table-row:hover {
-  background: hsla(185, 100%, 50%, 0.03);
-}
-
-/* ── Divider ── */
-.cyber-cmd .cy-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, hsla(185, 100%, 50%, 0.2), hsla(320, 80%, 55%, 0.1), transparent);
+.dtl .dtl-table-row:hover {
+  background: hsla(175, 65%, 38%, 0.03);
 }
 
-/* ── Corner decorations ── */
-.cyber-cmd .cy-corners {
+/* ── Scan line — subtle light version ── */
+.dtl .dtl-scanline {
   position: relative;
+  overflow: hidden;
 }
-.cyber-cmd .cy-corners::before,
-.cyber-cmd .cy-corners::after {
+.dtl .dtl-scanline::after {
   content: '';
   position: absolute;
-  width: 12px;
-  height: 12px;
-  border-color: hsla(185, 100%, 50%, 0.3);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 10%, hsla(175, 65%, 38%, 0.35) 50%, transparent 90%);
+  animation: dtl-sweep 6s ease-in-out infinite;
+  z-index: 2;
   pointer-events: none;
 }
-.cyber-cmd .cy-corners::before {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid;
-  border-left: 2px solid;
-  border-color: inherit;
-}
-.cyber-cmd .cy-corners::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 2px solid;
-  border-right: 2px solid;
-  border-color: inherit;
-}
-
-/* ── Flicker animation for status indicators ── */
-@keyframes cy-flicker {
-  0%, 100% { opacity: 1; }
+@keyframes dtl-sweep {
+  0% { top: -1px; opacity: 0; }
+  8% { opacity: 1; }
   92% { opacity: 1; }
-  93% { opacity: 0.3; }
-  94% { opacity: 1; }
-  96% { opacity: 0.5; }
-  97% { opacity: 1; }
-}
-.cyber-cmd .cy-flicker {
-  animation: cy-flicker 4s ease-in-out infinite;
+  100% { top: 100%; opacity: 0; }
 }
 
-/* ── Progress bar glow ── */
-@keyframes cy-pulse-bar {
-  0%, 100% { box-shadow: 0 0 4px hsla(185, 100%, 50%, 0.3); }
-  50% { box-shadow: 0 0 12px hsla(185, 100%, 50%, 0.6); }
+/* ── Pulse ring for icons ── */
+.dtl .dtl-pulse {
+  position: relative;
 }
-.cyber-cmd .cy-pulse-bar {
-  animation: cy-pulse-bar 2s ease-in-out infinite;
+.dtl .dtl-pulse::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  border-radius: inherit;
+  border: 1px solid hsla(175, 65%, 38%, 0.2);
+  transform: translate(-50%, -50%) scale(0.8);
+  animation: dtl-ring 3s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes dtl-ring {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+}
+
+/* ── Sticky decision bar ── */
+.dtl .dtl-sticky-bar {
+  background: hsla(0, 0%, 100%, 0.92);
+  backdrop-filter: blur(12px) saturate(1.3);
+  -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  border-bottom: 1px solid hsl(var(--dtl-border));
+  box-shadow: 0 2px 12px hsla(215, 25%, 17%, 0.06);
+}
+
+/* ── Methodology node ── */
+.dtl .dtl-method-node {
+  background: hsl(var(--dtl-surface));
+  border: 1px solid hsl(var(--dtl-border));
+  border-radius: 1rem;
+  position: relative;
+  transition: all 0.3s;
+}
+.dtl .dtl-method-node::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  width: 2px; height: 8px;
+  background: hsl(var(--dtl-teal));
+  transform: translateX(-50%);
+  border-radius: 0 0 2px 2px;
+}
+.dtl .dtl-method-node:hover {
+  border-color: hsl(var(--dtl-teal));
+  box-shadow: 0 4px 16px hsla(175, 65%, 38%, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ── Corner accents ── */
+.dtl .dtl-corners {
+  position: relative;
+}
+.dtl .dtl-corners::before,
+.dtl .dtl-corners::after {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  pointer-events: none;
+}
+.dtl .dtl-corners::before {
+  top: -1px; left: -1px;
+  border-top: 2px solid hsl(var(--dtl-teal));
+  border-left: 2px solid hsl(var(--dtl-teal));
+  border-radius: 1rem 0 0 0;
+}
+.dtl .dtl-corners::after {
+  bottom: -1px; right: -1px;
+  border-bottom: 2px solid hsl(var(--dtl-teal));
+  border-right: 2px solid hsl(var(--dtl-teal));
+  border-radius: 0 0 1rem 0;
+}
+
+/* ── Rating bar (light) ── */
+.dtl .dtl-rating-track {
+  background: hsl(var(--dtl-bg-alt));
+  border-radius: 999px;
+  overflow: hidden;
+}
+.dtl .dtl-rating-fill {
+  background: linear-gradient(90deg, hsl(var(--dtl-teal)), hsl(var(--dtl-cyan)));
+  border-radius: 999px;
+  height: 100%;
+  transition: width 0.4s ease-out;
 }
