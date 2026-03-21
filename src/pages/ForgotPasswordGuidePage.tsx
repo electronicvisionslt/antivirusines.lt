@@ -125,7 +125,7 @@ const ForgotPasswordGuidePage = ({ category }: Props) => {
               Ką daryti pamiršus slaptažodį: atkūrimo gidas 2026 m.
             </h1>
             <p className="text-muted-foreground leading-relaxed">
-              Pamiršote slaptažodį? Nerimas — tai viena dažniausių problemų internete. 
+              Pamiršote slaptažodį? Nesijaudinkite — tai viena dažniausių problemų internete. 
               Žemiau rasite žingsnis po žingsnio instrukcijas, kaip atkurti prieigą prie populiariausių platformų.
             </p>
           </div>
