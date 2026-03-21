@@ -164,7 +164,7 @@ const ParentalControlLandingPage = ({ category }: Props) => {
         {/* ═══ 3. TOP 5 ═══ */}
         {top5.length > 0 && (
           <section id="top-5" className="mb-16 scroll-mt-20">
-            <SectionHeading label="Redakcijos pasirinkimas" title="Top 5 tėvų kontrolės programėlės" subtitle="Geriausios programos vaiko saugumui internete — palygintos pagal funkcijas, kainą ir patogumą." className="mb-6" />
+            <SectionHeading title="Top 5 tėvų kontrolės programėlės" subtitle="Geriausios programos vaiko saugumui internete — palygintos pagal funkcijas, kainą ir patogumą." className="mb-6" />
 
             <div className="space-y-3">
               {top5.map((product, i) => (
