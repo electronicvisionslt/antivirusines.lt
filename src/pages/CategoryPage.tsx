@@ -9,6 +9,10 @@ import FreeAntivirusLandingPage from '@/pages/FreeAntivirusLandingPage';
 import MobileAntivirusLandingPage from '@/pages/MobileAntivirusLandingPage';
 import DesktopAntivirusLandingPage from '@/pages/DesktopAntivirusLandingPage';
 import ParentalControlLandingPage from '@/pages/ParentalControlLandingPage';
+import PasswordSecurityHubPage from '@/pages/PasswordSecurityHubPage';
+import GmailPasswordGuidePage from '@/pages/GmailPasswordGuidePage';
+import WifiPasswordGuidePage from '@/pages/WifiPasswordGuidePage';
+import ForgotPasswordGuidePage from '@/pages/ForgotPasswordGuidePage';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import type { PublicCategory } from '@/types/content';
 
@@ -31,6 +35,18 @@ const CategoryPage = ({ category }: Props) => {
   }
   if (category.path === '/tevu-kontrole') {
     return <ParentalControlLandingPage category={category} />;
+  }
+  if (category.path === '/slaptazodziu-saugumas') {
+    return <PasswordSecurityHubPage category={category} />;
+  }
+  if (category.path === '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi') {
+    return <GmailPasswordGuidePage category={category} />;
+  }
+  if (category.path === '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi') {
+    return <WifiPasswordGuidePage category={category} />;
+  }
+  if (category.path === '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi') {
+    return <ForgotPasswordGuidePage category={category} />;
   }
 
   usePageMeta({
