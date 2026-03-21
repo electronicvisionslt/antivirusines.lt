@@ -160,7 +160,7 @@ const buyerGuide = [
 
 const AntivirusLandingPage = ({ category }: Props) => {
   usePageMeta({
-    title: category.seoTitle || 'Geriausios antivirusinės programos 2025 — palyginimas ir apžvalgos',
+    title: category.seoTitle || 'Geriausios antivirusinės programos 2026 — palyginimas ir apžvalgos',
     description: category.metaDescription || 'Nepriklausomos antivirusinių programų apžvalgos ir palyginimas. Raskite geriausią antivirusinę savo kompiuteriui, telefonui ar šeimai.',
     canonicalUrl: category.canonicalUrl || undefined,
   });
