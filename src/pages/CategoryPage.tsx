@@ -25,6 +25,9 @@ const CategoryPage = ({ category }: Props) => {
   if (category.path === '/antivirusines-programos/telefonui') {
     return <MobileAntivirusLandingPage category={category} />;
   }
+  if (category.path === '/tevu-kontrole') {
+    return <ParentalControlLandingPage category={category} />;
+  }
 
   usePageMeta({
     title: category.seoTitle || category.title,
