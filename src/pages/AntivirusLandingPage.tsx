@@ -219,7 +219,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                 <a href="#top-5" className="card-premium-featured p-3.5 flex items-center gap-3 hover-lift group">
                   <ProductLogo product={bestOverall} size={32} />
                   <div className="min-w-0">
-                    <span className="chip-primary mb-1">Geriausia 2025</span>
+                    <span className="chip-primary mb-1">Geriausia 2026</span>
                     <span className="text-sm text-foreground font-semibold block leading-tight">{bestOverall.name}</span>
                     <span className="text-[11px] text-muted-foreground">{bestOverall.pricingSummary}</span>
                   </div>
