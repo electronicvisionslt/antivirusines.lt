@@ -499,7 +499,7 @@ const ParentalControlLandingPage = ({ category }: Props) => {
 
         {/* ═══ 6. USE CASES ═══ */}
         <section id="kam-tinka" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Pagal poreikį" title="Geriausia tėvų kontrolė pagal situaciją" subtitle="Pasirinkite savo situaciją — parodysime tinkamiausią sprendimą." className="mb-5" />
+          <SectionHeading title="Geriausia tėvų kontrolė pagal situaciją" subtitle="Pasirinkite savo situaciją — parodysime tinkamiausią sprendimą." className="mb-5" />
 
           {(() => {
             const useCaseProducts = useCases.map(uc => {
