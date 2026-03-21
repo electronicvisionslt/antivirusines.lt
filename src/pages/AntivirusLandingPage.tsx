@@ -326,7 +326,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                       </div>
 
                       {/* Verdict (desktop) */}
-                      <p className="hidden lg:block flex-1 text-[13px] text-muted-foreground leading-relaxed line-clamp-2 max-w-xs">
+                      <p className="hidden lg:block flex-1 text-[13px] text-muted-foreground leading-relaxed max-w-sm min-h-[3.5rem]">
                         {product.verdict || product.shortDescription}
                       </p>
 
