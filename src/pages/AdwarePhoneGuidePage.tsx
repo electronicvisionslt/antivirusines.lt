@@ -17,7 +17,7 @@ interface Props { category: PublicCategory }
 const adwareSymptoms = [
   'Pop-up reklamos atsiranda užrakinimo ekrane',
   'Reklaminiai langai iššoka naudojant bet kokią programėlę',
-  'Naršyklė atidaromu nežinomas svetaines savaime',
+  'Naršyklė atidaro nežinomas svetaines savaime',
   'Atsiranda pilno ekrano reklamos, kurių negalite uždaryti',
   'Telefonas veikia lėčiau, baterija greitai senka',
   'Padidėjęs duomenų naudojimas (reklamos siunčia duomenis fone)',
