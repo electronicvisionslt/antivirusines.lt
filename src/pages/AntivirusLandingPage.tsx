@@ -622,7 +622,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
             })}
           </div>
 
-          <div className="mt-4 card-premium p-4 max-w-2xl" style={{ background: 'hsl(210 18% 96%)' }}>
+          <div className="mt-4 card-premium p-4 max-w-2xl bg-muted/40">
             <p className="text-[13px] text-muted-foreground leading-relaxed">
               <strong className="text-foreground font-heading">Bendra taisyklė:</strong> jei apsaugote tik vieną Windows kompiuterį ir naršote atsargiai — Windows Defender arba nemokama antivirusinė gali pakakti. Jei turite 2+ įrenginius, telefoną ar šeimą — investuokite į mokamą programą. Kaina dažnai siekia vos 3–5&nbsp;€ per mėnesį.
             </p>
