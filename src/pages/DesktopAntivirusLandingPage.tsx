@@ -290,7 +290,7 @@ const DesktopAntivirusLandingPage = ({ category }: Props) => {
         {/* ═══ 4. COMPARISON TABLE ═══ */}
         {products.length > 0 && (
           <section id="palyginimas" className="mb-16 scroll-mt-20">
-            <SectionHeading label="Funkcijų lentelė" title="Detalus palyginimas" subtitle="Visų vertinamų programų funkcijų ir kainų palyginimas vienoje lentelėje." className="mb-5" />
+            <SectionHeading title="Detalus palyginimas" subtitle="Visų vertinamų programų funkcijų ir kainų palyginimas vienoje lentelėje." className="mb-5" />
 
             {(() => {
               const colCount = products.length;
