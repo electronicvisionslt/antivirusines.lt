@@ -13,6 +13,10 @@ import PasswordSecurityHubPage from '@/pages/PasswordSecurityHubPage';
 import GmailPasswordGuidePage from '@/pages/GmailPasswordGuidePage';
 import WifiPasswordGuidePage from '@/pages/WifiPasswordGuidePage';
 import ForgotPasswordGuidePage from '@/pages/ForgotPasswordGuidePage';
+import ComputerVirusGuidePage from '@/pages/ComputerVirusGuidePage';
+import PhoneVirusGuidePage from '@/pages/PhoneVirusGuidePage';
+import VirusCheckGuidePage from '@/pages/VirusCheckGuidePage';
+import AdwarePhoneGuidePage from '@/pages/AdwarePhoneGuidePage';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import type { PublicCategory } from '@/types/content';
 
@@ -20,33 +24,27 @@ interface Props {
   category: PublicCategory;
 }
 
+/* Map of category paths to their flagship components */
+const flagshipPages: Record<string, React.ComponentType<{ category: PublicCategory }>> = {
+  '/antivirusines-programos': AntivirusLandingPage,
+  '/antivirusines-programos/nemokamos': FreeAntivirusLandingPage,
+  '/antivirusines-programos/telefonui': MobileAntivirusLandingPage,
+  '/antivirusines-programos/kompiuteriui': DesktopAntivirusLandingPage,
+  '/tevu-kontrole': ParentalControlLandingPage,
+  '/slaptazodziu-saugumas': PasswordSecurityHubPage,
+  '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi': GmailPasswordGuidePage,
+  '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi': WifiPasswordGuidePage,
+  '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi': ForgotPasswordGuidePage,
+  '/virusai/kompiuterinis-virusas': ComputerVirusGuidePage,
+  '/virusai/virusas-telefone': PhoneVirusGuidePage,
+  '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas': VirusCheckGuidePage,
+  '/virusai/reklamos-virusas-telefone': AdwarePhoneGuidePage,
+};
+
 const CategoryPage = ({ category }: Props) => {
-  if (category.path === '/antivirusines-programos') {
-    return <AntivirusLandingPage category={category} />;
-  }
-  if (category.path === '/antivirusines-programos/nemokamos') {
-    return <FreeAntivirusLandingPage category={category} />;
-  }
-  if (category.path === '/antivirusines-programos/telefonui') {
-    return <MobileAntivirusLandingPage category={category} />;
-  }
-  if (category.path === '/antivirusines-programos/kompiuteriui') {
-    return <DesktopAntivirusLandingPage category={category} />;
-  }
-  if (category.path === '/tevu-kontrole') {
-    return <ParentalControlLandingPage category={category} />;
-  }
-  if (category.path === '/slaptazodziu-saugumas') {
-    return <PasswordSecurityHubPage category={category} />;
-  }
-  if (category.path === '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi') {
-    return <GmailPasswordGuidePage category={category} />;
-  }
-  if (category.path === '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi') {
-    return <WifiPasswordGuidePage category={category} />;
-  }
-  if (category.path === '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi') {
-    return <ForgotPasswordGuidePage category={category} />;
+  const FlagshipComponent = flagshipPages[category.path];
+  if (FlagshipComponent) {
+    return <FlagshipComponent category={category} />;
   }
 
   usePageMeta({
