@@ -51,10 +51,10 @@ const hubCards = [
 
 /* ── Why trust us ── */
 const trustPoints = [
-  { icon: Eye, title: 'Testuojame realiai', desc: 'Kiekviena programa instaliuojama, tikrinama ir vertinama mūsų komandos.' },
-  { icon: ShieldCheck, title: 'Nepriklausomi', desc: 'Jokio gamintojo nerekomenduojame vien už pinigus — tik pagal kokybę.' },
-  { icon: Globe, title: 'Lietuvių kalba', desc: 'Visa informacija pritaikyta lietuviškai kalbančiai auditorijai.' },
-  { icon: TrendingUp, title: 'Nuolat atnaujiname', desc: 'Duomenys atnaujinami kas ketvirtį pagal naujausius testus.' },
+  { icon: Eye, title: 'Aiškūs kriterijai', desc: 'Lyginame apsaugą, funkcijas, kainą ir naudojimo paprastumą.' },
+  { icon: ShieldCheck, title: 'Patikimi šaltiniai', desc: 'Remiamės žinomų testavimo laboratorijų ir stiprių rinkos šaltinių duomenimis.' },
+  { icon: Globe, title: 'Pritaikyta Lietuvai', desc: 'Informaciją pateikiame aiškiai, lietuviškai ir pagal vietinei auditorijai aktualius poreikius.' },
+  { icon: TrendingUp, title: 'Turinį peržiūrime reguliariai', desc: 'Atnaujiname puslapius, kai keičiasi kainos, funkcijos ar svarbūs testų rezultatai.' },
 ];
 
 /* ── Threat stats ── */
