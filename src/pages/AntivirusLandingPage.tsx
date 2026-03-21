@@ -634,7 +634,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 8. METHODOLOGY / TRUST ═══ */}
         <section className="mb-16">
-          <div className="card-premium p-5 md:p-6" style={{ background: 'hsl(210 18% 96%)' }}>
+          <div className="card-premium p-5 md:p-6 bg-muted/40">
             <div className="flex items-start gap-3.5 mb-5">
               <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">
                 <BadgeCheck className="w-5 h-5 text-primary" />
