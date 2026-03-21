@@ -334,7 +334,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
 
           return (
             <section id="palyginimas" className="mb-16 scroll-mt-20">
-              <SectionHeading label="Funkcijų lentelė" title="Nemokamų antivirusinių palyginimas" subtitle="Visų vertinamų nemokamų programų funkcijų palyginimas vienoje lentelėje." className="mb-5" />
+              <SectionHeading title="Nemokamų antivirusinių palyginimas" subtitle="Visų vertinamų nemokamų programų funkcijų palyginimas vienoje lentelėje." className="mb-5" />
 
               {/* ── Desktop: column-based grid ── */}
               <div className="hidden md:block rounded-xl border border-border/60 bg-card elevation-2 overflow-hidden">
