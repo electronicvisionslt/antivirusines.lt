@@ -327,7 +327,7 @@ const MobileAntivirusLandingPage = ({ category }: Props) => {
 
           return (
             <section id="palyginimas" className="mb-16 scroll-mt-20">
-              <SectionHeading label="Funkcijų lentelė" title="Antivirusinių telefonui palyginimas" subtitle="Visų vertinamų programų funkcijų palyginimas vienoje lentelėje." className="mb-5" />
+              <SectionHeading title="Antivirusinių telefonui palyginimas" subtitle="Visų vertinamų programų funkcijų palyginimas vienoje lentelėje." className="mb-5" />
 
               {/* ── Desktop ── */}
               <div className="hidden md:block rounded-xl border border-border/60 bg-card elevation-2 overflow-hidden">
