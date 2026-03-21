@@ -57,7 +57,7 @@ const preventionTips = [
 const faqItems = [
   { q: 'Ar iPhone gali gauti virusą?', a: 'Tikrų virusų iPhone gauna itin retai dėl iOS saugumo architektūros. Tačiau iPhone yra pažeidžiamas sukčiavimo atakoms, kenkėjiškiems profiliams ir spyware (pvz., Pegasus). Jailbreak\'intas iPhone yra žymiai labiau pažeidžiamas.' },
   { q: 'Ar „Google Play Protect" pakanka Android apsaugai?', a: 'Google Play Protect suteikia bazinę apsaugą, bet nepriklausomos laboratorijos rodo, kad jis praleidžia ~20% kenkėjiškų programų. Rekomenduojame papildomą antivirusinę apsaugą.' },
-  { q: 'Ką daryti, jei telefonas siunčia SMS žinutes be mano žinios?', a: 'Tai dažnas virusu požymis. Nedelsiant: 1) Įjunkite lėktuvo režimą; 2) Paleiskite saugųjį režimą; 3) Pašalinkite įtartinas programas; 4) Pakeiskite visų paskyrų slaptažodžius iš kito įrenginio.' },
+  { q: 'Ką daryti, jei telefonas siunčia SMS žinutes be mano žinios?', a: 'Tai dažnas viruso požymis. Nedelsiant: 1) Įjunkite lėktuvo režimą; 2) Paleiskite saugųjį režimą; 3) Pašalinkite įtartinas programas; 4) Pakeiskite visų paskyrų slaptažodžius iš kito įrenginio.' },
   { q: 'Ar virusas gali pasklisti per Bluetooth?', a: 'Tai įmanoma, bet reta. Bluetooth virusai (pvz., „BlueBorne") gali plisti tarp įrenginių, jei Bluetooth yra įjungtas ir aptinkamas. Rekomenduojame išjungti Bluetooth, kai nenaudojate.' },
   { q: 'Kaip apsaugoti vaikų telefoną nuo virusų?', a: 'Naudokite tėvų kontrolės programą (Qustodio, Google Family Link), uždrausdami diegti programas be patvirtinimo. Įdiekite antivirusinę ir reguliariai tikrinkite, kokias programas vaikas naudoja.' },
 ];

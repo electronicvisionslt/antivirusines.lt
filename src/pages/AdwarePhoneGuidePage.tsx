@@ -181,7 +181,7 @@ const AdwarePhoneGuidePage = ({ category }: Props) => {
             <Link to="/virusai/virusas-telefone"
               className="flex-1 p-4 bg-card border border-border/50 rounded-xl hover:border-primary/30 transition-colors group">
               <span className="text-xs text-muted-foreground">Platesnis gidas</span>
-              <h3 className="font-heading font-semibold text-sm text-foreground group-hover:text-primary transition-colors">← Virusas telefone: viskas ką reikia žinoti</h3>
+              <h3 className="font-heading font-semibold text-sm text-foreground group-hover:text-primary transition-colors">← Virusas telefone: viskas, ką reikia žinoti</h3>
             </Link>
             <Link to="/antivirusines-programos/telefonui"
               className="flex-1 p-4 bg-card border border-border/50 rounded-xl hover:border-primary/30 transition-colors group">

@@ -40,7 +40,7 @@ const infectionSigns = [
 
 const spreadMethods = [
   { method: 'El. laiškų priedai', desc: 'Kenkėjiški .exe, .zip, .docm failai, apsimetantys sąskaitomis ar siuntų pranešimais', icon: Mail },
-  { method: 'Nesaugios svetainės', desc: 'Drive-by download atakas — virusas įsidiegia vos aplankius svetainę', icon: Globe },
+  { method: 'Nesaugios svetainės', desc: 'Drive-by download atakos — virusas įsidiegia vos aplankius svetainę', icon: Globe },
   { method: 'Piratinė programinė įranga', desc: 'Crack\'ai ir keygen\'ai dažnai turi trojanų ir keyloggerių', icon: Download },
   { method: 'USB laikmenos', desc: 'Užkrėsti USB raktai gali automatiškai paleisti kenkėjišką kodą', icon: HardDrive },
   { method: 'Socialinė inžinerija', desc: 'Apgaulės metodai, verčiantys paspausti nuorodą ar įdiegti programą', icon: LinkIcon },

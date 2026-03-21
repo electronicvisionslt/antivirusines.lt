@@ -63,7 +63,7 @@ const platforms = [
       'Eikite į iforgot.apple.com',
       'Įveskite savo Apple ID (el. pašto adresą)',
       'Pasirinkite atkūrimo būdą: SMS, el. paštas arba saugos klausimai',
-      'Patvirtinkite tapatybę dviejų veiksnių autentifikacija (jei įjungta) ir sukurkite naują slaptažodį',
+      'Patvirtinkite tapatybę per dviejų veiksnių autentifikaciją (jei įjungta) ir sukurkite naują slaptažodį',
     ],
     tip: 'Patarimas: jei turite kitą Apple įrenginį, galite atstatyti slaptažodį per Settings → [Jūsų vardas] → Password & Security.',
     url: 'https://iforgot.apple.com',
