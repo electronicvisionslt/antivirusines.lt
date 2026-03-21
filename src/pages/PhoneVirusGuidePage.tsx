@@ -48,7 +48,7 @@ const preventionTips: React.ReactNode[] = [
   'Diekite programėles TIK iš Google Play / App Store',
   'Prieš diegiant patikrinkite atsiliepimus ir leidimų sąrašą',
   'Neleiskite diegti iš „nežinomų šaltinių" (Android)',
-  'Naudokite antivirusinę programą su realaus laiko apsauga',
+  <>Naudokite <Link to="/antivirusines-programos/telefonui" className="text-primary hover:text-primary/80 font-medium">antivirusinę programą</Link> su realaus laiko apsauga</>,
   'Neklikinkite nuorodų SMS žinutėse iš nežinomų siuntėjų',
   'Reguliariai atnaujinkite OS ir programėles',
   'Naudokite VPN viešuose WiFi tinkluose',
