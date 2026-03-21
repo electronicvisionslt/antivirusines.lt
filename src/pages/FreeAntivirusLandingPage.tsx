@@ -1,5 +1,5 @@
 import {
-  Shield, Smartphone, Monitor, ChevronRight, CheckCircle2, XCircle,
+  Star, Shield, Smartphone, Monitor, ChevronRight, CheckCircle2, XCircle,
   Clock, BarChart3, Layers, Award, Heart, Zap, Lock, ChevronDown,
   Check, X, Laptop, Globe, ShieldCheck, HelpCircle, BadgeCheck, ArrowRight,
 } from 'lucide-react';
