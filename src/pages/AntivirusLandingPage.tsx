@@ -107,7 +107,7 @@ const pillarFaq: { q: string; a: string }[] = [
   { q: 'Kokia antivirusinė geriausia telefonui?', a: 'Android telefonams rekomenduojame ESET Home Security — viena iš nedaugelio su pilna telefonų apsauga, anti-theft ir minimaliu poveikiu baterijai. Norton ir Bitdefender taip pat turi mobiliąsias versijas, bet be dedikuotos telefono apsaugos funkcijos.' },
   { q: 'Ar nemokamos antivirusinės programos yra saugios?', a: 'Patikimų gamintojų nemokamos versijos — Avast Free, Bitdefender Free — yra saugios ir efektyvios bazinei apsaugai. Venkite nežinomų nemokamų programų: kai kurios renka duomenis ar rodo agresyvią reklamą.' },
   { q: 'Ar antivirusinė sulėtina kompiuterį?', a: 'Šiuolaikinės antivirusinės turi minimalų poveikį našumui. Geriausi sprendimai kaip Bitdefender ir Norton dirba fone beveik nepastebimi — poveikį galite pajusti tik pilno skenavimo metu.' },
-  { q: 'Kiek įrenginių paprastai apima viena licencija?', a: 'Daugelis mokamų planų apima 3–10 įrenginių. Norton 360 Deluxe siūlo iki 5 įrenginių, Bitdefender Family Pack — iki 15. Šeimoms verta rinktis planus su didesniu skaičiumi.' },
+  { q: 'Kiek įrenginių paprastai apima viena licencija?', a: 'Daugelis mokamų planų apima 3–10 įrenginių. Norton 360 Deluxe siūlo iki 5 įrenginių, Norton Premium — iki 10. Bitdefender planai apima 5 įrenginius. Šeimoms verta rinktis planus su didesniu skaičiumi.' },
 ];
 
 /* ── Use cases ── */
