@@ -19,11 +19,17 @@ interface Props { category: PublicCategory }
 
 function ProductLogo({ product, size = 40 }: { product: PublicProduct; size?: number }) {
   if (product.logoUrl) {
-    return <img src={product.logoUrl} alt={`${product.name} logotipas`} width={size} height={size} className="rounded-lg object-contain" loading="lazy" />;
+    return (
+      <div className="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden"
+           style={{ width: size + 12, height: size + 12 }}>
+        <img src={product.logoUrl} alt={`${product.name} logotipas`} width={size} height={size} className="object-contain" loading="lazy" />
+      </div>
+    );
   }
   return (
-    <div className="rounded-lg bg-primary/8 border border-primary/10 flex items-center justify-center shrink-0" style={{ width: size, height: size }}>
-      <span className="font-heading font-bold text-primary" style={{ fontSize: size * 0.35 }}>
+    <div className="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1"
+         style={{ width: size + 12, height: size + 12 }}>
+      <span className="font-heading font-bold text-primary" style={{ fontSize: size * 0.38 }}>
         {product.brand?.slice(0, 2).toUpperCase() || product.name.slice(0, 2).toUpperCase()}
       </span>
     </div>
@@ -36,7 +42,7 @@ function RatingStars({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5].map(s => (
         <Star key={s} className={`w-3.5 h-3.5 ${s <= Math.round(rating) ? 'fill-amber-400 text-amber-400' : 'fill-muted text-muted-foreground/20'}`} />
       ))}
-      <span className="ml-1 text-xs font-semibold text-foreground tabular-nums">{rating.toFixed(1)}</span>
+      <span className="ml-1.5 text-xs font-bold text-foreground tabular-nums">{rating.toFixed(1)}</span>
     </div>
   );
 }
@@ -45,7 +51,7 @@ function AffiliateButton({ product, className = '', label }: { product: PublicPr
   if (!product.affiliateUrl) return null;
   return (
     <a href={product.affiliateUrl} target="_blank" rel="nofollow sponsored noopener noreferrer"
-       className={`inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] shadow-sm ${className}`}>
+       className={`inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary ${className}`}>
       {label || 'Apsilankyti'}<ExternalLink className="w-3.5 h-3.5" />
     </a>
   );
@@ -64,11 +70,22 @@ function PlatformTags({ platforms }: { platforms: string[] }) {
       {platforms.slice(0, 4).map(p => {
         const Icon = icons[p] || Globe;
         return (
-          <span key={p} className="inline-flex items-center gap-1 text-[10px] text-muted-foreground bg-muted/60 rounded px-1.5 py-0.5 border border-border/40">
+          <span key={p} className="chip-muted">
             <Icon className="w-2.5 h-2.5" />{p}
           </span>
         );
       })}
+    </div>
+  );
+}
+
+/* ── Section heading component ── */
+function SectionHeading({ label, title, subtitle, className = '' }: { label?: string; title: string; subtitle?: string; className?: string }) {
+  return (
+    <div className={className}>
+      {label && <span className="section-label mb-2 block">{label}</span>}
+      <h2 className="font-heading text-2xl font-bold text-foreground leading-tight">{title}</h2>
+      {subtitle && <p className="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">{subtitle}</p>}
     </div>
   );
 }
@@ -180,50 +197,51 @@ const AntivirusLandingPage = ({ category }: Props) => {
         ]} />
 
         {/* ═══ 1. HERO ═══ */}
-        <section className="mb-10">
+        <section className="mb-8">
           {/* Meta line */}
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3">
-            <span className="text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em]">Nepriklausomas palyginimas</span>
-            <span className="w-1 h-1 rounded-full bg-border" />
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
+            <span className="chip-primary"><ShieldCheck className="w-3 h-3" />Nepriklausomas palyginimas</span>
             <span className="text-[11px] text-muted-foreground flex items-center gap-1"><Clock className="w-3 h-3" />Atnaujinta {updatedLabel}</span>
-            <span className="w-1 h-1 rounded-full bg-border hidden sm:block" />
             <span className="text-[11px] text-muted-foreground flex items-center gap-1"><Lock className="w-3 h-3" />Su affiliate nuorodomis</span>
           </div>
 
-          <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-[1.1] mb-3">
+          <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
             Geriausios antivirusinės programos 2025&nbsp;m.
           </h1>
-          <p className="text-muted-foreground text-base leading-relaxed max-w-2xl mb-5">
-            Išanalizavome populiariausias antivirusines programas pagal apsaugos efektyvumą, papildomas funkcijas ir kainą. Žemiau — redakcijos Top 5, detalus palyginimas ir patarimai, kaip pasirinkti.
+          <p className="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
+            Išanalizavome populiariausias antivirusines programas pagal apsaugos efektyvumą, papildomas funkcijas ir kainą. Žemiau — redakcijos Top&nbsp;5, detalus palyginimas ir patarimai, kaip pasirinkti.
           </p>
 
           {/* Quick winner badges */}
           {products.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-6">
               {bestOverall && (
-                <a href="#top-5" className="inline-flex items-center gap-2.5 rounded-lg bg-primary/6 border border-primary/15 px-3.5 py-2.5 hover:bg-primary/10 transition-colors group">
-                  <Award className="w-4 h-4 text-primary" />
-                  <div>
-                    <span className="text-[10px] text-primary font-heading font-semibold uppercase tracking-wider block leading-tight">Geriausia 2025</span>
-                    <span className="text-sm text-foreground font-medium">{bestOverall.name}</span>
+                <a href="#top-5" className="card-premium-featured p-3.5 flex items-center gap-3 hover-lift group">
+                  <ProductLogo product={bestOverall} size={32} />
+                  <div className="min-w-0">
+                    <span className="chip-primary mb-1">Geriausia 2025</span>
+                    <span className="text-sm text-foreground font-semibold block leading-tight">{bestOverall.name}</span>
+                    <span className="text-[11px] text-muted-foreground">{bestOverall.pricingSummary}</span>
                   </div>
                 </a>
               )}
               {bestFree && (
-                <a href="#top-5" className="inline-flex items-center gap-2.5 rounded-lg bg-success/6 border border-success/15 px-3.5 py-2.5 hover:bg-success/10 transition-colors group">
-                  <Zap className="w-4 h-4 text-success" />
-                  <div>
-                    <span className="text-[10px] text-success font-heading font-semibold uppercase tracking-wider block leading-tight">Geriausia nemokama</span>
-                    <span className="text-sm text-foreground font-medium">{bestFree.name}</span>
+                <a href="#top-5" className="card-premium p-3.5 flex items-center gap-3 hover-lift group">
+                  <ProductLogo product={bestFree} size={32} />
+                  <div className="min-w-0">
+                    <span className="chip-success mb-1">Geriausia nemokama</span>
+                    <span className="text-sm text-foreground font-semibold block leading-tight">{bestFree.name}</span>
+                    <span className="text-[11px] text-muted-foreground">{bestFree.pricingSummary}</span>
                   </div>
                 </a>
               )}
               {bestFamily && (
-                <a href="#pagal-poreiki" className="inline-flex items-center gap-2.5 rounded-lg bg-primary/6 border border-primary/15 px-3.5 py-2.5 hover:bg-primary/10 transition-colors group">
-                  <Users className="w-4 h-4 text-primary" />
-                  <div>
-                    <span className="text-[10px] text-primary font-heading font-semibold uppercase tracking-wider block leading-tight">Geriausia šeimoms</span>
-                    <span className="text-sm text-foreground font-medium">{bestFamily.name}</span>
+                <a href="#pagal-poreiki" className="card-premium p-3.5 flex items-center gap-3 hover-lift group">
+                  <ProductLogo product={bestFamily} size={32} />
+                  <div className="min-w-0">
+                    <span className="chip-primary mb-1">Geriausia šeimoms</span>
+                    <span className="text-sm text-foreground font-semibold block leading-tight">{bestFamily.name}</span>
+                    <span className="text-[11px] text-muted-foreground">{bestFamily.pricingSummary}</span>
                   </div>
                 </a>
               )}
@@ -236,7 +254,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
               const Icon = link.icon;
               return (
                 <a key={link.href} href={link.href}
-                   className="text-[11px] font-heading font-medium px-2.5 py-1.5 rounded-md bg-muted/70 text-muted-foreground hover:bg-primary/8 hover:text-primary border border-border/50 transition-colors duration-200 inline-flex items-center gap-1.5">
+                   className="text-[11px] font-heading font-medium px-3 py-2 rounded-lg bg-card text-muted-foreground hover:text-primary hover:border-primary/20 border border-border/50 transition-all duration-200 inline-flex items-center gap-1.5 elevation-1">
                   <Icon className="w-3 h-3" />{link.label}
                 </a>
               );
@@ -244,8 +262,11 @@ const AntivirusLandingPage = ({ category }: Props) => {
           </nav>
         </section>
 
+        {/* Divider */}
+        <div className="section-divider mb-10" />
+
         {/* ═══ 2. TRUST STRIP ═══ */}
-        <section className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-12">
+        <section className="grid grid-cols-2 md:grid-cols-5 gap-2.5 mb-12">
           {[
             { value: products.length > 0 ? products.length.toString() : '–', label: 'Programų palyginta', icon: BarChart3 },
             { value: (featureCols.length + 2).toString(), label: 'Vertinimo kriterijų', icon: Layers },
@@ -255,9 +276,9 @@ const AntivirusLandingPage = ({ category }: Props) => {
           ].map((stat, i) => {
             const Icon = stat.icon;
             return (
-              <div key={i} className="rounded-lg border border-border/60 bg-card p-3 text-center shadow-sm">
-                <Icon className="w-3.5 h-3.5 text-primary mx-auto mb-1.5 opacity-60" />
-                <p className="font-heading font-bold text-foreground text-sm tabular-nums">{stat.value}</p>
+              <div key={i} className="card-premium p-3.5 text-center">
+                <Icon className="w-4 h-4 text-primary mx-auto mb-1.5 opacity-50" />
+                <p className="font-heading font-bold text-foreground text-base tabular-nums leading-none mb-0.5">{stat.value}</p>
                 <p className="text-[10px] text-muted-foreground leading-tight">{stat.label}</p>
               </div>
             );
@@ -266,58 +287,69 @@ const AntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 3. TOP 5 RECOMMENDATIONS ═══ */}
         {top5.length > 0 && (
-          <section id="top-5" className="mb-14 scroll-mt-20">
-            <div className="mb-6">
-              <h2 className="font-heading text-2xl font-bold text-foreground mb-1">Top 5 antivirusinės programos</h2>
-              <p className="text-muted-foreground text-sm max-w-xl">Programos, kurios šiandien siūlo geriausią apsaugos, funkcijų ir kainos derinį.</p>
-            </div>
+          <section id="top-5" className="mb-16 scroll-mt-20">
+            <SectionHeading label="Redakcijos pasirinkimas" title="Top 5 antivirusinės programos" subtitle="Programos, kurios šiandien siūlo geriausią apsaugos, funkcijų ir kainos derinį." className="mb-6" />
 
             <div className="space-y-3">
               {top5.map((product, i) => (
                 <div key={product.id}
-                     className={`relative rounded-xl border bg-card overflow-hidden transition-all duration-200 ${i === 0 ? 'border-primary/25 shadow-md' : 'border-border/60 shadow-sm'}`}>
-                  {i === 0 && <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />}
+                     className={`relative overflow-hidden transition-all duration-200 ${i === 0 ? 'card-premium-featured' : 'card-premium'}`}>
+                  {/* Top accent for #1 */}
+                  {i === 0 && <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary to-primary/40" />}
 
                   <div className="p-4 md:p-5">
                     {/* Header row */}
-                    <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-5">
+                    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
                       {/* Rank + Logo + Name */}
-                      <div className="flex items-start gap-3 md:min-w-[180px]">
-                        <span className="font-heading font-bold text-xl tabular-nums text-muted-foreground/30 w-6 text-center shrink-0 mt-1">{i + 1}</span>
-                        <ProductLogo product={product} size={48} />
+                      <div className="flex items-center gap-3 md:min-w-[220px]">
+                        <span className={`font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}`}>
+                          {i + 1}
+                        </span>
+                        <ProductLogo product={product} size={40} />
                         <div className="min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <h3 className="font-heading font-bold text-foreground text-base leading-tight">{product.name}</h3>
-                            {i === 0 && <span className="text-[9px] font-heading font-bold uppercase tracking-wider bg-primary/10 text-primary px-1.5 py-0.5 rounded">Nr. 1</span>}
+                            <h3 className="font-heading font-bold text-foreground text-[15px] leading-tight">{product.name}</h3>
+                            {i === 0 && <span className="chip-primary">Nr. 1</span>}
+                            {product.freeVersion && i !== 0 && <span className="chip-success">Nemokama</span>}
                           </div>
-                          <p className="text-xs text-muted-foreground mt-0.5">{product.bestFor}</p>
-                          <div className="mt-1"><RatingStars rating={product.rating} /></div>
+                          <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{product.bestFor}</p>
                         </div>
                       </div>
 
-                      {/* Verdict */}
-                      <div className="flex-1 min-w-0 md:pt-0.5">
-                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">{product.verdict || product.shortDescription}</p>
+                      {/* Rating + Price — inline on desktop */}
+                      <div className="hidden md:flex items-center gap-5 flex-1">
+                        <RatingStars rating={product.rating} />
+                        <div className="flex items-baseline gap-1.5">
+                          <span className="text-sm font-heading font-bold text-foreground">{product.pricingSummary}</span>
+                          {product.freeVersion && <span className="chip-success text-[9px]">Free</span>}
+                        </div>
                       </div>
 
-                      {/* Price + CTA */}
-                      <div className="flex items-center gap-3 shrink-0 md:flex-col md:items-end md:gap-1.5">
-                        <div className="md:text-right">
-                          <p className="text-sm font-heading font-bold text-foreground whitespace-nowrap">{product.pricingSummary}</p>
-                          {product.freeVersion && <p className="text-[10px] text-success font-medium">Yra nemokama versija</p>}
-                        </div>
-                        <AffiliateButton product={product} className="px-4 py-2 text-sm" label="Gauti pasiūlymą" />
+                      {/* Verdict (desktop) */}
+                      <p className="hidden lg:block flex-1 text-[13px] text-muted-foreground leading-relaxed line-clamp-2 max-w-xs">
+                        {product.verdict || product.shortDescription}
+                      </p>
+
+                      {/* CTA */}
+                      <div className="shrink-0">
+                        <AffiliateButton product={product} className="px-5 py-2.5 text-sm w-full md:w-auto" label="Gauti pasiūlymą" />
                       </div>
                     </div>
 
+                    {/* Mobile: rating + price row */}
+                    <div className="flex items-center gap-4 mt-2 md:hidden">
+                      <RatingStars rating={product.rating} />
+                      <span className="text-sm font-heading font-bold text-foreground">{product.pricingSummary}</span>
+                    </div>
+
                     {/* Pros / Cons / Features row */}
-                    <div className="mt-3 pt-3 border-t border-border/30 grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div className="mt-3 pt-3 border-t border-border/30 grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-2">
                       {/* Pros */}
                       <div>
-                        <p className="text-[10px] font-heading font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">Privalumai</p>
-                        <ul className="space-y-1">
+                        <p className="section-label text-[9px] mb-1.5">Privalumai</p>
+                        <ul className="space-y-0.5">
                           {product.pros.slice(0, 3).map((pro, j) => (
-                            <li key={j} className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                            <li key={j} className="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">
                               <CheckCircle2 className="w-3 h-3 text-success mt-0.5 shrink-0" />{pro}
                             </li>
                           ))}
@@ -325,10 +357,10 @@ const AntivirusLandingPage = ({ category }: Props) => {
                       </div>
                       {/* Cons */}
                       <div>
-                        <p className="text-[10px] font-heading font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">Trūkumai</p>
-                        <ul className="space-y-1">
+                        <p className="section-label text-[9px] mb-1.5">Trūkumai</p>
+                        <ul className="space-y-0.5">
                           {product.cons.slice(0, 2).map((con, j) => (
-                            <li key={j} className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                            <li key={j} className="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">
                               <XCircle className="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" />{con}
                             </li>
                           ))}
@@ -336,7 +368,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                       </div>
                       {/* Features + platforms */}
                       <div>
-                        <p className="text-[10px] font-heading font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">Funkcijos</p>
+                        <p className="section-label text-[9px] mb-1.5">Funkcijos</p>
                         <div className="flex flex-wrap gap-x-3 gap-y-1 mb-1.5">
                           {featureCols.map(col => {
                             const val = product.features[col.key];
@@ -358,21 +390,21 @@ const AntivirusLandingPage = ({ category }: Props) => {
           </section>
         )}
 
+        {/* Divider */}
+        <div className="section-divider mb-12" />
+
         {/* ═══ 4. COMPARISON TABLE ═══ */}
         {products.length > 0 && (
-          <section id="palyginimas" className="mb-14 scroll-mt-20">
+          <section id="palyginimas" className="mb-16 scroll-mt-20">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
-              <div>
-                <h2 className="font-heading text-2xl font-bold text-foreground mb-1">Detalus palyginimas</h2>
-                <p className="text-muted-foreground text-sm max-w-lg">Visų vertinamų programų funkcijų ir kainų palyginimas vienoje lentelėje.</p>
-              </div>
-              <div className="flex gap-1.5">
+              <SectionHeading label="Funkcijų lentelė" title="Detalus palyginimas" subtitle="Visų vertinamų programų funkcijų ir kainų palyginimas vienoje lentelėje." />
+              <div className="flex gap-1.5 shrink-0">
                 {filterOpts.map(opt => {
                   const Icon = opt.icon;
                   const active = activeFilter === opt.key;
                   return (
                     <button key={opt.key} onClick={() => setActiveFilter(opt.key)}
-                            className={`text-[11px] font-heading font-medium px-2.5 py-1.5 rounded-md inline-flex items-center gap-1 transition-colors duration-200 border ${active ? 'bg-primary/10 text-primary border-primary/20' : 'bg-card text-muted-foreground hover:bg-muted/60 border-border/50'}`}>
+                            className={`text-[11px] font-heading font-medium px-3 py-2 rounded-lg inline-flex items-center gap-1.5 transition-all duration-200 border ${active ? 'bg-primary text-primary-foreground border-primary elevation-primary' : 'bg-card text-muted-foreground hover:text-foreground border-border/50 elevation-1'}`}>
                       <Icon className="w-3 h-3" />{opt.label}
                     </button>
                   );
@@ -387,50 +419,51 @@ const AntivirusLandingPage = ({ category }: Props) => {
             {/* Desktop table */}
             {filteredProducts.length > 0 && (
               <>
-                <div className="hidden md:block overflow-x-auto rounded-xl border border-border/60 bg-card shadow-sm">
+                <div className="hidden md:block overflow-x-auto rounded-xl border border-border/60 bg-card elevation-2">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="border-b border-border/50 bg-muted/40">
-                        <th className="text-left p-3 font-heading font-semibold text-foreground text-xs">Programa</th>
-                        <th className="text-center p-3 font-heading font-semibold text-foreground text-xs">Įvertinimas</th>
-                        <th className="text-center p-3 font-heading font-semibold text-foreground text-xs">Kaina</th>
-                        <th className="text-center p-3 font-heading font-semibold text-foreground text-xs">Nemokama</th>
-                        <th className="text-center p-3 font-heading font-semibold text-foreground text-xs">Bandomoji</th>
+                      <tr className="border-b border-border/50" style={{ background: 'hsl(210 18% 96%)' }}>
+                        <th className="text-left p-3.5 font-heading font-semibold text-foreground text-xs w-[200px]">Programa</th>
+                        <th className="text-center p-3.5 font-heading font-semibold text-foreground text-xs w-[90px]">Įvertinimas</th>
+                        <th className="text-center p-3.5 font-heading font-semibold text-foreground text-xs w-[100px]">Kaina</th>
+                        <th className="text-center p-3.5 font-heading font-semibold text-foreground text-xs w-[70px]">Nemokama</th>
+                        <th className="text-center p-3.5 font-heading font-semibold text-foreground text-xs w-[70px]">Bandom.</th>
                         {featureCols.map(col => (
-                          <th key={col.key} className="text-center p-3 font-heading font-semibold text-foreground text-xs whitespace-nowrap">{col.label}</th>
+                          <th key={col.key} className="text-center p-3.5 font-heading font-semibold text-foreground text-xs whitespace-nowrap">{col.label}</th>
                         ))}
-                        <th className="text-center p-3 font-heading font-semibold text-foreground text-xs">Platformos</th>
-                        <th className="p-3" />
+                        <th className="text-center p-3.5 font-heading font-semibold text-foreground text-xs w-[80px]">Platf.</th>
+                        <th className="p-3.5 w-[120px]" />
                       </tr>
                     </thead>
                     <tbody>
                       {filteredProducts.map((product, i) => (
-                        <tr key={product.id} className={`${i < filteredProducts.length - 1 ? 'border-b border-border/30' : ''} hover:bg-muted/20 transition-colors duration-150`}>
-                          <td className="p-3">
+                        <tr key={product.id}
+                            className={`${i < filteredProducts.length - 1 ? 'border-b border-border/30' : ''} hover:bg-primary/[0.02] transition-colors duration-150 ${i === 0 ? 'bg-primary/[0.015]' : ''}`}>
+                          <td className="p-3.5">
                             <div className="flex items-center gap-2.5">
-                              <ProductLogo product={product} size={28} />
+                              <ProductLogo product={product} size={24} />
                               <div>
-                                <p className="font-heading font-semibold text-foreground text-sm">{product.name}</p>
+                                <p className="font-heading font-semibold text-foreground text-sm leading-tight">{product.name}</p>
                                 <p className="text-[10px] text-muted-foreground leading-tight max-w-[140px] truncate">{product.bestFor}</p>
                               </div>
                             </div>
                           </td>
-                          <td className="p-3 text-center">
-                            <span className="inline-flex items-center gap-1 text-xs font-semibold text-foreground">
-                              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />{product.rating.toFixed(1)}
+                          <td className="p-3.5 text-center">
+                            <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground">
+                              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />{product.rating.toFixed(1)}
                             </span>
                           </td>
-                          <td className="p-3 text-center text-muted-foreground whitespace-nowrap text-xs">{product.pricingSummary}</td>
-                          <td className="p-3 text-center"><FeatureCheck value={product.freeVersion} /></td>
-                          <td className="p-3 text-center"><FeatureCheck value={product.trialAvailable} /></td>
+                          <td className="p-3.5 text-center text-muted-foreground whitespace-nowrap text-xs font-medium">{product.pricingSummary}</td>
+                          <td className="p-3.5 text-center"><FeatureCheck value={product.freeVersion} /></td>
+                          <td className="p-3.5 text-center"><FeatureCheck value={product.trialAvailable} /></td>
                           {featureCols.map(col => (
-                            <td key={col.key} className="p-3 text-center"><FeatureCheck value={product.features[col.key] ?? false} /></td>
+                            <td key={col.key} className="p-3.5 text-center"><FeatureCheck value={product.features[col.key] ?? false} /></td>
                           ))}
-                          <td className="p-3 text-center">
-                            <span className="text-xs text-muted-foreground">{product.supportedPlatforms.length}</span>
+                          <td className="p-3.5 text-center">
+                            <span className="text-xs font-medium text-muted-foreground">{product.supportedPlatforms.length}</span>
                           </td>
-                          <td className="p-3">
-                            <AffiliateButton product={product} className="px-3 py-1.5 text-xs whitespace-nowrap" />
+                          <td className="p-3.5 text-right">
+                            <AffiliateButton product={product} className="px-3.5 py-1.5 text-xs whitespace-nowrap" />
                           </td>
                         </tr>
                       ))}
@@ -443,20 +476,20 @@ const AntivirusLandingPage = ({ category }: Props) => {
                   {filteredProducts.map((product) => {
                     const isExpanded = expandedRow === product.id;
                     return (
-                      <div key={product.id} className="rounded-xl border border-border/50 bg-card shadow-sm overflow-hidden">
-                        <button onClick={() => setExpandedRow(isExpanded ? null : product.id)} className="w-full p-3 flex items-center gap-2.5 text-left">
-                          <ProductLogo product={product} size={32} />
+                      <div key={product.id} className="card-premium overflow-hidden">
+                        <button onClick={() => setExpandedRow(isExpanded ? null : product.id)} className="w-full p-3.5 flex items-center gap-3 text-left">
+                          <ProductLogo product={product} size={28} />
                           <div className="flex-1 min-w-0">
                             <p className="font-heading font-semibold text-foreground text-sm">{product.name}</p>
                             <p className="text-[11px] text-muted-foreground">{product.pricingSummary}</p>
                           </div>
-                          <span className="inline-flex items-center gap-1 text-xs font-semibold text-foreground">
+                          <span className="inline-flex items-center gap-1 text-xs font-bold text-foreground">
                             <Star className="w-3 h-3 fill-amber-400 text-amber-400" />{product.rating.toFixed(1)}
                           </span>
                           <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
                         </button>
                         {isExpanded && (
-                          <div className="px-3 pb-3 pt-1 border-t border-border/30 space-y-2.5">
+                          <div className="px-3.5 pb-3.5 pt-1 border-t border-border/30 space-y-2.5">
                             <p className="text-xs text-muted-foreground">{product.bestFor}</p>
                             <div className="grid grid-cols-2 gap-1.5">
                               <div className="flex items-center gap-1.5 text-xs"><FeatureCheck value={product.freeVersion} /><span className="text-muted-foreground">Nemokama</span></div>
@@ -477,7 +510,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                                 ))}
                               </ul>
                             )}
-                            <AffiliateButton product={product} className="px-4 py-2 text-xs w-full justify-center" label="Gauti pasiūlymą" />
+                            <AffiliateButton product={product} className="px-4 py-2.5 text-xs w-full justify-center" label="Gauti pasiūlymą" />
                           </div>
                         )}
                       </div>
@@ -489,19 +522,25 @@ const AntivirusLandingPage = ({ category }: Props) => {
           </section>
         )}
 
+        {/* Divider */}
+        <div className="section-divider mb-12" />
+
         {/* ═══ 5. BEST BY USE CASE (tabs) ═══ */}
-        <section id="pagal-poreiki" className="mb-14 scroll-mt-20">
-          <h2 className="font-heading text-2xl font-bold text-foreground mb-1">Geriausia antivirusinė pagal poreikį</h2>
-          <p className="text-muted-foreground text-sm mb-5 max-w-xl">Pasirinkite situaciją — parodysime tinkamiausią sprendimą.</p>
+        <section id="pagal-poreiki" className="mb-16 scroll-mt-20">
+          <SectionHeading label="Pagal poreikį" title="Geriausia antivirusinė pagal poreikį" subtitle="Pasirinkite situaciją — parodysime tinkamiausią sprendimą." className="mb-5" />
 
           {/* Tab buttons */}
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {useCases.map((uc, i) => (
-              <button key={i} onClick={() => setActiveUseCase(i)}
-                      className={`text-xs font-heading font-medium px-3 py-2 rounded-lg transition-all duration-200 border ${activeUseCase === i ? 'bg-primary text-primary-foreground border-primary shadow-sm' : 'bg-card text-muted-foreground border-border/50 hover:bg-muted/40'}`}>
-                {uc.tag}
-              </button>
-            ))}
+          <div className="flex flex-wrap gap-1.5 mb-5">
+            {useCases.map((uc, i) => {
+              const Icon = uc.icon;
+              const isActive = activeUseCase === i;
+              return (
+                <button key={i} onClick={() => setActiveUseCase(i)}
+                        className={`text-xs font-heading font-semibold px-4 py-2.5 rounded-lg transition-all duration-200 border inline-flex items-center gap-1.5 ${isActive ? 'bg-primary text-primary-foreground border-primary elevation-primary scale-[1.02]' : 'bg-card text-muted-foreground border-border/50 hover:text-foreground hover:border-border elevation-1'}`}>
+                  <Icon className="w-3.5 h-3.5" />{uc.tag}
+                </button>
+              );
+            })}
           </div>
 
           {/* Active use case card */}
@@ -510,28 +549,28 @@ const AntivirusLandingPage = ({ category }: Props) => {
             const matched = findProduct(uc.matchKey);
             const Icon = uc.icon;
             return (
-              <div className="rounded-xl border border-border/60 bg-card p-5 md:p-6 shadow-sm">
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-lg bg-primary/8 flex items-center justify-center shrink-0">
+              <div className="card-premium-featured p-5 md:p-6">
+                <div className="flex items-start gap-3.5 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-foreground text-lg">{uc.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mt-1">{uc.shortWhy}</p>
+                    <h3 className="font-heading font-bold text-foreground text-lg leading-tight">{uc.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-1.5">{uc.shortWhy}</p>
                   </div>
                 </div>
 
                 {matched && (
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-4 border-t border-border/30 mt-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 pt-4 border-t border-primary/10 mt-4 bg-primary/[0.02] -mx-5 md:-mx-6 px-5 md:px-6 -mb-5 md:-mb-6 pb-5 md:pb-6 rounded-b-xl">
                     <div className="flex items-center gap-3 flex-1">
-                      <ProductLogo product={matched} size={44} />
+                      <ProductLogo product={matched} size={36} />
                       <div>
-                        <p className="font-heading font-bold text-foreground">{matched.name}</p>
+                        <p className="font-heading font-bold text-foreground text-[15px]">{matched.name}</p>
                         <RatingStars rating={matched.rating} />
                         <p className="text-xs text-muted-foreground mt-0.5">{matched.pricingSummary}</p>
                       </div>
                     </div>
-                    <AffiliateButton product={matched} className="px-5 py-2.5 text-sm" label="Gauti pasiūlymą" />
+                    <AffiliateButton product={matched} className="px-6 py-2.5 text-sm" label="Gauti pasiūlymą" />
                   </div>
                 )}
               </div>
@@ -539,22 +578,24 @@ const AntivirusLandingPage = ({ category }: Props) => {
           })()}
         </section>
 
+        {/* Divider */}
+        <div className="section-divider mb-12" />
+
         {/* ═══ 6. FREE VS PAID ═══ */}
-        <section id="nemokama-vs-mokama" className="mb-14 scroll-mt-20">
-          <h2 className="font-heading text-2xl font-bold text-foreground mb-2">Nemokama ar mokama antivirusinė?</h2>
-          <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl mb-5">
-            Atsakymas priklauso nuo jūsų situacijos. Štai praktinis palyginimas.
-          </p>
+        <section id="nemokama-vs-mokama" className="mb-16 scroll-mt-20">
+          <SectionHeading label="Praktinis gidas" title="Nemokama ar mokama antivirusinė?" subtitle="Atsakymas priklauso nuo jūsų situacijos. Štai praktinis palyginimas." className="mb-5" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
             {/* Free */}
-            <div className="rounded-xl border border-border/60 bg-card p-5 shadow-sm">
-              <div className="flex items-center gap-2 mb-3">
-                <Zap className="w-4 h-4 text-muted-foreground" />
-                <h3 className="font-heading font-bold text-foreground text-sm">Nemokama versija</h3>
-                <span className="text-[9px] font-heading font-semibold uppercase tracking-wider text-muted-foreground bg-muted/60 px-1.5 py-0.5 rounded ml-auto">0 €</span>
+            <div className="card-premium p-5">
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="w-8 h-8 rounded-lg bg-muted/60 flex items-center justify-center">
+                  <Zap className="w-4 h-4 text-muted-foreground" />
+                </div>
+                <h3 className="font-heading font-bold text-foreground text-sm flex-1">Nemokama versija</h3>
+                <span className="chip-muted">0 €</span>
               </div>
-              <ul className="space-y-2 text-sm mb-4">
+              <ul className="space-y-1.5 text-sm mb-4">
                 {[
                   { ok: true, t: 'Bazinė apsauga nuo virusų ir kenkėjiškų programų' },
                   { ok: true, t: 'Pakankama lengvam naršymui vienu įrenginiu' },
@@ -565,20 +606,22 @@ const AntivirusLandingPage = ({ category }: Props) => {
                 ].map((item, j) => (
                   <li key={j} className="flex items-start gap-2">
                     {item.ok ? <CheckCircle2 className="w-3.5 h-3.5 text-success mt-0.5 shrink-0" /> : <XCircle className="w-3.5 h-3.5 text-muted-foreground/30 mt-0.5 shrink-0" />}
-                    <span className="text-xs text-muted-foreground">{item.t}</span>
+                    <span className="text-[12px] text-muted-foreground leading-snug">{item.t}</span>
                   </li>
                 ))}
               </ul>
-              <p className="text-[11px] text-muted-foreground border-t border-border/30 pt-2">Tinka: studentams, vienam įrenginiui. Windows Defender irgi gali pakakti šiai auditorijai.</p>
+              <p className="text-[11px] text-muted-foreground border-t border-border/30 pt-2.5">Tinka: studentams, vienam įrenginiui. Windows Defender irgi gali pakakti šiai auditorijai.</p>
             </div>
             {/* Paid */}
-            <div className="rounded-xl border border-primary/20 bg-primary/[0.02] p-5 shadow-sm">
-              <div className="flex items-center gap-2 mb-3">
-                <Shield className="w-4 h-4 text-primary" />
-                <h3 className="font-heading font-bold text-foreground text-sm">Mokama versija</h3>
-                <span className="text-[9px] font-heading font-semibold uppercase tracking-wider text-primary bg-primary/8 px-1.5 py-0.5 rounded ml-auto">20–60 €/m.</span>
+            <div className="card-premium-featured p-5">
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Shield className="w-4 h-4 text-primary" />
+                </div>
+                <h3 className="font-heading font-bold text-foreground text-sm flex-1">Mokama versija</h3>
+                <span className="chip-primary">20–60 €/m.</span>
               </div>
-              <ul className="space-y-2 text-sm mb-4">
+              <ul className="space-y-1.5 text-sm mb-4">
                 {[
                   { ok: true, t: 'Pažangus grėsmių aptikimas ir proaktyvi prevencija' },
                   { ok: true, t: 'VPN, slaptažodžių tvarkyklė, tamsaus interneto stebėjimas' },
@@ -589,11 +632,11 @@ const AntivirusLandingPage = ({ category }: Props) => {
                 ].map((item, j) => (
                   <li key={j} className="flex items-start gap-2">
                     {item.ok ? <CheckCircle2 className="w-3.5 h-3.5 text-success mt-0.5 shrink-0" /> : <XCircle className="w-3.5 h-3.5 text-muted-foreground/30 mt-0.5 shrink-0" />}
-                    <span className="text-xs text-muted-foreground">{item.t}</span>
+                    <span className="text-[12px] text-muted-foreground leading-snug">{item.t}</span>
                   </li>
                 ))}
               </ul>
-              <p className="text-[11px] text-muted-foreground border-t border-border/30 pt-2">Tinka: šeimoms, nuotoliniam darbui, keliems įrenginiams.</p>
+              <p className="text-[11px] text-muted-foreground border-t border-border/30 pt-2.5">Tinka: šeimoms, nuotoliniam darbui, keliems įrenginiams.</p>
             </div>
           </div>
 
@@ -604,52 +647,58 @@ const AntivirusLandingPage = ({ category }: Props) => {
               { path: '/antivirusines-programos/kompiuteriui', label: 'Antivirusinė kompiuteriui' },
             ].map(link => (
               <Link key={link.path} to={link.path}
-                    className="text-xs font-heading font-medium px-3 py-1.5 rounded-md bg-muted/60 text-primary hover:bg-primary/8 border border-border/50 transition-colors duration-200 inline-flex items-center gap-1">
-                {link.label}<ChevronRight className="w-3 h-3" />
+                    className="text-xs font-heading font-semibold px-3.5 py-2 rounded-lg bg-card text-primary hover:bg-primary/5 border border-border/50 transition-all duration-200 inline-flex items-center gap-1.5 elevation-1">
+                {link.label}<ChevronRight className="w-3.5 h-3.5" />
               </Link>
             ))}
           </div>
         </section>
 
-        {/* ═══ 7. HOW TO CHOOSE ═══ */}
-        <section id="kaip-pasirinkti" className="mb-14 scroll-mt-20">
-          <h2 className="font-heading text-2xl font-bold text-foreground mb-1">Kaip pasirinkti tinkamą antivirusinę</h2>
-          <p className="text-muted-foreground text-sm mb-5 max-w-lg">Atsakykite į šiuos klausimus — ir bus aišku, kuri programa jums tinka geriausiai.</p>
+        {/* Divider */}
+        <div className="section-divider mb-12" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        {/* ═══ 7. HOW TO CHOOSE ═══ */}
+        <section id="kaip-pasirinkti" className="mb-16 scroll-mt-20">
+          <SectionHeading label="Sprendimo gidas" title="Kaip pasirinkti tinkamą antivirusinę" subtitle="Atsakykite į šiuos klausimus — ir bus aišku, kuri programa jums tinka geriausiai." className="mb-5" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
             {buyerGuide.map((item, i) => {
               const Icon = item.icon;
               return (
-                <div key={i} className="rounded-xl border border-border/60 bg-card p-4 shadow-sm h-full flex flex-col">
+                <div key={i} className="card-premium p-4 h-full flex flex-col">
                   <div className="flex items-start gap-2.5 mb-2">
-                    <div className="w-7 h-7 rounded-md bg-primary/8 flex items-center justify-center shrink-0">
-                      <Icon className="w-3.5 h-3.5 text-primary" />
+                    <div className="w-8 h-8 rounded-lg bg-primary/8 border border-primary/10 flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4 text-primary" />
                     </div>
-                    <h3 className="font-heading font-bold text-foreground text-sm leading-tight pt-1">{item.q}</h3>
+                    <h3 className="font-heading font-bold text-foreground text-sm leading-snug pt-1.5">{item.q}</h3>
                   </div>
-                  <p className="text-[11px] text-muted-foreground leading-relaxed flex-1">{item.a}</p>
+                  <p className="text-[12px] text-muted-foreground leading-relaxed flex-1">{item.a}</p>
                 </div>
               );
             })}
           </div>
 
-          <div className="mt-4 rounded-lg bg-muted/40 border border-border/50 p-4 max-w-2xl">
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              <strong className="text-foreground">Bendra taisyklė:</strong> jei apsaugote tik vieną Windows kompiuterį ir naršote atsargiai — Windows Defender arba nemokama antivirusinė gali pakakti. Jei turite 2+ įrenginius, telefoną ar šeimą — investuokite į mokamą programą. Kaina dažnai siekia vos 3–5 € per mėnesį.
+          <div className="mt-4 card-premium p-4 max-w-2xl" style={{ background: 'hsl(210 18% 96%)' }}>
+            <p className="text-[13px] text-muted-foreground leading-relaxed">
+              <strong className="text-foreground font-heading">Bendra taisyklė:</strong> jei apsaugote tik vieną Windows kompiuterį ir naršote atsargiai — Windows Defender arba nemokama antivirusinė gali pakakti. Jei turite 2+ įrenginius, telefoną ar šeimą — investuokite į mokamą programą. Kaina dažnai siekia vos 3–5&nbsp;€ per mėnesį.
             </p>
           </div>
         </section>
 
+        {/* Divider */}
+        <div className="section-divider mb-12" />
+
         {/* ═══ 8. METHODOLOGY / TRUST ═══ */}
-        <section className="mb-14">
-          <div className="rounded-xl border border-border/60 bg-card p-5 md:p-6 shadow-sm">
-            <div className="flex items-start gap-3 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-primary/8 flex items-center justify-center shrink-0">
+        <section className="mb-16">
+          <div className="card-premium p-5 md:p-6" style={{ background: 'hsl(210 18% 96%)' }}>
+            <div className="flex items-start gap-3.5 mb-5">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">
                 <BadgeCheck className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h2 className="font-heading text-lg font-bold text-foreground mb-0.5">Kaip vertiname antivirusines programas</h2>
-                <p className="text-xs text-muted-foreground">Kiekviena programa vertinama pagal {featureCols.length + 2} kriterijus.</p>
+                <span className="section-label text-[9px] block mb-0.5">Skaidrumas</span>
+                <h2 className="font-heading text-lg font-bold text-foreground">Kaip vertiname antivirusines programas</h2>
+                <p className="text-xs text-muted-foreground mt-0.5">Kiekviena programa vertinama pagal {featureCols.length + 2} kriterijus.</p>
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
@@ -663,8 +712,10 @@ const AntivirusLandingPage = ({ category }: Props) => {
               ].map((item, i) => {
                 const Icon = item.icon;
                 return (
-                  <div key={i} className="rounded-lg bg-muted/30 border border-border/30 p-3 flex gap-2.5">
-                    <Icon className="w-4 h-4 text-primary mt-0.5 shrink-0 opacity-70" />
+                  <div key={i} className="rounded-lg bg-card border border-border/40 p-3.5 flex gap-2.5 elevation-1">
+                    <div className="w-7 h-7 rounded-md bg-primary/8 flex items-center justify-center shrink-0">
+                      <Icon className="w-3.5 h-3.5 text-primary" />
+                    </div>
                     <div>
                       <h3 className="font-heading font-semibold text-foreground text-xs mb-0.5">{item.title}</h3>
                       <p className="text-[11px] text-muted-foreground leading-relaxed">{item.desc}</p>
@@ -673,29 +724,31 @@ const AntivirusLandingPage = ({ category }: Props) => {
                 );
               })}
             </div>
-            <p className="text-[10px] text-muted-foreground/50 mt-4">Redakcija yra nepriklausoma. Affiliate partnerystės neįtakoja vertinimų ar rekomendacijų eiliškumo.</p>
+            <p className="text-[10px] text-muted-foreground/50 mt-4 pt-3 border-t border-border/30">Redakcija yra nepriklausoma. Affiliate partnerystės neįtakoja vertinimų ar rekomendacijų eiliškumo.</p>
           </div>
         </section>
 
         {/* ═══ 9. FAQ ═══ */}
-        <section id="duk" className="mb-14 scroll-mt-20">
+        <section id="duk" className="mb-16 scroll-mt-20">
           <FAQAccordion items={category.faq.length > 0 ? category.faq : pillarFaq} title="Dažnai užduodami klausimai" />
         </section>
 
         {/* ═══ 10. RELATED GUIDES ═══ */}
-        <section className="mb-14">
-          <div className="rounded-xl border border-border/60 bg-card p-5 md:p-6 shadow-sm">
-            <h2 className="font-heading text-lg font-bold text-foreground mb-4">Kiti naudingi gidai</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+        <section className="mb-16">
+          <div className="card-premium p-5 md:p-6">
+            <SectionHeading label="Susiję gidai" title="Kiti naudingi gidai" className="mb-4" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
               {relatedGuides.map(guide => {
                 const Icon = guide.icon;
                 return (
                   <Link key={guide.path} to={guide.path}
-                        className="flex items-start gap-2.5 rounded-lg p-3 bg-muted/20 hover:bg-primary/6 border border-border/30 transition-colors duration-200 group">
-                    <Icon className="w-4 h-4 text-primary shrink-0 mt-0.5 opacity-70" />
+                        className="flex items-start gap-2.5 rounded-lg p-3.5 bg-background hover:bg-primary/[0.03] border border-border/40 transition-all duration-200 group elevation-1 hover-lift">
+                    <div className="w-7 h-7 rounded-md bg-primary/8 flex items-center justify-center shrink-0">
+                      <Icon className="w-3.5 h-3.5 text-primary" />
+                    </div>
                     <div>
-                      <span className="text-sm text-foreground font-medium block group-hover:text-primary transition-colors">{guide.label}</span>
-                      <span className="text-[10px] text-muted-foreground">{guide.desc}</span>
+                      <span className="text-sm text-foreground font-semibold block group-hover:text-primary transition-colors leading-tight">{guide.label}</span>
+                      <span className="text-[11px] text-muted-foreground">{guide.desc}</span>
                     </div>
                   </Link>
                 );
