@@ -396,7 +396,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                   {/* ── Desktop: column-based grid ── */}
                   <div className="hidden md:block rounded-xl border border-border/60 bg-card elevation-2 overflow-hidden">
                     {/* Product header row */}
-                    <div className="grid border-b border-border/50" style={{ gridTemplateColumns: gridCols, background: 'hsl(210 18% 97%)' }}>
+                    <div className="grid border-b border-border/50 bg-muted/30" style={{ gridTemplateColumns: gridCols }}>
                       <div className="p-3 border-r border-border/30" />
                       {filteredProducts.map((product, i) => (
                         <div key={product.id} className={`p-4 text-center border-r border-border/30 last:border-r-0 flex flex-col items-center ${i === 0 ? 'bg-primary/[0.04]' : ''}`}>
@@ -481,138 +481,45 @@ const AntivirusLandingPage = ({ category }: Props) => {
         {/* Divider */}
         <div className="section-divider mb-12" />
 
-        {/* ═══ 5. BEST BY USE CASE (column grid like comparison) ═══ */}
+        {/* ═══ 5. BEST BY USE CASE ═══ */}
         <section id="pagal-poreiki" className="mb-16 scroll-mt-20">
           <SectionHeading label="Pagal poreikį" title="Geriausia antivirusinė pagal poreikį" subtitle="Pasirinkite situaciją — parodysime tinkamiausią sprendimą." className="mb-5" />
 
-          {(() => {
-            // Build use-case rows: each use case = row, columns = use cases
-            const useCaseProducts = useCases.map(uc => {
-              const matched = findProduct(uc.matchKey);
-              return { ...uc, product: matched };
-            });
-            const colCount = useCaseProducts.length;
-            const gridCols = `180px repeat(${colCount}, 1fr)`;
-
-            return (
-              <>
-                {/* ── Desktop: column-based grid ── */}
-                <div className="hidden md:block rounded-xl border border-border/60 bg-card elevation-2 overflow-hidden">
-                  {/* Header row — use case names */}
-                  <div className="grid border-b border-border/50" style={{ gridTemplateColumns: gridCols, background: 'hsl(210 18% 97%)' }}>
-                    <div className="p-3 border-r border-border/30" />
-                    {useCaseProducts.map((uc, i) => {
-                      const Icon = uc.icon;
-                      return (
-                        <div key={i} className={`p-4 text-center border-r border-border/30 last:border-r-0 ${i === 0 ? 'bg-primary/[0.04]' : ''}`}>
-                          <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center mx-auto mb-2">
-                            <Icon className="w-4.5 h-4.5 text-primary" />
-                          </div>
-                          <p className="font-heading font-bold text-foreground text-[13px] leading-tight mb-0.5">{uc.tag}</p>
-                          <p className="text-[10px] text-muted-foreground leading-tight">{uc.title}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+            {useCases.map((uc, i) => {
+              const Icon = uc.icon;
+              const product = findProduct(uc.matchKey);
+              return (
+                <div key={i} className={`card-premium p-4 flex flex-col ${i === 0 ? 'sm:col-span-2 lg:col-span-1 card-premium-featured' : ''}`}>
+                  <div className="flex items-start gap-2.5 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4 text-primary" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 mb-0.5">
+                        <h3 className="font-heading font-bold text-foreground text-sm leading-snug">{uc.title}</h3>
+                        <span className="chip-primary text-[9px]">{uc.tag}</span>
+                      </div>
+                      <p className="text-[11px] text-muted-foreground leading-relaxed">{uc.shortWhy}</p>
+                    </div>
+                  </div>
+                  {product && (
+                    <div className="flex items-center gap-3 pt-3 border-t border-border/30 mt-auto">
+                      <ProductLogo product={product} size={28} />
+                      <div className="flex-1 min-w-0">
+                        <p className="font-heading font-bold text-foreground text-[13px]">{product.name}</p>
+                        <div className="flex items-center gap-2">
+                          <RatingStars rating={product.rating} />
+                          <span className="text-[11px] text-muted-foreground">{product.pricingSummary}</span>
                         </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Row: Aprašymas */}
-                  <div className="grid items-start border-b border-border/20 bg-muted/[0.12]" style={{ gridTemplateColumns: gridCols }}>
-                    <div className="p-3 border-r border-border/30">
-                      <span className="text-xs font-heading font-semibold text-foreground">Aprašymas</span>
-                    </div>
-                    {useCaseProducts.map((uc, i) => (
-                      <div key={i} className={`p-3 border-r border-border/20 last:border-r-0 ${i === 0 ? 'bg-primary/[0.02]' : ''}`}>
-                        <p className="text-[11px] text-muted-foreground leading-relaxed">{uc.shortWhy}</p>
                       </div>
-                    ))}
-                  </div>
-
-                  {/* Row: Rekomenduojama */}
-                  <div className="grid items-center border-b border-border/20" style={{ gridTemplateColumns: gridCols }}>
-                    <div className="p-3 border-r border-border/30">
-                      <span className="text-xs font-heading font-semibold text-foreground">Rekomenduojama</span>
+                      <AffiliateButton product={product} className="px-3 py-1.5 text-[11px] shrink-0" />
                     </div>
-                    {useCaseProducts.map((uc, i) => (
-                      <div key={i} className={`p-3 text-center border-r border-border/20 last:border-r-0 ${i === 0 ? 'bg-primary/[0.02]' : ''}`}>
-                        {uc.product && (
-                          <div className="flex flex-col items-center gap-1.5">
-                            <ProductLogo product={uc.product} size={32} />
-                            <p className="font-heading font-bold text-foreground text-[12px]">{uc.product.name}</p>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Row: Įvertinimas */}
-                  <div className="grid items-center border-b border-border/20 bg-muted/[0.12]" style={{ gridTemplateColumns: gridCols }}>
-                    <div className="p-3 border-r border-border/30">
-                      <span className="text-xs font-heading font-semibold text-foreground">Įvertinimas</span>
-                    </div>
-                    {useCaseProducts.map((uc, i) => (
-                      <div key={i} className={`p-3 text-center border-r border-border/20 last:border-r-0 ${i === 0 ? 'bg-primary/[0.02]' : ''}`}>
-                        {uc.product && <RatingStars rating={uc.product.rating} />}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Row: Kaina */}
-                  <div className="grid items-center border-b border-border/20" style={{ gridTemplateColumns: gridCols }}>
-                    <div className="p-3 border-r border-border/30">
-                      <span className="text-xs font-heading font-semibold text-foreground">Kaina</span>
-                    </div>
-                    {useCaseProducts.map((uc, i) => (
-                      <div key={i} className={`p-3 text-center border-r border-border/20 last:border-r-0 ${i === 0 ? 'bg-primary/[0.02]' : ''}`}>
-                        {uc.product && <span className="text-xs font-medium text-muted-foreground">{uc.product.pricingSummary}</span>}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Row: CTA */}
-                  <div className="grid items-center" style={{ gridTemplateColumns: gridCols }}>
-                    <div className="p-3 border-r border-border/30">
-                      <span className="text-xs font-heading font-semibold text-foreground">Nuoroda</span>
-                    </div>
-                    {useCaseProducts.map((uc, i) => (
-                      <div key={i} className={`p-3 text-center border-r border-border/20 last:border-r-0 ${i === 0 ? 'bg-primary/[0.02]' : ''}`}>
-                        {uc.product && <AffiliateButton product={uc.product} className="px-3.5 py-1.5 text-[11px] mx-auto" />}
-                      </div>
-                    ))}
-                  </div>
+                  )}
                 </div>
-
-                {/* ── Mobile: cards ── */}
-                <div className="md:hidden space-y-2.5">
-                  {useCaseProducts.map((uc, i) => {
-                    const Icon = uc.icon;
-                    return (
-                      <div key={i} className="card-premium p-4">
-                        <div className="flex items-start gap-3 mb-3">
-                          <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">
-                            <Icon className="w-4 h-4 text-primary" />
-                          </div>
-                          <div>
-                            <p className="font-heading font-bold text-foreground text-sm">{uc.title}</p>
-                            <p className="text-[11px] text-muted-foreground mt-1 leading-relaxed">{uc.shortWhy}</p>
-                          </div>
-                        </div>
-                        {uc.product && (
-                          <div className="flex items-center gap-3 pt-3 border-t border-border/30">
-                            <ProductLogo product={uc.product} size={28} />
-                            <div className="flex-1">
-                              <p className="font-heading font-bold text-foreground text-[13px]">{uc.product.name}</p>
-                              <RatingStars rating={uc.product.rating} />
-                            </div>
-                            <AffiliateButton product={uc.product} className="px-3.5 py-1.5 text-[11px]" />
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </>
-            );
-          })()}
+              );
+            })}
+          </div>
         </section>
 
         {/* Divider */}
@@ -715,7 +622,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
             })}
           </div>
 
-          <div className="mt-4 card-premium p-4 max-w-2xl" style={{ background: 'hsl(210 18% 96%)' }}>
+          <div className="mt-4 card-premium p-4 max-w-2xl bg-muted/40">
             <p className="text-[13px] text-muted-foreground leading-relaxed">
               <strong className="text-foreground font-heading">Bendra taisyklė:</strong> jei apsaugote tik vieną Windows kompiuterį ir naršote atsargiai — Windows Defender arba nemokama antivirusinė gali pakakti. Jei turite 2+ įrenginius, telefoną ar šeimą — investuokite į mokamą programą. Kaina dažnai siekia vos 3–5&nbsp;€ per mėnesį.
             </p>
@@ -727,7 +634,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 8. METHODOLOGY / TRUST ═══ */}
         <section className="mb-16">
-          <div className="card-premium p-5 md:p-6" style={{ background: 'hsl(210 18% 96%)' }}>
+          <div className="card-premium p-5 md:p-6 bg-muted/40">
             <div className="flex items-start gap-3.5 mb-5">
               <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">
                 <BadgeCheck className="w-5 h-5 text-primary" />
@@ -772,25 +679,23 @@ const AntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 10. RELATED GUIDES ═══ */}
         <section className="mb-16">
-          <div className="card-premium p-5 md:p-6">
-            <SectionHeading label="Susiję gidai" title="Kiti naudingi gidai" className="mb-4" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-              {relatedGuides.map(guide => {
-                const Icon = guide.icon;
-                return (
-                  <Link key={guide.path} to={guide.path}
-                        className="flex items-start gap-2.5 rounded-lg p-3.5 bg-background hover:bg-primary/[0.03] border border-border/40 transition-all duration-200 group elevation-1 hover-lift">
-                    <div className="w-7 h-7 rounded-md bg-primary/8 flex items-center justify-center shrink-0">
-                      <Icon className="w-3.5 h-3.5 text-primary" />
-                    </div>
-                    <div>
-                      <span className="text-sm text-foreground font-semibold block group-hover:text-primary transition-colors leading-tight">{guide.label}</span>
-                      <span className="text-[11px] text-muted-foreground">{guide.desc}</span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
+          <SectionHeading label="Susiję gidai" title="Kiti naudingi gidai" className="mb-4" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+            {relatedGuides.map(guide => {
+              const Icon = guide.icon;
+              return (
+                <Link key={guide.path} to={guide.path}
+                      className="card-premium flex items-start gap-2.5 p-3.5 transition-all duration-200 group hover-lift">
+                  <div className="w-7 h-7 rounded-md bg-primary/8 flex items-center justify-center shrink-0">
+                    <Icon className="w-3.5 h-3.5 text-primary" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-foreground font-semibold block group-hover:text-primary transition-colors leading-tight">{guide.label}</span>
+                    <span className="text-[11px] text-muted-foreground">{guide.desc}</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </section>
 
