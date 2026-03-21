@@ -17,7 +17,7 @@ interface Props { category: PublicCategory }
 const adwareSymptoms = [
   'Pop-up reklamos atsiranda užrakinimo ekrane',
   'Reklaminiai langai iššoka naudojant bet kokią programėlę',
-  'Naršyklė atidaromu nežinomas svetaines savaime',
+  'Naršyklė atidaro nežinomas svetaines savaime',
   'Atsiranda pilno ekrano reklamos, kurių negalite uždaryti',
   'Telefonas veikia lėčiau, baterija greitai senka',
   'Padidėjęs duomenų naudojimas (reklamos siunčia duomenis fone)',
@@ -181,7 +181,7 @@ const AdwarePhoneGuidePage = ({ category }: Props) => {
             <Link to="/virusai/virusas-telefone"
               className="flex-1 p-4 bg-card border border-border/50 rounded-xl hover:border-primary/30 transition-colors group">
               <span className="text-xs text-muted-foreground">Platesnis gidas</span>
-              <h3 className="font-heading font-semibold text-sm text-foreground group-hover:text-primary transition-colors">← Virusas telefone: viskas ką reikia žinoti</h3>
+              <h3 className="font-heading font-semibold text-sm text-foreground group-hover:text-primary transition-colors">← Virusas telefone: viskas, ką reikia žinoti</h3>
             </Link>
             <Link to="/antivirusines-programos/telefonui"
               className="flex-1 p-4 bg-card border border-border/50 rounded-xl hover:border-primary/30 transition-colors group">

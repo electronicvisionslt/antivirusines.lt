@@ -39,7 +39,7 @@ const whenToChange = [
   'Gavote pranešimą apie neautorizuotą prisijungimą',
   'Jūsų el. paštas atsirado duomenų nutekėjime (tikrinkite haveibeenpwned.com)',
   'Naudojote tą patį slaptažodį kitoje svetainėje, kuri buvo pažeista',
-  'Dalintės slaptažodžiu su kitu asmeniu',
+  'Pasidalijote slaptažodžiu su kitu asmeniu',
   'Prisijungėte prie Gmail viešame kompiuteryje',
 ];
 

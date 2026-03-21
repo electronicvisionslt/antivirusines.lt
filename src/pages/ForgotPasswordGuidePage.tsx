@@ -63,7 +63,7 @@ const platforms = [
       'Eikite į iforgot.apple.com',
       'Įveskite savo Apple ID (el. pašto adresą)',
       'Pasirinkite atkūrimo būdą: SMS, el. paštas arba saugos klausimai',
-      'Patvirtinkite tapatybę dviejų veiksnių autentifikacija (jei įjungta) ir sukurkite naują slaptažodį',
+      'Patvirtinkite tapatybę per dviejų veiksnių autentifikaciją (jei įjungta) ir sukurkite naują slaptažodį',
     ],
     tip: 'Patarimas: jei turite kitą Apple įrenginį, galite atstatyti slaptažodį per Settings → [Jūsų vardas] → Password & Security.',
     url: 'https://iforgot.apple.com',
@@ -125,7 +125,7 @@ const ForgotPasswordGuidePage = ({ category }: Props) => {
               Ką daryti pamiršus slaptažodį: atkūrimo gidas 2026 m.
             </h1>
             <p className="text-muted-foreground leading-relaxed">
-              Pamiršote slaptažodį? Nerimas — tai viena dažniausių problemų internete. 
+              Pamiršote slaptažodį? Nesijaudinkite — tai viena dažniausių problemų internete. 
               Žemiau rasite žingsnis po žingsnio instrukcijas, kaip atkurti prieigą prie populiariausių platformų.
             </p>
           </div>
