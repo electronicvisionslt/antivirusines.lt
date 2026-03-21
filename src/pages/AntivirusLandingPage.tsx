@@ -321,7 +321,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                         <span className="text-sm font-heading font-bold text-foreground whitespace-nowrap">{product.pricingSummary}</span>
                       </div>
                       {/* Col 6: Verdict */}
-                      <p className="text-[12px] text-muted-foreground leading-relaxed line-clamp-4">
+                      <p className="text-[12px] text-muted-foreground leading-relaxed">
                         {product.verdict || product.shortDescription}
                       </p>
                       {/* Col 7: CTA */}
