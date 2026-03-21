@@ -186,7 +186,7 @@ const MobileAntivirusLandingPage = ({ category }: Props) => {
             Geriausios antivirusinės programos telefonui 2026&nbsp;m.
           </h1>
           <p className="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
-            Telefonai tapo pagrindine kibernetinių atakų taikyklė. Palyginome geriausias antivirusines programas Android ir iOS platformoms pagal apsaugos efektyvumą, funkcijas ir poveikį baterijai. Žemiau&nbsp;— redakcijos Top&nbsp;5.
+            Telefonai tapo pagrindiniu kibernetinių atakų taikiniu. Palyginome geriausias antivirusines programas Android ir iOS platformoms pagal apsaugos efektyvumą, funkcijas ir poveikį baterijai. Žemiau&nbsp;— redakcijos Top&nbsp;5.
           </p>
 
           {/* Quick winner badges */}
