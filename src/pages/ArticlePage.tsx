@@ -42,7 +42,6 @@ const ArticlePage = ({ article }: Props) => {
 
   const showToc = article.showToc !== false && article.sections.length > 1;
 
-  // Build breadcrumbs with human-readable labels
   const breadcrumbItems: BreadcrumbItem[] = [{ label: 'Pradžia', path: '/' }];
   if (article.categoryPath) {
     breadcrumbItems.push({
@@ -58,37 +57,40 @@ const ArticlePage = ({ article }: Props) => {
         <Breadcrumbs path={article.path} items={breadcrumbItems} />
 
         <ScrollReveal>
-          {/* Hero */}
-          <div className="relative rounded-2xl overflow-hidden border border-border/40 p-8 md:p-12 mb-10">
-            {article.featuredImage ? (
-              <img
-                src={article.featuredImage}
-                alt={article.featuredImageAlt || article.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            ) : (
-              <div className="absolute inset-0 gradient-mesh" />
-            )}
-            <div className="absolute inset-0 bg-card/40" />
-            <div className="relative">
-              <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
-                {article.title}
-              </h1>
-              <p className="text-muted-foreground max-w-2xl leading-relaxed mb-6" itemProp="description">{article.excerpt}</p>
-              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
-                {author && <AuthorBox author={author} compact />}
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-4 h-4" />
-                  <time itemProp="dateModified" dateTime={article.updatedAt}>Atnaujinta: {article.updatedAt}</time>
-                </span>
-                <span className="text-muted-foreground/40">·</span>
-                <span>{article.readTime} skaitymo</span>
-              </div>
+          <div className="mb-10 max-w-3xl">
+            <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
+              {article.title}
+            </h1>
+            <p className="text-muted-foreground leading-relaxed mb-5" itemProp="description">{article.excerpt}</p>
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+              {author && <AuthorBox author={author} compact />}
+              <span className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4" />
+                <time itemProp="dateModified" dateTime={article.updatedAt}>Atnaujinta: {article.updatedAt}</time>
+              </span>
+              {article.readTime && (
+                <>
+                  <span className="text-border">·</span>
+                  <span>{article.readTime} skaitymo</span>
+                </>
+              )}
             </div>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-10">
+        {article.featuredImage && (
+          <ScrollReveal>
+            <div className="rounded-xl overflow-hidden border border-border/50 mb-10 max-w-3xl">
+              <img
+                src={article.featuredImage}
+                alt={article.featuredImageAlt || article.title}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </ScrollReveal>
+        )}
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
           <div>
             <ScrollReveal>
               <TrustDisclosure compact />
@@ -102,16 +104,14 @@ const ArticlePage = ({ article }: Props) => {
               </ScrollReveal>
             )}
 
-            {/* Article body - sections */}
             <div className="prose-article">
               {article.sections.map((section, i) => (
-                <ScrollReveal key={section.id} delay={i * 60}>
+                <ScrollReveal key={section.id} delay={i * 50}>
                   <h2 id={section.id}>{section.title}</h2>
                   <p>{section.content}</p>
                 </ScrollReveal>
               ))}
 
-              {/* If body field exists (from CMS), render it */}
               {article.body && article.sections.length === 0 && (
                 <ScrollReveal>
                   <div dangerouslySetInnerHTML={{ __html: article.body }} />
@@ -119,25 +119,26 @@ const ArticlePage = ({ article }: Props) => {
               )}
             </div>
 
-            {/* Pros/Cons */}
             {article.pros && article.cons && article.pros.length > 0 && article.cons.length > 0 && (
               <ScrollReveal>
                 <ProsConsList pros={article.pros} cons={article.cons} />
               </ScrollReveal>
             )}
 
-            {/* Verdict */}
             {article.verdict && (
               <ScrollReveal>
-                <div className="rounded-xl border border-primary/15 bg-primary/[0.03] p-6 my-8 relative overflow-hidden">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/60 via-primary/30 to-transparent" />
-                  <h3 className="font-heading font-semibold text-foreground mb-2 pl-3">Mūsų verdiktas</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed pl-3">{article.verdict}</p>
+                <div className="rounded-xl border border-primary/15 bg-primary/[0.03] p-5 my-8">
+                  <div className="flex gap-3">
+                    <div className="w-1 rounded-full bg-primary/40 shrink-0" />
+                    <div>
+                      <h3 className="font-heading font-semibold text-foreground mb-2">Mūsų verdiktas</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{article.verdict}</p>
+                    </div>
+                  </div>
                 </div>
               </ScrollReveal>
             )}
 
-            {/* CTA - from linked products */}
             {articleProducts && articleProducts.length > 0 && (
               <ScrollReveal>
                 <AffiliateCTA
@@ -149,24 +150,21 @@ const ArticlePage = ({ article }: Props) => {
               </ScrollReveal>
             )}
 
-            {/* FAQ */}
             {article.faq.length > 0 && (
               <ScrollReveal>
                 <FAQAccordion items={article.faq} />
               </ScrollReveal>
             )}
 
-            {/* Author */}
             {author && (
               <ScrollReveal>
                 <section className="my-10">
-                  <h2 className="font-heading text-xl font-bold text-foreground mb-4">Apie autorių</h2>
+                  <h2 className="font-heading text-lg font-bold text-foreground mb-4">Apie autorių</h2>
                   <AuthorBox author={author} />
                 </section>
               </ScrollReveal>
             )}
 
-            {/* Related */}
             {article.relatedPaths && article.relatedPaths.length > 0 && (
               <ScrollReveal>
                 <RelatedArticles paths={article.relatedPaths} />
@@ -174,12 +172,11 @@ const ArticlePage = ({ article }: Props) => {
             )}
           </div>
 
-          {/* Sidebar TOC (desktop) */}
           {showToc && (
             <aside className="hidden lg:block">
-              <div className="sticky top-24">
+              <div className="sticky top-20">
                 <TableOfContents items={article.sections.map(s => ({ id: s.id, title: s.title }))} />
-                <div className="mt-6">
+                <div className="mt-5">
                   <TrustDisclosure compact />
                 </div>
               </div>

@@ -16,7 +16,7 @@ const PageLayout = ({ children, className }: PageLayoutProps) => {
   }, [pathname]);
 
   return (
-    <div className={`flex flex-col min-h-screen ${className || ''}`}>
+    <div className={`flex flex-col min-h-screen bg-background ${className || ''}`}>
       <SiteHeader />
       <main className="flex-1">{children}</main>
       <SiteFooter />
