@@ -43,9 +43,6 @@ const flagshipPages: Record<string, React.ComponentType<{ category: PublicCatego
 
 const CategoryPage = ({ category }: Props) => {
   const FlagshipComponent = flagshipPages[category.path];
-  if (FlagshipComponent) {
-    return <FlagshipComponent category={category} />;
-  }
 
   usePageMeta({
     title: category.seoTitle || category.title,
@@ -53,6 +50,10 @@ const CategoryPage = ({ category }: Props) => {
     canonicalUrl: category.canonicalUrl || undefined,
     noindex: category.noindex,
   });
+
+  if (FlagshipComponent) {
+    return <FlagshipComponent category={category} />;
+  }
 
   const categoryArticles = category.articles || [];
 
