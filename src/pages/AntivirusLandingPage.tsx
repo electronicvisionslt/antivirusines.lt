@@ -172,7 +172,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
   const bestFamily = products.find(p => p.features['Tėvų kontrolė'] === true);
 
   return (
-    <PageLayout className="theme-light">
+    <PageLayout>
       <div className="container py-8 max-w-5xl mx-auto">
         <Breadcrumbs path={category.path} items={[
           { label: 'Pradžia', path: '/' },
