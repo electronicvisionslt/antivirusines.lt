@@ -18,6 +18,14 @@ interface Props { category: PublicCategory }
 /* ── Guide cards ── */
 const guides = [
   {
+    icon: Lock,
+    title: 'Geriausios slaptažodžių tvarkyklės 2026',
+    description: 'Nepriklausomas palyginimas: 1Password, Bitwarden, NordPass, RoboForm ir Proton Pass — kuri geriausia jums?',
+    path: '/slaptazodziu-saugumas/slaptazodziu-tvarkykles',
+    tag: 'Palyginimas',
+    readTime: '8 min',
+  },
+  {
     icon: Mail,
     title: 'Kaip pakeisti Gmail slaptažodį',
     description: 'Žingsnis po žingsnio instrukcija kompiuteryje ir telefone. Taip pat — kaip įjungti dviejų veiksnių autentifikaciją.',
