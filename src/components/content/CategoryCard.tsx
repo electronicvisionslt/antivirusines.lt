@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
-import { ChevronRight, Shield, Users, Key, Bug, BookOpen } from 'lucide-react';
+import { ChevronRight, Shield, Users, Key, Bug } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
   '/antivirusines-programos': Shield,
   '/tevu-kontrole': Users,
   '/slaptazodziu-saugumas': Key,
   '/virusai/kompiuterinis-virusas': Bug,
-  '/saugumo-patarimai/saugus-darbas-kompiuteriu': BookOpen,
 };
 
 interface CategoryCardProps {

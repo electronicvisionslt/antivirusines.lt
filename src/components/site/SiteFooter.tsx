@@ -4,8 +4,8 @@ import { Shield } from 'lucide-react';
 const SiteFooter = () => (
   <footer className="border-t border-border/50 mt-20 bg-card/50">
     <div className="container py-14">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="lg:col-span-1">
           <Link to="/" className="flex items-center gap-2.5 mb-4 group">
             <div className="w-7 h-7 rounded-md bg-primary/15 flex items-center justify-center">
               <Shield className="w-4 h-4 text-primary" />
@@ -20,7 +20,7 @@ const SiteFooter = () => (
         </div>
 
         <div>
-          <h4 className="font-heading font-semibold text-sm text-foreground mb-4 uppercase tracking-wider text-[13px]">Kategorijos</h4>
+          <h4 className="font-heading font-semibold text-sm text-foreground mb-4 uppercase tracking-wider text-[13px]">Temos</h4>
           <ul className="space-y-2.5 text-sm">
             <li><Link to="/antivirusines-programos" className="text-muted-foreground hover:text-primary transition-colors duration-200">Antivirusinės programos</Link></li>
             <li><Link to="/tevu-kontrole" className="text-muted-foreground hover:text-primary transition-colors duration-200">Tėvų kontrolė</Link></li>
@@ -30,11 +30,23 @@ const SiteFooter = () => (
         </div>
 
         <div>
-          <h4 className="font-heading font-semibold text-sm text-foreground mb-4 uppercase tracking-wider text-[13px]">Informacija</h4>
+          <h4 className="font-heading font-semibold text-sm text-foreground mb-4 uppercase tracking-wider text-[13px]">Populiariausi</h4>
+          <ul className="space-y-2.5 text-sm">
+            <li><Link to="/antivirusines-programos" className="text-muted-foreground hover:text-primary transition-colors duration-200">Geriausios antivirusinės</Link></li>
+            <li><Link to="/antivirusines-programos/nemokamos" className="text-muted-foreground hover:text-primary transition-colors duration-200">Nemokamos antivirusinės</Link></li>
+            <li><Link to="/antivirusines-programos/telefonui" className="text-muted-foreground hover:text-primary transition-colors duration-200">Antivirusinė telefonui</Link></li>
+            <li><Link to="/antivirusines-programos/kompiuteriui" className="text-muted-foreground hover:text-primary transition-colors duration-200">Antivirusinė kompiuteriui</Link></li>
+            <li><Link to="/tevu-kontrole" className="text-muted-foreground hover:text-primary transition-colors duration-200">Tėvų kontrolė</Link></li>
+            <li><Link to="/virusai/kompiuterinis-virusas" className="text-muted-foreground hover:text-primary transition-colors duration-200">Kompiuterinis virusas</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-heading font-semibold text-sm text-foreground mb-4 uppercase tracking-wider text-[13px]">Projektas</h4>
           <ul className="space-y-2.5 text-sm">
             <li><Link to="/apie" className="text-muted-foreground hover:text-primary transition-colors duration-200">Apie mus</Link></li>
-            <li><Link to="/kontaktai" className="text-muted-foreground hover:text-primary transition-colors duration-200">Kontaktai</Link></li>
             <li><Link to="/autoriai/jonas-kazlauskas" className="text-muted-foreground hover:text-primary transition-colors duration-200">Autoriai</Link></li>
+            <li><Link to="/kontaktai" className="text-muted-foreground hover:text-primary transition-colors duration-200">Kontaktai</Link></li>
           </ul>
         </div>
 

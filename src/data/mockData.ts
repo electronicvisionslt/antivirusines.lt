@@ -261,7 +261,6 @@ export const navLinks = [
   { label: 'Tėvų kontrolė', path: '/tevu-kontrole' },
   { label: 'Slaptažodžiai', path: '/slaptazodziu-saugumas' },
   { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' },
-  { label: 'Saugumo patarimai', path: '/saugumo-patarimai/saugus-darbas-kompiuteriu' },
 ];
 
 export const staticPages: Record<string, { title: string; content: string }> = {

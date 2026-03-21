@@ -15,7 +15,6 @@ const categoryLinks = [
   { path: '/tevu-kontrole', title: 'Tėvų kontrolė', description: 'Sprendimai ir patarimai vaikų saugumui internete.' },
   { path: '/slaptazodziu-saugumas', title: 'Slaptažodžių saugumas', description: 'Kaip kurti, saugoti ir tvarkyti saugius slaptažodžius.' },
   { path: '/virusai/kompiuterinis-virusas', title: 'Virusai ir grėsmės', description: 'Gidai apie kompiuterinius ir mobiliuosius virusus.' },
-  { path: '/saugumo-patarimai/saugus-darbas-kompiuteriu', title: 'Saugumo patarimai', description: 'Praktiniai kibernetinio saugumo patarimai kiekvienam.' },
 ];
 
 const HomePage = () => {
@@ -61,10 +60,10 @@ const HomePage = () => {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  to="/saugumo-patarimai/saugus-darbas-kompiuteriu"
+                  to="/virusai/kompiuterinis-virusas"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-secondary border border-border/60 text-secondary-foreground font-heading font-semibold rounded-lg hover:bg-secondary/80 hover:border-border transition-all duration-200 active:scale-[0.97] text-sm"
                 >
-                  Saugumo patarimai
+                  Virusai ir grėsmės
                 </Link>
               </div>
             </div>
