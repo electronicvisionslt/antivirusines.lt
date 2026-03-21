@@ -153,7 +153,7 @@ const HomePage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {hubCards.map((hub, i) => (
             <ScrollReveal key={hub.path} delay={i * 70}>
-              <div className="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg">
+              <div className="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg h-full flex flex-col">
                 {hub.tag && (
                   <span className="absolute top-4 right-4 text-[10px] font-heading font-semibold text-primary bg-primary/8 border border-primary/12 px-2 py-0.5 rounded-full">
                     {hub.tag}
@@ -187,7 +187,7 @@ const HomePage = () => {
 
                 <Link
                   to={hub.path}
-                  className="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-4 pl-[3.75rem] hover:underline"
+                  className="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto pt-4 pl-[3.75rem] hover:underline"
                 >
                   Skaityti daugiau
                   <ArrowRight className="w-3.5 h-3.5" />
