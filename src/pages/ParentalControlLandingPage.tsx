@@ -101,11 +101,6 @@ const ParentalControlLandingPage = ({ category }: Props) => {
 
         {/* ═══ 1. HERO ═══ */}
         <section className="mb-8">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
-            <span className="chip-success"><Users className="w-3 h-3" />Šeimoms</span>
-            <span className="chip-primary"><ShieldCheck className="w-3 h-3" />Nepriklausomas palyginimas</span>
-            <span className="text-[11px] text-muted-foreground flex items-center gap-1"><Clock className="w-3 h-3" />Atnaujinta {updatedLabel}</span>
-          </div>
 
           <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
             Geriausios tėvų kontrolės programėlės vaiko telefonui 2026&nbsp;m.
