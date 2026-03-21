@@ -33,6 +33,7 @@ const flagshipPages: Record<string, React.ComponentType<{ category: PublicCatego
   '/antivirusines-programos/kompiuteriui': DesktopAntivirusLandingPage,
   '/tevu-kontrole': ParentalControlLandingPage,
   '/slaptazodziu-saugumas': PasswordSecurityHubPage,
+  '/slaptazodziu-saugumas/slaptazodziu-tvarkykles': PasswordManagerLandingPage,
   '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi': GmailPasswordGuidePage,
   '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi': WifiPasswordGuidePage,
   '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi': ForgotPasswordGuidePage,
