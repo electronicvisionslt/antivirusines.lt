@@ -2,7 +2,7 @@ import {
   Star, ExternalLink, Shield, Smartphone, Monitor, ChevronRight, CheckCircle2, XCircle,
   Clock, BarChart3, Layers, Award, Heart, Zap, Lock, Users, ChevronDown,
   Check, X, Laptop, Globe, Eye, ShieldCheck, HelpCircle, BadgeCheck, ThumbsUp, ThumbsDown,
-  Fingerprint, ScanLine, Activity, Cpu,
+  Fingerprint, Activity, Cpu, Radio, Crosshair, Terminal, ScanLine,
 } from 'lucide-react';
 import PageLayout from '@/components/site/PageLayout';
 import Breadcrumbs from '@/components/site/Breadcrumbs';
@@ -18,15 +18,17 @@ import { useState, useMemo } from 'react';
 
 interface Props { category: PublicCategory }
 
-/* ══════════════ HELPERS ══════════════ */
+/* ═══════════ HELPERS ═══════════ */
 
-function RatingBadge({ rating, size = 'md' }: { rating: number; size?: 'sm' | 'md' }) {
-  const cls = size === 'sm' ? 'text-xs px-2 py-0.5 gap-1' : 'text-sm px-2.5 py-1 gap-1';
+function RatingBar({ rating }: { rating: number }) {
+  const pct = (rating / 10) * 100;
   return (
-    <span className={`${cls} inline-flex items-center rounded-md cl-tag font-bold tabular-nums font-heading`}>
-      <Star className={`${size === 'sm' ? 'w-3 h-3' : 'w-3.5 h-3.5'} fill-[hsl(var(--cl-cyan))] stroke-[hsl(var(--cl-cyan))]`} />
-      {rating.toFixed(1)}
-    </span>
+    <div className="flex items-center gap-2">
+      <div className="w-16 h-1.5 rounded-full bg-[hsla(210,20%,16%,0.8)] overflow-hidden">
+        <div className="h-full rounded-full bg-gradient-to-r from-[hsl(var(--cy-cyan))] to-[hsl(var(--cy-neon))] cy-pulse-bar" style={{ width: `${pct}%` }} />
+      </div>
+      <span className="cy-mono text-xs font-bold text-[hsl(var(--cy-cyan))]">{rating.toFixed(1)}</span>
+    </div>
   );
 }
 
@@ -35,29 +37,29 @@ function ProductLogo({ product, size = 40 }: { product: PublicProduct; size?: nu
     return <img src={product.logoUrl} alt={`${product.name} logotipas`} width={size} height={size} className="rounded-lg object-contain" loading="lazy" />;
   }
   return (
-    <div className="rounded-lg bg-[hsla(195,100%,42%,0.08)] border border-[hsla(195,100%,42%,0.15)] flex items-center justify-center shrink-0" style={{ width: size, height: size }}>
-      <span className="font-heading font-bold text-[hsl(var(--cl-cyan))]" style={{ fontSize: size * 0.35 }}>
+    <div className="rounded-lg bg-[hsla(185,100%,50%,0.08)] border border-[hsla(185,100%,50%,0.15)] flex items-center justify-center shrink-0" style={{ width: size, height: size }}>
+      <span className="font-heading font-bold text-[hsl(var(--cy-cyan))] cy-mono" style={{ fontSize: size * 0.35 }}>
         {product.brand?.slice(0, 2).toUpperCase() || product.name.slice(0, 2).toUpperCase()}
       </span>
     </div>
   );
 }
 
-function AffiliateButton({ product, variant = 'primary', className = '', label }: { product: PublicProduct; variant?: 'primary' | 'outline'; className?: string; label?: string }) {
+function CyberButton({ product, variant = 'solid', className = '', label }: { product: PublicProduct; variant?: 'solid' | 'ghost'; className?: string; label?: string }) {
   if (!product.affiliateUrl) return null;
-  const base = variant === 'primary' ? 'cl-btn-primary' : 'cl-btn-outline';
+  const base = variant === 'solid' ? 'cy-btn-solid' : 'cy-btn';
   return (
     <a href={product.affiliateUrl} target="_blank" rel="nofollow sponsored noopener noreferrer"
-       className={`inline-flex items-center gap-2 font-heading font-semibold rounded-lg active:scale-[0.97] ${base} ${className}`}>
+       className={`inline-flex items-center gap-2 font-heading font-bold rounded-lg active:scale-[0.97] ${base} ${className}`}>
       {label || 'Apsilankyti'}<ExternalLink className="w-3.5 h-3.5" />
     </a>
   );
 }
 
 function FeatureIcon({ value }: { value: boolean | string }) {
-  if (value === true) return <Check className="w-4 h-4 text-[hsl(var(--cl-green))] mx-auto" />;
-  if (value === false) return <X className="w-4 h-4 text-[hsl(var(--cl-text-muted))]/30 mx-auto" />;
-  return <span className="text-xs text-[hsl(var(--cl-text-secondary))]">{value}</span>;
+  if (value === true) return <div className="w-5 h-5 rounded-full bg-[hsla(145,100%,50%,0.1)] border border-[hsla(145,100%,50%,0.2)] flex items-center justify-center mx-auto"><Check className="w-3 h-3 text-[hsl(var(--cy-neon))]" /></div>;
+  if (value === false) return <div className="w-5 h-5 rounded-full bg-[hsla(210,10%,35%,0.1)] border border-[hsla(210,10%,35%,0.15)] flex items-center justify-center mx-auto"><X className="w-3 h-3 text-[hsl(var(--cy-text-muted))]" /></div>;
+  return <span className="text-xs text-[hsl(var(--cy-text-dim))]">{value}</span>;
 }
 
 function PlatformBadges({ platforms }: { platforms: string[] }) {
@@ -66,19 +68,40 @@ function PlatformBadges({ platforms }: { platforms: string[] }) {
     <div className="flex gap-1 flex-wrap">
       {platforms.slice(0, 4).map(p => {
         const Icon = icons[p] || Globe;
-        return <span key={p} className="inline-flex items-center gap-1 text-[10px] text-[hsl(var(--cl-text-secondary))] bg-[hsl(var(--cl-surface-alt))] rounded px-1.5 py-0.5"><Icon className="w-2.5 h-2.5" />{p}</span>;
+        return (
+          <span key={p} className="inline-flex items-center gap-1 text-[10px] text-[hsl(var(--cy-text-dim))] bg-[hsl(var(--cy-panel))] border border-[hsl(var(--cy-border))] rounded px-1.5 py-0.5">
+            <Icon className="w-2.5 h-2.5" />{p}
+          </span>
+        );
       })}
     </div>
   );
 }
 
-/* ══════════════ STATIC DATA ══════════════ */
+/* ═══════════ SECTION HEADER ═══════════ */
+
+function SectionHeader({ icon: Icon, title, subtitle, id }: { icon: typeof Shield; title: string; subtitle?: string; id?: string }) {
+  return (
+    <div id={id} className="flex items-center gap-3 mb-6 scroll-mt-8">
+      <div className="w-10 h-10 rounded-lg bg-[hsla(185,100%,50%,0.08)] border border-[hsla(185,100%,50%,0.15)] flex items-center justify-center shrink-0 cy-radar">
+        <Icon className="w-5 h-5 text-[hsl(var(--cy-cyan))]" />
+      </div>
+      <div>
+        <h2 className="font-heading text-xl md:text-2xl font-extrabold text-[hsl(var(--cy-text))] tracking-tight">{title}</h2>
+        {subtitle && <p className="text-sm text-[hsl(var(--cy-text-dim))]">{subtitle}</p>}
+      </div>
+      <div className="flex-1 h-px bg-gradient-to-r from-[hsla(185,100%,50%,0.15)] to-transparent ml-3 hidden md:block" />
+    </div>
+  );
+}
+
+/* ═══════════ STATIC DATA ═══════════ */
 
 const jumpLinks = [
-  { href: '#top-picks', label: 'Top pasirinkimai', icon: Award },
+  { href: '#top-picks', label: 'Top pasirinkimai', icon: Crosshair },
   { href: '#palyginimas', label: 'Palyginimas', icon: BarChart3 },
   { href: '#pagal-poreiki', label: 'Pagal poreikį', icon: Layers },
-  { href: '#apzvalgos', label: 'Apžvalgos', icon: Shield },
+  { href: '#apzvalgos', label: 'Apžvalgos', icon: Terminal },
   { href: '#kaip-pasirinkti', label: 'Kaip pasirinkti', icon: HelpCircle },
   { href: '#duk', label: 'DUK', icon: HelpCircle },
 ];
@@ -116,23 +139,23 @@ const productEditorials: Record<string, { summary: string; strengths: string; ve
   },
 };
 
-interface UseCaseBlock { icon: typeof Shield; title: string; why: string; matchKey: string; tag: string }
+interface UseCaseBlock { icon: typeof Shield; title: string; why: string; matchKey: string; tag: string; tagColor: string }
 const useCases: UseCaseBlock[] = [
-  { icon: Award, title: 'Geriausia visapusiška apsauga', why: 'Plačiausias funkcijų rinkinys su neribotu VPN ir tamsiojo interneto stebėjimu.', matchKey: 'Norton', tag: 'Rekomenduojama' },
-  { icon: Zap, title: 'Geriausia nemokama', why: 'Stipriausias grėsmių aptikimas tarp nemokamų alternatyvų, be agresyvios reklamos.', matchKey: 'Avast', tag: 'Nemokama' },
-  { icon: Users, title: 'Geriausia šeimoms', why: 'Iki 5–15 įrenginių viena licencija su pilna tėvų kontrole ir ekrano laiko valdymu.', matchKey: 'Norton', tag: 'Šeimoms' },
-  { icon: Smartphone, title: 'Geriausia telefonui', why: 'Mažiausias poveikis baterijai išlaikant stiprią Android/iOS apsaugą.', matchKey: 'Bitdefender', tag: 'Mobiliai' },
-  { icon: Monitor, title: 'Geriausia Windows kompiuteriui', why: 'Debesijos skenavimas su žaidimų režimu — optimizuota būtent Windows aplinkai.', matchKey: 'Bitdefender', tag: 'Windows' },
-  { icon: Heart, title: 'Geriausia pradedantiesiems', why: 'Instaliuojama per 3 min, veikia automatiškai, aiškūs pranešimai.', matchKey: 'Norton', tag: 'Lengva' },
+  { icon: Award, title: 'Geriausia visapusiška apsauga', why: 'Plačiausias funkcijų rinkinys su neribotu VPN ir tamsiojo interneto stebėjimu.', matchKey: 'Norton', tag: 'TOP', tagColor: 'cy-badge-amber' },
+  { icon: Zap, title: 'Geriausia nemokama', why: 'Stipriausias grėsmių aptikimas tarp nemokamų alternatyvų.', matchKey: 'Avast', tag: 'FREE', tagColor: 'cy-badge-green' },
+  { icon: Users, title: 'Geriausia šeimoms', why: 'Iki 5–15 įrenginių viena licencija su pilna tėvų kontrole.', matchKey: 'Norton', tag: 'FAMILY', tagColor: 'cy-badge-magenta' },
+  { icon: Smartphone, title: 'Geriausia telefonui', why: 'Mažiausias poveikis baterijai išlaikant stiprią apsaugą.', matchKey: 'Bitdefender', tag: 'MOBILE', tagColor: 'cy-badge' },
+  { icon: Monitor, title: 'Geriausia Windows', why: 'Debesijos skenavimas su žaidimų režimu.', matchKey: 'Bitdefender', tag: 'WIN', tagColor: 'cy-badge' },
+  { icon: Heart, title: 'Pradedantiesiems', why: 'Instaliuojama per 3 min, veikia automatiškai.', matchKey: 'Norton', tag: 'EASY', tagColor: 'cy-badge-green' },
 ];
 
 const buyerGuide = [
   { q: 'Kiek įrenginių?', advice: '1 įrenginys — pakanka nemokama. 2+ — rinkitės mokamą su kelių įrenginių licencija.', icon: Layers },
-  { q: 'Reikia telefono apsaugos?', advice: 'Android atviresnė grėsmėms. Rinkitės su dedikuota mobilia versija ir mažu baterijos poveikiu.', icon: Smartphone },
-  { q: 'Turite vaikų internete?', advice: 'Prioritetas — tėvų kontrolė. Norton ir Kaspersky siūlo stipriausias šeimos funkcijas.', icon: Users },
-  { q: 'Svarbus VPN ar slaptažodžiai?', advice: 'Viešuose Wi-Fi — rinkitės paketą su integruotu VPN. Pigiau nei pirkti atskirai.', icon: Lock },
-  { q: 'Koks biudžetas?', advice: 'Nemokamos — bazinei apsaugai. Mokamos 20–60 €/m. Šeimos planai dažnai tos pačios kainos.', icon: BarChart3 },
-  { q: 'Paprastumas ar kontrolė?', advice: 'Norton — automatinis. Bitdefender/Kaspersky — daugiau nustatymų pažengusiems.', icon: Shield },
+  { q: 'Reikia telefono apsaugos?', advice: 'Android atviresnė grėsmėms. Rinkitės su dedikuota mobilia versija.', icon: Smartphone },
+  { q: 'Turite vaikų internete?', advice: 'Prioritetas — tėvų kontrolė. Norton ir Kaspersky siūlo stipriausias funkcijas.', icon: Users },
+  { q: 'Svarbus VPN ar slaptažodžiai?', advice: 'Viešuose Wi-Fi — rinkitės paketą su integruotu VPN.', icon: Lock },
+  { q: 'Koks biudžetas?', advice: 'Nemokamos — bazinei apsaugai. Mokamos 20–60 €/m.', icon: BarChart3 },
+  { q: 'Paprastumas ar kontrolė?', advice: 'Norton — automatinis. Bitdefender/Kaspersky — daugiau nustatymų.', icon: Shield },
 ];
 
 const relatedGuides = [
@@ -145,9 +168,9 @@ const relatedGuides = [
 
 const featureCols = [
   { key: 'VPN', label: 'VPN' },
-  { key: 'Slaptažodžių tvarkyklė', label: 'Slaptažodžiai' },
-  { key: 'Tėvų kontrolė', label: 'Tėvų kontr.' },
-  { key: 'Telefonų apsauga', label: 'Tel. apsauga' },
+  { key: 'Slaptažodžių tvarkyklė', label: 'Slaptaž.' },
+  { key: 'Tėvų kontrolė', label: 'Tėvų k.' },
+  { key: 'Telefonų apsauga', label: 'Tel. aps.' },
 ];
 
 type FilterKey = 'all' | 'free' | 'family' | 'mobile';
@@ -163,7 +186,7 @@ const filterOptions: { key: FilterKey; label: string; icon: typeof BarChart3 }[]
 const AntivirusLandingPage = ({ category }: Props) => {
   usePageMeta({
     title: category.seoTitle || 'Geriausios antivirusinės programos 2025 — palyginimas ir apžvalgos',
-    description: category.metaDescription || 'Nepriklausomos antivirusinių programų apžvalgos ir palyginimas. Raskite geriausią antivirusinę savo kompiuteriui, telefonui ar šeimai.',
+    description: category.metaDescription || 'Nepriklausomos antivirusinių programų apžvalgos ir palyginimas.',
     canonicalUrl: category.canonicalUrl || undefined,
   });
 
@@ -196,59 +219,62 @@ const AntivirusLandingPage = ({ category }: Props) => {
     return brandKey ? productEditorials[brandKey] : null;
   };
 
-  const rankLabels = ['#1', '#2', '#3', '#4'];
-
   return (
     <PageLayout>
-      <div className="cyber-light min-h-screen -mt-px">
-        {/* Background grid pattern */}
-        <div className="cl-grid-bg">
+      <div className="cyber-cmd min-h-screen -mt-px">
+        <div className="cy-grid cy-hex-bg">
           <div className="container py-8">
             <Breadcrumbs path={category.path} items={[
               { label: 'Pradžia', path: '/' },
               { label: 'Antivirusinės programos', path: '/antivirusines-programos' },
             ]} />
 
-            {/* ═══ 1. HERO ═══ */}
+            {/* ═══ HERO ═══ */}
             <ScrollReveal>
-              <section className="relative rounded-2xl overflow-hidden cl-card cl-card-featured mb-8">
-                <div className="absolute inset-0 cl-hero-gradient" />
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[hsl(var(--cl-cyan))] to-transparent opacity-40" />
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--cl-cyan))]/20 to-transparent" />
+              <section className="relative rounded-2xl overflow-hidden cy-panel cy-panel-glow cy-scanline mb-10">
+                {/* Corner decorations */}
+                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[hsla(185,100%,50%,0.25)] rounded-tl-2xl pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[hsla(185,100%,50%,0.25)] rounded-br-2xl pointer-events-none" />
+                {/* Top glow line */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--cy-cyan))] to-transparent opacity-60" />
 
-                <div className="relative p-6 md:p-10">
+                <div className="relative z-10 p-6 md:p-10 lg:p-12">
                   <div className="max-w-4xl">
-                    {/* Meta strip */}
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-4">
-                      <span className="inline-flex items-center gap-1.5 cl-tag rounded-full px-3 py-1 text-[11px] font-heading font-semibold uppercase tracking-[0.12em]">
-                        <Fingerprint className="w-3 h-3" />Nepriklausomas palyginimas
+                    {/* Status bar */}
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-5">
+                      <span className="cy-badge rounded-full px-3 py-1 text-[11px] font-heading font-bold uppercase tracking-[0.15em] inline-flex items-center gap-1.5 cy-flicker">
+                        <Radio className="w-3 h-3" />LIVE palyginimas
                       </span>
-                      <span className="text-[11px] text-[hsl(var(--cl-text-muted))] flex items-center gap-1 cl-mono"><Clock className="w-3 h-3" />{updatedLabel}</span>
-                      <span className="text-[11px] text-[hsl(var(--cl-text-muted))] flex items-center gap-1"><Lock className="w-3 h-3" />Affiliate nuorodos</span>
+                      <span className="text-[11px] text-[hsl(var(--cy-text-dim))] cy-mono flex items-center gap-1"><Clock className="w-3 h-3" />UPD: {updatedLabel}</span>
+                      <span className="text-[11px] text-[hsl(var(--cy-text-muted))] flex items-center gap-1"><Lock className="w-3 h-3" />Affiliate</span>
                     </div>
 
-                    <h1 className="font-heading text-3xl md:text-[2.75rem] lg:text-5xl font-extrabold text-[hsl(var(--cl-navy))] leading-[1.06] mb-4 tracking-tight">
-                      Geriausios antivirusinės<br className="hidden sm:block" /> programos <span className="cl-glow-text">2025&nbsp;m.</span>
+                    <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.04] mb-5">
+                      <span className="text-[hsl(var(--cy-text))]">Geriausios antivirusinės</span>
+                      <br />
+                      <span className="text-[hsl(var(--cy-text))]">programos </span>
+                      <span className="cy-gradient-text">2025&nbsp;m.</span>
                     </h1>
-                    <p className="text-[hsl(var(--cl-text-secondary))] text-base md:text-lg leading-relaxed max-w-2xl mb-5">
+
+                    <p className="text-[hsl(var(--cy-text-dim))] text-base md:text-lg leading-relaxed max-w-2xl mb-6">
                       Išanalizavome populiariausias antivirusines pagal apsaugą, greitį, funkcijas ir kainą — kad galėtumėte pasirinkti per kelias minutes.
                     </p>
 
-                    {/* Quick winner badges */}
+                    {/* Quick picks */}
                     {products.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-5">
+                      <div className="flex flex-wrap gap-2 mb-6">
                         {bestOverall && (
-                          <a href="#top-picks" className="cl-tag-amber rounded-full px-3 py-1.5 text-xs font-heading font-semibold inline-flex items-center gap-1.5 hover:shadow-md transition-shadow">
-                            <Award className="w-3.5 h-3.5" />Geriausia: {bestOverall.name}
+                          <a href="#top-picks" className="cy-badge-amber rounded-lg px-4 py-2 text-xs font-heading font-bold inline-flex items-center gap-2 hover:brightness-125 transition-all">
+                            <Crosshair className="w-3.5 h-3.5" />#1 {bestOverall.name}
                           </a>
                         )}
                         {bestFree && (
-                          <a href="#top-picks" className="cl-tag-green rounded-full px-3 py-1.5 text-xs font-heading font-semibold inline-flex items-center gap-1.5 hover:shadow-md transition-shadow">
-                            <Zap className="w-3.5 h-3.5" />Nemokama: {bestFree.name}
+                          <a href="#top-picks" className="cy-badge-green rounded-lg px-4 py-2 text-xs font-heading font-bold inline-flex items-center gap-2 hover:brightness-125 transition-all">
+                            <Zap className="w-3.5 h-3.5" />FREE {bestFree.name}
                           </a>
                         )}
                         {bestFamily && bestFamily !== bestOverall && (
-                          <a href="#pagal-poreiki" className="cl-tag rounded-full px-3 py-1.5 text-xs font-heading font-semibold inline-flex items-center gap-1.5 hover:shadow-md transition-shadow">
+                          <a href="#pagal-poreiki" className="cy-badge-magenta rounded-lg px-4 py-2 text-xs font-heading font-bold inline-flex items-center gap-2 hover:brightness-125 transition-all">
                             <Users className="w-3.5 h-3.5" />Šeimoms: {bestFamily.name}
                           </a>
                         )}
@@ -261,7 +287,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                         const Icon = link.icon;
                         return (
                           <a key={link.href} href={link.href}
-                             className="text-[11px] font-heading font-medium px-2.5 py-1.5 rounded-lg bg-[hsl(var(--cl-surface-alt))] text-[hsl(var(--cl-text-secondary))] hover:bg-[hsla(195,100%,42%,0.08)] hover:text-[hsl(var(--cl-cyan))] transition-colors inline-flex items-center gap-1 border border-transparent hover:border-[hsla(195,100%,42%,0.15)]">
+                             className="text-[11px] font-heading font-semibold px-3 py-1.5 rounded-lg bg-[hsl(var(--cy-panel))] text-[hsl(var(--cy-text-dim))] border border-[hsl(var(--cy-border))] hover:border-[hsla(185,100%,50%,0.25)] hover:text-[hsl(var(--cy-cyan))] hover:bg-[hsla(185,100%,50%,0.05)] transition-all inline-flex items-center gap-1.5">
                             <Icon className="w-3 h-3" />{link.label}
                           </a>
                         );
@@ -272,84 +298,75 @@ const AntivirusLandingPage = ({ category }: Props) => {
               </section>
             </ScrollReveal>
 
-            {/* ═══ 2. TRUST STRIP ═══ */}
+            {/* ═══ STATS ═══ */}
             <ScrollReveal>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-12">
                 {[
-                  { icon: ScanLine, value: `${products.length}`, label: 'Programos palygintos', accent: true },
-                  { icon: Activity, value: `${featureCols.length + 2}`, label: 'Vertinimo kriterijai', accent: false },
-                  { icon: Cpu, value: '4', label: 'Platformos', accent: false },
-                  { icon: BadgeCheck, value: '✓', label: 'Nepriklausoma redakcija', accent: false },
+                  { icon: ScanLine, value: `${products.length}`, label: 'Programos', sub: 'palygintos' },
+                  { icon: Activity, value: `${featureCols.length + 2}`, label: 'Kriterijai', sub: 'vertinimo' },
+                  { icon: Cpu, value: '4', label: 'Platformos', sub: 'palaikomos' },
+                  { icon: BadgeCheck, value: '✓', label: 'Redakcija', sub: 'nepriklausoma' },
                 ].map((s, i) => {
                   const Icon = s.icon;
                   return (
-                    <div key={i} className={`cl-stat-block rounded-xl p-4 text-center ${s.accent ? 'border-[hsla(195,100%,42%,0.25)] bg-[hsla(195,100%,42%,0.04)]' : ''}`}>
-                      <Icon className="w-5 h-5 text-[hsl(var(--cl-cyan))] mx-auto mb-1.5" />
-                      <p className="font-heading font-extrabold text-[hsl(var(--cl-navy))] text-xl cl-mono">{s.value}</p>
-                      <p className="text-[10px] text-[hsl(var(--cl-text-muted))] font-heading uppercase tracking-wider mt-0.5">{s.label}</p>
+                    <div key={i} className="cy-stat rounded-xl p-4 text-center">
+                      <Icon className="w-5 h-5 text-[hsl(var(--cy-cyan))] mx-auto mb-2 cy-flicker" />
+                      <p className="font-heading font-black text-2xl cy-glow-text cy-mono">{s.value}</p>
+                      <p className="text-[10px] text-[hsl(var(--cy-text-dim))] font-heading uppercase tracking-[0.15em] mt-0.5">{s.label}</p>
+                      <p className="text-[9px] text-[hsl(var(--cy-text-muted))]">{s.sub}</p>
                     </div>
                   );
                 })}
               </div>
             </ScrollReveal>
 
-            {/* ═══ 3. TOP PICKS ═══ */}
+            {/* ═══ TOP PICKS ═══ */}
             {topPicks.length > 0 && (
-              <section id="top-picks" className="mb-12 scroll-mt-8">
+              <section className="mb-14 scroll-mt-8">
                 <ScrollReveal>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-8 h-8 rounded-lg bg-[hsla(195,100%,42%,0.1)] flex items-center justify-center">
-                      <Award className="w-4 h-4 text-[hsl(var(--cl-cyan))]" />
-                    </div>
-                    <div>
-                      <h2 className="font-heading text-2xl font-extrabold text-[hsl(var(--cl-navy))]">Mūsų pasirinkimai</h2>
-                      <p className="text-[hsl(var(--cl-text-muted))] text-sm">Greita santrauka — detalesnės apžvalgos žemiau.</p>
-                    </div>
-                  </div>
+                  <SectionHeader icon={Crosshair} title="Mūsų pasirinkimai" subtitle="Greita santrauka — detalesnės apžvalgos žemiau." id="top-picks" />
                 </ScrollReveal>
 
                 <div className="space-y-3">
                   {topPicks.map((product, i) => (
-                    <ScrollReveal key={product.id} delay={i * 50}>
-                      <div className={`cl-card rounded-xl p-5 relative ${i === 0 ? 'cl-card-featured cl-scan-line' : ''}`}>
-                        {i === 0 && (
-                          <div className="absolute top-0 right-0 cl-tag-amber rounded-bl-lg rounded-tr-xl px-3 py-1 text-[10px] font-heading font-bold uppercase tracking-wider">
-                            Geriausias pasirinkimas
+                    <ScrollReveal key={product.id} delay={i * 60}>
+                      <div className={`cy-panel rounded-xl p-5 md:p-6 relative ${i === 0 ? 'cy-panel-rank1 cy-corners' : ''}`}>
+                        {/* Rank indicator */}
+                        <div className="absolute -top-px -left-px">
+                          <div className={`rounded-br-lg rounded-tl-xl px-3 py-1.5 text-[10px] font-heading font-black uppercase tracking-[0.2em] cy-mono ${i === 0 ? 'bg-[hsla(38,100%,55%,0.15)] text-[hsl(var(--cy-amber))] border-b border-r border-[hsla(38,100%,55%,0.2)]' : 'bg-[hsla(185,100%,50%,0.06)] text-[hsl(var(--cy-text-dim))] border-b border-r border-[hsl(var(--cy-border))]'}`}>
+                            #{i + 1}
                           </div>
-                        )}
-                        <div className="flex items-start gap-4">
-                          {/* Rank */}
-                          <div className="shrink-0 w-10 h-10 rounded-lg bg-[hsl(var(--cl-surface-alt))] border border-[hsl(var(--cl-border))] flex items-center justify-center">
-                            <span className="font-heading font-extrabold text-[hsl(var(--cl-navy))] text-sm cl-mono">{rankLabels[i]}</span>
-                          </div>
-                          <ProductLogo product={product} size={44} />
+                        </div>
+
+                        <div className="flex items-start gap-4 pt-2">
+                          <ProductLogo product={product} size={48} />
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 flex-wrap mb-1">
-                              <h3 className="font-heading font-bold text-[hsl(var(--cl-navy))] text-base">{product.name}</h3>
-                              <RatingBadge rating={product.rating} size="sm" />
-                              <span className="text-xs text-[hsl(var(--cl-text-secondary))] cl-mono">{product.pricingSummary}</span>
-                              {product.freeVersion && <span className="cl-tag-green text-[10px] font-medium px-2 py-0.5 rounded-full">Nemokama versija</span>}
+                            <div className="flex items-center gap-3 flex-wrap mb-1.5">
+                              <h3 className="font-heading font-extrabold text-[hsl(var(--cy-text))] text-lg">{product.name}</h3>
+                              <RatingBar rating={product.rating} />
+                              <span className="text-xs text-[hsl(var(--cy-text-dim))] cy-mono">{product.pricingSummary}</span>
+                              {product.freeVersion && <span className="cy-badge-green text-[10px] font-bold px-2 py-0.5 rounded cy-mono uppercase tracking-wider">Free</span>}
                             </div>
-                            <p className="text-xs text-[hsl(var(--cl-text-secondary))] mb-2">{product.bestFor}</p>
-                            <div className="flex flex-wrap gap-x-4 gap-y-1">
+                            <p className="text-xs text-[hsl(var(--cy-text-dim))] mb-3">{product.bestFor}</p>
+                            <div className="flex flex-wrap gap-x-4 gap-y-1.5">
                               {product.pros.slice(0, 3).map((p, j) => (
-                                <span key={j} className="inline-flex items-center gap-1 text-[11px] text-[hsl(var(--cl-text-secondary))]">
-                                  <CheckCircle2 className="w-3 h-3 text-[hsl(var(--cl-green))] shrink-0" />{p}
+                                <span key={j} className="inline-flex items-center gap-1.5 text-[11px] text-[hsl(var(--cy-text-dim))]">
+                                  <CheckCircle2 className="w-3 h-3 text-[hsl(var(--cy-neon))] shrink-0" />{p}
                                 </span>
                               ))}
                               {product.cons.slice(0, 2).map((c, j) => (
-                                <span key={j} className="inline-flex items-center gap-1 text-[11px] text-[hsl(var(--cl-text-muted))]">
-                                  <XCircle className="w-3 h-3 text-[hsl(var(--cl-text-muted))]/40 shrink-0" />{c}
+                                <span key={j} className="inline-flex items-center gap-1.5 text-[11px] text-[hsl(var(--cy-text-muted))]">
+                                  <XCircle className="w-3 h-3 text-[hsl(var(--cy-red))]/40 shrink-0" />{c}
                                 </span>
                               ))}
                             </div>
                           </div>
                           <div className="shrink-0 hidden sm:block">
-                            <AffiliateButton product={product} className="px-5 py-2.5 text-sm" />
+                            <CyberButton product={product} variant={i === 0 ? 'solid' : 'ghost'} className="px-5 py-2.5 text-sm" />
                           </div>
                         </div>
-                        <div className="sm:hidden mt-3">
-                          <AffiliateButton product={product} className="px-4 py-2 text-xs w-full justify-center" />
+                        <div className="sm:hidden mt-4">
+                          <CyberButton product={product} variant={i === 0 ? 'solid' : 'ghost'} className="px-4 py-2 text-xs w-full justify-center" />
                         </div>
                       </div>
                     </ScrollReveal>
@@ -358,27 +375,19 @@ const AntivirusLandingPage = ({ category }: Props) => {
               </section>
             )}
 
-            {/* ═══ 4. COMPARISON TABLE ═══ */}
+            {/* ═══ COMPARISON TABLE ═══ */}
             {products.length > 0 && (
-              <section id="palyginimas" className="mb-12 scroll-mt-8">
+              <section className="mb-14 scroll-mt-8">
                 <ScrollReveal>
-                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-[hsla(195,100%,42%,0.1)] flex items-center justify-center">
-                        <BarChart3 className="w-4 h-4 text-[hsl(var(--cl-cyan))]" />
-                      </div>
-                      <div>
-                        <h2 className="font-heading text-2xl font-extrabold text-[hsl(var(--cl-navy))]">Palyginimo lentelė</h2>
-                        <p className="text-[hsl(var(--cl-text-muted))] text-sm">Visos funkcijos ir kainos vienoje vietoje.</p>
-                      </div>
-                    </div>
-                    <div className="flex gap-1.5">
+                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
+                    <SectionHeader icon={BarChart3} title="Palyginimo lentelė" subtitle="Visos funkcijos ir kainos vienoje vietoje." id="palyginimas" />
+                    <div className="flex gap-1.5 mb-6">
                       {filterOptions.map(opt => {
                         const Icon = opt.icon;
                         const active = activeFilter === opt.key;
                         return (
                           <button key={opt.key} onClick={() => setActiveFilter(opt.key)}
-                                  className={`text-[11px] font-heading font-medium px-3 py-1.5 rounded-lg inline-flex items-center gap-1 transition-all ${active ? 'cl-btn-primary text-white shadow-sm' : 'bg-[hsl(var(--cl-surface-alt))] text-[hsl(var(--cl-text-secondary))] hover:bg-[hsla(195,100%,42%,0.08)] border border-[hsl(var(--cl-border))]'}`}>
+                                  className={`text-[11px] font-heading font-bold px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 transition-all uppercase tracking-wider ${active ? 'cy-btn-solid' : 'bg-[hsl(var(--cy-panel))] text-[hsl(var(--cy-text-dim))] border border-[hsl(var(--cy-border))] hover:border-[hsla(185,100%,50%,0.2)]'}`}>
                             <Icon className="w-3 h-3" />{opt.label}
                           </button>
                         );
@@ -388,80 +397,80 @@ const AntivirusLandingPage = ({ category }: Props) => {
                 </ScrollReveal>
 
                 {filteredProducts.length === 0 && (
-                  <p className="text-sm text-[hsl(var(--cl-text-muted))] text-center py-6">Nėra produktų pagal pasirinktą filtrą.</p>
+                  <p className="text-sm text-[hsl(var(--cy-text-muted))] text-center py-8 cy-mono">[ Nėra produktų pagal filtrą ]</p>
                 )}
 
                 {filteredProducts.length > 0 && (
                   <ScrollReveal>
-                    {/* Desktop table */}
-                    <div className="hidden md:block overflow-x-auto rounded-xl cl-card overflow-hidden">
+                    {/* Desktop */}
+                    <div className="hidden md:block overflow-x-auto rounded-xl cy-panel overflow-hidden">
                       <table className="w-full text-sm">
                         <thead>
-                          <tr className="cl-table-header">
-                            <th className="text-left p-3.5 font-heading font-semibold text-[hsl(var(--cl-navy))]">Programa</th>
-                            <th className="text-center p-3.5 font-heading font-semibold text-[hsl(var(--cl-navy))]">Įvert.</th>
-                            <th className="text-center p-3.5 font-heading font-semibold text-[hsl(var(--cl-navy))]">Kaina</th>
-                            <th className="text-center p-3.5 font-heading font-semibold text-[hsl(var(--cl-navy))]">Nemokama</th>
-                            <th className="text-center p-3.5 font-heading font-semibold text-[hsl(var(--cl-navy))]">Bandomoji</th>
+                          <tr className="cy-table-head">
+                            <th className="text-left p-4 font-heading font-bold text-[hsl(var(--cy-text))] uppercase tracking-wider text-[11px]">Programa</th>
+                            <th className="text-center p-4 font-heading font-bold text-[hsl(var(--cy-text))] uppercase tracking-wider text-[11px]">Reit.</th>
+                            <th className="text-center p-4 font-heading font-bold text-[hsl(var(--cy-text))] uppercase tracking-wider text-[11px]">Kaina</th>
+                            <th className="text-center p-4 font-heading font-bold text-[hsl(var(--cy-text))] uppercase tracking-wider text-[11px]">Free</th>
+                            <th className="text-center p-4 font-heading font-bold text-[hsl(var(--cy-text))] uppercase tracking-wider text-[11px]">Trial</th>
                             {featureCols.map(col => (
-                              <th key={col.key} className="text-center p-3.5 font-heading font-semibold text-[hsl(var(--cl-navy))] whitespace-nowrap">{col.label}</th>
+                              <th key={col.key} className="text-center p-4 font-heading font-bold text-[hsl(var(--cy-text))] uppercase tracking-wider text-[11px] whitespace-nowrap">{col.label}</th>
                             ))}
-                            <th className="text-center p-3.5 font-heading font-semibold text-[hsl(var(--cl-navy))]">Platformos</th>
-                            <th className="p-3.5" />
+                            <th className="text-center p-4 font-heading font-bold text-[hsl(var(--cy-text))] uppercase tracking-wider text-[11px]">Platf.</th>
+                            <th className="p-4" />
                           </tr>
                         </thead>
                         <tbody>
                           {filteredProducts.map((product, idx) => (
-                            <tr key={product.id} className={`${idx < filteredProducts.length - 1 ? 'border-b border-[hsl(var(--cl-border))]' : ''} cl-table-row transition-colors`}>
-                              <td className="p-3.5">
-                                <div className="flex items-center gap-2.5">
+                            <tr key={product.id} className="cy-table-row">
+                              <td className="p-4">
+                                <div className="flex items-center gap-3">
                                   <ProductLogo product={product} size={28} />
-                                  <span className="font-heading font-semibold text-[hsl(var(--cl-navy))] text-sm">{product.name}</span>
+                                  <span className="font-heading font-bold text-[hsl(var(--cy-text))] text-sm">{product.name}</span>
                                 </div>
                               </td>
-                              <td className="p-3.5 text-center"><RatingBadge rating={product.rating} size="sm" /></td>
-                              <td className="p-3.5 text-center text-[hsl(var(--cl-text-secondary))] whitespace-nowrap text-xs cl-mono">{product.pricingSummary}</td>
-                              <td className="p-3.5 text-center"><FeatureIcon value={product.freeVersion} /></td>
-                              <td className="p-3.5 text-center"><FeatureIcon value={product.trialAvailable} /></td>
+                              <td className="p-4 text-center"><RatingBar rating={product.rating} /></td>
+                              <td className="p-4 text-center text-[hsl(var(--cy-text-dim))] whitespace-nowrap text-xs cy-mono">{product.pricingSummary}</td>
+                              <td className="p-4 text-center"><FeatureIcon value={product.freeVersion} /></td>
+                              <td className="p-4 text-center"><FeatureIcon value={product.trialAvailable} /></td>
                               {featureCols.map(col => (
-                                <td key={col.key} className="p-3.5 text-center"><FeatureIcon value={product.features[col.key] ?? false} /></td>
+                                <td key={col.key} className="p-4 text-center"><FeatureIcon value={product.features[col.key] ?? false} /></td>
                               ))}
-                              <td className="p-3.5 text-center"><span className="text-xs text-[hsl(var(--cl-text-secondary))] cl-mono">{product.supportedPlatforms.length}</span></td>
-                              <td className="p-3.5"><AffiliateButton product={product} variant="outline" className="px-3 py-1.5 text-xs whitespace-nowrap" /></td>
+                              <td className="p-4 text-center"><span className="text-xs text-[hsl(var(--cy-text-dim))] cy-mono">{product.supportedPlatforms.length}</span></td>
+                              <td className="p-4"><CyberButton product={product} variant="ghost" className="px-3 py-1.5 text-[11px] whitespace-nowrap" /></td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
                     </div>
 
-                    {/* Mobile cards */}
+                    {/* Mobile */}
                     <div className="md:hidden space-y-2">
                       {filteredProducts.map(product => {
                         const isExpanded = expandedRow === product.id;
                         return (
-                          <div key={product.id} className="rounded-xl cl-card overflow-hidden">
-                            <button onClick={() => setExpandedRow(isExpanded ? null : product.id)} className="w-full p-3.5 flex items-center gap-2.5 text-left">
+                          <div key={product.id} className="rounded-xl cy-panel overflow-hidden">
+                            <button onClick={() => setExpandedRow(isExpanded ? null : product.id)} className="w-full p-4 flex items-center gap-3 text-left">
                               <ProductLogo product={product} size={30} />
                               <div className="flex-1 min-w-0">
-                                <p className="font-heading font-semibold text-[hsl(var(--cl-navy))] text-sm">{product.name}</p>
-                                <p className="text-[11px] text-[hsl(var(--cl-text-muted))] cl-mono">{product.pricingSummary}</p>
+                                <p className="font-heading font-bold text-[hsl(var(--cy-text))] text-sm">{product.name}</p>
+                                <p className="text-[11px] text-[hsl(var(--cy-text-muted))] cy-mono">{product.pricingSummary}</p>
                               </div>
-                              <RatingBadge rating={product.rating} size="sm" />
-                              <ChevronDown className={`w-4 h-4 text-[hsl(var(--cl-text-muted))] transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                              <RatingBar rating={product.rating} />
+                              <ChevronDown className={`w-4 h-4 text-[hsl(var(--cy-text-muted))] transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                             </button>
                             {isExpanded && (
-                              <div className="px-3.5 pb-3.5 pt-1 border-t border-[hsl(var(--cl-border))] space-y-2">
-                                <div className="grid grid-cols-2 gap-1.5">
-                                  <div className="flex items-center gap-1.5 text-xs"><FeatureIcon value={product.freeVersion} /><span className="text-[hsl(var(--cl-text-secondary))]">Nemokama</span></div>
-                                  <div className="flex items-center gap-1.5 text-xs"><FeatureIcon value={product.trialAvailable} /><span className="text-[hsl(var(--cl-text-secondary))]">Bandomoji</span></div>
+                              <div className="px-4 pb-4 pt-1 border-t border-[hsl(var(--cy-border))] space-y-2">
+                                <div className="grid grid-cols-2 gap-2">
+                                  <div className="flex items-center gap-1.5 text-xs"><FeatureIcon value={product.freeVersion} /><span className="text-[hsl(var(--cy-text-dim))]">Free</span></div>
+                                  <div className="flex items-center gap-1.5 text-xs"><FeatureIcon value={product.trialAvailable} /><span className="text-[hsl(var(--cy-text-dim))]">Trial</span></div>
                                   {featureCols.map(col => (
                                     <div key={col.key} className="flex items-center gap-1.5 text-xs">
-                                      <FeatureIcon value={product.features[col.key] ?? false} /><span className="text-[hsl(var(--cl-text-secondary))]">{col.label}</span>
+                                      <FeatureIcon value={product.features[col.key] ?? false} /><span className="text-[hsl(var(--cy-text-dim))]">{col.label}</span>
                                     </div>
                                   ))}
                                 </div>
                                 {product.supportedPlatforms.length > 0 && <PlatformBadges platforms={product.supportedPlatforms} />}
-                                <AffiliateButton product={product} className="px-4 py-2 text-xs w-full justify-center" label="Gauti pasiūlymą" />
+                                <CyberButton product={product} className="px-4 py-2 text-xs w-full justify-center" label="Gauti pasiūlymą" />
                               </div>
                             )}
                           </div>
@@ -473,18 +482,10 @@ const AntivirusLandingPage = ({ category }: Props) => {
               </section>
             )}
 
-            {/* ═══ 5. BEST BY USE CASE ═══ */}
-            <section id="pagal-poreiki" className="mb-12 scroll-mt-8">
+            {/* ═══ USE CASES ═══ */}
+            <section className="mb-14 scroll-mt-8">
               <ScrollReveal>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-lg bg-[hsla(195,100%,42%,0.1)] flex items-center justify-center">
-                    <Layers className="w-4 h-4 text-[hsl(var(--cl-cyan))]" />
-                  </div>
-                  <div>
-                    <h2 className="font-heading text-2xl font-extrabold text-[hsl(var(--cl-navy))]">Geriausia pagal poreikį</h2>
-                    <p className="text-[hsl(var(--cl-text-muted))] text-sm">Skirtingiems naudotojams — skirtingi sprendimai.</p>
-                  </div>
-                </div>
+                <SectionHeader icon={Layers} title="Geriausia pagal poreikį" subtitle="Skirtingiems naudotojams — skirtingi sprendimai." id="pagal-poreiki" />
               </ScrollReveal>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -492,22 +493,22 @@ const AntivirusLandingPage = ({ category }: Props) => {
                   const matched = findProduct(uc.matchKey);
                   const Icon = uc.icon;
                   return (
-                    <ScrollReveal key={idx} delay={idx * 40}>
-                      <div className="cl-card rounded-xl p-5 h-full flex flex-col">
+                    <ScrollReveal key={idx} delay={idx * 50}>
+                      <div className="cy-panel rounded-xl p-5 h-full flex flex-col cy-holo-border">
                         <div className="flex items-center gap-2.5 mb-3">
-                          <div className="w-8 h-8 rounded-lg bg-[hsla(195,100%,42%,0.08)] flex items-center justify-center shrink-0">
-                            <Icon className="w-4 h-4 text-[hsl(var(--cl-cyan))]" />
+                          <div className="w-9 h-9 rounded-lg bg-[hsla(185,100%,50%,0.06)] border border-[hsla(185,100%,50%,0.12)] flex items-center justify-center shrink-0">
+                            <Icon className="w-4 h-4 text-[hsl(var(--cy-cyan))]" />
                           </div>
-                          <h3 className="font-heading font-bold text-[hsl(var(--cl-navy))] text-sm flex-1">{uc.title}</h3>
-                          <span className="cl-tag text-[9px] font-heading font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">{uc.tag}</span>
+                          <h3 className="font-heading font-bold text-[hsl(var(--cy-text))] text-sm flex-1">{uc.title}</h3>
+                          <span className={`${uc.tagColor} text-[9px] font-heading font-black uppercase tracking-[0.2em] px-2 py-0.5 rounded cy-mono`}>{uc.tag}</span>
                         </div>
-                        <p className="text-xs text-[hsl(var(--cl-text-secondary))] leading-relaxed mb-3 flex-1">{uc.why}</p>
+                        <p className="text-xs text-[hsl(var(--cy-text-dim))] leading-relaxed mb-3 flex-1">{uc.why}</p>
                         {matched && (
-                          <div className="flex items-center gap-2.5 pt-3 border-t border-[hsl(var(--cl-border))] mt-auto">
+                          <div className="flex items-center gap-2.5 pt-3 border-t border-[hsl(var(--cy-border))] mt-auto">
                             <ProductLogo product={matched} size={24} />
-                            <span className="font-heading font-semibold text-[hsl(var(--cl-navy))] text-xs flex-1">{matched.name}</span>
-                            <RatingBadge rating={matched.rating} size="sm" />
-                            <AffiliateButton product={matched} variant="outline" className="px-2.5 py-1 text-[10px]" />
+                            <span className="font-heading font-bold text-[hsl(var(--cy-text))] text-xs flex-1">{matched.name}</span>
+                            <RatingBar rating={matched.rating} />
+                            <CyberButton product={matched} variant="ghost" className="px-2.5 py-1 text-[10px]" />
                           </div>
                         )}
                       </div>
@@ -517,19 +518,11 @@ const AntivirusLandingPage = ({ category }: Props) => {
               </div>
             </section>
 
-            {/* ═══ 6. PRODUCT REVIEWS — collapsible ═══ */}
+            {/* ═══ REVIEWS (collapsible) ═══ */}
             {products.length > 0 && (
-              <section id="apzvalgos" className="mb-12 scroll-mt-8">
+              <section className="mb-14 scroll-mt-8">
                 <ScrollReveal>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-8 h-8 rounded-lg bg-[hsla(195,100%,42%,0.1)] flex items-center justify-center">
-                      <Shield className="w-4 h-4 text-[hsl(var(--cl-cyan))]" />
-                    </div>
-                    <div>
-                      <h2 className="font-heading text-2xl font-extrabold text-[hsl(var(--cl-navy))]">Individualios apžvalgos</h2>
-                      <p className="text-[hsl(var(--cl-text-muted))] text-sm">Spauskite ant programos, kad matytumėte detalesnę apžvalgą.</p>
-                    </div>
-                  </div>
+                  <SectionHeader icon={Terminal} title="Individualios apžvalgos" subtitle="Spauskite ant programos — detalesnė apžvalga." id="apzvalgos" />
                 </ScrollReveal>
 
                 <div className="space-y-2.5">
@@ -540,71 +533,71 @@ const AntivirusLandingPage = ({ category }: Props) => {
 
                     return (
                       <ScrollReveal key={product.id} delay={i * 40}>
-                        <div id={anchorId} className={`rounded-xl cl-card overflow-hidden scroll-mt-8 ${isOpen ? 'cl-card-featured' : ''}`}>
+                        <div id={anchorId} className={`rounded-xl cy-panel overflow-hidden scroll-mt-8 ${isOpen ? 'cy-panel-glow' : ''}`}>
                           <button
                             onClick={() => setExpandedReview(isOpen ? null : product.id)}
-                            className="w-full p-4 flex items-center gap-3 text-left hover:bg-[hsla(195,100%,42%,0.02)] transition-colors"
+                            className="w-full p-4 md:p-5 flex items-center gap-3 text-left hover:bg-[hsla(185,100%,50%,0.02)] transition-colors"
                           >
-                            <div className="shrink-0 w-8 h-8 rounded-lg bg-[hsl(var(--cl-surface-alt))] flex items-center justify-center">
-                              <span className="font-heading font-extrabold text-[hsl(var(--cl-navy))] text-xs cl-mono">{rankLabels[i] || `#${i + 1}`}</span>
+                            <div className="shrink-0 w-8 h-8 rounded bg-[hsl(var(--cy-panel))] border border-[hsl(var(--cy-border))] flex items-center justify-center">
+                              <span className="font-heading font-black text-[hsl(var(--cy-cyan))] text-xs cy-mono">#{i + 1}</span>
                             </div>
                             <ProductLogo product={product} size={40} />
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center gap-2 flex-wrap">
-                                <h3 className="font-heading font-bold text-[hsl(var(--cl-navy))] text-base">{product.name}</h3>
-                                <RatingBadge rating={product.rating} size="sm" />
+                                <h3 className="font-heading font-bold text-[hsl(var(--cy-text))] text-base">{product.name}</h3>
+                                <RatingBar rating={product.rating} />
                               </div>
-                              <p className="text-xs text-[hsl(var(--cl-text-secondary))] mt-0.5">{product.bestFor}</p>
+                              <p className="text-xs text-[hsl(var(--cy-text-dim))] mt-0.5">{product.bestFor}</p>
                             </div>
                             <div className="hidden sm:flex items-center gap-3 shrink-0">
-                              <span className="text-sm font-heading font-semibold text-[hsl(var(--cl-navy))] cl-mono">{product.pricingSummary}</span>
-                              <AffiliateButton product={product} variant="outline" className="px-3 py-1.5 text-xs" />
+                              <span className="text-sm font-heading font-bold text-[hsl(var(--cy-text))] cy-mono">{product.pricingSummary}</span>
+                              <CyberButton product={product} variant="ghost" className="px-3 py-1.5 text-xs" />
                             </div>
-                            <ChevronDown className={`w-4 h-4 text-[hsl(var(--cl-text-muted))] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                            <ChevronDown className={`w-4 h-4 text-[hsl(var(--cy-text-muted))] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                           </button>
 
                           {isOpen && (
-                            <div className="px-4 pb-5 pt-2 border-t border-[hsl(var(--cl-border))]">
-                              {/* Quick specs */}
-                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4">
+                            <div className="px-5 pb-6 pt-3 border-t border-[hsl(var(--cy-border))]">
+                              {/* Specs grid */}
+                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-5">
                                 {[
                                   { label: 'Kaina', value: product.pricingSummary },
                                   { label: 'Platformos', value: String(product.supportedPlatforms.length) },
-                                  { label: 'Nemokama', value: product.freeVersion ? 'Taip' : 'Ne' },
-                                  { label: 'Bandomoji', value: product.trialAvailable ? 'Taip' : 'Ne' },
+                                  { label: 'Nemokama', value: product.freeVersion ? 'TAIP' : 'NE' },
+                                  { label: 'Bandomoji', value: product.trialAvailable ? 'TAIP' : 'NE' },
                                 ].map((spec, si) => (
-                                  <div key={si} className="rounded-lg bg-[hsl(var(--cl-surface-alt))] p-3 text-center">
-                                    <p className="text-[10px] text-[hsl(var(--cl-text-muted))] font-heading uppercase tracking-wider mb-0.5">{spec.label}</p>
-                                    <p className="text-xs font-heading font-bold text-[hsl(var(--cl-navy))] cl-mono">{spec.value}</p>
+                                  <div key={si} className="cy-stat rounded-lg p-3 text-center">
+                                    <p className="text-[9px] text-[hsl(var(--cy-text-muted))] font-heading uppercase tracking-[0.2em] mb-1">{spec.label}</p>
+                                    <p className="text-xs font-heading font-black text-[hsl(var(--cy-text))] cy-mono">{spec.value}</p>
                                   </div>
                                 ))}
                               </div>
 
                               {/* Pros / Cons */}
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
                                 {product.pros.length > 0 && (
-                                  <div className="rounded-lg bg-[hsla(155,72%,40%,0.04)] border border-[hsla(155,72%,40%,0.12)] p-3.5">
-                                    <h4 className="flex items-center gap-1.5 font-heading font-semibold text-[hsl(var(--cl-green))] text-xs mb-2">
+                                  <div className="rounded-lg bg-[hsla(145,100%,50%,0.03)] border border-[hsla(145,100%,50%,0.12)] p-4">
+                                    <h4 className="flex items-center gap-1.5 font-heading font-bold text-[hsl(var(--cy-neon))] text-xs mb-2.5 uppercase tracking-wider">
                                       <ThumbsUp className="w-3 h-3" />Privalumai
                                     </h4>
                                     <ul className="space-y-1.5">
                                       {product.pros.map((pro, j) => (
-                                        <li key={j} className="flex items-start gap-1.5 text-xs text-[hsl(var(--cl-text-secondary))]">
-                                          <CheckCircle2 className="w-3 h-3 text-[hsl(var(--cl-green))] mt-0.5 shrink-0" />{pro}
+                                        <li key={j} className="flex items-start gap-2 text-xs text-[hsl(var(--cy-text-dim))]">
+                                          <CheckCircle2 className="w-3 h-3 text-[hsl(var(--cy-neon))] mt-0.5 shrink-0" />{pro}
                                         </li>
                                       ))}
                                     </ul>
                                   </div>
                                 )}
                                 {product.cons.length > 0 && (
-                                  <div className="rounded-lg bg-[hsla(0,65%,55%,0.03)] border border-[hsla(0,65%,55%,0.1)] p-3.5">
-                                    <h4 className="flex items-center gap-1.5 font-heading font-semibold text-[hsl(var(--cl-red))] text-xs mb-2">
+                                  <div className="rounded-lg bg-[hsla(0,80%,58%,0.03)] border border-[hsla(0,80%,58%,0.12)] p-4">
+                                    <h4 className="flex items-center gap-1.5 font-heading font-bold text-[hsl(var(--cy-red))] text-xs mb-2.5 uppercase tracking-wider">
                                       <ThumbsDown className="w-3 h-3" />Trūkumai
                                     </h4>
                                     <ul className="space-y-1.5">
                                       {product.cons.map((con, j) => (
-                                        <li key={j} className="flex items-start gap-1.5 text-xs text-[hsl(var(--cl-text-secondary))]">
-                                          <XCircle className="w-3 h-3 text-[hsl(var(--cl-red))]/40 mt-0.5 shrink-0" />{con}
+                                        <li key={j} className="flex items-start gap-2 text-xs text-[hsl(var(--cy-text-dim))]">
+                                          <XCircle className="w-3 h-3 text-[hsl(var(--cy-red))]/50 mt-0.5 shrink-0" />{con}
                                         </li>
                                       ))}
                                     </ul>
@@ -613,39 +606,36 @@ const AntivirusLandingPage = ({ category }: Props) => {
                               </div>
 
                               {editorial && (
-                                <div className="space-y-2 mb-4">
-                                  <p className="text-sm text-[hsl(var(--cl-text-secondary))] leading-relaxed">{editorial.summary}</p>
-                                  <p className="text-sm text-[hsl(var(--cl-text-secondary))] leading-relaxed">{editorial.strengths}</p>
+                                <div className="space-y-2.5 mb-5">
+                                  <p className="text-sm text-[hsl(var(--cy-text-dim))] leading-relaxed">{editorial.summary}</p>
+                                  <p className="text-sm text-[hsl(var(--cy-text-dim))] leading-relaxed">{editorial.strengths}</p>
                                 </div>
                               )}
 
-                              {/* Features row */}
-                              <div className="flex flex-wrap gap-x-4 gap-y-1 mb-4">
+                              {/* Features */}
+                              <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-5">
                                 {featureCols.map(col => {
                                   const val = product.features[col.key];
                                   return (
-                                    <span key={col.key} className="inline-flex items-center gap-1.5 text-xs text-[hsl(var(--cl-text-secondary))]">
-                                      {val === true ? <Check className="w-3.5 h-3.5 text-[hsl(var(--cl-green))]" /> : <X className="w-3.5 h-3.5 text-[hsl(var(--cl-text-muted))]/30" />}
+                                    <span key={col.key} className="inline-flex items-center gap-1.5 text-xs text-[hsl(var(--cy-text-dim))]">
+                                      {val === true ? <Check className="w-3.5 h-3.5 text-[hsl(var(--cy-neon))]" /> : <X className="w-3.5 h-3.5 text-[hsl(var(--cy-text-muted))]" />}
                                       {col.label}
                                     </span>
                                   );
                                 })}
-                                {product.supportedPlatforms.length > 0 && (
-                                  <span className="text-xs text-[hsl(var(--cl-text-muted))] ml-1">{product.supportedPlatforms.join(', ')}</span>
-                                )}
                               </div>
 
                               {/* Verdict */}
-                              <div className="rounded-lg bg-[hsla(195,100%,42%,0.04)] border border-[hsla(195,100%,42%,0.12)] p-3.5 mb-4">
-                                <p className="text-xs text-[hsl(var(--cl-text-secondary))] leading-relaxed">
-                                  <strong className="text-[hsl(var(--cl-navy))]">Verdiktas: </strong>
+                              <div className="rounded-lg bg-[hsla(185,100%,50%,0.03)] border border-[hsla(185,100%,50%,0.12)] p-4 mb-5 cy-corners">
+                                <p className="text-xs text-[hsl(var(--cy-text-dim))] leading-relaxed">
+                                  <strong className="text-[hsl(var(--cy-cyan))] cy-mono uppercase tracking-wider text-[10px]">Verdiktas: </strong>
                                   {editorial?.verdict || product.verdict || product.shortDescription}
                                 </p>
                               </div>
 
                               <div className="flex items-center gap-3">
-                                <AffiliateButton product={product} className="px-5 py-2.5 text-sm" label="Gauti pasiūlymą" />
-                                <span className="text-xs text-[hsl(var(--cl-text-muted))] cl-mono">nuo {product.pricingSummary}</span>
+                                <CyberButton product={product} variant="solid" className="px-6 py-2.5 text-sm" label="Gauti pasiūlymą" />
+                                <span className="text-xs text-[hsl(var(--cy-text-muted))] cy-mono">nuo {product.pricingSummary}</span>
                               </div>
                             </div>
                           )}
@@ -657,19 +647,23 @@ const AntivirusLandingPage = ({ category }: Props) => {
               </section>
             )}
 
-            {/* ═══ 7. FREE VS PAID ═══ */}
-            <section id="nemokama-vs-mokama" className="mb-12 scroll-mt-8">
+            {/* ═══ FREE VS PAID ═══ */}
+            <section className="mb-14 scroll-mt-8">
               <ScrollReveal>
-                <div className="cl-card rounded-xl p-6 md:p-8">
-                  <h2 className="font-heading text-xl font-extrabold text-[hsl(var(--cl-navy))] mb-5">Nemokama ar mokama?</h2>
+                <div className="cy-panel cy-panel-glow rounded-xl p-6 md:p-8">
+                  <h2 className="font-heading text-xl font-extrabold text-[hsl(var(--cy-text))] mb-6 flex items-center gap-3">
+                    <Zap className="w-5 h-5 text-[hsl(var(--cy-amber))]" />
+                    Nemokama ar mokama?
+                  </h2>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
-                    <div className="rounded-xl border border-[hsl(var(--cl-border))] p-5 bg-[hsl(var(--cl-surface))]">
-                      <h3 className="font-heading font-bold text-[hsl(var(--cl-navy))] text-sm mb-3 flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-[hsl(var(--cl-text-muted))]" />Nemokama
-                        <span className="cl-tag-green text-[9px] font-semibold px-2 py-0.5 rounded-full ml-auto">0 €</span>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    {/* Free */}
+                    <div className="rounded-xl border border-[hsl(var(--cy-border))] bg-[hsl(var(--cy-panel))] p-5">
+                      <h3 className="font-heading font-bold text-[hsl(var(--cy-text))] text-sm mb-3 flex items-center gap-2">
+                        <Zap className="w-4 h-4 text-[hsl(var(--cy-text-dim))]" />NEMOKAMA
+                        <span className="cy-badge-green text-[9px] font-black px-2 py-0.5 rounded cy-mono ml-auto">0 €</span>
                       </h3>
-                      <ul className="space-y-2 text-xs text-[hsl(var(--cl-text-secondary))]">
+                      <ul className="space-y-2 text-xs text-[hsl(var(--cy-text-dim))]">
                         {[
                           { good: true, t: 'Bazinė apsauga nuo virusų' },
                           { good: true, t: 'Pakankama vienam įrenginiui' },
@@ -677,19 +671,19 @@ const AntivirusLandingPage = ({ category }: Props) => {
                           { good: false, t: 'Ribota pagalba' },
                         ].map((it, j) => (
                           <li key={j} className="flex items-start gap-2">
-                            {it.good ? <CheckCircle2 className="w-3.5 h-3.5 text-[hsl(var(--cl-green))] mt-0.5 shrink-0" /> : <XCircle className="w-3.5 h-3.5 text-[hsl(var(--cl-red))]/40 mt-0.5 shrink-0" />}
+                            {it.good ? <CheckCircle2 className="w-3.5 h-3.5 text-[hsl(var(--cy-neon))] mt-0.5 shrink-0" /> : <XCircle className="w-3.5 h-3.5 text-[hsl(var(--cy-red))]/40 mt-0.5 shrink-0" />}
                             {it.t}
                           </li>
                         ))}
                       </ul>
-                      <p className="text-[10px] text-[hsl(var(--cl-text-muted))] mt-3">Tinka: studentams, vienam įrenginiui.</p>
                     </div>
-                    <div className="rounded-xl border-2 border-[hsla(195,100%,42%,0.25)] p-5 bg-[hsla(195,100%,42%,0.02)]">
-                      <h3 className="font-heading font-bold text-[hsl(var(--cl-navy))] text-sm mb-3 flex items-center gap-2">
-                        <Shield className="w-4 h-4 text-[hsl(var(--cl-cyan))]" />Mokama
-                        <span className="cl-tag text-[9px] font-semibold px-2 py-0.5 rounded-full ml-auto">20–60 €/m.</span>
+                    {/* Paid */}
+                    <div className="rounded-xl border border-[hsla(185,100%,50%,0.25)] bg-[hsla(185,100%,50%,0.03)] p-5">
+                      <h3 className="font-heading font-bold text-[hsl(var(--cy-text))] text-sm mb-3 flex items-center gap-2">
+                        <Shield className="w-4 h-4 text-[hsl(var(--cy-cyan))]" />MOKAMA
+                        <span className="cy-badge text-[9px] font-black px-2 py-0.5 rounded cy-mono ml-auto">20–60 €/m.</span>
                       </h3>
-                      <ul className="space-y-2 text-xs text-[hsl(var(--cl-text-secondary))]">
+                      <ul className="space-y-2 text-xs text-[hsl(var(--cy-text-dim))]">
                         {[
                           { good: true, t: 'VPN, slaptažodžiai, tamsaus interneto stebėjimas' },
                           { good: true, t: 'Kelių įrenginių apsauga (3–15 įr.)' },
@@ -697,12 +691,11 @@ const AntivirusLandingPage = ({ category }: Props) => {
                           { good: false, t: 'Metinis mokėjimas' },
                         ].map((it, j) => (
                           <li key={j} className="flex items-start gap-2">
-                            {it.good ? <CheckCircle2 className="w-3.5 h-3.5 text-[hsl(var(--cl-green))] mt-0.5 shrink-0" /> : <XCircle className="w-3.5 h-3.5 text-[hsl(var(--cl-red))]/40 mt-0.5 shrink-0" />}
+                            {it.good ? <CheckCircle2 className="w-3.5 h-3.5 text-[hsl(var(--cy-neon))] mt-0.5 shrink-0" /> : <XCircle className="w-3.5 h-3.5 text-[hsl(var(--cy-red))]/40 mt-0.5 shrink-0" />}
                             {it.t}
                           </li>
                         ))}
                       </ul>
-                      <p className="text-[10px] text-[hsl(var(--cl-text-muted))] mt-3">Tinka: šeimoms, nuotoliniam darbui, keliems įrenginiams.</p>
                     </div>
                   </div>
 
@@ -713,7 +706,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
                       { path: '/antivirusines-programos/kompiuteriui', label: 'Antivirusinė kompiuteriui' },
                     ].map(link => (
                       <Link key={link.path} to={link.path}
-                            className="cl-btn-outline text-xs font-heading font-medium px-3.5 py-1.5 rounded-lg inline-flex items-center gap-1.5">
+                            className="cy-btn text-xs font-heading font-bold px-4 py-2 rounded-lg inline-flex items-center gap-1.5">
                         {link.label}<ChevronRight className="w-3 h-3" />
                       </Link>
                     ))}
@@ -722,94 +715,90 @@ const AntivirusLandingPage = ({ category }: Props) => {
               </ScrollReveal>
             </section>
 
-            {/* ═══ 8. HOW TO CHOOSE ═══ */}
-            <section id="kaip-pasirinkti" className="mb-12 scroll-mt-8">
+            {/* ═══ HOW TO CHOOSE ═══ */}
+            <section className="mb-14 scroll-mt-8">
               <ScrollReveal>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-lg bg-[hsla(195,100%,42%,0.1)] flex items-center justify-center">
-                    <HelpCircle className="w-4 h-4 text-[hsl(var(--cl-cyan))]" />
-                  </div>
-                  <h2 className="font-heading text-xl font-extrabold text-[hsl(var(--cl-navy))]">Kaip pasirinkti?</h2>
-                </div>
+                <SectionHeader icon={HelpCircle} title="Kaip pasirinkti?" id="kaip-pasirinkti" />
               </ScrollReveal>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {buyerGuide.map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <ScrollReveal key={idx} delay={idx * 40}>
-                      <div className="cl-card rounded-xl p-4 h-full">
-                        <h3 className="font-heading font-bold text-[hsl(var(--cl-navy))] text-sm mb-1.5 flex items-center gap-2">
-                          <div className="w-6 h-6 rounded bg-[hsla(195,100%,42%,0.08)] flex items-center justify-center shrink-0">
-                            <Icon className="w-3 h-3 text-[hsl(var(--cl-cyan))]" />
+                    <ScrollReveal key={idx} delay={idx * 50}>
+                      <div className="cy-panel rounded-xl p-4 h-full">
+                        <h3 className="font-heading font-bold text-[hsl(var(--cy-text))] text-sm mb-2 flex items-center gap-2">
+                          <div className="w-7 h-7 rounded bg-[hsla(185,100%,50%,0.06)] border border-[hsla(185,100%,50%,0.1)] flex items-center justify-center shrink-0">
+                            <Icon className="w-3.5 h-3.5 text-[hsl(var(--cy-cyan))]" />
                           </div>
                           {item.q}
                         </h3>
-                        <p className="text-xs text-[hsl(var(--cl-text-secondary))] leading-relaxed">{item.advice}</p>
+                        <p className="text-xs text-[hsl(var(--cy-text-dim))] leading-relaxed">{item.advice}</p>
                       </div>
                     </ScrollReveal>
                   );
                 })}
               </div>
               <ScrollReveal>
-                <div className="mt-4 rounded-xl bg-[hsla(195,100%,42%,0.04)] border border-[hsla(195,100%,42%,0.12)] p-4 max-w-2xl">
-                  <p className="text-xs text-[hsl(var(--cl-text-secondary))] leading-relaxed">
-                    <strong className="text-[hsl(var(--cl-navy))]">Bendra taisyklė:</strong> 1 Windows kompiuteris + atsargus naršymas = Windows Defender gali pakakti. 2+ įrenginiai, telefonas ar šeima = investuokite ~3–5 €/mėn.
+                <div className="mt-5 rounded-xl bg-[hsla(185,100%,50%,0.03)] border border-[hsla(185,100%,50%,0.12)] p-4 max-w-2xl cy-corners">
+                  <p className="text-xs text-[hsl(var(--cy-text-dim))] leading-relaxed">
+                    <strong className="text-[hsl(var(--cy-cyan))] cy-mono uppercase tracking-wider text-[10px]">Taisyklė: </strong>
+                    1 Windows kompiuteris + atsargus naršymas = Windows Defender gali pakakti. 2+ įrenginiai, telefonas ar šeima = investuokite ~3–5 €/mėn.
                   </p>
                 </div>
               </ScrollReveal>
             </section>
 
-            {/* ═══ 9. METHODOLOGY ═══ */}
-            <section className="mb-12 scroll-mt-8">
+            {/* ═══ METHODOLOGY ═══ */}
+            <section className="mb-14">
               <ScrollReveal>
-                <div className="cl-card rounded-xl p-6 md:p-8">
-                  <h2 className="font-heading text-lg font-extrabold text-[hsl(var(--cl-navy))] mb-4 flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-[hsla(195,100%,42%,0.1)] flex items-center justify-center">
-                      <BadgeCheck className="w-4 h-4 text-[hsl(var(--cl-cyan))]" />
+                <div className="cy-panel cy-panel-glow rounded-xl p-6 md:p-8">
+                  <h2 className="font-heading text-lg font-extrabold text-[hsl(var(--cy-text))] mb-5 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[hsla(185,100%,50%,0.08)] border border-[hsla(185,100%,50%,0.15)] flex items-center justify-center">
+                      <BadgeCheck className="w-4 h-4 text-[hsl(var(--cy-cyan))]" />
                     </div>
                     Kaip vertiname
                   </h2>
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 mb-5">
                     {[
-                      { title: 'Apsaugos efektyvumas', desc: 'Kenkėjiškų programų aptikimas, zero-day grėsmės, realaus laiko apsauga.', icon: Shield },
-                      { title: 'Sistemos našumas', desc: 'Poveikis greičiui, paleidimo laikui, baterijos suvartojimas.', icon: Zap },
-                      { title: 'Papildomos funkcijos', desc: 'VPN, slaptažodžiai, tėvų kontrolė, tamsaus interneto stebėjimas.', icon: Layers },
-                      { title: 'Kaina ir vertė', desc: 'Pirmo metų kaina, atnaujinimas, įrenginių skaičius.', icon: BarChart3 },
-                      { title: 'Paprastumas', desc: 'Sąsajos aiškumas, diegimo greitis, pranešimų kokybė.', icon: Heart },
-                      { title: 'Kelių įrenginių palaikymas', desc: 'Platformos, centralizuotas valdymas, šeimos licencijos.', icon: Globe },
+                      { title: 'Apsaugos efektyvumas', desc: 'Kenkėjiškų programų aptikimas, zero-day grėsmės.', icon: Shield },
+                      { title: 'Sistemos našumas', desc: 'Poveikis greičiui, baterijos suvartojimas.', icon: Zap },
+                      { title: 'Papildomos funkcijos', desc: 'VPN, slaptažodžiai, tėvų kontrolė.', icon: Layers },
+                      { title: 'Kaina ir vertė', desc: 'Pirmo metų kaina, įrenginių skaičius.', icon: BarChart3 },
+                      { title: 'Paprastumas', desc: 'Sąsajos aiškumas, diegimo greitis.', icon: Heart },
+                      { title: 'Įrenginių palaikymas', desc: 'Platformos, centralizuotas valdymas.', icon: Globe },
                     ].map((item, idx) => {
                       const Icon = item.icon;
                       return (
-                        <div key={idx} className="rounded-lg bg-[hsl(var(--cl-surface-alt))] border border-[hsl(var(--cl-border))] p-3.5 flex gap-2.5">
-                          <div className="w-7 h-7 rounded bg-[hsla(195,100%,42%,0.08)] flex items-center justify-center shrink-0 mt-0.5">
-                            <Icon className="w-3.5 h-3.5 text-[hsl(var(--cl-cyan))]" />
+                        <div key={idx} className="rounded-lg bg-[hsl(var(--cy-panel))] border border-[hsl(var(--cy-border))] p-3.5 flex gap-3">
+                          <div className="w-7 h-7 rounded bg-[hsla(185,100%,50%,0.06)] border border-[hsla(185,100%,50%,0.1)] flex items-center justify-center shrink-0 mt-0.5">
+                            <Icon className="w-3.5 h-3.5 text-[hsl(var(--cy-cyan))]" />
                           </div>
                           <div>
-                            <p className="font-heading font-semibold text-[hsl(var(--cl-navy))] text-xs mb-0.5">{item.title}</p>
-                            <p className="text-[10px] text-[hsl(var(--cl-text-muted))] leading-relaxed">{item.desc}</p>
+                            <p className="font-heading font-bold text-[hsl(var(--cy-text))] text-xs mb-0.5">{item.title}</p>
+                            <p className="text-[10px] text-[hsl(var(--cy-text-muted))] leading-relaxed">{item.desc}</p>
                           </div>
                         </div>
                       );
                     })}
                   </div>
-                  <div className="cl-divider mb-3" />
-                  <p className="text-[10px] text-[hsl(var(--cl-text-muted))]">Redakcija nepriklausoma. Affiliate partnerystės neįtakoja vertinimų.</p>
+                  <div className="cy-divider mb-3" />
+                  <p className="text-[10px] text-[hsl(var(--cy-text-muted))] cy-mono">[ Redakcija nepriklausoma. Affiliate partnerystės neįtakoja vertinimų. ]</p>
                 </div>
               </ScrollReveal>
             </section>
 
-            {/* ═══ 10. FAQ ═══ */}
-            <section id="duk" className="mb-12 scroll-mt-8">
+            {/* ═══ FAQ ═══ */}
+            <section id="duk" className="mb-14 scroll-mt-8">
               <ScrollReveal>
                 <FAQAccordion items={category.faq.length > 0 ? category.faq : pillarFaq} title="Dažnai užduodami klausimai" />
               </ScrollReveal>
             </section>
 
-            {/* ═══ 11. RELATED ARTICLES ═══ */}
+            {/* ═══ ARTICLES ═══ */}
             {categoryArticles.length > 0 && (
-              <section className="mb-12">
+              <section className="mb-14">
                 <ScrollReveal>
-                  <h2 className="font-heading text-xl font-extrabold text-[hsl(var(--cl-navy))] mb-5">Susiję straipsniai</h2>
+                  <h2 className="font-heading text-xl font-extrabold text-[hsl(var(--cy-text))] mb-5">Susiję straipsniai</h2>
                 </ScrollReveal>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {categoryArticles.map((a, idx) => (
@@ -819,23 +808,23 @@ const AntivirusLandingPage = ({ category }: Props) => {
               </section>
             )}
 
-            {/* ═══ 12. RELATED GUIDES ═══ */}
-            <section className="mb-12">
+            {/* ═══ RELATED GUIDES ═══ */}
+            <section className="mb-14">
               <ScrollReveal>
-                <div className="cl-card rounded-xl p-6">
-                  <h2 className="font-heading text-lg font-extrabold text-[hsl(var(--cl-navy))] mb-4">Kiti naudingi gidai</h2>
+                <div className="cy-panel rounded-xl p-6">
+                  <h2 className="font-heading text-lg font-extrabold text-[hsl(var(--cy-text))] mb-5">Kiti naudingi gidai</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
                     {relatedGuides.map(guide => {
                       const Icon = guide.icon;
                       return (
                         <Link key={guide.path} to={guide.path}
-                              className="flex items-center gap-3 rounded-lg p-3 bg-[hsl(var(--cl-surface-alt))] hover:bg-[hsla(195,100%,42%,0.06)] border border-transparent hover:border-[hsla(195,100%,42%,0.15)] transition-all group">
-                          <div className="w-8 h-8 rounded-lg bg-[hsla(195,100%,42%,0.08)] flex items-center justify-center shrink-0">
-                            <Icon className="w-4 h-4 text-[hsl(var(--cl-cyan))]" />
+                              className="flex items-center gap-3 rounded-lg p-3.5 bg-[hsl(var(--cy-panel))] border border-[hsl(var(--cy-border))] hover:border-[hsla(185,100%,50%,0.2)] hover:bg-[hsla(185,100%,50%,0.03)] transition-all group">
+                          <div className="w-9 h-9 rounded-lg bg-[hsla(185,100%,50%,0.06)] border border-[hsla(185,100%,50%,0.1)] flex items-center justify-center shrink-0">
+                            <Icon className="w-4 h-4 text-[hsl(var(--cy-cyan))]" />
                           </div>
                           <div>
-                            <span className="text-sm text-[hsl(var(--cl-navy))] font-medium group-hover:text-[hsl(var(--cl-cyan))] transition-colors">{guide.label}</span>
-                            <span className="text-[10px] text-[hsl(var(--cl-text-muted))] block">{guide.desc}</span>
+                            <span className="text-sm text-[hsl(var(--cy-text))] font-medium group-hover:text-[hsl(var(--cy-cyan))] transition-colors">{guide.label}</span>
+                            <span className="text-[10px] text-[hsl(var(--cy-text-muted))] block">{guide.desc}</span>
                           </div>
                         </Link>
                       );

@@ -154,153 +154,317 @@
   }
 }
 
-/* ═══════ CYBER LIGHT THEME — scoped to .cyber-light ═══════ */
-.cyber-light {
-  --cl-bg: 220 20% 97%;
-  --cl-surface: 0 0% 100%;
-  --cl-surface-alt: 215 25% 95%;
-  --cl-border: 215 20% 90%;
-  --cl-border-accent: 195 100% 42%;
-  --cl-text: 220 30% 12%;
-  --cl-text-secondary: 215 15% 45%;
-  --cl-text-muted: 215 12% 60%;
-  --cl-cyan: 195 100% 42%;
-  --cl-cyan-glow: 195 100% 50%;
-  --cl-navy: 220 40% 15%;
-  --cl-green: 155 72% 40%;
-  --cl-red: 0 65% 55%;
-  --cl-amber: 35 95% 55%;
+/* ═══════ CYBER COMMAND — immersive security theme ═══════ */
 
-  background-color: hsl(var(--cl-bg));
-  color: hsl(var(--cl-text));
+.cyber-cmd {
+  --cy-void: 228 35% 4%;
+  --cy-base: 225 30% 7%;
+  --cy-panel: 225 25% 10%;
+  --cy-panel-hover: 225 22% 13%;
+  --cy-border: 210 20% 16%;
+  --cy-border-glow: 185 100% 50%;
+  --cy-text: 180 10% 88%;
+  --cy-text-dim: 210 12% 52%;
+  --cy-text-muted: 210 10% 35%;
+  --cy-cyan: 185 100% 50%;
+  --cy-cyan-deep: 190 100% 38%;
+  --cy-neon: 145 100% 50%;
+  --cy-amber: 38 100% 55%;
+  --cy-red: 0 80% 58%;
+  --cy-magenta: 320 80% 55%;
+
+  background: hsl(var(--cy-void));
+  color: hsl(var(--cy-text));
+  font-family: var(--font-sans);
 }
 
-.cyber-light .cl-surface {
-  background-color: hsl(var(--cl-surface));
-  border-color: hsl(var(--cl-border));
-}
-
-.cyber-light .cl-card {
-  background-color: hsl(var(--cl-surface));
-  border: 1px solid hsl(var(--cl-border));
-  box-shadow: 0 1px 3px hsla(220, 30%, 12%, 0.04), 0 4px 12px hsla(220, 30%, 12%, 0.02);
-  transition: box-shadow 0.2s, border-color 0.2s;
-}
-
-.cyber-light .cl-card:hover {
-  box-shadow: 0 2px 8px hsla(195, 100%, 42%, 0.08), 0 8px 24px hsla(220, 30%, 12%, 0.04);
-  border-color: hsla(195, 100%, 42%, 0.25);
-}
-
-.cyber-light .cl-card-featured {
-  border-color: hsla(195, 100%, 42%, 0.3);
-  box-shadow: 0 0 0 1px hsla(195, 100%, 42%, 0.08), 0 4px 16px hsla(195, 100%, 42%, 0.06);
-}
-
-.cyber-light .cl-grid-bg {
+/* ── Grid / Hex background ── */
+.cyber-cmd .cy-grid {
   background-image:
-    linear-gradient(hsla(195, 100%, 42%, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, hsla(195, 100%, 42%, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
+    radial-gradient(circle at 1px 1px, hsla(185, 100%, 50%, 0.06) 1px, transparent 0);
+  background-size: 28px 28px;
 }
 
-.cyber-light .cl-hero-gradient {
+.cyber-cmd .cy-hex-bg {
   background:
-    radial-gradient(ellipse 60% 50% at 70% 0%, hsla(195, 100%, 50%, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 60% at 10% 80%, hsla(195, 100%, 42%, 0.05) 0%, transparent 70%),
-    hsl(var(--cl-surface));
+    radial-gradient(ellipse 80% 40% at 15% 0%, hsla(185, 100%, 50%, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 85% 100%, hsla(320, 80%, 55%, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 30% at 50% 50%, hsla(145, 100%, 50%, 0.02) 0%, transparent 60%);
 }
 
-.cyber-light .cl-scan-line {
+/* ── Panel / Card ── */
+.cyber-cmd .cy-panel {
+  background: hsl(var(--cy-panel));
+  border: 1px solid hsl(var(--cy-border));
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cyber-cmd .cy-panel:hover {
+  border-color: hsla(185, 100%, 50%, 0.2);
+  box-shadow:
+    0 0 0 1px hsla(185, 100%, 50%, 0.05),
+    0 4px 20px hsla(228, 35%, 4%, 0.6);
+}
+
+.cyber-cmd .cy-panel-glow {
+  border-color: hsla(185, 100%, 50%, 0.25);
+  box-shadow:
+    0 0 15px hsla(185, 100%, 50%, 0.08),
+    0 0 30px hsla(185, 100%, 50%, 0.03),
+    inset 0 1px 0 hsla(185, 100%, 50%, 0.06);
+}
+
+.cyber-cmd .cy-panel-rank1 {
+  border-color: hsla(38, 100%, 55%, 0.3);
+  box-shadow:
+    0 0 20px hsla(38, 100%, 55%, 0.06),
+    inset 0 1px 0 hsla(38, 100%, 55%, 0.08);
+}
+
+/* ── Scan line animation ── */
+.cyber-cmd .cy-scanline {
   position: relative;
   overflow: hidden;
 }
-
-.cyber-light .cl-scan-line::after {
+.cyber-cmd .cy-scanline::before {
   content: '';
   position: absolute;
-  top: 0;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    hsla(185, 100%, 50%, 0.015) 2px,
+    hsla(185, 100%, 50%, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+.cyber-cmd .cy-scanline::after {
+  content: '';
+  position: absolute;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, hsla(195, 100%, 50%, 0.4), transparent);
-  animation: cl-scan 4s ease-in-out infinite;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 5%, hsla(185, 100%, 60%, 0.5) 50%, transparent 95%);
+  animation: cy-sweep 5s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
 }
-
-@keyframes cl-scan {
-  0%, 100% { top: 0; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
+@keyframes cy-sweep {
+  0% { top: -2px; opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
   100% { top: 100%; opacity: 0; }
 }
 
-.cyber-light .cl-glow-text {
-  background: linear-gradient(135deg, hsl(195, 100%, 35%), hsl(195, 100%, 45%));
+/* ── Radar pulse ── */
+.cyber-cmd .cy-radar {
+  position: relative;
+}
+.cyber-cmd .cy-radar::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid hsla(185, 100%, 50%, 0.15);
+  transform: translate(-50%, -50%) scale(0.5);
+  animation: cy-ping 3s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes cy-ping {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+/* ── Gradient border (holographic) ── */
+.cyber-cmd .cy-holo-border {
+  position: relative;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+.cyber-cmd .cy-holo-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    hsla(185, 100%, 50%, 0.3),
+    hsla(320, 80%, 55%, 0.15),
+    hsla(145, 100%, 50%, 0.2),
+    hsla(185, 100%, 50%, 0.3)
+  );
+  z-index: -1;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  padding: 1px;
+  border-radius: inherit;
+}
+
+/* ── Typography ── */
+.cyber-cmd .cy-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', ui-monospace, monospace;
+  letter-spacing: 0.02em;
+}
+
+.cyber-cmd .cy-glow-text {
+  color: hsl(var(--cy-cyan));
+  text-shadow: 0 0 10px hsla(185, 100%, 50%, 0.4), 0 0 30px hsla(185, 100%, 50%, 0.15);
+}
+
+.cyber-cmd .cy-gradient-text {
+  background: linear-gradient(135deg, hsl(185, 100%, 55%), hsl(145, 100%, 55%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.cyber-light .cl-tag {
-  background-color: hsla(195, 100%, 42%, 0.08);
-  color: hsl(195, 100%, 35%);
-  border: 1px solid hsla(195, 100%, 42%, 0.15);
+/* ── Buttons ── */
+.cyber-cmd .cy-btn {
+  background: linear-gradient(135deg, hsla(185, 100%, 50%, 0.15), hsla(185, 100%, 50%, 0.08));
+  border: 1px solid hsla(185, 100%, 50%, 0.3);
+  color: hsl(var(--cy-cyan));
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
 }
-
-.cyber-light .cl-tag-green {
-  background-color: hsla(155, 72%, 40%, 0.08);
-  color: hsl(155, 72%, 35%);
-  border: 1px solid hsla(155, 72%, 40%, 0.15);
+.cyber-cmd .cy-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, hsla(185, 100%, 50%, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
 }
-
-.cyber-light .cl-tag-amber {
-  background-color: hsla(35, 95%, 55%, 0.1);
-  color: hsl(30, 80%, 38%);
-  border: 1px solid hsla(35, 95%, 55%, 0.2);
+.cyber-cmd .cy-btn:hover {
+  border-color: hsla(185, 100%, 50%, 0.5);
+  box-shadow: 0 0 20px hsla(185, 100%, 50%, 0.15), inset 0 0 20px hsla(185, 100%, 50%, 0.05);
+  transform: translateY(-1px);
 }
+.cyber-cmd .cy-btn:hover::before { opacity: 1; }
 
-.cyber-light .cl-btn-primary {
-  background: linear-gradient(135deg, hsl(195, 100%, 40%), hsl(195, 100%, 34%));
-  color: white;
-  box-shadow: 0 2px 8px hsla(195, 100%, 42%, 0.25);
-  transition: all 0.2s;
+.cyber-cmd .cy-btn-solid {
+  background: linear-gradient(135deg, hsl(185, 100%, 45%), hsl(190, 100%, 35%));
+  border: 1px solid hsla(185, 100%, 60%, 0.3);
+  color: hsl(var(--cy-void));
+  font-weight: 700;
+  box-shadow: 0 2px 12px hsla(185, 100%, 50%, 0.2);
+  transition: all 0.25s;
 }
-
-.cyber-light .cl-btn-primary:hover {
-  box-shadow: 0 4px 16px hsla(195, 100%, 42%, 0.35);
+.cyber-cmd .cy-btn-solid:hover {
+  box-shadow: 0 4px 24px hsla(185, 100%, 50%, 0.35), 0 0 40px hsla(185, 100%, 50%, 0.1);
   transform: translateY(-1px);
 }
 
-.cyber-light .cl-btn-outline {
-  border: 1px solid hsla(195, 100%, 42%, 0.3);
-  color: hsl(195, 100%, 35%);
-  transition: all 0.2s;
+/* ── Tags / Badges ── */
+.cyber-cmd .cy-badge {
+  background: hsla(185, 100%, 50%, 0.08);
+  border: 1px solid hsla(185, 100%, 50%, 0.2);
+  color: hsl(var(--cy-cyan));
+}
+.cyber-cmd .cy-badge-green {
+  background: hsla(145, 100%, 50%, 0.06);
+  border: 1px solid hsla(145, 100%, 50%, 0.2);
+  color: hsl(var(--cy-neon));
+}
+.cyber-cmd .cy-badge-amber {
+  background: hsla(38, 100%, 55%, 0.08);
+  border: 1px solid hsla(38, 100%, 55%, 0.2);
+  color: hsl(var(--cy-amber));
+}
+.cyber-cmd .cy-badge-magenta {
+  background: hsla(320, 80%, 55%, 0.08);
+  border: 1px solid hsla(320, 80%, 55%, 0.2);
+  color: hsl(var(--cy-magenta));
 }
 
-.cyber-light .cl-btn-outline:hover {
-  background-color: hsla(195, 100%, 42%, 0.06);
-  border-color: hsla(195, 100%, 42%, 0.5);
+/* ── Stat blocks ── */
+.cyber-cmd .cy-stat {
+  background: hsla(225, 25%, 10%, 0.8);
+  border: 1px solid hsl(var(--cy-border));
+  position: relative;
 }
-
-.cyber-light .cl-divider {
+.cyber-cmd .cy-stat::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  right: 15%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, hsla(195, 100%, 42%, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, hsla(185, 100%, 50%, 0.3), transparent);
 }
 
-.cyber-light .cl-stat-block {
-  background: hsla(215, 25%, 95%, 0.7);
-  border: 1px solid hsla(195, 100%, 42%, 0.1);
+/* ── Table ── */
+.cyber-cmd .cy-table-head {
+  background: hsla(225, 25%, 8%, 0.9);
+  border-bottom: 1px solid hsla(185, 100%, 50%, 0.15);
+}
+.cyber-cmd .cy-table-row {
+  border-bottom: 1px solid hsla(210, 20%, 16%, 0.5);
+  transition: background 0.2s;
+}
+.cyber-cmd .cy-table-row:hover {
+  background: hsla(185, 100%, 50%, 0.03);
 }
 
-.cyber-light .cl-table-header {
-  background: hsla(215, 25%, 95%, 0.6);
-  border-bottom: 2px solid hsla(195, 100%, 42%, 0.15);
+/* ── Divider ── */
+.cyber-cmd .cy-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsla(185, 100%, 50%, 0.2), hsla(320, 80%, 55%, 0.1), transparent);
 }
 
-.cyber-light .cl-table-row:hover {
-  background-color: hsla(195, 100%, 42%, 0.03);
+/* ── Corner decorations ── */
+.cyber-cmd .cy-corners {
+  position: relative;
+}
+.cyber-cmd .cy-corners::before,
+.cyber-cmd .cy-corners::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: hsla(185, 100%, 50%, 0.3);
+  pointer-events: none;
+}
+.cyber-cmd .cy-corners::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-color: inherit;
+}
+.cyber-cmd .cy-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-color: inherit;
 }
 
-.cyber-light .cl-mono {
-  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+/* ── Flicker animation for status indicators ── */
+@keyframes cy-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.3; }
+  94% { opacity: 1; }
+  96% { opacity: 0.5; }
+  97% { opacity: 1; }
+}
+.cyber-cmd .cy-flicker {
+  animation: cy-flicker 4s ease-in-out infinite;
+}
+
+/* ── Progress bar glow ── */
+@keyframes cy-pulse-bar {
+  0%, 100% { box-shadow: 0 0 4px hsla(185, 100%, 50%, 0.3); }
+  50% { box-shadow: 0 0 12px hsla(185, 100%, 50%, 0.6); }
+}
+.cyber-cmd .cy-pulse-bar {
+  animation: cy-pulse-bar 2s ease-in-out infinite;
 }
