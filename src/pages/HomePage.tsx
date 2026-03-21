@@ -187,7 +187,7 @@ const HomePage = () => {
 
                 <Link
                   to={hub.path}
-                  className="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-4 pl-[3.75rem] hover:underline"
+                  className="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto pt-4 pl-[3.75rem] hover:underline"
                 >
                   Skaityti daugiau
                   <ArrowRight className="w-3.5 h-3.5" />
