@@ -166,26 +166,6 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
 
         <div className="section-divider mb-10" />
 
-        {/* ═══ 2. TRUST STRIP ═══ */}
-        <section className="grid grid-cols-2 md:grid-cols-5 gap-2.5 mb-12">
-          {[
-            { value: products.length > 0 ? products.length.toString() : '–', label: 'Programų palyginta', icon: BarChart3 },
-            { value: featureCols.length.toString(), label: 'Vertinimo kriterijų', icon: Layers },
-            { value: '0 €', label: 'Visų kaina', icon: Zap },
-            { value: buyerGuide.length.toString(), label: 'Pasirinkimo klausimai', icon: HelpCircle },
-            { value: updatedLabel, label: 'Paskutinis atnaujinimas', icon: Clock },
-          ].map((stat, i) => {
-            const Icon = stat.icon;
-            return (
-              <div key={i} className="card-premium p-3.5 text-center">
-                <Icon className="w-4 h-4 text-primary mx-auto mb-1.5 opacity-50" />
-                <p className="font-heading font-bold text-foreground text-base tabular-nums leading-none mb-0.5">{stat.value}</p>
-                <p className="text-[10px] text-muted-foreground leading-tight">{stat.label}</p>
-              </div>
-            );
-          })}
-        </section>
-
         {/* ═══ 3. TOP 5 RECOMMENDATIONS ═══ */}
         {top5.length > 0 && (
           <section id="top-5" className="mb-16 scroll-mt-20">
