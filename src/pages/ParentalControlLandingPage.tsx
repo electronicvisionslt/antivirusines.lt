@@ -408,7 +408,7 @@ const ParentalControlLandingPage = ({ category }: Props) => {
 
         {/* ═══ 5. BY AGE GROUP ═══ */}
         <section id="pagal-amziu" className="mb-16 scroll-mt-20">
-          <SectionHeading label="Pagal vaiko amžių" title="Kokia programa tinka skirtingo amžiaus vaikams?" subtitle="Kiekvienas amžiaus tarpsnis turi skirtingus poreikius — štai ką rekomenduojame." className="mb-5" />
+          <SectionHeading title="Kokia programa tinka skirtingo amžiaus vaikams?" subtitle="Kiekvienas amžiaus tarpsnis turi skirtingus poreikius — štai ką rekomenduojame." className="mb-5" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div className="card-premium p-5">
