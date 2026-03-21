@@ -20,12 +20,12 @@ jobs:
       - name: Install conversion dependencies
         run: |
           cd scripts
-          npm install @supabase/supabase-js cheerio
+          npm install @supabase/supabase-js
 
       - name: Run conversion script
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_URL: "https://dkwffdnrailtqvrxiulw.supabase.co"
+          SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRrd2ZmZG5yYWlsdHF2cnhpdWx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMTg3MTksImV4cCI6MjA4OTU5NDcxOX0.m3Vpw7noB1-thgm7yMzS1Y4lz7ynaND2yVMI6ydn-s4"
         run: node scripts/convert-to-astro.mjs
 
       - name: Install Astro dependencies
