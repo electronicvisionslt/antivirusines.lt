@@ -10,6 +10,7 @@ import MobileAntivirusLandingPage from '@/pages/MobileAntivirusLandingPage';
 import DesktopAntivirusLandingPage from '@/pages/DesktopAntivirusLandingPage';
 import ParentalControlLandingPage from '@/pages/ParentalControlLandingPage';
 import PasswordSecurityHubPage from '@/pages/PasswordSecurityHubPage';
+import PasswordManagerLandingPage from '@/pages/PasswordManagerLandingPage';
 import GmailPasswordGuidePage from '@/pages/GmailPasswordGuidePage';
 import WifiPasswordGuidePage from '@/pages/WifiPasswordGuidePage';
 import ForgotPasswordGuidePage from '@/pages/ForgotPasswordGuidePage';
