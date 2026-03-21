@@ -276,9 +276,9 @@ const HomePage = () => {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-3">
               <Heart className="w-3.5 h-3.5" />
-              <span>Mūsų metodika</span>
+              <span>Mūsų požiūris</span>
             </div>
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">Kodėl mumis pasitikėti?</h2>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">Kaip atrenkame rekomendacijas?</h2>
           </div>
         </ScrollReveal>
 
