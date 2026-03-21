@@ -206,7 +206,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
           </div>
 
           <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
-            Geriausios antivirusinės programos 2025&nbsp;m.
+            Geriausios antivirusinės programos 2026&nbsp;m.
           </h1>
           <p className="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
             Išanalizavome populiariausias antivirusines programas pagal apsaugos efektyvumą, papildomas funkcijas ir kainą. Žemiau — redakcijos Top&nbsp;5, detalus palyginimas ir patarimai, kaip pasirinkti.
