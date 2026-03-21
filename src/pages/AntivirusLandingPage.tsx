@@ -131,10 +131,16 @@ const relatedGuides = [
 
 /* ── Feature columns for comparison ── */
 const featureCols = [
+  { key: 'Realaus laiko apsauga', label: 'Realaus laiko aps.' },
   { key: 'VPN', label: 'VPN' },
   { key: 'Slaptažodžių tvarkyklė', label: 'Slaptažodžiai' },
+  { key: 'Ugniasienė', label: 'Ugniasienė' },
   { key: 'Tėvų kontrolė', label: 'Tėvų kontr.' },
   { key: 'Telefonų apsauga', label: 'Tel. apsauga' },
+  { key: 'Debesų saugykla', label: 'Debesų saug.' },
+  { key: 'Dark web stebėjimas', label: 'Dark web' },
+  { key: 'Tapatybės apsauga', label: 'Tapatybės aps.' },
+  { key: 'Sukčių apsauga', label: 'Sukčių aps.' },
 ];
 
 /* ── Filter options ── */
