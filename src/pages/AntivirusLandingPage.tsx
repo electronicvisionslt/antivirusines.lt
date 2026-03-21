@@ -679,25 +679,23 @@ const AntivirusLandingPage = ({ category }: Props) => {
 
         {/* ═══ 10. RELATED GUIDES ═══ */}
         <section className="mb-16">
-          <div className="card-premium p-5 md:p-6">
-            <SectionHeading label="Susiję gidai" title="Kiti naudingi gidai" className="mb-4" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-              {relatedGuides.map(guide => {
-                const Icon = guide.icon;
-                return (
-                  <Link key={guide.path} to={guide.path}
-                        className="flex items-start gap-2.5 rounded-lg p-3.5 bg-background hover:bg-primary/[0.03] border border-border/40 transition-all duration-200 group elevation-1 hover-lift">
-                    <div className="w-7 h-7 rounded-md bg-primary/8 flex items-center justify-center shrink-0">
-                      <Icon className="w-3.5 h-3.5 text-primary" />
-                    </div>
-                    <div>
-                      <span className="text-sm text-foreground font-semibold block group-hover:text-primary transition-colors leading-tight">{guide.label}</span>
-                      <span className="text-[11px] text-muted-foreground">{guide.desc}</span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
+          <SectionHeading label="Susiję gidai" title="Kiti naudingi gidai" className="mb-4" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+            {relatedGuides.map(guide => {
+              const Icon = guide.icon;
+              return (
+                <Link key={guide.path} to={guide.path}
+                      className="card-premium flex items-start gap-2.5 p-3.5 transition-all duration-200 group hover-lift">
+                  <div className="w-7 h-7 rounded-md bg-primary/8 flex items-center justify-center shrink-0">
+                    <Icon className="w-3.5 h-3.5 text-primary" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-foreground font-semibold block group-hover:text-primary transition-colors leading-tight">{guide.label}</span>
+                    <span className="text-[11px] text-muted-foreground">{guide.desc}</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </section>
 
