@@ -193,7 +193,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
         {/* ═══ 3. TOP 5 RECOMMENDATIONS ═══ */}
         {top5.length > 0 && (
           <section id="top-5" className="mb-16 scroll-mt-20">
-            <SectionHeading label="Redakcijos pasirinkimas" title="Top 5 antivirusinės programos" subtitle="Programos, kurios šiandien siūlo geriausią apsaugos, funkcijų ir kainos derinį." className="mb-6" />
+            <SectionHeading title="Top 5 antivirusinės programos" subtitle="Programos, kurios šiandien siūlo geriausią apsaugos, funkcijų ir kainos derinį." className="mb-6" />
 
             <div className="space-y-3">
               {top5.map((product, i) => (
