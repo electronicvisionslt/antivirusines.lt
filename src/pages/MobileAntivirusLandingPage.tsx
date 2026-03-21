@@ -186,7 +186,7 @@ const MobileAntivirusLandingPage = ({ category }: Props) => {
             Geriausios antivirusinės programos telefonui 2026&nbsp;m.
           </h1>
           <p className="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
-            Telefonai tapo pagrindine kibernetinių atakų taikyklė. Palyginome geriausias antivirusines programas Android ir iOS platformoms pagal apsaugos efektyvumą, funkcijas ir poveikį baterijai. Žemiau&nbsp;— redakcijos Top&nbsp;5.
+            Telefonai tapo pagrindiniu kibernetinių atakų taikiniu. Palyginome geriausias antivirusines programas Android ir iOS platformoms pagal apsaugos efektyvumą, funkcijas ir poveikį baterijai. Žemiau&nbsp;— redakcijos Top&nbsp;5.
           </p>
 
           {/* Quick winner badges */}
@@ -327,7 +327,7 @@ const MobileAntivirusLandingPage = ({ category }: Props) => {
                               const val = product.features[col.key];
                               return (
                                 <span key={col.key} className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
-                                  {val === true ? <Check className="w-3 h-3 text-success" /> : val === false ? <X className="w-3 h-3 text-muted-foreground/25" /> : <Check className="w-3 h-3 text-success" />}
+                                  {val === true ? <Check className="w-3 h-3 text-success" /> : val === false ? <X className="w-3 h-3 text-muted-foreground/25" /> : <span className="text-[10px] text-muted-foreground">{val}</span>}
                                   {col.label}
                                 </span>
                               );
@@ -727,7 +727,7 @@ const MobileAntivirusLandingPage = ({ category }: Props) => {
                 );
               })}
             </div>
-            <p className="text-[10px] text-muted-foreground/50 mt-4 pt-3 border-t border-border/30">Redakcija yra nepriklausoma. Affiliate partnerystės neįtakoja vertinimų ar rekomendacijų eiliškumo.</p>
+            <p className="text-[10px] text-muted-foreground/50 mt-4 pt-3 border-t border-border/30">Redakcija yra nepriklausoma. Affiliate partnerystės neturi įtakos vertinimams ar rekomendacijų eiliškumui.</p>
           </div>
         </section>
 

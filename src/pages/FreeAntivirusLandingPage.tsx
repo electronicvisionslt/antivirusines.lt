@@ -326,7 +326,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
                               const val = product.features[col.key];
                               return (
                                 <span key={col.key} className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
-                                  {val === true ? <Check className="w-3 h-3 text-success" /> : val === false ? <X className="w-3 h-3 text-muted-foreground/25" /> : <Check className="w-3 h-3 text-success" />}
+                                  {val === true ? <Check className="w-3 h-3 text-success" /> : val === false ? <X className="w-3 h-3 text-muted-foreground/25" /> : <span className="text-[10px] text-muted-foreground">{val}</span>}
                                   {col.label}
                                 </span>
                               );
@@ -386,7 +386,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
                               const val = product.features[col.key];
                               return (
                                 <span key={col.key} className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
-                                  {val === true ? <Check className="w-3 h-3 text-success" /> : val === false ? <X className="w-3 h-3 text-muted-foreground/25" /> : <Check className="w-3 h-3 text-success" />}
+                                  {val === true ? <Check className="w-3 h-3 text-success" /> : val === false ? <X className="w-3 h-3 text-muted-foreground/25" /> : <span className="text-[10px] text-muted-foreground">{val}</span>}
                                   {col.label}
                                 </span>
                               );
@@ -739,7 +739,7 @@ const FreeAntivirusLandingPage = ({ category }: Props) => {
                 );
               })}
             </div>
-            <p className="text-[10px] text-muted-foreground/50 mt-4 pt-3 border-t border-border/30">Redakcija yra nepriklausoma. Affiliate partnerystės neįtakoja vertinimų ar rekomendacijų eiliškumo.</p>
+            <p className="text-[10px] text-muted-foreground/50 mt-4 pt-3 border-t border-border/30">Redakcija yra nepriklausoma. Affiliate partnerystės neturi įtakos vertinimams ar rekomendacijų eiliškumui.</p>
           </div>
         </section>
 
