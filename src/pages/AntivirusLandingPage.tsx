@@ -494,13 +494,13 @@ const AntivirusLandingPage = ({ category }: Props) => {
                     <div className="grid border-b border-border/50" style={{ gridTemplateColumns: gridCols, background: 'hsl(210 18% 97%)' }}>
                       <div className="p-3 border-r border-border/30" />
                       {filteredProducts.map((product, i) => (
-                        <div key={product.id} className={`p-4 text-center border-r border-border/30 last:border-r-0 ${i === 0 ? 'bg-primary/[0.04]' : ''}`}>
-                          <div className="flex justify-center mb-2.5">
+                        <div key={product.id} className={`p-4 text-center border-r border-border/30 last:border-r-0 flex flex-col items-center ${i === 0 ? 'bg-primary/[0.04]' : ''}`}>
+                          <div className="h-[52px] flex items-center justify-center mb-2">
                             <ProductLogo product={product} size={38} />
                           </div>
-                          <p className="font-heading font-bold text-foreground text-[13px] leading-tight mb-1">{product.name}</p>
-                          <p className="text-[10px] text-muted-foreground leading-tight mb-3">{product.pricingSummary}</p>
-                          <AffiliateButton product={product} className="px-3.5 py-1.5 text-[11px] mx-auto" />
+                          <p className="font-heading font-bold text-foreground text-[13px] leading-tight min-h-[2.5em] flex items-center justify-center mb-1">{product.name}</p>
+                          <p className="text-[10px] text-muted-foreground leading-tight h-[1.2em] mb-3">{product.pricingSummary}</p>
+                          <AffiliateButton product={product} className="px-3.5 py-1.5 text-[11px]" />
                         </div>
                       ))}
                     </div>
