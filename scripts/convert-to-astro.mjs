@@ -316,7 +316,7 @@ import FAQ from '../components/FAQ.astro';
         ${hub.tag ? `<span class="absolute top-4 right-4 text-[10px] font-heading font-semibold text-primary bg-primary/8 border border-primary/12 px-2 py-0.5 rounded-full">${hub.tag}</span>` : ''}
         <div class="flex items-start gap-4 mb-3">
           <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
-            ${SVG[hub.svgKey] || SVG.shield}
+            ${svgSized(SVG[hub.svgKey] || SVG.shield, 'w-5 h-5')}
           </div>
           <div class="flex-1 min-w-0">
             <a href="${hub.path}" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight">${hub.title}</a>
