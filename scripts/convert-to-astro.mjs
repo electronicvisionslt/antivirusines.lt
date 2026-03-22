@@ -1222,6 +1222,19 @@ const FLAGSHIP_META = {
     heroDesc: 'Viskas, ką reikia žinoti apie kompiuterinius virusus — tipai, plitimo būdai, atpažinimo požymiai ir efektyviausi apsaugos metodai.',
     isGuide: true,
     breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' }, { label: 'Kompiuterinis virusas', path: '/virusai/kompiuterinis-virusas' }],
+    guideSections: [
+      { id: 'kas-tai', title: 'Kas yra kompiuterinis virusas?', content: 'Kompiuterinis virusas — tai kenkėjiška programa, kuri gali kopijuoti save ir plisti tarp kompiuterių. Virusai prisijungia prie teisėtų failų ar programų ir aktyvuojasi, kai vartotojas atidaro užkrėstą failą. Jie gali sugadinti duomenis, sulėtinti sistemą arba suteikti įsilaužėliams prieigą prie jūsų kompiuterio.' },
+      { id: 'tipai', title: 'Pagrindiniai virusų tipai', content: 'Failų virusai — prisijungia prie vykdomųjų failų (.exe). Makro virusai — plinta per Office dokumentus. Rootkit — slepiasi operacinės sistemos lygyje. Ransomware — užšifruoja failus ir reikalauja išpirkos. Trojanai — apsimeta teisėtomis programomis. Šnipinėjimo programos (spyware) — seka vartotojo veiklą ir vagia duomenis.' },
+      { id: 'plitimo-budai', title: 'Kaip plinta virusai?', content: 'Dažniausiai virusai plinta per: el. pašto priedus, užkrėstas svetaines, piratines programas ir žaidimus, USB laikmenas, socialinės inžinerijos atakas (apgaulingus pranešimus), ir pažeidžiamybes neapdorotose programose.' },
+      { id: 'pozymiai', title: 'Infekcijos požymiai', content: 'Kompiuteris veikia žymiai lėčiau nei įprasta. Atsiranda neaiškių programų ar failų. Naršyklė nukreipia į nepažįstamas svetaines. Antivirusinė programa išjungiama savaime. Pasirodo iššokantys langai ar pranešimai. Diskas neįprastai aktyvus.' },
+      { id: 'apsauga', title: 'Kaip apsisaugoti nuo virusų', content: 'Naudokite patikimą antivirusinę programą su realaus laiko apsauga. Reguliariai atnaujinkite operacinę sistemą ir programas. Neatidarinėkite įtartinų el. laiškų priedų. Atsisiųskite programas tik iš oficialių šaltinių. Naudokite ugniasienę. Reguliariai darykite atsargines duomenų kopijas.' },
+      { id: 'salinimas', title: 'Kaip pašalinti virusą', content: 'Paleiskite kompiuterį Safe Mode. Atlikite pilną sistemos skenavimą antivirusine programa. Pašalinkite aptiktas grėsmes. Pakeiskite visus svarbius slaptažodžius. Atnaujinkite operacinę sistemą. Jei virusas nepašalinamas — naudokite bootable antivirusinį diską (Kaspersky Rescue Disk, Norton Bootable Recovery).' },
+    ],
+    guideFaq: [
+      { q: 'Kuo virusas skiriasi nuo kenkėjiškos programos (malware)?', a: 'Virusas yra vienas iš malware tipų. Malware apima visas kenkėjiškas programas: virusus, trojanus, ransomware, spyware, adware ir kitas grėsmes.' },
+      { q: 'Ar Mac kompiuteriai gali gauti virusą?', a: 'Taip, nors Mac sistemos yra saugesnės nei Windows, jos nėra imunitetinės. Pastaraisiais metais Mac malware skaičius nuolat auga.' },
+      { q: 'Ar Windows Defender pakanka apsaugai nuo virusų?', a: 'Windows Defender suteikia bazinę apsaugą, bet trečiųjų šalių antivirusinės (Norton, Bitdefender) siūlo pažangesnę apsaugą su papildomomis funkcijomis.' },
+    ],
   },
   '/virusai/virusas-telefone': {
     title: 'Virusas telefone: požymiai, šalinimas ir apsauga 2026',
@@ -1230,6 +1243,18 @@ const FLAGSHIP_META = {
     heroDesc: 'Kaip atpažinti, pašalinti ir apsisaugoti nuo virusų telefone — praktinis gidas Android ir iOS naudotojams.',
     isGuide: true,
     breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' }, { label: 'Virusas telefone', path: '/virusai/virusas-telefone' }],
+    guideSections: [
+      { id: 'pozymiai', title: 'Kaip atpažinti virusą telefone?', content: 'Pagrindiniai požymiai: telefonas veikia žymiai lėčiau, baterija greitai senka, padidėjęs duomenų naudojimas, atsiranda nepažįstamų programėlių, iššokančios reklamos, telefonas kaista be priežasties, neįprasti SMS ar skambučiai kontaktų sąraše.' },
+      { id: 'android', title: 'Virusų šalinimas Android telefone', content: '1) Paleiskite Safe Mode (palaikykite maitinimo mygtuką → ilgai spauskite „Išjungti" → „Safe Mode"). 2) Eikite į Nustatymai → Programos ir pašalinkite neseniai įdiegtas įtartinas programėles. 3) Nuskenuokite telefoną su Norton Mobile Security arba Malwarebytes. 4) Išvalykite naršyklės talpyklą. 5) Jei problema lieka — atstatykite gamyklinius nustatymus (prieš tai padarykite atsarginę kopiją).' },
+      { id: 'iphone', title: 'Virusų šalinimas iPhone', content: 'iPhone yra saugesni dėl uždaros iOS ekosistemos, bet ne 100% apsaugoti. Šalinimo žingsniai: 1) Atnaujinkite iOS iki naujausios versijos. 2) Pašalinkite įtartinas programėles. 3) Išvalykite Safari istoriją ir duomenis. 4) Patikrinkite, ar nėra neautorizuotų konfigūracijos profilių (Nustatymai → Bendrieji → VPN ir įrenginių valdymas). 5) Kraštutinis atvejis — atstatykite gamyklinius nustatymus.' },
+      { id: 'prevencija', title: 'Kaip apsaugoti telefoną nuo virusų', content: 'Diekite programėles TIK iš Google Play arba App Store. Atidžiai tikrinkite programėlių leidimus. Reguliariai atnaujinkite operacinę sistemą. Nejunkitės prie neapsaugotų viešų WiFi tinklų be VPN. Naudokite antivirusinę programą su realaus laiko apsauga. Neatidarinėkite įtartinų nuorodų SMS žinutėse.' },
+      { id: 'antivirusine', title: 'Geriausios antivirusinės telefonui', content: 'Rekomenduojamos antivirusinės programos telefonui: Norton Mobile Security (geriausias grėsmių aptikimas), Bitdefender Mobile Security (mažiausias poveikis baterijai), ESET Mobile Security (geras kainos ir kokybės santykis), Kaspersky Mobile (stipri apsauga nuo phishing). Visos turi nemokamas bandomąsias versijas.' },
+    ],
+    guideFaq: [
+      { q: 'Ar telefonas tikrai gali gauti virusą?', a: 'Taip, ypač Android telefonai. Dažniausiai kenkėjiškos programos plinta per neoficialias programėlių parduotuves, apgaulingas nuorodas ir užkrėstas svetaines.' },
+      { q: 'Ar nemokamos antivirusinės telefonui yra efektyvios?', a: 'Bazinę apsaugą suteikia, bet mokamos versijos siūlo realaus laiko apsaugą, anti-phishing, VPN ir kitas svarbias funkcijas.' },
+      { q: 'Kaip dažnai reikėtų skenuoti telefoną?', a: 'Su realaus laiko apsauga — automatinis skenavimas vyksta nuolat. Be antivirusinės — rekomenduojame skenuoti bent kartą per savaitę.' },
+    ],
   },
   '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas': {
     title: 'Kaip patikrinti ar kompiuteryje yra virusas 2026',
@@ -1559,6 +1584,147 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
     ${faq.length > 0 ? `<FAQ items={${JSON.stringify(faq)}} />` : ''}
     <TrustDisclosure />
   </div>
+</Base>`;
+}
+
+function generateGuideFlagshipPage(category, meta, overlappingArticle, data, catArticles, categoryMap) {
+  const depth = category.path.split('/').filter(Boolean).length;
+  const prefix = depth > 1 ? '../../' : '../';
+
+  // Use article body from DB if available, otherwise use hardcoded guideSections
+  const sections = meta.guideSections || [];
+  const faq = meta.guideFaq || parseFaq(category.faq) || [];
+  const articleBody = overlappingArticle?.body || '';
+  const articleSections = overlappingArticle ? parseSections(overlappingArticle.sections) : [];
+  const author = overlappingArticle?.authors;
+
+  // Merge: prefer DB sections if they exist, fall back to meta guideSections
+  const finalSections = articleSections.length > 0 ? articleSections : sections;
+  const finalFaq = overlappingArticle?.faq ? parseFaq(overlappingArticle.faq) : faq;
+
+  return `---
+import Base from '${prefix}layouts/Base.astro';
+import Breadcrumbs from '${prefix}components/Breadcrumbs.astro';
+import FAQ from '${prefix}components/FAQ.astro';
+import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
+---
+
+<Base
+  title="${escapeHtml(overlappingArticle?.seo_title || meta.title)}"
+  description="${escapeHtml(overlappingArticle?.meta_description || meta.description)}"
+  ${category.canonical_url ? `canonicalUrl="${escapeHtml(category.canonical_url)}"` : ''}
+>
+  <article class="container py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={${JSON.stringify(meta.breadcrumbs)}} />
+
+    <!-- HERO -->
+    <div class="mb-8">
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight" itemProp="headline">
+        ${meta.heroTitle}
+      </h1>
+      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-4" itemProp="description">
+        ${meta.heroDesc}
+      </p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        ${author ? `<span class="font-medium">${escapeHtml(author.name)}</span>` : ''}
+        ${overlappingArticle ? `<time itemProp="dateModified" datetime="${overlappingArticle.updated_at}">Atnaujinta: ${overlappingArticle.updated_at?.split('T')[0]}</time>` : '<time>Atnaujinta: 2026</time>'}
+        ${overlappingArticle?.read_time ? `<span>· ${escapeHtml(overlappingArticle.read_time)} skaitymo</span>` : ''}
+      </div>
+    </div>
+
+    <TrustDisclosure compact />
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-10">
+      <div>
+        ${finalSections.length > 1 ? `
+        <!-- TABLE OF CONTENTS (mobile) -->
+        <nav class="rounded-lg border border-border/50 bg-card p-4 my-6 lg:hidden">
+          <h4 class="font-heading font-semibold text-xs text-foreground mb-2.5 uppercase tracking-wider">Turinys</h4>
+          <ol class="space-y-1.5">
+            ${finalSections.map((s, i) => `
+            <li>
+              <a href="#${s.id}" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">${String(i + 1).padStart(2, '0')}</span>
+                ${escapeHtml(s.title)}
+              </a>
+            </li>`).join('')}
+          </ol>
+        </nav>
+        ` : ''}
+
+        <!-- CONTENT SECTIONS -->
+        <div class="prose-article">
+          ${finalSections.map(s => `
+          <section class="mb-8 scroll-mt-20" id="${s.id}">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">${escapeHtml(s.title)}</h2>
+            <p class="text-muted-foreground leading-relaxed">${escapeHtml(s.content)}</p>
+          </section>
+          `).join('')}
+
+          ${!finalSections.length && articleBody ? articleBody : ''}
+        </div>
+
+        ${overlappingArticle?.pros?.length > 0 && overlappingArticle?.cons?.length > 0 ? `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+          <div class="rounded-xl border border-success/20 bg-success/5 p-5">
+            <h3 class="font-heading font-semibold text-success text-sm mb-3">✅ Privalumai</h3>
+            <ul class="space-y-2">${(overlappingArticle.pros || []).map(p => `<li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>${escapeHtml(p)}</li>`).join('')}</ul>
+          </div>
+          <div class="rounded-xl border border-destructive/20 bg-destructive/5 p-5">
+            <h3 class="font-heading font-semibold text-destructive text-sm mb-3">❌ Trūkumai</h3>
+            <ul class="space-y-2">${(overlappingArticle.cons || []).map(c => `<li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>${escapeHtml(c)}</li>`).join('')}</ul>
+          </div>
+        </div>
+        ` : ''}
+
+        ${overlappingArticle?.verdict ? `
+        <div class="rounded-xl border border-primary/15 bg-primary/[0.03] p-5 my-8">
+          <div class="flex gap-3">
+            <div class="w-1 rounded-full bg-primary/40 shrink-0"></div>
+            <div>
+              <h3 class="font-heading font-semibold text-foreground mb-2">Mūsų verdiktas</h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">${escapeHtml(overlappingArticle.verdict)}</p>
+            </div>
+          </div>
+        </div>
+        ` : ''}
+
+        ${finalFaq.length > 0 ? `<FAQ items={${JSON.stringify(finalFaq)}} />` : ''}
+
+        ${catArticles.length > 0 ? `
+        <!-- RELATED -->
+        <section class="mt-10 mb-6">
+          <h2 class="font-heading text-xl font-bold text-foreground mb-4">Susiję gidai</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            ${catArticles.filter(a => a.path !== category.path).slice(0, 4).map(a => `
+            <a href="${a.path}" class="group rounded-xl border border-border/50 bg-card p-4 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+              <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-1">${escapeHtml(a.title)}</h3>
+              <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">${escapeHtml(a.excerpt || '')}</p>
+            </a>
+            `).join('')}
+          </div>
+        </section>
+        ` : ''}
+      </div>
+
+      ${finalSections.length > 1 ? `
+      <!-- SIDEBAR TOC (desktop) -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              ${finalSections.map(s => `<li><a href="#${s.id}" class="text-xs text-muted-foreground hover:text-primary transition-colors">${escapeHtml(s.title)}</a></li>`).join('')}
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      ` : ''}
+    </div>
+
+    <TrustDisclosure />
+  </article>
 </Base>`;
 }
 
