@@ -43,19 +43,13 @@ const flagshipPages: Record<string, React.ComponentType<{ category: PublicCatego
   '/virusai/reklamos-virusas-telefone': AdwarePhoneGuidePage,
 };
 
-const CategoryPage = ({ category }: Props) => {
-  const FlagshipComponent = flagshipPages[category.path];
-
+const GenericCategoryPage = ({ category }: Props) => {
   usePageMeta({
     title: category.seoTitle || category.title,
     description: category.metaDescription || category.description,
     canonicalUrl: category.canonicalUrl || undefined,
     noindex: category.noindex,
   });
-
-  if (FlagshipComponent) {
-    return <FlagshipComponent category={category} />;
-  }
 
   const categoryArticles = category.articles || [];
 
@@ -101,6 +95,16 @@ const CategoryPage = ({ category }: Props) => {
       </div>
     </PageLayout>
   );
+};
+
+const CategoryPage = ({ category }: Props) => {
+  const FlagshipComponent = flagshipPages[category.path];
+
+  if (FlagshipComponent) {
+    return <FlagshipComponent category={category} />;
+  }
+
+  return <GenericCategoryPage category={category} />;
 };
 
 export default CategoryPage;
