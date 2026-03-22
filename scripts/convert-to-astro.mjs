@@ -9,7 +9,7 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
-import { cpSync, mkdirSync, writeFileSync, readFileSync, existsSync } from 'fs';
+import { cpSync, mkdirSync, writeFileSync, readFileSync, existsSync, rmSync } from 'fs';
 import { join, dirname } from 'path';
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -40,6 +40,15 @@ function writePage(relativePath, content) {
   console.log(`  ✅ ${relativePath}`);
 }
 
+function writeRoutePage(routePath, content) {
+  if (shouldPreserveCustomPage(routePath)) {
+    console.log(`  🛡️ Preserved custom page: ${routePath}`);
+    return;
+  }
+
+  writePage(routeToPagePath(routePath), content);
+}
+
 function routeToPagePath(routePath) {
   if (routePath === '/') return 'index.astro';
   return routePath.split('/').filter(Boolean).join('/') + '.astro';
@@ -48,6 +57,34 @@ function routeToPagePath(routePath) {
 function shouldPreserveCustomPage(routePath) {
   if (!CUSTOM_ASTRO_PATHS.has(routePath)) return false;
   return existsSync(join(PAGES_DIR, routeToPagePath(routePath)));
+}
+
+function snapshotPreservedPages() {
+  const preservedPages = new Map();
+
+  for (const routePath of CUSTOM_ASTRO_PATHS) {
+    const pagePath = routeToPagePath(routePath);
+    const fullPath = join(PAGES_DIR, pagePath);
+
+    if (existsSync(fullPath)) {
+      preservedPages.set(pagePath, readFileSync(fullPath, 'utf-8'));
+    }
+  }
+
+  return preservedPages;
+}
+
+function resetGeneratedPages() {
+  const preservedPages = snapshotPreservedPages();
+
+  rmSync(PAGES_DIR, { recursive: true, force: true });
+  ensureDir(PAGES_DIR);
+
+  for (const [pagePath, content] of preservedPages.entries()) {
+    const fullPath = join(PAGES_DIR, pagePath);
+    ensureDir(dirname(fullPath));
+    writeFileSync(fullPath, content, 'utf-8');
+  }
 }
 
 function escapeHtml(str) {
@@ -1424,6 +1461,9 @@ function copyTailwindConfig() {
 async function main() {
   console.log('🚀 Starting Astro conversion...\n');
 
+  resetGeneratedPages();
+  rmSync(join(BUILD_DIR, 'dist'), { recursive: true, force: true });
+
   // 1. Copy base skeleton
   console.log('📦 Copying Astro base skeleton...');
   // Copy base skeleton WITHOUT overwriting existing pages
@@ -1610,7 +1650,7 @@ export default defineConfig({
   console.log('\n📄 Generating pages...');
 
   // Homepage
-  writePage('index.astro', generateHomePage(data));
+  writeRoutePage('/', generateHomePage(data));
 
   // 404
   writePage('404.astro', generate404Page());
@@ -1630,11 +1670,11 @@ export default defineConfig({
 
     if (category.path === '/antivirusines-programos') {
       console.log(`  ⚡ Flagship: ${category.path}`);
-      writePage(pagePath, generateAntivirusLandingPage(category, data.products, catArticles));
+      writeRoutePage(category.path, generateAntivirusLandingPage(category, data.products, catArticles));
     } else if (FLAGSHIP_PATHS.has(category.path)) {
       // All flagship paths get the rich antivirus-style landing template
       console.log(`  ⚡ Flagship: ${category.path}`);
-      writePage(pagePath, generateFlagshipPage(category, data, catArticles, categoryMap));
+      writeRoutePage(category.path, generateFlagshipPage(category, data, catArticles, categoryMap));
     } else if (overlappingArticle) {
       console.log(`  📰 Category path uses article template: ${category.path}`);
       writePage(pagePath, generateArticlePage(overlappingArticle, categoryMap));

@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { Star, ExternalLink, Check, X, Monitor, Laptop, Smartphone, Globe } from 'lucide-react';
 import type { PublicProduct } from '@/hooks/usePublicData';
 
@@ -22,27 +23,27 @@ export function ProductLogo({ product, size = 40 }: { product: PublicProduct; si
 }
 
 /* ── RatingStars ── */
-export function RatingStars({ rating }: { rating: number }) {
+export const RatingStars = forwardRef<HTMLDivElement, { rating: number }>(function RatingStars({ rating }, ref) {
   return (
-    <div className="flex items-center gap-0.5">
+    <div ref={ref} className="flex items-center gap-0.5">
       {[1, 2, 3, 4, 5].map(s => (
         <Star key={s} className={`w-3.5 h-3.5 ${s <= Math.round(rating) ? 'fill-amber-400 text-amber-400' : 'fill-muted text-muted-foreground/20'}`} />
       ))}
       <span className="ml-1.5 text-xs font-bold text-foreground tabular-nums">{rating.toFixed(1)}</span>
     </div>
   );
-}
+});
 
 /* ── AffiliateButton ── */
-export function AffiliateButton({ product, className = '', label }: { product: PublicProduct; className?: string; label?: string }) {
+export const AffiliateButton = forwardRef<HTMLAnchorElement, { product: PublicProduct; className?: string; label?: string }>(function AffiliateButton({ product, className = '', label }, ref) {
   if (!product.affiliateUrl) return null;
   return (
-    <a href={product.affiliateUrl} target="_blank" rel="nofollow sponsored noopener noreferrer"
+    <a ref={ref} href={product.affiliateUrl} target="_blank" rel="nofollow sponsored noopener noreferrer"
        className={`inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary ${className}`}>
       {label || 'Apsilankyti'}<ExternalLink className="w-3.5 h-3.5" />
     </a>
   );
-}
+});
 
 /* ── FeatureCheck ── */
 export function FeatureCheck({ value }: { value: boolean | string }) {
