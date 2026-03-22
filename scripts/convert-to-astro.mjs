@@ -1059,6 +1059,341 @@ const FLAGSHIP_PATHS = new Set([
   '/virusai/reklamos-virusas-telefone',
 ]);
 
+// ─── Flagship page metadata for all non-antivirus flagship paths ───
+const FLAGSHIP_META = {
+  '/antivirusines-programos/nemokamos': {
+    title: 'Geriausios nemokamos antivirusinės programos 2026 — Top 5 palyginimas',
+    description: 'Nepriklausomas nemokamų antivirusinių programų palyginimas. Avast, Bitdefender Free, AVG, Avira ir Windows Defender — kurią pasirinkti?',
+    heroTitle: 'Geriausios nemokamos antivirusinės programos 2026&nbsp;m.',
+    heroDesc: 'Išanalizavome populiariausias nemokamas antivirusines programas pagal apsaugos efektyvumą, papildomas funkcijas ir sistemos poveikį.',
+    productCategory: 'antivirus',
+    filterFree: true,
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos' }, { label: 'Nemokamos', path: '/antivirusines-programos/nemokamos' }],
+  },
+  '/antivirusines-programos/telefonui': {
+    title: 'Geriausia antivirusinė telefonui 2026 — Top 5 Android ir iOS',
+    description: 'Nepriklausomas antivirusinių programų telefonams palyginimas. Norton, Bitdefender, Kaspersky, ESET ir Avast — kurią pasirinkti?',
+    heroTitle: 'Geriausia antivirusinė telefonui 2026&nbsp;m.',
+    heroDesc: 'Kurios antivirusinės programos geriausiai apsaugos jūsų telefoną? Palyginome populiariausius sprendimus Android ir iOS.',
+    productCategory: 'antivirus',
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos' }, { label: 'Telefonui', path: '/antivirusines-programos/telefonui' }],
+  },
+  '/antivirusines-programos/kompiuteriui': {
+    title: 'Geriausia antivirusinė kompiuteriui 2026 — Windows ir Mac palyginimas',
+    description: 'Nepriklausomas antivirusinių programų palyginimas Windows ir Mac kompiuteriams. Norton, Bitdefender, ESET, Kaspersky — kurią pasirinkti?',
+    heroTitle: 'Geriausia antivirusinė kompiuteriui 2026&nbsp;m.',
+    heroDesc: 'Kuriuos antivirusinius sprendimus rinktis Windows ar Mac kompiuteriui? Detalus palyginimas su kainomis ir funkcijomis.',
+    productCategory: 'antivirus',
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos' }, { label: 'Kompiuteriui', path: '/antivirusines-programos/kompiuteriui' }],
+  },
+  '/tevu-kontrole': {
+    title: 'Geriausios tėvų kontrolės programėlės 2026 — Top 5 vaiko telefonui',
+    description: 'Nepriklausomas tėvų kontrolės programų palyginimas. Qustodio, Norton Family, Kaspersky Safe Kids, Google Family Link ir Bark — kurią pasirinkti?',
+    heroTitle: 'Geriausios tėvų kontrolės programėlės 2026&nbsp;m.',
+    heroDesc: 'Raskite geriausią tėvų kontrolės programą vaiko telefonui. Ekrano laiko valdymas, turinio filtravimas ir GPS sekimas.',
+    productCategory: 'parental-control',
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Tėvų kontrolė', path: '/tevu-kontrole' }],
+  },
+  '/slaptazodziu-saugumas': {
+    title: 'Slaptažodžių saugumas 2026 — patarimai ir gidai',
+    description: 'Viskas apie slaptažodžių saugumą: kaip sukurti stiprų slaptažodį, kur jį saugoti, kaip pakeisti ir ką daryti pamiršus.',
+    heroTitle: 'Slaptažodžių saugumas',
+    heroDesc: 'Kaip sukurti stiprų slaptažodį, naudoti slaptažodžių tvarkykles ir apsaugoti paskyras nuo įsilaužimo.',
+    isHub: true,
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }],
+  },
+  '/slaptazodziu-saugumas/slaptazodziu-tvarkykles': {
+    title: 'Geriausios slaptažodžių tvarkyklės 2026 — palyginimas ir apžvalgos',
+    description: 'Nepriklausomos slaptažodžių tvarkyklių apžvalgos. Palyginimas pagal saugumą, funkcijas ir kainą.',
+    heroTitle: 'Geriausios slaptažodžių tvarkyklės 2026&nbsp;m.',
+    heroDesc: 'Kuri slaptažodžių tvarkyklė geriausia? 1Password, Bitwarden, NordPass, RoboForm ir Proton Pass detalus palyginimas.',
+    productCategory: 'password-manager',
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }, { label: 'Slaptažodžių tvarkyklės', path: '/slaptazodziu-saugumas/slaptazodziu-tvarkykles' }],
+  },
+};
+
+function generateFlagshipPage(category, data, catArticles, categoryMap) {
+  const meta = FLAGSHIP_META[category.path];
+  const depth = category.path.split('/').filter(Boolean).length;
+  const prefix = depth > 1 ? '../../' : '../';
+  const faq = parseFaq(category.faq);
+
+  // For article-type flagships (virus guides, password guides), use article template with DB content
+  const overlappingArticle = data.articles.find(a => a.path === category.path);
+  if (overlappingArticle && !meta) {
+    return generateArticlePage(overlappingArticle, categoryMap);
+  }
+
+  // For hub pages without products (like /slaptazodziu-saugumas)
+  if (meta?.isHub) {
+    return generateHubFlagshipPage(category, meta, data, catArticles, categoryMap);
+  }
+
+  // For product-comparison flagships, generate rich landing
+  if (meta) {
+    const products = data.products.filter(p => {
+      if (meta.filterFree) return p.free_version === true;
+      if (meta.productCategory === 'antivirus') return p.product_category === 'antivirus';
+      return p.product_category === (meta.productCategory || 'antivirus');
+    }).slice(0, 5);
+
+    return generateProductFlagshipPage(category, meta, products, faq, catArticles, prefix);
+  }
+
+  // Fallback: generate as category page
+  const childCategories = data.categories.filter(c => c.parent_id === category.id);
+  return generateCategoryPage(category, catArticles, childCategories, categoryMap);
+}
+
+function generateHubFlagshipPage(category, meta, data, catArticles, categoryMap) {
+  const depth = category.path.split('/').filter(Boolean).length;
+  const prefix = depth > 1 ? '../../' : '../';
+  const faq = parseFaq(category.faq);
+  const childCategories = data.categories.filter(c => c.parent_id === category.id);
+
+  return `---
+import Base from '${prefix}layouts/Base.astro';
+import Breadcrumbs from '${prefix}components/Breadcrumbs.astro';
+import FAQ from '${prefix}components/FAQ.astro';
+import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
+---
+
+<Base
+  title="${escapeHtml(category.seo_title || meta.title)}"
+  description="${escapeHtml(category.meta_description || meta.description)}"
+  ${category.canonical_url ? `canonicalUrl="${escapeHtml(category.canonical_url)}"` : ''}
+>
+  <div class="container py-8 max-w-4xl">
+    <Breadcrumbs items={${JSON.stringify(meta.breadcrumbs)}} />
+
+    <!-- HERO -->
+    <section class="mb-10">
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
+        ${meta.heroTitle}
+      </h1>
+      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
+        ${meta.heroDesc}
+      </p>
+    </section>
+
+    ${childCategories.length > 0 ? `
+    <!-- CHILD CATEGORIES -->
+    <section class="mb-12">
+      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Temos šiame skyriuje</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        ${childCategories.map(child => `
+        <a href="${child.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">${escapeHtml(child.name)}</h3>
+          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">${escapeHtml(child.description || '')}</p>
+          <span class="inline-flex items-center gap-1.5 mt-3 text-[11px] font-heading font-semibold text-primary">Atverti temą ${SVG.chevronRight}</span>
+        </a>
+        `).join('')}
+      </div>
+    </section>
+    ` : ''}
+
+    ${catArticles.length > 0 ? `
+    <!-- ARTICLES -->
+    <section class="mb-12">
+      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Gidai ir patarimai</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        ${catArticles.map(a => `
+        <a href="${a.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">${escapeHtml(a.title)}</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">${escapeHtml(a.excerpt || '')}</p>
+          <div class="flex items-center gap-2 mt-3 text-[11px] text-muted-foreground/60">
+            <time>${a.updated_at?.split('T')[0]}</time>
+            ${a.read_time ? `<span>· ${a.read_time}</span>` : ''}
+          </div>
+        </a>
+        `).join('')}
+      </div>
+    </section>
+    ` : ''}
+
+    ${faq.length > 0 ? `<FAQ items={${JSON.stringify(faq)}} />` : ''}
+    <TrustDisclosure />
+  </div>
+</Base>`;
+}
+
+function generateProductFlagshipPage(category, meta, products, faq, catArticles, prefix) {
+  const top5 = products;
+  const features = product => (typeof product.features === 'object' && product.features) || {};
+  const bestOverall = top5[0];
+  const bestFree = products.find(p => p.free_version);
+
+  return `---
+import Base from '${prefix}layouts/Base.astro';
+import Breadcrumbs from '${prefix}components/Breadcrumbs.astro';
+import FAQ from '${prefix}components/FAQ.astro';
+import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
+---
+
+<Base
+  title="${escapeHtml(category.seo_title || meta.title)}"
+  description="${escapeHtml(category.meta_description || meta.description)}"
+  ${category.canonical_url ? `canonicalUrl="${escapeHtml(category.canonical_url)}"` : ''}
+>
+  <div class="container py-8 max-w-5xl mx-auto">
+    <Breadcrumbs items={${JSON.stringify(meta.breadcrumbs)}} />
+
+    <!-- HERO -->
+    <section class="mb-8">
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
+        ${meta.heroTitle}
+      </h1>
+      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
+        ${meta.heroDesc}
+      </p>
+
+      ${top5.length > 0 ? `
+      <!-- Quick winner badges -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-6">
+        ${bestOverall ? `
+        <div class="card-premium-featured p-3.5 flex items-center gap-3">
+          ${renderProductLogo(bestOverall, 32)}
+          <div class="min-w-0">
+            <span class="chip-primary mb-1">Geriausia 2026</span>
+            <span class="text-sm text-foreground font-semibold block leading-tight">${escapeHtml(bestOverall.name)}</span>
+            <span class="text-[11px] text-muted-foreground">${escapeHtml(bestOverall.pricing_summary)}</span>
+          </div>
+        </div>` : ''}
+        ${bestFree ? `
+        <div class="card-premium p-3.5 flex items-center gap-3">
+          ${renderProductLogo(bestFree, 32)}
+          <div class="min-w-0">
+            <span class="chip-success mb-1">Geriausia nemokama</span>
+            <span class="text-sm text-foreground font-semibold block leading-tight">${escapeHtml(bestFree.name)}</span>
+            <span class="text-[11px] text-muted-foreground">${escapeHtml(bestFree.pricing_summary)}</span>
+          </div>
+        </div>` : ''}
+      </div>
+      ` : ''}
+    </section>
+
+    <div class="section-divider mb-10"></div>
+
+    ${top5.length > 0 ? `
+    <!-- TOP 5 -->
+    <section id="top-5" class="mb-16 scroll-mt-20">
+      <div class="mb-6">
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Top ${top5.length} pasirinkimai</h2>
+        <p class="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">Programos, kurios šiandien siūlo geriausią apsaugos, funkcijų ir kainos derinį.</p>
+      </div>
+      <div class="space-y-3">
+        ${top5.map((product, i) => {
+          const feats = features(product);
+          return `
+        <div class="relative overflow-hidden transition-all duration-200 ${i === 0 ? 'card-premium-featured' : 'card-premium'}">
+          ${i === 0 ? '<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary to-primary/40"></div>' : ''}
+          <div class="p-4 md:p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}">${i + 1}</span>
+              ${renderProductLogo(product, 36)}
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">${escapeHtml(product.name)}</h3>
+                  ${i === 0 ? '<span class="chip-primary">Nr. 1</span>' : ''}
+                  ${product.free_version && i !== 0 ? '<span class="chip-success">Nemokama</span>' : ''}
+                </div>
+                <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">${escapeHtml(product.best_for || '')}</p>
+              </div>
+              ${renderRatingStars(product.rating || 0)}
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap hidden sm:block">${escapeHtml(product.pricing_summary || '')}</span>
+            </div>
+
+            <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">${escapeHtml(product.verdict || product.short_description || '')}</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-3">
+              <div>
+                <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                <ul class="space-y-0.5">
+                  ${(product.pros || []).slice(0, 3).map(p => `<li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.checkCircle} ${escapeHtml(p)}</li>`).join('')}
+                </ul>
+              </div>
+              <div>
+                <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                <ul class="space-y-0.5">
+                  ${(product.cons || []).slice(0, 2).map(c => `<li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.xCircle} ${escapeHtml(c)}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-border/30">
+              <span class="text-sm font-heading font-bold text-foreground sm:hidden">${escapeHtml(product.pricing_summary || '')}</span>
+              ${renderPlatformTags(product.supported_platforms)}
+              ${renderAffiliateButton(product, 'px-5 py-2.5 text-sm whitespace-nowrap', 'Gauti pasiūlymą')}
+            </div>
+          </div>
+        </div>`;
+        }).join('')}
+      </div>
+    </section>
+    ` : ''}
+
+    <div class="section-divider mb-12"></div>
+
+    <!-- COMPARISON TABLE -->
+    ${top5.length > 0 ? `
+    <section id="palyginimas" class="mb-16 scroll-mt-20">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Detalus palyginimas</h2>
+        <p class="text-muted-foreground text-sm mt-1.5">Visos pagrindinės funkcijos vienoje lentelėje.</p>
+      </div>
+      <div class="overflow-x-auto rounded-xl border border-border/50">
+        <table class="w-full text-left text-sm">
+          <thead>
+            <tr class="border-b border-border/40 bg-muted/30">
+              <th class="px-4 py-3 font-heading font-semibold text-foreground text-xs">Programa</th>
+              <th class="px-3 py-3 font-heading font-semibold text-foreground text-xs text-center">Įvertinimas</th>
+              <th class="px-3 py-3 font-heading font-semibold text-foreground text-xs">Kaina</th>
+              ${featureColsDef.slice(0, 6).map(col => `<th class="px-2 py-3 font-heading font-semibold text-foreground text-[10px] text-center whitespace-nowrap">${col.label}</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>
+            ${top5.map((p, i) => {
+              const feats = features(p);
+              return `
+            <tr class="border-b border-border/20 ${i === 0 ? 'bg-primary/[0.02]' : 'hover:bg-muted/30'}">
+              <td class="px-4 py-3">
+                <div class="flex items-center gap-2">
+                  ${renderProductLogo(p, 20)}
+                  <span class="font-heading font-semibold text-foreground text-xs">${escapeHtml(p.name)}</span>
+                </div>
+              </td>
+              <td class="px-3 py-3 text-center">${renderRatingStars(p.rating || 0)}</td>
+              <td class="px-3 py-3 text-xs font-heading font-semibold text-foreground">${escapeHtml(p.pricing_summary || '')}</td>
+              ${featureColsDef.slice(0, 6).map(col => `<td class="px-2 py-3 text-center">${renderFeatureCheck(feats[col.key])}</td>`).join('')}
+            </tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    ` : ''}
+
+    ${catArticles.length > 0 ? `
+    <!-- RELATED ARTICLES -->
+    <section class="mb-12">
+      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Susiję gidai</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        ${catArticles.slice(0, 6).map(a => `
+        <a href="${a.path}" class="group rounded-xl border border-border/50 bg-card p-4 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-1">${escapeHtml(a.title)}</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">${escapeHtml(a.excerpt || '')}</p>
+        </a>
+        `).join('')}
+      </div>
+    </section>
+    ` : ''}
+
+    ${faq.length > 0 ? `<FAQ items={${JSON.stringify(faq)}} />` : ''}
+    <TrustDisclosure />
+  </div>
+</Base>`;
+}
+
 const CUSTOM_ASTRO_PATHS = new Set(['/', ...FLAGSHIP_PATHS]);
 
 // ─── CSS ───
