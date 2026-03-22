@@ -1,0 +1,134 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Kaip patikrinti ar kompiuteryje yra virusas 2026"
+  description="Žingsnis po žingsnio instrukcija, kaip patikrinti ar kompiuteryje yra virusas. Windows ir Mac metodai."
+  
+>
+  <article class="container py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Virusai","path":"/virusai"},{"label":"Virusų patikra","path":"/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas"}]} />
+
+    <!-- HERO -->
+    <div class="mb-8">
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight" itemProp="headline">
+        Kaip patikrinti ar kompiuteryje yra virusas
+      </h1>
+      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-4" itemProp="description">
+        Praktinis gidas: kaip nuskaityti kompiuterį dėl virusų, atpažinti infekciją ir pašalinti kenkėjiškas programas.
+      </p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        
+        <time>Atnaujinta: 2026</time>
+        
+      </div>
+    </div>
+
+    <TrustDisclosure compact />
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-10">
+      <div>
+        
+        <!-- TABLE OF CONTENTS (mobile) -->
+        <nav class="rounded-lg border border-border/50 bg-card p-4 my-6 lg:hidden">
+          <h4 class="font-heading font-semibold text-xs text-foreground mb-2.5 uppercase tracking-wider">Turinys</h4>
+          <ol class="space-y-1.5">
+            
+            <li>
+              <a href="#pozymiai" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">01</span>
+                Infekcijos požymiai
+              </a>
+            </li>
+            <li>
+              <a href="#windows-skenavimas" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">02</span>
+                Virusų skenavimas Windows sistemoje
+              </a>
+            </li>
+            <li>
+              <a href="#mac-skenavimas" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">03</span>
+                Virusų skenavimas Mac sistemoje
+              </a>
+            </li>
+            <li>
+              <a href="#salinimas" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">04</span>
+                Virusų šalinimas
+              </a>
+            </li>
+            <li>
+              <a href="#prevencija" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">05</span>
+                Prevencija ateičiai
+              </a>
+            </li>
+          </ol>
+        </nav>
+        
+
+        <!-- CONTENT SECTIONS -->
+        <div class="prose-article">
+          
+          <section class="mb-8 scroll-mt-20" id="pozymiai">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Infekcijos požymiai</h2>
+            <p class="text-muted-foreground leading-relaxed">Pagrindiniai požymiai, kad kompiuteryje gali būti virusas: sistema veikia žymiai lėčiau, atsiranda nepažįstamų programų, naršyklė nukreipia į keistas svetaines, pasirodo neįprasti iššokantys langai, kietasis diskas neįprastai aktyvus, antivirusinė programa išjungta be jūsų žinios.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="windows-skenavimas">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Virusų skenavimas Windows sistemoje</h2>
+            <p class="text-muted-foreground leading-relaxed">Windows 10/11 turi integruotą Windows Security (Defender): Nustatymai → Atnaujinimas ir sauga → Windows Security → Virusų ir grėsmių apsauga → Pilnas skenavimas. Rekomenduojame papildomai naudoti Malwarebytes nemokamą skenerį antrajai nuomonei.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="mac-skenavimas">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Virusų skenavimas Mac sistemoje</h2>
+            <p class="text-muted-foreground leading-relaxed">Mac turi integruotą XProtect, bet papildomam skenavimui naudokite Malwarebytes for Mac (nemokama versija) arba Bitdefender. Atidarykite Activity Monitor ir ieškokite neįprastų procesų, kurie naudoja daug CPU.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="salinimas">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Virusų šalinimas</h2>
+            <p class="text-muted-foreground leading-relaxed">Paleiskite kompiuterį Safe Mode (F8 Windows, Shift palaikant Mac). Atlikite pilną skenavimą antivirusine programa. Pašalinkite aptiktas grėsmes. Pakeiskite visus svarbius slaptažodžius. Atnaujinkite operacinę sistemą ir programas.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="prevencija">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Prevencija ateičiai</h2>
+            <p class="text-muted-foreground leading-relaxed">Naudokite patikimą antivirusinę programą su realaus laiko apsauga. Reguliariai atnaujinkite operacinę sistemą. Neatidarinėkite įtartinų el. laiškų priedų. Atsisiųskite programas tik iš oficialių šaltinių. Reguliariai darykite atsargines kopijas.</p>
+          </section>
+          
+
+          
+        </div>
+
+        
+
+        
+
+        <FAQ items={[{"q":"Ar Windows Defender pakanka apsaugai?","a":"Windows Defender suteikia bazinę apsaugą, bet trečiųjų šalių antivirusinės (Norton, Bitdefender) siūlo pažangesnę apsaugą, VPN ir papildomas funkcijas."},{"q":"Ar virusas gali sugadinti kompiuterį fiziškai?","a":"Tiesiogiai ne, bet kai kurie virusai gali perkaitinti procesorių ar sugadinti BIOS/UEFI firmware, kas netiesiogiai gali pakenkti aparatūrai."},{"q":"Kaip dažnai reikia skenuoti kompiuterį?","a":"Su realaus laiko apsauga — pilną skenavimą rekomenduojame kartą per savaitę. Be antivirusinės — bent kartą per dieną."}]} />
+
+        
+      </div>
+
+      
+      <!-- SIDEBAR TOC (desktop) -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              <li><a href="#pozymiai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Infekcijos požymiai</a></li><li><a href="#windows-skenavimas" class="text-xs text-muted-foreground hover:text-primary transition-colors">Virusų skenavimas Windows sistemoje</a></li><li><a href="#mac-skenavimas" class="text-xs text-muted-foreground hover:text-primary transition-colors">Virusų skenavimas Mac sistemoje</a></li><li><a href="#salinimas" class="text-xs text-muted-foreground hover:text-primary transition-colors">Virusų šalinimas</a></li><li><a href="#prevencija" class="text-xs text-muted-foreground hover:text-primary transition-colors">Prevencija ateičiai</a></li>
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      
+    </div>
+
+    <TrustDisclosure />
+  </article>
+</Base>

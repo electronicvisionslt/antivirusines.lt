@@ -1,0 +1,145 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Virusas telefone: požymiai, šalinimas ir apsauga 2026"
+  description="Kaip suprasti, ar telefonas užkrėstas virusu? Praktinis gidas apie mobiliųjų virusų požymius, šalinimą ir prevenciją."
+  
+>
+  <article class="container py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Virusai","path":"/virusai"},{"label":"Virusas telefone","path":"/virusai/virusas-telefone"}]} />
+
+    <!-- HERO -->
+    <div class="mb-8">
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight" itemProp="headline">
+        Virusas telefone: ką daryti?
+      </h1>
+      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-4" itemProp="description">
+        Kaip atpažinti, pašalinti ir apsisaugoti nuo virusų telefone — praktinis gidas Android ir iOS naudotojams.
+      </p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        <span class="font-medium">Matas Jonaitis</span>
+        <time itemProp="dateModified" datetime="2026-03-20T16:41:24.649836+00:00">Atnaujinta: 2026-03-20</time>
+        <span>· 9 min skaitymo</span>
+      </div>
+    </div>
+
+    <TrustDisclosure compact />
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-10">
+      <div>
+        
+        <!-- TABLE OF CONTENTS (mobile) -->
+        <nav class="rounded-lg border border-border/50 bg-card p-4 my-6 lg:hidden">
+          <h4 class="font-heading font-semibold text-xs text-foreground mb-2.5 uppercase tracking-wider">Turinys</h4>
+          <ol class="space-y-1.5">
+            
+            <li>
+              <a href="#pozymiai" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">01</span>
+                Telefono viruso požymiai
+              </a>
+            </li>
+            <li>
+              <a href="#salinimas" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">02</span>
+                Kaip pašalinti virusą iš telefono?
+              </a>
+            </li>
+            <li>
+              <a href="#android" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">03</span>
+                Virusų šalinimas Android telefone
+              </a>
+            </li>
+            <li>
+              <a href="#iphone" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">04</span>
+                Virusų šalinimas iPhone
+              </a>
+            </li>
+            <li>
+              <a href="#prevencija" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">05</span>
+                Kaip apsaugoti telefoną nuo virusų
+              </a>
+            </li>
+            <li>
+              <a href="#antivirusine" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">06</span>
+                Geriausios antivirusinės telefonui
+              </a>
+            </li>
+          </ol>
+        </nav>
+        
+
+        <!-- CONTENT SECTIONS -->
+        <div class="prose-article">
+          
+          <section class="mb-8 scroll-mt-20" id="pozymiai">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Telefono viruso požymiai</h2>
+            <p class="text-muted-foreground leading-relaxed">Dažniausi požymiai, kad telefonas gali būti užkrėstas: greitai senka baterija, padidėjęs duomenų naudojimas, neįprastos reklamos, lėtas veikimas ir nepažįstamos programos.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="salinimas">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Kaip pašalinti virusą iš telefono?</h2>
+            <p class="text-muted-foreground leading-relaxed">Pirmiausia pabandykite paleisti telefoną saugiuoju režimu ir pašalinti įtartinas programas. Jei tai nepadeda, naudokite patikimą antivirusinę programą arba atstatykite gamyklinius nustatymus.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="android">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Virusų šalinimas Android telefone</h2>
+            <p class="text-muted-foreground leading-relaxed">1) Paleiskite Safe Mode (palaikykite maitinimo mygtuką → ilgai spauskite „Išjungti&quot; → „Safe Mode&quot;). 2) Eikite į Nustatymai → Programos ir pašalinkite neseniai įdiegtas įtartinas programėles. 3) Nuskenuokite telefoną su Norton Mobile Security arba Malwarebytes. 4) Išvalykite naršyklės talpyklą. 5) Jei problema lieka — atstatykite gamyklinius nustatymus (prieš tai padarykite atsarginę kopiją).</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="iphone">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Virusų šalinimas iPhone</h2>
+            <p class="text-muted-foreground leading-relaxed">iPhone yra saugesni dėl uždaros iOS ekosistemos, bet ne 100% apsaugoti. Šalinimo žingsniai: 1) Atnaujinkite iOS iki naujausios versijos. 2) Pašalinkite įtartinas programėles. 3) Išvalykite Safari istoriją ir duomenis. 4) Patikrinkite, ar nėra neautorizuotų konfigūracijos profilių (Nustatymai → Bendrieji → VPN ir įrenginių valdymas). 5) Kraštutinis atvejis — atstatykite gamyklinius nustatymus.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="prevencija">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Kaip apsaugoti telefoną nuo virusų</h2>
+            <p class="text-muted-foreground leading-relaxed">Diekite programėles TIK iš Google Play arba App Store. Atidžiai tikrinkite programėlių leidimus. Reguliariai atnaujinkite operacinę sistemą. Nejunkitės prie neapsaugotų viešų WiFi tinklų be VPN. Naudokite antivirusinę programą su realaus laiko apsauga. Neatidarinėkite įtartinų nuorodų SMS žinutėse.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="antivirusine">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Geriausios antivirusinės telefonui</h2>
+            <p class="text-muted-foreground leading-relaxed">Rekomenduojamos antivirusinės programos telefonui: Norton Mobile Security (geriausias grėsmių aptikimas), Bitdefender Mobile Security (mažiausias poveikis baterijai), ESET Mobile Security (geras kainos ir kokybės santykis), Kaspersky Mobile (stipri apsauga nuo phishing). Visos turi nemokamas bandomąsias versijas.</p>
+          </section>
+          
+
+          
+        </div>
+
+        
+
+        
+
+        <FAQ items={[{"a":"Tai labai reta, tačiau iPhone gali būti pažeidžiamas per sukčiavimo atakas ir nesaugias svetaines.","q":"Ar iPhone gali gauti virusą?"},{"q":"Ar telefonas tikrai gali gauti virusą?","a":"Taip, ypač Android telefonai. Dažniausiai kenkėjiškos programos plinta per neoficialias programėlių parduotuves, apgaulingas nuorodas ir užkrėstas svetaines."},{"q":"Ar nemokamos antivirusinės telefonui yra efektyvios?","a":"Bazinę apsaugą suteikia, bet mokamos versijos siūlo realaus laiko apsaugą, anti-phishing, VPN ir kitas svarbias funkcijas."},{"q":"Kaip dažnai reikėtų skenuoti telefoną?","a":"Su realaus laiko apsauga — automatinis skenavimas vyksta nuolat. Be antivirusinės — rekomenduojame skenuoti bent kartą per savaitę."}]} />
+
+        
+      </div>
+
+      
+      <!-- SIDEBAR TOC (desktop) -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              <li><a href="#pozymiai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Telefono viruso požymiai</a></li><li><a href="#salinimas" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip pašalinti virusą iš telefono?</a></li><li><a href="#android" class="text-xs text-muted-foreground hover:text-primary transition-colors">Virusų šalinimas Android telefone</a></li><li><a href="#iphone" class="text-xs text-muted-foreground hover:text-primary transition-colors">Virusų šalinimas iPhone</a></li><li><a href="#prevencija" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip apsaugoti telefoną nuo virusų</a></li><li><a href="#antivirusine" class="text-xs text-muted-foreground hover:text-primary transition-colors">Geriausios antivirusinės telefonui</a></li>
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      
+    </div>
+
+    <TrustDisclosure />
+  </article>
+</Base>
