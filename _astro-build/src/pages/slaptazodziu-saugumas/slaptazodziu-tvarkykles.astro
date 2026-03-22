@@ -91,12 +91,13 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
         <div class="relative overflow-hidden transition-all duration-200 card-premium-featured">
           <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary to-primary/40"></div>
           <div class="p-4 md:p-5">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-primary">1</span>
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 text-primary">1</span>
               <div class="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1" style="width:48px;height:48px">
     <span class="font-heading font-bold text-primary" style="font-size:14px">1P</span>
   </div>
-              <div class="min-w-0 flex-1">
+              <div class="min-w-0">
                 <div class="flex items-center gap-2 flex-wrap">
                   <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">1Password</h3>
                   <span class="chip-primary">Nr. 1</span>
@@ -108,29 +109,80 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
     <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
     <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.7</span>
   </div>
-              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap hidden sm:block">Nuo 2.99 €/mėn.</span>
-            </div>
-
-            <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">1Password yra vienas stipriausių mokamų pasirinkimų vartotojams, kurie nori maksimalaus patogumo, stiprios apsaugos ir nepriekaištingos kelių įrenginių sinchronizacijos. Ypač stiprus šeimoms ir komandoms.</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-3">
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Privalumai</p>
-                <ul class="space-y-0.5">
-                  <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Labai stiprus UX ir greitas autofill</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Passkeys ir Travel Mode</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Puikus šeimos planas</li>
-                </ul>
-              </div>
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
-                <ul class="space-y-0.5">
-                  <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Nėra visiškai nemokamo plano</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Brangesnis už kai kuriuos konkurentus</li>
-                </ul>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">Nuo 2.99 €/mėn.</span>
+              <div class="justify-self-end">
+                
               </div>
             </div>
 
-            <div class="flex items-center justify-between pt-3 border-t border-border/30">
-              <span class="text-sm font-heading font-bold text-foreground sm:hidden">Nuo 2.99 €/mėn.</span>
-              <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Linux</span></div>
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">1Password yra vienas stipriausių mokamų pasirinkimų vartotojams, kurie nori maksimalaus patogumo, stiprios apsaugos ir nepriekaištingos kelių įrenginių sinchronizacijos. Ypač stiprus šeimoms ir komandoms.</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Labai stiprus UX ir greitas autofill</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Passkeys ir Travel Mode</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Puikus šeimos planas</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Nėra visiškai nemokamo plano</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Brangesnis už kai kuriuos konkurentus</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Linux</span></div>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    <span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Zero-knowledge</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Passkeys</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 2FA / MFA</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Saugumo auditas</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dalinimasis</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-primary">1</span>
+                <div class="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1" style="width:48px;height:48px">
+    <span class="font-heading font-bold text-primary" style="font-size:14px">1P</span>
+  </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">1Password</h3>
+                    <span class="chip-primary">Nr. 1</span>
+                    
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Geriausias premium pasirinkimas daugumai vartotojų</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.7</span>
+  </div>
+                <span class="text-sm font-heading font-bold text-foreground">Nuo 2.99 €/mėn.</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">1Password yra vienas stipriausių mokamų pasirinkimų vartotojams, kurie nori maksimalaus patogumo, stiprios apsaugos ir nepriekaištingos kelių įrenginių sinchronizacijos. Ypač stiprus šeimoms ir komandoms.</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Labai stiprus UX ir greitas autofill</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Passkeys ir Travel Mode</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Puikus šeimos planas</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Nėra visiškai nemokamo plano</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Brangesnis už kai kuriuos konkurentus</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Linux</span></div>
+                </div>
+              </div>
               
             </div>
           </div>
@@ -138,12 +190,13 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
         <div class="relative overflow-hidden transition-all duration-200 card-premium">
           
           <div class="p-4 md:p-5">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">2</span>
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 text-muted-foreground/25">2</span>
               <div class="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1" style="width:48px;height:48px">
     <span class="font-heading font-bold text-primary" style="font-size:14px">BI</span>
   </div>
-              <div class="min-w-0 flex-1">
+              <div class="min-w-0">
                 <div class="flex items-center gap-2 flex-wrap">
                   <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Bitwarden</h3>
                   
@@ -155,29 +208,80 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
     <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
     <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.5</span>
   </div>
-              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap hidden sm:block">Nemokamai / nuo 10 €/metus</span>
-            </div>
-
-            <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">Bitwarden išlieka racionaliausias pasirinkimas, jei norite patikimos apsaugos, cross-platform veikimo ir skaidraus open-source modelio. Nemokama versija pakankamai stipri daugeliui žmonių.</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-3">
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Privalumai</p>
-                <ul class="space-y-0.5">
-                  <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Open-source</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Stipri nemokama versija</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Pigūs premium planai</li>
-                </ul>
-              </div>
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
-                <ul class="space-y-0.5">
-                  <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Sąsaja mažiau polished nei 1Password</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Kai kurios pažangios funkcijos tik premium</li>
-                </ul>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">Nemokamai / nuo 10 €/metus</span>
+              <div class="justify-self-end">
+                
               </div>
             </div>
 
-            <div class="flex items-center justify-between pt-3 border-t border-border/30">
-              <span class="text-sm font-heading font-bold text-foreground sm:hidden">Nemokamai / nuo 10 €/metus</span>
-              <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Linux</span></div>
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">Bitwarden išlieka racionaliausias pasirinkimas, jei norite patikimos apsaugos, cross-platform veikimo ir skaidraus open-source modelio. Nemokama versija pakankamai stipri daugeliui žmonių.</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Open-source</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Stipri nemokama versija</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Pigūs premium planai</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Sąsaja mažiau polished nei 1Password</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Kai kurios pažangios funkcijos tik premium</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Linux</span></div>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    <span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Zero-knowledge</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Passkeys</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 2FA / MFA</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Saugumo auditas</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dalinimasis</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">2</span>
+                <div class="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1" style="width:48px;height:48px">
+    <span class="font-heading font-bold text-primary" style="font-size:14px">BI</span>
+  </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Bitwarden</h3>
+                    
+                    <span class="chip-success">Nemokama</span>
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Geriausia nemokama ir open-source alternatyva</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.5</span>
+  </div>
+                <span class="text-sm font-heading font-bold text-foreground">Nemokamai / nuo 10 €/metus</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">Bitwarden išlieka racionaliausias pasirinkimas, jei norite patikimos apsaugos, cross-platform veikimo ir skaidraus open-source modelio. Nemokama versija pakankamai stipri daugeliui žmonių.</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Open-source</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Stipri nemokama versija</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Pigūs premium planai</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Sąsaja mažiau polished nei 1Password</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Kai kurios pažangios funkcijos tik premium</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Linux</span></div>
+                </div>
+              </div>
               
             </div>
           </div>
@@ -185,12 +289,13 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
         <div class="relative overflow-hidden transition-all duration-200 card-premium">
           
           <div class="p-4 md:p-5">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">3</span>
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 text-muted-foreground/25">3</span>
               <div class="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1" style="width:48px;height:48px">
     <span class="font-heading font-bold text-primary" style="font-size:14px">NO</span>
   </div>
-              <div class="min-w-0 flex-1">
+              <div class="min-w-0">
                 <div class="flex items-center gap-2 flex-wrap">
                   <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">NordPass</h3>
                   
@@ -202,29 +307,80 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
     <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
     <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.2</span>
   </div>
-              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap hidden sm:block">Nuo 1.69 €/mėn.</span>
-            </div>
-
-            <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">NordPass tinka vartotojams, kurie nori modernaus dizaino ir paprasto starto be techninių kliūčių. Ypač gerai pasiteisina kasdieniam naudojimui keliuose įrenginiuose.</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-3">
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Privalumai</p>
-                <ul class="space-y-0.5">
-                  <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Labai aiški sąsaja</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Password Health ir breach scan</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Passkeys palaikymas</li>
-                </ul>
-              </div>
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
-                <ul class="space-y-0.5">
-                  <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Nemokamoje versijoje ribotas lankstumas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Mažiau pažangių opcijų power-useriams</li>
-                </ul>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">Nuo 1.69 €/mėn.</span>
+              <div class="justify-self-end">
+                
               </div>
             </div>
 
-            <div class="flex items-center justify-between pt-3 border-t border-border/30">
-              <span class="text-sm font-heading font-bold text-foreground sm:hidden">Nuo 1.69 €/mėn.</span>
-              <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Linux</span></div>
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">NordPass tinka vartotojams, kurie nori modernaus dizaino ir paprasto starto be techninių kliūčių. Ypač gerai pasiteisina kasdieniam naudojimui keliuose įrenginiuose.</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Labai aiški sąsaja</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Password Health ir breach scan</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Passkeys palaikymas</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Nemokamoje versijoje ribotas lankstumas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Mažiau pažangių opcijų power-useriams</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Linux</span></div>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    <span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Zero-knowledge</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Passkeys</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 2FA / MFA</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Saugumo auditas</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dalinimasis</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">3</span>
+                <div class="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1" style="width:48px;height:48px">
+    <span class="font-heading font-bold text-primary" style="font-size:14px">NO</span>
+  </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">NordPass</h3>
+                    
+                    <span class="chip-success">Nemokama</span>
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Paprastumui ir patogiam onboarding</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.2</span>
+  </div>
+                <span class="text-sm font-heading font-bold text-foreground">Nuo 1.69 €/mėn.</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">NordPass tinka vartotojams, kurie nori modernaus dizaino ir paprasto starto be techninių kliūčių. Ypač gerai pasiteisina kasdieniam naudojimui keliuose įrenginiuose.</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Labai aiški sąsaja</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Password Health ir breach scan</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Passkeys palaikymas</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Nemokamoje versijoje ribotas lankstumas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Mažiau pažangių opcijų power-useriams</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Linux</span></div>
+                </div>
+              </div>
               
             </div>
           </div>
@@ -232,12 +388,13 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
         <div class="relative overflow-hidden transition-all duration-200 card-premium">
           
           <div class="p-4 md:p-5">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">4</span>
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 text-muted-foreground/25">4</span>
               <div class="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1" style="width:48px;height:48px">
     <span class="font-heading font-bold text-primary" style="font-size:14px">PR</span>
   </div>
-              <div class="min-w-0 flex-1">
+              <div class="min-w-0">
                 <div class="flex items-center gap-2 flex-wrap">
                   <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Proton Pass</h3>
                   
@@ -249,29 +406,80 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
     <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
     <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.0</span>
   </div>
-              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap hidden sm:block">Nemokamai / nuo 1.99 €/mėn.</span>
-            </div>
-
-            <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">Proton Pass yra geras pasirinkimas privatumą vertinantiems vartotojams, ypač jei jau naudojate Proton ekosistemą. Stipri bazinė apsauga ir aiški zero-knowledge kryptis.</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-3">
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Privalumai</p>
-                <ul class="space-y-0.5">
-                  <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Stipri privatumo reputacija</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Alias el. pašto funkcijos</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Patogi sąsaja</li>
-                </ul>
-              </div>
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
-                <ul class="space-y-0.5">
-                  <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Mažiau enterprise funkcijų</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Jaunesnis produktas nei rinkos lyderiai</li>
-                </ul>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">Nemokamai / nuo 1.99 €/mėn.</span>
+              <div class="justify-self-end">
+                
               </div>
             </div>
 
-            <div class="flex items-center justify-between pt-3 border-t border-border/30">
-              <span class="text-sm font-heading font-bold text-foreground sm:hidden">Nemokamai / nuo 1.99 €/mėn.</span>
-              <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Web</span></div>
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">Proton Pass yra geras pasirinkimas privatumą vertinantiems vartotojams, ypač jei jau naudojate Proton ekosistemą. Stipri bazinė apsauga ir aiški zero-knowledge kryptis.</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Stipri privatumo reputacija</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Alias el. pašto funkcijos</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Patogi sąsaja</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Mažiau enterprise funkcijų</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Jaunesnis produktas nei rinkos lyderiai</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Web</span></div>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    <span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Zero-knowledge</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Passkeys</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 2FA / MFA</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Saugumo auditas</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dalinimasis</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">4</span>
+                <div class="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1" style="width:48px;height:48px">
+    <span class="font-heading font-bold text-primary" style="font-size:14px">PR</span>
+  </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Proton Pass</h3>
+                    
+                    <span class="chip-success">Nemokama</span>
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Privatumui ir Proton naudotojams</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.0</span>
+  </div>
+                <span class="text-sm font-heading font-bold text-foreground">Nemokamai / nuo 1.99 €/mėn.</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">Proton Pass yra geras pasirinkimas privatumą vertinantiems vartotojams, ypač jei jau naudojate Proton ekosistemą. Stipri bazinė apsauga ir aiški zero-knowledge kryptis.</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Stipri privatumo reputacija</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Alias el. pašto funkcijos</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Patogi sąsaja</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Mažiau enterprise funkcijų</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Jaunesnis produktas nei rinkos lyderiai</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Web</span></div>
+                </div>
+              </div>
               
             </div>
           </div>
@@ -279,12 +487,13 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
         <div class="relative overflow-hidden transition-all duration-200 card-premium">
           
           <div class="p-4 md:p-5">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">5</span>
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 text-muted-foreground/25">5</span>
               <div class="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1" style="width:48px;height:48px">
     <span class="font-heading font-bold text-primary" style="font-size:14px">RO</span>
   </div>
-              <div class="min-w-0 flex-1">
+              <div class="min-w-0">
                 <div class="flex items-center gap-2 flex-wrap">
                   <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">RoboForm</h3>
                   
@@ -296,29 +505,80 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
     <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
     <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">8.8</span>
   </div>
-              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap hidden sm:block">Nuo 0.99 €/mėn.</span>
-            </div>
-
-            <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">RoboForm verta rinktis, jei jums svarbiausia stabilus autofill ir ilgametė reputacija. Jis kiek mažiau modernus vizualiai, bet labai tvirtas praktikoje.</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-3">
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Privalumai</p>
-                <ul class="space-y-0.5">
-                  <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Puikus formų užpildymas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Geras kainos santykis</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Ilga rinkos patirtis</li>
-                </ul>
-              </div>
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
-                <ul class="space-y-0.5">
-                  <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Vizualiai pasenęs</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Passkeys palaikymas ne toks brandus</li>
-                </ul>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">Nuo 0.99 €/mėn.</span>
+              <div class="justify-self-end">
+                
               </div>
             </div>
 
-            <div class="flex items-center justify-between pt-3 border-t border-border/30">
-              <span class="text-sm font-heading font-bold text-foreground sm:hidden">Nuo 0.99 €/mėn.</span>
-              <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span></div>
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">RoboForm verta rinktis, jei jums svarbiausia stabilus autofill ir ilgametė reputacija. Jis kiek mažiau modernus vizualiai, bet labai tvirtas praktikoje.</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Puikus formų užpildymas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Geras kainos santykis</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Ilga rinkos patirtis</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Vizualiai pasenęs</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Passkeys palaikymas ne toks brandus</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span></div>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    <span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Zero-knowledge</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><span class="text-[10px] text-muted-foreground">Ribotas</span> Passkeys</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 2FA / MFA</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Saugumo auditas</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dalinimasis</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">5</span>
+                <div class="rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/12 flex items-center justify-center shrink-0 elevation-1" style="width:48px;height:48px">
+    <span class="font-heading font-bold text-primary" style="font-size:14px">RO</span>
+  </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">RoboForm</h3>
+                    
+                    <span class="chip-success">Nemokama</span>
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Stabiliam autofill ir formų pildymui</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">8.8</span>
+  </div>
+                <span class="text-sm font-heading font-bold text-foreground">Nuo 0.99 €/mėn.</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">RoboForm verta rinktis, jei jums svarbiausia stabilus autofill ir ilgametė reputacija. Jis kiek mažiau modernus vizualiai, bet labai tvirtas praktikoje.</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Puikus formų užpildymas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Geras kainos santykis</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Ilga rinkos patirtis</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Vizualiai pasenęs</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3 h-3 text-muted-foreground/30 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Passkeys palaikymas ne toks brandus</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Windows</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Mac</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span></div>
+                </div>
+              </div>
               
             </div>
           </div>
