@@ -2616,7 +2616,7 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
 </Base>`;
 }
 
-const CUSTOM_ASTRO_PATHS = new Set(['/']);
+const CUSTOM_ASTRO_PATHS = new Set();
 
 // ─── CSS ───
 

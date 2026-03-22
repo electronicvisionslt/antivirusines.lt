@@ -13,7 +13,7 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
   <div class="container py-8 max-w-5xl mx-auto">
     <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Antivirusinės programos","path":"/antivirusines-programos"},{"label":"Nemokamos","path":"/antivirusines-programos/nemokamos"}]} />
 
-    <!-- HERO -->
+    <!-- ═══ 1. HERO ═══ -->
     <section class="mb-8">
       <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
         Geriausios nemokamos antivirusinės programos 2026&nbsp;m.
@@ -48,24 +48,16 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
           </div>
         </div>
         
-        <div class="card-premium p-3.5 flex items-center gap-3">
-          <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:44px;height:44px">
-      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/bitdefender-logo.png" alt="Bitdefender Free logotipas" width="32" height="32" class="object-contain" loading="lazy" />
-    </div>
-          <div class="min-w-0">
-            <span class="chip-muted mb-1">Stipri alternatyva</span>
-            <span class="text-sm text-foreground font-semibold block leading-tight">Bitdefender Free</span>
-            <span class="text-[11px] text-muted-foreground">Nemokamai</span>
-          </div>
-        </div>
       </div>
+      
+
       
     </section>
 
     <div class="section-divider mb-10"></div>
 
     
-    <!-- TOP 5 -->
+    <!-- ═══ 2. TOP 5 ═══ -->
     <section id="top-5" class="mb-16 scroll-mt-20">
       <div class="mb-6">
         <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Top 5 pasirinkimai</h2>
@@ -329,7 +321,7 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
 
     <div class="section-divider mb-12"></div>
 
-    <!-- COMPARISON TABLE -->
+    <!-- ═══ 3. COMPARISON TABLE ═══ -->
     
     <section id="palyginimas" class="mb-16 scroll-mt-20">
       <div class="mb-5">
@@ -440,7 +432,26 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
 
     
 
-    <FAQ items={[{"a":"Taip, geriausi nemokami antivirusiniai sprendimai, tokie kaip Avast Free ar Bitdefender Free, laboratorijų testuose rodo puikius apsaugos rezultatus. Tačiau nemokamos versijos paprastai neturi papildomų funkcijų kaip VPN, slaptažodžių tvarkyklė ar ugniasienė.","q":"Ar nemokama antivirusinė tikrai saugi?"},{"a":"Nemokamos versijos paprastai siūlo bazinę apsaugą nuo virusų realiuoju laiku ir nuskaitymus. Mokamos versijos prideda ugniasienę, VPN, slaptažodžių tvarkyklę, tėvų kontrolę, dark web stebėjimą ir techninę pagalbą.","q":"Kuo skiriasi nemokama nuo mokamos antivirusinės?"},{"a":"Windows Defender siūlo bazinę apsaugą ir yra geras pradinis taškas. Tačiau specializuoti nemokami antivirusiniai sprendimai paprastai geriau aptinka naujas grėsmes ir siūlo papildomų funkcijų, tokių kaip el. pašto apsauga ar naršyklės filtrai.","q":"Ar Windows Defender pakanka?"},{"a":"Pagal mūsų vertinimą, Avast Free yra geriausias nemokamas antivirusinis sprendimas dėl plačiausio funkcijų rinkinio, puikių laboratorijų rezultatų ir patogios sąsajos. Bitdefender Free yra antroje vietoje dėl minimalaus sistemos poveikio.","q":"Kuri nemokama antivirusinė geriausia 2026 metais?"},{"a":"Kai kurios nemokamos antivirusinės programos renka anoniminius naudojimo duomenis. Avast anksčiau turėjo privatumo problemų, tačiau nuo 2020 m. nutraukė duomenų pardavimą. Bitdefender Free renka minimalius duomenis. Visada verta perskaityti privatumo politiką.","q":"Ar nemokamos antivirusinės renka mano duomenis?"}]} />
+    
+
+    
+
+    
+
+    
+
+    <!-- ═══ 8. FAQ ═══ -->
+    
+    <section id="duk" class="mb-16 scroll-mt-20">
+      <FAQ items={[{"a":"Taip, geriausi nemokami antivirusiniai sprendimai, tokie kaip Avast Free ar Bitdefender Free, laboratorijų testuose rodo puikius apsaugos rezultatus. Tačiau nemokamos versijos paprastai neturi papildomų funkcijų kaip VPN, slaptažodžių tvarkyklė ar ugniasienė.","q":"Ar nemokama antivirusinė tikrai saugi?"},{"a":"Nemokamos versijos paprastai siūlo bazinę apsaugą nuo virusų realiuoju laiku ir nuskaitymus. Mokamos versijos prideda ugniasienę, VPN, slaptažodžių tvarkyklę, tėvų kontrolę, dark web stebėjimą ir techninę pagalbą.","q":"Kuo skiriasi nemokama nuo mokamos antivirusinės?"},{"a":"Windows Defender siūlo bazinę apsaugą ir yra geras pradinis taškas. Tačiau specializuoti nemokami antivirusiniai sprendimai paprastai geriau aptinka naujas grėsmes ir siūlo papildomų funkcijų, tokių kaip el. pašto apsauga ar naršyklės filtrai.","q":"Ar Windows Defender pakanka?"},{"a":"Pagal mūsų vertinimą, Avast Free yra geriausias nemokamas antivirusinis sprendimas dėl plačiausio funkcijų rinkinio, puikių laboratorijų rezultatų ir patogios sąsajos. Bitdefender Free yra antroje vietoje dėl minimalaus sistemos poveikio.","q":"Kuri nemokama antivirusinė geriausia 2026 metais?"},{"a":"Kai kurios nemokamos antivirusinės programos renka anoniminius naudojimo duomenis. Avast anksčiau turėjo privatumo problemų, tačiau nuo 2020 m. nutraukė duomenų pardavimą. Bitdefender Free renka minimalius duomenis. Visada verta perskaityti privatumo politiką.","q":"Ar nemokamos antivirusinės renka mano duomenis?"}]} title="Dažnai užduodami klausimai" />
+    </section>
+    
+
+    
+
+    
+
+    <!-- TRUST DISCLOSURE -->
     <TrustDisclosure />
   </div>
 </Base>

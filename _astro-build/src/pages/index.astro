@@ -14,7 +14,7 @@ import FAQ from '../components/FAQ.astro';
     <div class="container relative py-16 md:py-24 lg:py-28">
       <div class="max-w-3xl">
         <div class="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-4 px-3 py-1.5 rounded-full bg-primary/8 border border-primary/12">
-          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
           <span>Nepriklausomos apžvalgos · Atnaujinta 2026</span>
         </div>
         <h1 class="font-heading text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-foreground leading-[1.08] tracking-tight mb-5">
@@ -27,7 +27,7 @@ import FAQ from '../components/FAQ.astro';
         <div class="flex flex-wrap gap-3">
           <a href="/antivirusines-programos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 text-sm shadow-sm">
             Peržiūrėti Top 5
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
           <a href="/antivirusines-programos/nemokamos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-card border border-border/60 text-foreground font-heading font-semibold rounded-lg hover:bg-muted/60 transition-all duration-200 text-sm">
             Nemokamos alternatyvos
@@ -37,9 +37,58 @@ import FAQ from '../components/FAQ.astro';
     </div>
   </section>
 
+  <!-- THREAT STATS BAR -->
+  <section class="border-b border-border/40 bg-card">
+    <div class="container py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-destructive/8 border border-destructive/10 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <div>
+            <p class="font-heading text-xl md:text-2xl font-extrabold text-foreground leading-none mb-1">560M+</p>
+            <p class="text-[11px] text-muted-foreground leading-snug">Naujų kenkėjiškų programų 2025 m.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-destructive/8 border border-destructive/10 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <div>
+            <p class="font-heading text-xl md:text-2xl font-extrabold text-foreground leading-none mb-1">72%</p>
+            <p class="text-[11px] text-muted-foreground leading-snug">Lietuvių patyrė kibernetinę grėsmę</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-destructive/8 border border-destructive/10 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div>
+            <p class="font-heading text-xl md:text-2xl font-extrabold text-foreground leading-none mb-1">€4,200</p>
+            <p class="text-[11px] text-muted-foreground leading-snug">Vid. nuostoliai nuo sukčiavimo</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-destructive/8 border border-destructive/10 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <div>
+            <p class="font-heading text-xl md:text-2xl font-extrabold text-foreground leading-none mb-1">43%</p>
+            <p class="text-[11px] text-muted-foreground leading-snug">Atakų taikosi į mobiliuosius</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTENT HUBS -->
   <section class="container py-14 md:py-20">
     <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-3">
+        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>Tyrinėkite pagal temą</span>
+      </div>
       <h2 class="font-heading text-2xl md:text-3xl font-bold text-foreground">Kibernetinio saugumo centras</h2>
       <p class="text-muted-foreground mt-2 max-w-lg mx-auto text-sm">Pasirinkite sritį, kuri jus domina — kiekviena tema turi detalius gidus ir palyginimus.</p>
     </div>
@@ -47,41 +96,78 @@ import FAQ from '../components/FAQ.astro';
       
       <div class="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg h-full flex flex-col">
         <span class="absolute top-4 right-4 text-[10px] font-heading font-semibold text-primary bg-primary/8 border border-primary/12 px-2 py-0.5 rounded-full">Populiariausia</span>
-        <a href="/antivirusines-programos" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight mb-2">Antivirusinės programos</a>
-        <p class="text-sm text-muted-foreground leading-relaxed mb-4">Top 5 geriausių antivirusinių 2026 m. su detaliu palyginimu.</p>
-        <a href="/antivirusines-programos" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto hover:underline">
-          Skaityti daugiau
-          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <div class="flex items-start gap-4 mb-3">
+          <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <a href="/antivirusines-programos" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight">Antivirusinės programos</a>
+            <p class="text-sm text-muted-foreground mt-1 leading-relaxed">Top 5 geriausių antivirusinių 2026 m. su detaliu palyginimu, kainomis ir funkcijomis.</p>
+          </div>
+        </div>
+        
+        <div class="flex flex-wrap gap-1.5 mt-3 pl-[3.75rem]">
+          
+          <a href="/antivirusines-programos/nemokamos" class="text-[11px] font-heading font-medium text-muted-foreground hover:text-primary px-2.5 py-1 rounded-md bg-muted/50 hover:bg-primary/8 transition-all duration-200">Nemokamos antivirusinės</a>
+          
+          <a href="/antivirusines-programos/telefonui" class="text-[11px] font-heading font-medium text-muted-foreground hover:text-primary px-2.5 py-1 rounded-md bg-muted/50 hover:bg-primary/8 transition-all duration-200">Antivirusinė telefonui</a>
+          
+          <a href="/antivirusines-programos/kompiuteriui" class="text-[11px] font-heading font-medium text-muted-foreground hover:text-primary px-2.5 py-1 rounded-md bg-muted/50 hover:bg-primary/8 transition-all duration-200">Antivirusinė kompiuteriui</a>
+          
+        </div>
+        <a href="/antivirusines-programos" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto pt-4 pl-[3.75rem] hover:underline">
+          Skaityti daugiau <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
       
       <div class="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg h-full flex flex-col">
         
-        <a href="/tevu-kontrole" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight mb-2">Tėvų kontrolė</a>
-        <p class="text-sm text-muted-foreground leading-relaxed mb-4">Geriausios programėlės vaikų apsaugai internete.</p>
-        <a href="/tevu-kontrole" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto hover:underline">
-          Skaityti daugiau
-          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <div class="flex items-start gap-4 mb-3">
+          <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <a href="/tevu-kontrole" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight">Tėvų kontrolė</a>
+            <p class="text-sm text-muted-foreground mt-1 leading-relaxed">Geriausios programėlės vaikų apsaugai internete — ekrano laiko valdymas, turinio filtravimas.</p>
+          </div>
+        </div>
+        
+        <a href="/tevu-kontrole" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto pt-4  hover:underline">
+          Skaityti daugiau <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
       
       <div class="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg h-full flex flex-col">
         
-        <a href="/slaptazodziu-saugumas" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight mb-2">Slaptažodžių saugumas</a>
-        <p class="text-sm text-muted-foreground leading-relaxed mb-4">Kaip kurti stiprius slaptažodžius ir naudoti tvarkykles.</p>
-        <a href="/slaptazodziu-saugumas" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto hover:underline">
-          Skaityti daugiau
-          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <div class="flex items-start gap-4 mb-3">
+          <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <a href="/slaptazodziu-saugumas" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight">Slaptažodžių saugumas</a>
+            <p class="text-sm text-muted-foreground mt-1 leading-relaxed">Kaip kurti stiprius slaptažodžius, naudoti tvarkykles ir apsaugoti paskyras.</p>
+          </div>
+        </div>
+        
+        <a href="/slaptazodziu-saugumas" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto pt-4  hover:underline">
+          Skaityti daugiau <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
       
       <div class="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg h-full flex flex-col">
         
-        <a href="/virusai/kompiuterinis-virusas" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight mb-2">Virusai ir grėsmės</a>
-        <p class="text-sm text-muted-foreground leading-relaxed mb-4">Kas yra kompiuterinis virusas ir kaip apsisaugoti.</p>
-        <a href="/virusai/kompiuterinis-virusas" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto hover:underline">
-          Skaityti daugiau
-          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <div class="flex items-start gap-4 mb-3">
+          <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <a href="/virusai/kompiuterinis-virusas" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight">Virusai ir grėsmės</a>
+            <p class="text-sm text-muted-foreground mt-1 leading-relaxed">Kas yra kompiuterinis virusas, kaip veikia malware ir kaip nuo jų apsisaugoti.</p>
+          </div>
+        </div>
+        
+        <a href="/virusai/kompiuterinis-virusas" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto pt-4  hover:underline">
+          Skaityti daugiau <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
       
@@ -93,12 +179,16 @@ import FAQ from '../components/FAQ.astro';
   <section class="border-y border-border/40 bg-muted/30">
     <div class="container py-14 md:py-20">
       <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-3">
+          <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span>2026 m. lyderiai</span>
+        </div>
         <h2 class="font-heading text-2xl md:text-3xl font-bold text-foreground">Top 3 antivirusinės programos</h2>
-        <p class="text-muted-foreground mt-2 max-w-lg mx-auto text-sm">Greitas žvilgsnis į geriausius sprendimus.</p>
+        <p class="text-muted-foreground mt-2 max-w-lg mx-auto text-sm">Greitas žvilgsnis į geriausius sprendimus — detalus palyginimas laukia antivirusinių puslapyje.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         
-        <div class="relative rounded-xl border bg-card p-5 border-primary/30 shadow-sm">
+        <div class="relative rounded-xl border bg-card p-5 transition-all duration-300 hover:shadow-lg border-primary/30 shadow-sm">
           <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-heading font-bold text-primary-foreground bg-primary px-3 py-1 rounded-full shadow-sm">🥇 Nr. 1 pasirinkimas</div>
           <div class="flex items-center gap-3 mb-4 mt-1">
             <div class="w-10 h-10 rounded-lg bg-muted/60 border border-border/40 flex items-center justify-center overflow-hidden shrink-0">
@@ -106,17 +196,36 @@ import FAQ from '../components/FAQ.astro';
             </div>
             <div>
               <h3 class="font-heading font-bold text-foreground text-sm">Norton 360</h3>
-              <div class="flex items-center gap-0.5">★★★★★<span class="text-xs text-muted-foreground ml-1">4.8/5</span></div>
+              <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">4.8</span>
+  </div>
             </div>
           </div>
-          <p class="text-xs text-muted-foreground mb-3 leading-relaxed">Visapusiška apsauga su VPN, slaptažodžių tvarkykle, debesų saugykla ir sukčių apsauga. Planai nuo 1 iki 10 įrenginių.</p>
+          <p class="text-xs text-muted-foreground mb-3 leading-relaxed line-clamp-2">Visapusiška apsauga su VPN, slaptažodžių tvarkykle, debesų saugykla ir sukčių apsauga. Planai nuo 1 iki 10 įrenginių.</p>
+          
+          <div class="space-y-1.5 mb-4">
+            
+            <div class="flex items-start gap-2">
+              <svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span class="text-xs text-foreground">Puikus virusų aptikimas</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span class="text-xs text-foreground">Integruotas VPN visose versijose nuo Standard</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span class="text-xs text-foreground">Debesų saugykla iki 75 GB (Premium)</span>
+            </div>
+          </div>
           <div class="flex items-center justify-between pt-3 border-t border-border/40">
             <span class="text-xs text-muted-foreground">Nuo €19,99/m.</span>
             <a href="https://norton.com/?aff=antivirusines" target="_blank" rel="noopener sponsored" class="text-xs px-3 py-1.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all">Išbandyti</a>
           </div>
         </div>
         
-        <div class="relative rounded-xl border bg-card p-5 border-border/50">
+        <div class="relative rounded-xl border bg-card p-5 transition-all duration-300 hover:shadow-lg border-border/50">
           
           <div class="flex items-center gap-3 mb-4 mt-1">
             <div class="w-10 h-10 rounded-lg bg-muted/60 border border-border/40 flex items-center justify-center overflow-hidden shrink-0">
@@ -124,17 +233,36 @@ import FAQ from '../components/FAQ.astro';
             </div>
             <div>
               <h3 class="font-heading font-bold text-foreground text-sm">Bitdefender Total Security</h3>
-              <div class="flex items-center gap-0.5">★★★★★<span class="text-xs text-muted-foreground ml-1">4.7/5</span></div>
+              <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">4.7</span>
+  </div>
             </div>
           </div>
-          <p class="text-xs text-muted-foreground mb-3 leading-relaxed">AI paremta antivirusinė su 24/7 realaus laiko apsauga, slaptažodžių tvarkykle ir iki 5 įrenginių. Premium versijoje — neribota VPN ir sukčių apsauga.</p>
+          <p class="text-xs text-muted-foreground mb-3 leading-relaxed line-clamp-2">AI paremta antivirusinė su 24/7 realaus laiko apsauga, slaptažodžių tvarkykle ir iki 5 įrenginių. Premium versijoje — neribota VPN ir sukčių apsauga.</p>
+          
+          <div class="space-y-1.5 mb-4">
+            
+            <div class="flex items-start gap-2">
+              <svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span class="text-xs text-foreground">Geriausias virusų aptikimas (AV-Test)</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span class="text-xs text-foreground">AI paremta sukčių apsauga</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span class="text-xs text-foreground">Neribota VPN (Premium Security+)</span>
+            </div>
+          </div>
           <div class="flex items-center justify-between pt-3 border-t border-border/40">
             <span class="text-xs text-muted-foreground">Nuo $59,99/m.</span>
             <a href="https://bitdefender.com/?aff=antivirusines" target="_blank" rel="noopener sponsored" class="text-xs px-3 py-1.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all">Išbandyti</a>
           </div>
         </div>
         
-        <div class="relative rounded-xl border bg-card p-5 border-border/50">
+        <div class="relative rounded-xl border bg-card p-5 transition-all duration-300 hover:shadow-lg border-border/50">
           
           <div class="flex items-center gap-3 mb-4 mt-1">
             <div class="w-10 h-10 rounded-lg bg-muted/60 border border-border/40 flex items-center justify-center overflow-hidden shrink-0">
@@ -142,10 +270,29 @@ import FAQ from '../components/FAQ.astro';
             </div>
             <div>
               <h3 class="font-heading font-bold text-foreground text-sm">Kaspersky Plus</h3>
-              <div class="flex items-center gap-0.5">★★★★★<span class="text-xs text-muted-foreground ml-1">4.5/5</span></div>
+              <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">4.5</span>
+  </div>
             </div>
           </div>
-          <p class="text-xs text-muted-foreground mb-3 leading-relaxed">Antivirusinė su dvikrypte ugniasiene, kriptovaliutų apsauga ir stalkerware aptikimu. Plus planas prideda neribotą VPN ir slaptažodžių tvarkyklę.</p>
+          <p class="text-xs text-muted-foreground mb-3 leading-relaxed line-clamp-2">Antivirusinė su dvikrypte ugniasiene, kriptovaliutų apsauga ir stalkerware aptikimu. Plus planas prideda neribotą VPN ir slaptažodžių tvarkyklę.</p>
+          
+          <div class="space-y-1.5 mb-4">
+            
+            <div class="flex items-start gap-2">
+              <svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span class="text-xs text-foreground">Žemiausia pradinė kaina (nuo €19,99/m.)</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span class="text-xs text-foreground">Dvikryptė ugniasienė</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-3 h-3 text-success mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span class="text-xs text-foreground">Kriptovaliutų grėsmių apsauga</span>
+            </div>
+          </div>
           <div class="flex items-center justify-between pt-3 border-t border-border/40">
             <span class="text-xs text-muted-foreground">Nuo €19,99/m.</span>
             <a href="https://kaspersky.com/?aff=antivirusines" target="_blank" rel="noopener sponsored" class="text-xs px-3 py-1.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all">Išbandyti</a>
@@ -155,12 +302,106 @@ import FAQ from '../components/FAQ.astro';
       </div>
       <div class="text-center mt-8">
         <a href="/antivirusines-programos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 text-sm shadow-sm">
-          Žiūrėti visą Top 5 sąrašą
+          Žiūrėti visą Top 5 sąrašą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
     </div>
   </section>
   
+
+  <!-- WHY TRUST US -->
+  <section class="container py-14 md:py-20">
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-3">
+        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span>Mūsų požiūris</span>
+      </div>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-foreground">Kaip atrenkame rekomendacijas?</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <div class="rounded-xl border border-border/50 bg-card p-5 text-center hover:shadow-md transition-all duration-300 glow-border h-full">
+        <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-foreground text-sm mb-1">Aiškūs kriterijai</h3>
+        <p class="text-xs text-muted-foreground leading-relaxed">Lyginame apsaugą, funkcijas, kainą ir naudojimo paprastumą.</p>
+      </div>
+      <div class="rounded-xl border border-border/50 bg-card p-5 text-center hover:shadow-md transition-all duration-300 glow-border h-full">
+        <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-foreground text-sm mb-1">Patikimi šaltiniai</h3>
+        <p class="text-xs text-muted-foreground leading-relaxed">Remiamės žinomų testavimo laboratorijų ir stiprių rinkos šaltinių duomenimis.</p>
+      </div>
+      <div class="rounded-xl border border-border/50 bg-card p-5 text-center hover:shadow-md transition-all duration-300 glow-border h-full">
+        <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-foreground text-sm mb-1">Pritaikyta Lietuvai</h3>
+        <p class="text-xs text-muted-foreground leading-relaxed">Informaciją pateikiame aiškiai, lietuviškai ir pagal vietinei auditorijai aktualius poreikius.</p>
+      </div>
+      <div class="rounded-xl border border-border/50 bg-card p-5 text-center hover:shadow-md transition-all duration-300 glow-border h-full">
+        <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-foreground text-sm mb-1">Turinį peržiūrime reguliariai</h3>
+        <p class="text-xs text-muted-foreground leading-relaxed">Atnaujiname puslapius, kai keičiasi kainos, funkcijos ar svarbūs testų rezultatai.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK NAVIGATION STRIP -->
+  <section class="border-y border-border/40 bg-muted/30">
+    <div class="container py-10 md:py-14">
+      <h2 class="font-heading text-lg font-bold text-foreground mb-6 text-center">Populiariausi puslapiai</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        
+        <a href="/antivirusines-programos" class="group flex items-center gap-3 p-3.5 rounded-lg border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+          <div class="w-8 h-8 rounded-lg bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <span class="text-sm font-heading font-medium text-foreground group-hover:text-primary transition-colors">Geriausios antivirusinės 2026</span>
+          <span class="ml-auto"><svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+        <a href="/antivirusines-programos/nemokamos" class="group flex items-center gap-3 p-3.5 rounded-lg border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+          <div class="w-8 h-8 rounded-lg bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <span class="text-sm font-heading font-medium text-foreground group-hover:text-primary transition-colors">Nemokamos antivirusinės</span>
+          <span class="ml-auto"><svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+        <a href="/antivirusines-programos/telefonui" class="group flex items-center gap-3 p-3.5 rounded-lg border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+          <div class="w-8 h-8 rounded-lg bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <span class="text-sm font-heading font-medium text-foreground group-hover:text-primary transition-colors">Antivirusinė telefonui</span>
+          <span class="ml-auto"><svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+        <a href="/antivirusines-programos/kompiuteriui" class="group flex items-center gap-3 p-3.5 rounded-lg border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+          <div class="w-8 h-8 rounded-lg bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <span class="text-sm font-heading font-medium text-foreground group-hover:text-primary transition-colors">Antivirusinė kompiuteriui</span>
+          <span class="ml-auto"><svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+        <a href="/tevu-kontrole" class="group flex items-center gap-3 p-3.5 rounded-lg border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+          <div class="w-8 h-8 rounded-lg bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <span class="text-sm font-heading font-medium text-foreground group-hover:text-primary transition-colors">Tėvų kontrolės programėlės</span>
+          <span class="ml-auto"><svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+        <a href="/slaptazodziu-saugumas" class="group flex items-center gap-3 p-3.5 rounded-lg border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+          <div class="w-8 h-8 rounded-lg bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <span class="text-sm font-heading font-medium text-foreground group-hover:text-primary transition-colors">Slaptažodžių saugumas</span>
+          <span class="ml-auto"><svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- TRUST DISCLOSURE -->
   <section class="container py-14">
