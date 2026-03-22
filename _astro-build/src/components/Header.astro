@@ -25,7 +25,7 @@ const navLinks = [
   ]},
 ];
 
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
 ---
 
 <header class="sticky top-0 z-50 glass border-b border-border/60">
