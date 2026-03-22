@@ -12,12 +12,25 @@ const ScrollReveal = ({ children, className = '', delay = 0 }: ScrollRevealProps
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el) {
+      setVisible(true);
+      return;
+    }
+
+    if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') {
+      setVisible(true);
+      return;
+    }
+
+    const rescueTimer = window.setTimeout(() => {
+      setVisible(true);
+    }, 700 + delay);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
+          window.clearTimeout(rescueTimer);
           observer.unobserve(el);
         }
       },
@@ -25,8 +38,11 @@ const ScrollReveal = ({ children, className = '', delay = 0 }: ScrollRevealProps
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      window.clearTimeout(rescueTimer);
+      observer.disconnect();
+    };
+  }, [delay]);
 
   return (
     <div
