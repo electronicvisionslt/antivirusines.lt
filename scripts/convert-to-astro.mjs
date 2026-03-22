@@ -34,9 +34,21 @@ function ensureDir(dir) {
   mkdirSync(dir, { recursive: true });
 }
 
+
+/** Ensure a path has a trailing slash (for internal links) */
+function ts(path) {
+  if (!path || path === '/' || path.startsWith('#') || path.startsWith('http') || path.startsWith('mailto')) return path;
+  return path.endsWith('/') ? path : path + '/';
+}
+
 function writePage(relativePath, content) {
   const fullPath = join(PAGES_DIR, relativePath);
   ensureDir(dirname(fullPath));
+  // Post-process: ensure all internal href links have trailing slashes
+  content = content.replace(/href="(/[a-z][^"]*[^/])"/g, (m, p) => {
+    if (p.includes('#') || p.includes('?') || p.includes('.')) return m;
+    return 'href="' + p + '/"';
+  });
   writeFileSync(fullPath, content, 'utf-8');
   console.log(`  ✅ ${relativePath}`);
 }
