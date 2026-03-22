@@ -28,6 +28,12 @@ function ensureTrailingSlash(path) {
   return path.endsWith('/') ? path : path + '/';
 }
 
+function normalizeRoutePath(path) {
+  if (!path || path === '/') return '/';
+  const withLeadingSlash = path.startsWith('/') ? path : `/${path}`;
+  return withLeadingSlash.replace(/\/+$/, '');
+}
+
 
 const ROOT = process.cwd();
 const BUILD_DIR = join(ROOT, '_astro-build');
@@ -95,20 +101,22 @@ function writeRoutePage(routePath, content) {
 }
 
 function routeToPagePath(routePath) {
-  if (routePath === '/') return 'index.astro';
-  return routePath.split('/').filter(Boolean).join('/') + '.astro';
+  const normalizedRoutePath = normalizeRoutePath(routePath);
+  if (normalizedRoutePath === '/') return 'index.astro';
+  return normalizedRoutePath.split('/').filter(Boolean).join('/') + '.astro';
 }
 
 function shouldPreserveCustomPage(routePath) {
-  if (!CUSTOM_ASTRO_PATHS.has(routePath)) return false;
-  return existsSync(join(PAGES_DIR, routeToPagePath(routePath)));
+  const normalizedRoutePath = normalizeRoutePath(routePath);
+  if (!CUSTOM_ASTRO_PATHS.has(normalizedRoutePath)) return false;
+  return existsSync(join(PAGES_DIR, routeToPagePath(normalizedRoutePath)));
 }
 
 function snapshotPreservedPages() {
   const preservedPages = new Map();
 
   for (const routePath of CUSTOM_ASTRO_PATHS) {
-    const pagePath = routeToPagePath(routePath);
+    const pagePath = routeToPagePath(normalizeRoutePath(routePath));
     const fullPath = join(PAGES_DIR, pagePath);
 
     if (existsSync(fullPath)) {
@@ -2947,22 +2955,23 @@ export default defineConfig({
     const catArticles = articlesByCategory[category.id] || [];
     const relatedCategories = childCategoriesByParent[category.id] || [];
     const overlappingArticle = articleByPath[category.path];
-    const segments = category.path.split('/').filter(Boolean);
+    const normalizedCategoryPath = normalizeRoutePath(category.path);
+    const segments = normalizedCategoryPath.split('/').filter(Boolean);
     const pagePath = segments.join('/') + '.astro';
 
-    if (category.path === '/antivirusines-programos') {
-      console.log(`  ⚡ Flagship: ${category.path}`);
+    if (normalizedCategoryPath === '/antivirusines-programos') {
+      console.log(`  ⚡ Flagship: ${normalizedCategoryPath}`);
       const content = generateAntivirusLandingPage(category, data.products, catArticles);
-      logFlagshipDiagnostic(category.path, 'generateAntivirusLandingPage', content, {
+      logFlagshipDiagnostic(normalizedCategoryPath, 'generateAntivirusLandingPage', content, {
         products: data.products.filter(p => p.product_category === 'antivirus').slice(0, 5).length,
         relatedArticles: catArticles.length,
         faq: parseFaq(category.faq).length,
       });
-      writeRoutePage(category.path, content);
-    } else if (FLAGSHIP_PATHS.has(category.path)) {
+      writeRoutePage(normalizedCategoryPath, content);
+    } else if (FLAGSHIP_PATHS.has(normalizedCategoryPath)) {
       // All flagship paths get the rich antivirus-style landing template
-      console.log(`  ⚡ Flagship: ${category.path}`);
-      const meta = FLAGSHIP_META[category.path];
+      console.log(`  ⚡ Flagship: ${normalizedCategoryPath}`);
+      const meta = FLAGSHIP_META[normalizedCategoryPath];
       const overlappingArticle = articleByPath[category.path];
       const dbSections = overlappingArticle ? parseSections(overlappingArticle.sections) : [];
       const fallbackSections = Array.isArray(meta?.guideSections) ? meta.guideSections.length : undefined;
@@ -2973,7 +2982,7 @@ export default defineConfig({
       const products = meta?.productCategory ? getFlagshipProducts(meta, data.products).length : undefined;
       const content = generateFlagshipPage(category, data, catArticles, categoryMap);
 
-      logFlagshipDiagnostic(category.path, meta?.isGuide ? 'generateGuideFlagshipPage' : meta?.isHub ? 'generateHubFlagshipPage' : 'generateProductFlagshipPage', content, {
+      logFlagshipDiagnostic(normalizedCategoryPath, meta?.isGuide ? 'generateGuideFlagshipPage' : meta?.isHub ? 'generateHubFlagshipPage' : 'generateProductFlagshipPage', content, {
         dbSections: dbSections.length || undefined,
         fallbackSections,
         finalSections,
@@ -2982,9 +2991,9 @@ export default defineConfig({
         relatedArticles: catArticles.filter(a => a.path !== category.path).length,
       });
 
-      writeRoutePage(category.path, content);
+      writeRoutePage(normalizedCategoryPath, content);
     } else if (overlappingArticle) {
-      console.log(`  📰 Category path uses article template: ${category.path}`);
+      console.log(`  📰 Category path uses article template: ${normalizedCategoryPath}`);
       writePage(pagePath, generateArticlePage(overlappingArticle, categoryMap));
     } else {
       writePage(pagePath, generateCategoryPage(category, catArticles, relatedCategories, categoryMap));
