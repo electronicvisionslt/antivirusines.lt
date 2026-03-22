@@ -1587,6 +1587,147 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
 </Base>`;
 }
 
+function generateGuideFlagshipPage(category, meta, overlappingArticle, data, catArticles, categoryMap) {
+  const depth = category.path.split('/').filter(Boolean).length;
+  const prefix = depth > 1 ? '../../' : '../';
+
+  // Use article body from DB if available, otherwise use hardcoded guideSections
+  const sections = meta.guideSections || [];
+  const faq = meta.guideFaq || parseFaq(category.faq) || [];
+  const articleBody = overlappingArticle?.body || '';
+  const articleSections = overlappingArticle ? parseSections(overlappingArticle.sections) : [];
+  const author = overlappingArticle?.authors;
+
+  // Merge: prefer DB sections if they exist, fall back to meta guideSections
+  const finalSections = articleSections.length > 0 ? articleSections : sections;
+  const finalFaq = overlappingArticle?.faq ? parseFaq(overlappingArticle.faq) : faq;
+
+  return `---
+import Base from '${prefix}layouts/Base.astro';
+import Breadcrumbs from '${prefix}components/Breadcrumbs.astro';
+import FAQ from '${prefix}components/FAQ.astro';
+import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
+---
+
+<Base
+  title="${escapeHtml(overlappingArticle?.seo_title || meta.title)}"
+  description="${escapeHtml(overlappingArticle?.meta_description || meta.description)}"
+  ${category.canonical_url ? `canonicalUrl="${escapeHtml(category.canonical_url)}"` : ''}
+>
+  <article class="container py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={${JSON.stringify(meta.breadcrumbs)}} />
+
+    <!-- HERO -->
+    <div class="mb-8">
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight" itemProp="headline">
+        ${meta.heroTitle}
+      </h1>
+      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-4" itemProp="description">
+        ${meta.heroDesc}
+      </p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        ${author ? `<span class="font-medium">${escapeHtml(author.name)}</span>` : ''}
+        ${overlappingArticle ? `<time itemProp="dateModified" datetime="${overlappingArticle.updated_at}">Atnaujinta: ${overlappingArticle.updated_at?.split('T')[0]}</time>` : '<time>Atnaujinta: 2026</time>'}
+        ${overlappingArticle?.read_time ? `<span>· ${escapeHtml(overlappingArticle.read_time)} skaitymo</span>` : ''}
+      </div>
+    </div>
+
+    <TrustDisclosure compact />
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-10">
+      <div>
+        ${finalSections.length > 1 ? `
+        <!-- TABLE OF CONTENTS (mobile) -->
+        <nav class="rounded-lg border border-border/50 bg-card p-4 my-6 lg:hidden">
+          <h4 class="font-heading font-semibold text-xs text-foreground mb-2.5 uppercase tracking-wider">Turinys</h4>
+          <ol class="space-y-1.5">
+            ${finalSections.map((s, i) => `
+            <li>
+              <a href="#${s.id}" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">${String(i + 1).padStart(2, '0')}</span>
+                ${escapeHtml(s.title)}
+              </a>
+            </li>`).join('')}
+          </ol>
+        </nav>
+        ` : ''}
+
+        <!-- CONTENT SECTIONS -->
+        <div class="prose-article">
+          ${finalSections.map(s => `
+          <section class="mb-8 scroll-mt-20" id="${s.id}">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">${escapeHtml(s.title)}</h2>
+            <p class="text-muted-foreground leading-relaxed">${escapeHtml(s.content)}</p>
+          </section>
+          `).join('')}
+
+          ${!finalSections.length && articleBody ? articleBody : ''}
+        </div>
+
+        ${overlappingArticle?.pros?.length > 0 && overlappingArticle?.cons?.length > 0 ? `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+          <div class="rounded-xl border border-success/20 bg-success/5 p-5">
+            <h3 class="font-heading font-semibold text-success text-sm mb-3">✅ Privalumai</h3>
+            <ul class="space-y-2">${(overlappingArticle.pros || []).map(p => `<li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>${escapeHtml(p)}</li>`).join('')}</ul>
+          </div>
+          <div class="rounded-xl border border-destructive/20 bg-destructive/5 p-5">
+            <h3 class="font-heading font-semibold text-destructive text-sm mb-3">❌ Trūkumai</h3>
+            <ul class="space-y-2">${(overlappingArticle.cons || []).map(c => `<li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>${escapeHtml(c)}</li>`).join('')}</ul>
+          </div>
+        </div>
+        ` : ''}
+
+        ${overlappingArticle?.verdict ? `
+        <div class="rounded-xl border border-primary/15 bg-primary/[0.03] p-5 my-8">
+          <div class="flex gap-3">
+            <div class="w-1 rounded-full bg-primary/40 shrink-0"></div>
+            <div>
+              <h3 class="font-heading font-semibold text-foreground mb-2">Mūsų verdiktas</h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">${escapeHtml(overlappingArticle.verdict)}</p>
+            </div>
+          </div>
+        </div>
+        ` : ''}
+
+        ${finalFaq.length > 0 ? `<FAQ items={${JSON.stringify(finalFaq)}} />` : ''}
+
+        ${catArticles.length > 0 ? `
+        <!-- RELATED -->
+        <section class="mt-10 mb-6">
+          <h2 class="font-heading text-xl font-bold text-foreground mb-4">Susiję gidai</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            ${catArticles.filter(a => a.path !== category.path).slice(0, 4).map(a => `
+            <a href="${a.path}" class="group rounded-xl border border-border/50 bg-card p-4 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+              <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-1">${escapeHtml(a.title)}</h3>
+              <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">${escapeHtml(a.excerpt || '')}</p>
+            </a>
+            `).join('')}
+          </div>
+        </section>
+        ` : ''}
+      </div>
+
+      ${finalSections.length > 1 ? `
+      <!-- SIDEBAR TOC (desktop) -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              ${finalSections.map(s => `<li><a href="#${s.id}" class="text-xs text-muted-foreground hover:text-primary transition-colors">${escapeHtml(s.title)}</a></li>`).join('')}
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      ` : ''}
+    </div>
+
+    <TrustDisclosure />
+  </article>
+</Base>`;
+}
+
 const CUSTOM_ASTRO_PATHS = new Set(['/', ...PRODUCT_FLAGSHIP_PATHS]);
 
 // ─── CSS ───
