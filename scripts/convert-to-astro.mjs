@@ -202,6 +202,47 @@ async function fetchAllData() {
 function generateHomePage(data) {
   const top3 = data.products.filter(p => p.product_category === 'antivirus').slice(0, 3);
 
+  const threatStats = [
+    { value: '560M+', label: 'Naujų kenkėjiškų programų 2025 m.', svgKey: 'shield' },
+    { value: '72%', label: 'Lietuvių patyrė kibernetinę grėsmę', svgKey: 'shield' },
+    { value: '€4,200', label: 'Vid. nuostoliai nuo sukčiavimo', svgKey: 'lock' },
+    { value: '43%', label: 'Atakų taikosi į mobiliuosius', svgKey: 'smartphone' },
+  ];
+
+  const hubCards = [
+    {
+      title: 'Antivirusinės programos',
+      desc: 'Top 5 geriausių antivirusinių 2026 m. su detaliu palyginimu, kainomis ir funkcijomis.',
+      path: '/antivirusines-programos',
+      tag: 'Populiariausia',
+      svgKey: 'shield',
+      links: [
+        { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos' },
+        { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui' },
+        { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui' },
+      ],
+    },
+    { title: 'Tėvų kontrolė', desc: 'Geriausios programėlės vaikų apsaugai internete — ekrano laiko valdymas, turinio filtravimas.', path: '/tevu-kontrole', svgKey: 'users', links: [] },
+    { title: 'Slaptažodžių saugumas', desc: 'Kaip kurti stiprius slaptažodžius, naudoti tvarkykles ir apsaugoti paskyras.', path: '/slaptazodziu-saugumas', svgKey: 'lock', links: [] },
+    { title: 'Virusai ir grėsmės', desc: 'Kas yra kompiuterinis virusas, kaip veikia malware ir kaip nuo jų apsisaugoti.', path: '/virusai/kompiuterinis-virusas', svgKey: 'shield', links: [] },
+  ];
+
+  const trustPoints = [
+    { title: 'Aiškūs kriterijai', desc: 'Lyginame apsaugą, funkcijas, kainą ir naudojimo paprastumą.' },
+    { title: 'Patikimi šaltiniai', desc: 'Remiamės žinomų testavimo laboratorijų ir stiprių rinkos šaltinių duomenimis.' },
+    { title: 'Pritaikyta Lietuvai', desc: 'Informaciją pateikiame aiškiai, lietuviškai ir pagal vietinei auditorijai aktualius poreikius.' },
+    { title: 'Turinį peržiūrime reguliariai', desc: 'Atnaujiname puslapius, kai keičiasi kainos, funkcijos ar svarbūs testų rezultatai.' },
+  ];
+
+  const quickLinks = [
+    { label: 'Geriausios antivirusinės 2026', path: '/antivirusines-programos' },
+    { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos' },
+    { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui' },
+    { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui' },
+    { label: 'Tėvų kontrolės programėlės', path: '/tevu-kontrole' },
+    { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' },
+  ];
+
   return `---
 import Base from '../layouts/Base.astro';
 import TrustDisclosure from '../components/TrustDisclosure.astro';
@@ -218,7 +259,7 @@ import FAQ from '../components/FAQ.astro';
     <div class="container relative py-16 md:py-24 lg:py-28">
       <div class="max-w-3xl">
         <div class="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-4 px-3 py-1.5 rounded-full bg-primary/8 border border-primary/12">
-          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          ${SVG.shield}
           <span>Nepriklausomos apžvalgos · Atnaujinta 2026</span>
         </div>
         <h1 class="font-heading text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-foreground leading-[1.08] tracking-tight mb-5">
@@ -231,7 +272,7 @@ import FAQ from '../components/FAQ.astro';
         <div class="flex flex-wrap gap-3">
           <a href="/antivirusines-programos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 text-sm shadow-sm">
             Peržiūrėti Top 5
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            ${SVG.arrowRight}
           </a>
           <a href="/antivirusines-programos/nemokamos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-card border border-border/60 text-foreground font-heading font-semibold rounded-lg hover:bg-muted/60 transition-all duration-200 text-sm">
             Nemokamos alternatyvos
@@ -241,26 +282,55 @@ import FAQ from '../components/FAQ.astro';
     </div>
   </section>
 
+  <!-- THREAT STATS BAR -->
+  <section class="border-b border-border/40 bg-card">
+    <div class="container py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        ${threatStats.map(stat => `
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-destructive/8 border border-destructive/10 flex items-center justify-center shrink-0">
+            ${SVG[stat.svgKey] || SVG.shield}
+          </div>
+          <div>
+            <p class="font-heading text-xl md:text-2xl font-extrabold text-foreground leading-none mb-1">${stat.value}</p>
+            <p class="text-[11px] text-muted-foreground leading-snug">${stat.label}</p>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </section>
+
   <!-- CONTENT HUBS -->
   <section class="container py-14 md:py-20">
     <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-3">
+        ${SVG.zap}
+        <span>Tyrinėkite pagal temą</span>
+      </div>
       <h2 class="font-heading text-2xl md:text-3xl font-bold text-foreground">Kibernetinio saugumo centras</h2>
       <p class="text-muted-foreground mt-2 max-w-lg mx-auto text-sm">Pasirinkite sritį, kuri jus domina — kiekviena tema turi detalius gidus ir palyginimus.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      ${[
-        { title: 'Antivirusinės programos', desc: 'Top 5 geriausių antivirusinių 2026 m. su detaliu palyginimu.', path: '/antivirusines-programos', tag: 'Populiariausia' },
-        { title: 'Tėvų kontrolė', desc: 'Geriausios programėlės vaikų apsaugai internete.', path: '/tevu-kontrole' },
-        { title: 'Slaptažodžių saugumas', desc: 'Kaip kurti stiprius slaptažodžius ir naudoti tvarkykles.', path: '/slaptazodziu-saugumas' },
-        { title: 'Virusai ir grėsmės', desc: 'Kas yra kompiuterinis virusas ir kaip apsisaugoti.', path: '/virusai/kompiuterinis-virusas' },
-      ].map(hub => `
+      ${hubCards.map(hub => `
       <div class="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg h-full flex flex-col">
         ${hub.tag ? `<span class="absolute top-4 right-4 text-[10px] font-heading font-semibold text-primary bg-primary/8 border border-primary/12 px-2 py-0.5 rounded-full">${hub.tag}</span>` : ''}
-        <a href="${hub.path}" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight mb-2">${hub.title}</a>
-        <p class="text-sm text-muted-foreground leading-relaxed mb-4">${hub.desc}</p>
-        <a href="${hub.path}" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto hover:underline">
-          Skaityti daugiau
-          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <div class="flex items-start gap-4 mb-3">
+          <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            ${SVG[hub.svgKey] || SVG.shield}
+          </div>
+          <div class="flex-1 min-w-0">
+            <a href="${hub.path}" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight">${hub.title}</a>
+            <p class="text-sm text-muted-foreground mt-1 leading-relaxed">${hub.desc}</p>
+          </div>
+        </div>
+        ${hub.links.length > 0 ? `
+        <div class="flex flex-wrap gap-1.5 mt-3 pl-[3.75rem]">
+          ${hub.links.map(link => `
+          <a href="${link.path}" class="text-[11px] font-heading font-medium text-muted-foreground hover:text-primary px-2.5 py-1 rounded-md bg-muted/50 hover:bg-primary/8 transition-all duration-200">${link.label}</a>
+          `).join('')}
+        </div>` : ''}
+        <a href="${hub.path}" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto pt-4 ${hub.links.length > 0 ? 'pl-[3.75rem]' : ''} hover:underline">
+          Skaityti daugiau ${SVG.arrowRight}
         </a>
       </div>
       `).join('')}
@@ -272,12 +342,16 @@ import FAQ from '../components/FAQ.astro';
   <section class="border-y border-border/40 bg-muted/30">
     <div class="container py-14 md:py-20">
       <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-3">
+          ${SVG.award}
+          <span>2026 m. lyderiai</span>
+        </div>
         <h2 class="font-heading text-2xl md:text-3xl font-bold text-foreground">Top 3 antivirusinės programos</h2>
-        <p class="text-muted-foreground mt-2 max-w-lg mx-auto text-sm">Greitas žvilgsnis į geriausius sprendimus.</p>
+        <p class="text-muted-foreground mt-2 max-w-lg mx-auto text-sm">Greitas žvilgsnis į geriausius sprendimus — detalus palyginimas laukia antivirusinių puslapyje.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         ${top3.map((p, i) => `
-        <div class="relative rounded-xl border bg-card p-5 ${i === 0 ? 'border-primary/30 shadow-sm' : 'border-border/50'}">
+        <div class="relative rounded-xl border bg-card p-5 transition-all duration-300 hover:shadow-lg ${i === 0 ? 'border-primary/30 shadow-sm' : 'border-border/50'}">
           ${i === 0 ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-heading font-bold text-primary-foreground bg-primary px-3 py-1 rounded-full shadow-sm">🥇 Nr. 1 pasirinkimas</div>' : ''}
           <div class="flex items-center gap-3 mb-4 mt-1">
             <div class="w-10 h-10 rounded-lg bg-muted/60 border border-border/40 flex items-center justify-center overflow-hidden shrink-0">
@@ -285,10 +359,18 @@ import FAQ from '../components/FAQ.astro';
             </div>
             <div>
               <h3 class="font-heading font-bold text-foreground text-sm">${escapeHtml(p.name)}</h3>
-              <div class="flex items-center gap-0.5">${'★'.repeat(Math.round(p.rating || 0))}<span class="text-xs text-muted-foreground ml-1">${p.rating}/5</span></div>
+              ${renderRatingStars(p.rating || 0)}
             </div>
           </div>
-          <p class="text-xs text-muted-foreground mb-3 leading-relaxed">${escapeHtml(p.short_description)}</p>
+          <p class="text-xs text-muted-foreground mb-3 leading-relaxed line-clamp-2">${escapeHtml(p.short_description)}</p>
+          ${(p.pros || []).length > 0 ? `
+          <div class="space-y-1.5 mb-4">
+            ${(p.pros || []).slice(0, 3).map(pro => `
+            <div class="flex items-start gap-2">
+              ${SVG.checkCircle}
+              <span class="text-xs text-foreground">${escapeHtml(pro)}</span>
+            </div>`).join('')}
+          </div>` : ''}
           <div class="flex items-center justify-between pt-3 border-t border-border/40">
             <span class="text-xs text-muted-foreground">${escapeHtml(p.pricing_summary)}</span>
             ${p.affiliate_url ? `<a href="${escapeHtml(p.affiliate_url)}" target="_blank" rel="noopener sponsored" class="text-xs px-3 py-1.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all">Išbandyti</a>` : ''}
@@ -298,12 +380,50 @@ import FAQ from '../components/FAQ.astro';
       </div>
       <div class="text-center mt-8">
         <a href="/antivirusines-programos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 text-sm shadow-sm">
-          Žiūrėti visą Top 5 sąrašą
+          Žiūrėti visą Top 5 sąrašą ${SVG.arrowRight}
         </a>
       </div>
     </div>
   </section>
   ` : ''}
+
+  <!-- WHY TRUST US -->
+  <section class="container py-14 md:py-20">
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-3">
+        ${SVG.heart}
+        <span>Mūsų požiūris</span>
+      </div>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-foreground">Kaip atrenkame rekomendacijas?</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      ${trustPoints.map(point => `
+      <div class="rounded-xl border border-border/50 bg-card p-5 text-center hover:shadow-md transition-all duration-300 glow-border h-full">
+        <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+          ${SVG.shield}
+        </div>
+        <h3 class="font-heading font-bold text-foreground text-sm mb-1">${point.title}</h3>
+        <p class="text-xs text-muted-foreground leading-relaxed">${point.desc}</p>
+      </div>`).join('')}
+    </div>
+  </section>
+
+  <!-- QUICK NAVIGATION STRIP -->
+  <section class="border-y border-border/40 bg-muted/30">
+    <div class="container py-10 md:py-14">
+      <h2 class="font-heading text-lg font-bold text-foreground mb-6 text-center">Populiariausi puslapiai</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        ${quickLinks.map(item => `
+        <a href="${item.path}" class="group flex items-center gap-3 p-3.5 rounded-lg border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+          <div class="w-8 h-8 rounded-lg bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
+            ${SVG.shield}
+          </div>
+          <span class="text-sm font-heading font-medium text-foreground group-hover:text-primary transition-colors">${item.label}</span>
+          <span class="ml-auto">${SVG.chevronRight}</span>
+        </a>`).join('')}
+      </div>
+    </div>
+  </section>
 
   <!-- TRUST DISCLOSURE -->
   <section class="container py-14">
@@ -1817,9 +1937,16 @@ function generateHubFlagshipPage(category, meta, data, catArticles, categoryMap)
   const depth = category.path.split('/').filter(Boolean).length;
   const prefix = depth > 1 ? '../../' : '../';
   const faq = parseFaq(category.faq);
+  const hubFaq = meta.hubFaq || [];
+  const finalFaq = faq.length > 0 ? faq : hubFaq;
   const childCategories = data.categories.filter(c => c.parent_id === category.id);
   const featuredCards = Array.isArray(meta.featuredCards) ? meta.featuredCards : [];
   const visibleArticles = catArticles.filter(a => a.path !== category.path);
+  const stats = meta.stats || [];
+  const strengthExamples = meta.strengthExamples || [];
+  const dosDonts = meta.dosDonts || [];
+  const recommendedTools = meta.recommendedTools || [];
+  const crossLinks = meta.crossLinks || [];
 
   return `---
 import Base from '${prefix}layouts/Base.astro';
@@ -1833,120 +1960,168 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
   description="${escapeHtml(category.meta_description || meta.description)}"
   ${category.canonical_url ? `canonicalUrl="${escapeHtml(category.canonical_url)}"` : ''}
 >
-  <div class="container py-8 max-w-5xl mx-auto">
+  <div class="container py-8 max-w-4xl mx-auto">
     <Breadcrumbs items={${JSON.stringify(meta.breadcrumbs)}} />
 
-    <section class="mb-8">
-      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
+    <!-- HERO -->
+    <div class="mb-10">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="section-label">Slaptažodžių saugumas</span>
+        <span class="chip-muted text-[10px]">Atnaujinta 2026</span>
+      </div>
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4">
         ${meta.heroTitle}
       </h1>
-      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
+      <p class="text-muted-foreground leading-relaxed max-w-2xl">
         ${meta.heroDesc}
       </p>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-        <div class="card-premium-featured p-4">
-          <p class="section-label text-[9px] mb-1.5">Pagrindinis tikslas</p>
-          <p class="text-sm text-foreground font-semibold leading-tight">Greitai rasti aiškius praktinius gidus</p>
-        </div>
-        <div class="card-premium p-4">
-          <p class="section-label text-[9px] mb-1.5">Kas viduje</p>
-          <p class="text-sm text-foreground font-semibold leading-tight">Instrukcijos, palyginimai ir DUK vienoje vietoje</p>
-        </div>
-        <div class="card-premium p-4">
-          <p class="section-label text-[9px] mb-1.5">Atnaujinama</p>
-          <p class="text-sm text-foreground font-semibold leading-tight">Turinys sinchronizuojamas su publikacijomis iš DB</p>
-        </div>
-      </div>
-    </section>
+    </div>
 
-    <div class="section-divider mb-10"></div>
+    ${stats.length > 0 ? `
+    <!-- STATS BAR -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+      ${stats.map(s => `
+      <div class="bg-card border border-border/50 rounded-xl p-4 text-center">
+        <div class="w-5 h-5 text-primary mx-auto mb-2">${SVG.shield}</div>
+        <div class="font-heading text-xl font-bold text-foreground">${s.value}</div>
+        <div class="text-xs text-muted-foreground leading-snug mt-1">${s.label}</div>
+      </div>`).join('')}
+    </div>
+    ` : ''}
 
     ${featuredCards.length > 0 ? `
-    <section class="mb-14">
-      <div class="mb-5">
-        <h2 class="font-heading text-2xl font-bold text-foreground">Svarbiausi gidai</h2>
-        <p class="text-muted-foreground text-sm mt-1.5">Greita prieiga prie labiausiai ieškomų temų šiame skyriuje.</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        ${featuredCards.map(card => `
-        <a href="${card.path}" class="card-premium group p-5 transition-all duration-300 hover-lift">
-          <div class="flex items-start gap-3">
-            <div class="w-9 h-9 rounded-xl bg-primary/8 border border-primary/12 flex items-center justify-center shrink-0">${SVG.arrowRight}</div>
-            <div>
-              <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-1.5">${escapeHtml(card.label)}</h3>
-              <p class="text-xs text-muted-foreground leading-relaxed">${escapeHtml(card.desc)}</p>
-            </div>
+    <!-- GUIDES GRID -->
+    <div class="mb-5">
+      <div class="section-label text-[10px] mb-1.5">Praktiniai gidai</div>
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-foreground">Žingsnis po žingsnio instrukcijos</h2>
+      <p class="text-sm text-muted-foreground mt-1">Dažniausiai ieškomi slaptažodžių klausimai su aiškiomis instrukcijomis</p>
+    </div>
+    <div class="grid gap-3 mb-12">
+      ${featuredCards.map(card => `
+      <a href="${card.path}" class="group flex items-start gap-4 p-5 bg-card border border-border/50 rounded-xl hover:border-primary/30 hover:shadow-sm transition-all duration-200">
+        <div class="rounded-lg bg-primary/8 p-2.5 shrink-0 group-hover:bg-primary/15 transition-colors">
+          ${SVG.arrowRight}
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            ${card.tag ? `<span class="chip-muted text-[10px]">${card.tag}</span>` : ''}
+            ${card.readTime ? `<span class="text-[10px] text-muted-foreground flex items-center gap-0.5">${card.readTime}</span>` : ''}
           </div>
-        </a>
-        `).join('')}
-      </div>
-    </section>
+          <h3 class="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">${escapeHtml(card.label)}</h3>
+          <p class="text-sm text-muted-foreground mt-1 leading-relaxed">${escapeHtml(card.desc)}</p>
+        </div>
+        <span class="mt-3 shrink-0">${SVG.chevronRight}</span>
+      </a>`).join('')}
+    </div>
     ` : ''}
 
-    ${childCategories.length > 0 ? `
-    <section class="mb-14">
-      <div class="mb-5">
-        <h2 class="font-heading text-2xl font-bold text-foreground">Temos šiame skyriuje</h2>
+    ${strengthExamples.length > 0 ? `
+    <!-- PASSWORD STRENGTH TABLE -->
+    <div class="mb-5">
+      <div class="section-label text-[10px] mb-1.5">Ar jūsų slaptažodis saugus?</div>
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-foreground">Slaptažodžio stiprumo pavyzdžiai</h2>
+    </div>
+    <div class="bg-card border border-border/50 rounded-xl overflow-hidden mb-12">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-border/50 bg-muted/30">
+              <th class="text-left font-medium text-muted-foreground p-3">Slaptažodis</th>
+              <th class="text-left font-medium text-muted-foreground p-3">Stiprumas</th>
+              <th class="text-left font-medium text-muted-foreground p-3">Nulaužimo laikas</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${strengthExamples.map(ex => `
+            <tr class="border-b border-border/30 last:border-0">
+              <td class="p-3 font-mono text-xs">${escapeHtml(ex.password)}</td>
+              <td class="p-3"><span class="inline-flex px-2 py-0.5 rounded-md text-xs font-medium ${ex.bg} ${ex.color}">${ex.strength}</span></td>
+              <td class="p-3 text-muted-foreground">${ex.time}</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        ${childCategories.map(child => `
-        <a href="${child.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
-          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">${escapeHtml(child.name)}</h3>
-          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">${escapeHtml(child.description || '')}</p>
-          <span class="inline-flex items-center gap-1.5 mt-3 text-[11px] font-heading font-semibold text-primary">Atverti temą ${SVG.chevronRight}</span>
-        </a>
-        `).join('')}
+      <div class="px-4 py-3 bg-muted/20 border-t border-border/30">
+        <p class="text-xs text-muted-foreground">* Nulaužimo laikai paremti 2025–2026 m. GPU benchmarkais. Stiprūs passphrase tipo slaptažodžiai yra itin sunkiai nulaužiami.</p>
       </div>
-    </section>
+    </div>
     ` : ''}
 
-    ${visibleArticles.length > 0 ? `
-    <section class="mb-14">
-      <div class="mb-5">
-        <h2 class="font-heading text-2xl font-bold text-foreground">Gidai ir patarimai</h2>
+    ${dosDonts.length > 0 ? `
+    <!-- DO'S & DON'TS -->
+    <div class="mb-5">
+      <div class="section-label text-[10px] mb-1.5">NIST 2026 gairės</div>
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-foreground">Ką daryti ir ko nedaryti</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-3 mb-12">
+      <div class="bg-card border border-success/20 rounded-xl p-5">
+        <h3 class="font-heading font-semibold text-success flex items-center gap-2 mb-3">
+          ${SVG.checkCircle} Taip — darykite
+        </h3>
+        <ul class="space-y-2.5">
+          ${dosDonts.map(d => `
+          <li class="flex items-start gap-2 text-sm text-foreground">
+            ${SVG.checkCircle}
+            <span>${escapeHtml(d.do)}</span>
+          </li>`).join('')}
+        </ul>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        ${visibleArticles.map(a => `
-        <a href="${a.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
-          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">${escapeHtml(a.title)}</h3>
-          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">${escapeHtml(a.excerpt || a.meta_description || '')}</p>
-          <div class="flex items-center gap-2 mt-3 text-[11px] text-muted-foreground/60">
-            <time>${a.updated_at?.split('T')[0]}</time>
-            ${a.read_time ? `<span>· ${a.read_time}</span>` : ''}
-          </div>
-        </a>
-        `).join('')}
+      <div class="bg-card border border-destructive/20 rounded-xl p-5">
+        <h3 class="font-heading font-semibold text-destructive flex items-center gap-2 mb-3">
+          ${SVG.xCircle} Ne — venkite
+        </h3>
+        <ul class="space-y-2.5">
+          ${dosDonts.map(d => `
+          <li class="flex items-start gap-2 text-sm text-foreground">
+            ${SVG.xCircle}
+            <span>${escapeHtml(d.dont)}</span>
+          </li>`).join('')}
+        </ul>
       </div>
-    </section>
+    </div>
     ` : ''}
 
-    <section class="mb-14">
-      <div class="card-premium p-5 md:p-6 bg-muted/40">
-        <div class="flex items-start gap-3.5 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">${SVG.badgeCheck}</div>
+    ${recommendedTools.length > 0 ? `
+    <!-- RECOMMENDED TOOLS -->
+    <div class="mb-5">
+      <div class="section-label text-[10px] mb-1.5">Rekomenduojami įrankiai</div>
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-foreground">Slaptažodžių tvarkyklės</h2>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-3 mb-12">
+      ${recommendedTools.map(tool => `
+      <div class="bg-card border border-border/50 rounded-xl p-5">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="font-heading font-semibold text-foreground">${escapeHtml(tool.name)}</h3>
+          <span class="chip-muted text-[10px]">${escapeHtml(tool.tag)}</span>
+        </div>
+        <p class="text-sm text-muted-foreground leading-relaxed mb-3">${escapeHtml(tool.desc)}</p>
+        <a href="${escapeHtml(tool.url)}" target="_blank" rel="noopener noreferrer"
+          class="text-xs font-medium text-primary hover:text-primary/80 inline-flex items-center gap-1 transition-colors">
+          Sužinoti daugiau ${SVG.arrowRight}
+        </a>
+      </div>`).join('')}
+    </div>
+    ` : ''}
+
+    ${finalFaq.length > 0 ? `<FAQ items={${JSON.stringify(finalFaq)}} />` : ''}
+
+    ${crossLinks.length > 0 ? `
+    <!-- CROSS-CLUSTER LINKS -->
+    <div class="mt-10 mb-6">
+      <h2 class="font-heading text-lg font-bold text-foreground mb-3">Susiję saugumo gidai</h2>
+      <div class="grid sm:grid-cols-2 gap-3">
+        ${crossLinks.map(link => `
+        <a href="${link.path}" class="group flex items-start gap-3 p-4 bg-card border border-border/50 rounded-xl hover:border-primary/30 transition-colors">
+          ${SVG.shield}
           <div>
-            <h2 class="font-heading text-lg font-bold text-foreground">Kaip naudotis šiuo skyriumi</h2>
-            <p class="text-xs text-muted-foreground mt-0.5">Rekomenduojama seka, kad greitai rastumėte atsakymą.</p>
+            <h3 class="font-heading font-semibold text-sm text-foreground group-hover:text-primary transition-colors">${escapeHtml(link.title)}</h3>
+            <p class="text-xs text-muted-foreground mt-0.5">${escapeHtml(link.desc)}</p>
           </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
-            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">1. Pasirinkite temą</h3>
-            <p class="text-[11px] text-muted-foreground leading-relaxed">Atsidarykite konkretų gidą pagal situaciją: keitimas, atkūrimas, šalinimas ar palyginimas.</p>
-          </div>
-          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
-            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">2. Sekite žingsnius</h3>
-            <p class="text-[11px] text-muted-foreground leading-relaxed">Kiekvienas puslapis turi aiškią struktūrą, TOC ir trumpus veiksmus be perteklinės informacijos.</p>
-          </div>
-          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
-            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">3. Pereikite prie susijusių gidų</h3>
-            <p class="text-[11px] text-muted-foreground leading-relaxed">Jei tema susijusi, apačioje rasite nuorodas į kitus aktualius straipsnius ir landingus.</p>
-          </div>
-        </div>
+        </a>`).join('')}
       </div>
-    </section>
+    </div>
+    ` : ''}
 
-    ${faq.length > 0 ? `<FAQ items={${JSON.stringify(faq)}} />` : ''}
     <TrustDisclosure />
   </div>
 </Base>`;
@@ -1959,6 +2134,17 @@ function generateProductFlagshipPage(category, meta, products, faq, catArticles,
   const bestFree = products.find(p => p.free_version);
   const featureColumns = getFeatureColumns(meta, top5);
   const comparisonMatrix = generateComparisonMatrix(top5, featureColumns);
+  const findProduct = (key) => products.find(p => (p.name || '').includes(key) || (p.brand || '').includes(key));
+
+  const jumpLinks = meta.jumpLinks || [];
+  const useCases = meta.useCases || [];
+  const buyerGuide = meta.buyerGuide || [];
+  const methodology = meta.methodology || [];
+  const ageGroups = meta.ageGroups || [];
+  const freeVsPaid = meta.freeVsPaid || null;
+  const relatedGuides = meta.relatedGuides || [];
+  const pillarFaq = meta.pillarFaq || [];
+  const faqItems = faq.length > 0 ? faq : pillarFaq;
 
   return `---
 import Base from '${prefix}layouts/Base.astro';
@@ -1975,7 +2161,7 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
   <div class="container py-8 max-w-5xl mx-auto">
     <Breadcrumbs items={${JSON.stringify(meta.breadcrumbs)}} />
 
-    <!-- HERO -->
+    <!-- ═══ 1. HERO ═══ -->
     <section class="mb-8">
       <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
         ${meta.heroTitle}
@@ -1993,7 +2179,7 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
           <div class="min-w-0">
             <span class="chip-primary mb-1">Geriausia 2026</span>
             <span class="text-sm text-foreground font-semibold block leading-tight">${escapeHtml(bestOverall.name)}</span>
-            <span class="text-[11px] text-muted-foreground">${escapeHtml(bestOverall.pricing_summary)}</span>
+            <span class="text-[11px] text-muted-foreground">${escapeHtml(bestOverall.pricing_summary || '')}</span>
           </div>
         </div>` : ''}
         ${bestFree ? `
@@ -2002,26 +2188,36 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
           <div class="min-w-0">
             <span class="chip-success mb-1">Geriausia nemokama</span>
             <span class="text-sm text-foreground font-semibold block leading-tight">${escapeHtml(bestFree.name)}</span>
-            <span class="text-[11px] text-muted-foreground">${escapeHtml(bestFree.pricing_summary)}</span>
+            <span class="text-[11px] text-muted-foreground">${escapeHtml(bestFree.pricing_summary || '')}</span>
           </div>
         </div>` : ''}
-        ${top5[1] ? `
+        ${top5[1] && !bestFree ? `
         <div class="card-premium p-3.5 flex items-center gap-3">
           ${renderProductLogo(top5[1], 32)}
           <div class="min-w-0">
             <span class="chip-muted mb-1">Stipri alternatyva</span>
             <span class="text-sm text-foreground font-semibold block leading-tight">${escapeHtml(top5[1].name)}</span>
-            <span class="text-[11px] text-muted-foreground">${escapeHtml(top5[1].pricing_summary || top5[1].best_for || '')}</span>
+            <span class="text-[11px] text-muted-foreground">${escapeHtml(top5[1].pricing_summary || '')}</span>
           </div>
         </div>` : ''}
       </div>
+      ` : ''}
+
+      ${jumpLinks.length > 0 ? `
+      <!-- Jump nav -->
+      <nav class="flex flex-wrap gap-1.5" aria-label="Greitoji navigacija">
+        ${jumpLinks.map(link => `
+        <a href="${link.href}" class="text-[11px] font-heading font-medium px-3 py-2 rounded-lg bg-card text-muted-foreground hover:text-primary hover:border-primary/20 border border-border/50 transition-all duration-200 inline-flex items-center gap-1.5 elevation-1">
+          ${SVG[link.svg] || SVG.shield} ${link.label}
+        </a>`).join('')}
+      </nav>
       ` : ''}
     </section>
 
     <div class="section-divider mb-10"></div>
 
     ${top5.length > 0 ? `
-    <!-- TOP 5 -->
+    <!-- ═══ 2. TOP 5 ═══ -->
     <section id="top-5" class="mb-16 scroll-mt-20">
       <div class="mb-6">
         <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Top ${top5.length} pasirinkimai</h2>
@@ -2080,10 +2276,185 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
 
     <div class="section-divider mb-12"></div>
 
-    <!-- COMPARISON TABLE -->
+    <!-- ═══ 3. COMPARISON TABLE ═══ -->
     ${comparisonMatrix}
 
-    ${catArticles.length > 0 ? `
+    ${ageGroups.length > 0 ? `
+    <div class="section-divider mb-12"></div>
+    <!-- ═══ AGE GROUPS ═══ -->
+    <section id="pagal-amziu" class="mb-16 scroll-mt-20">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Rekomendacijos pagal vaiko amžių</h2>
+        <p class="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">Kiekvieno amžiaus vaikams — skirtingi poreikiai ir sprendimai.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        ${ageGroups.map(ag => `
+        <div class="card-premium p-5 ${ag.featured ? 'card-premium-featured' : ''}">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="font-heading font-extrabold text-lg text-${ag.color || 'primary'}">${escapeHtml(ag.age)}</span>
+            <span class="chip-muted text-[9px]">${escapeHtml(ag.subtitle)}</span>
+          </div>
+          <ul class="space-y-1.5 mb-3">
+            ${(ag.features || []).map(f => `
+            <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.checkCircle} ${escapeHtml(f)}</li>`).join('')}
+          </ul>
+          <p class="text-xs font-heading font-semibold text-primary border-t border-border/30 pt-2.5">${escapeHtml(ag.recommendation)}</p>
+        </div>`).join('')}
+      </div>
+    </section>
+    ` : ''}
+
+    ${useCases.length > 0 ? `
+    <div class="section-divider mb-12"></div>
+    <!-- ═══ 4. BEST BY USE CASE ═══ -->
+    <section id="${ageGroups.length > 0 ? 'kam-tinka' : 'pagal-poreiki'}" class="mb-16 scroll-mt-20">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Geriausia pagal poreikį</h2>
+        <p class="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">Pasirinkite situaciją — parodysime tinkamiausią sprendimą.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+        ${useCases.map((uc, i) => {
+          const product = findProduct(uc.matchKey);
+          return `
+        <div class="card-premium p-4 flex flex-col ${i === 0 ? 'sm:col-span-2 lg:col-span-1 card-premium-featured' : ''}">
+          <div class="flex items-start gap-2.5 mb-3">
+            <div class="w-9 h-9 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">${SVG.award}</div>
+            <div class="min-w-0">
+              <div class="flex items-center gap-1.5 mb-0.5">
+                <h3 class="font-heading font-bold text-foreground text-sm leading-snug">${escapeHtml(uc.title)}</h3>
+                <span class="chip-primary text-[9px]">${uc.tag}</span>
+              </div>
+              <p class="text-[11px] text-muted-foreground leading-relaxed">${escapeHtml(uc.shortWhy)}</p>
+            </div>
+          </div>
+          ${product ? `
+          <div class="flex items-center gap-3 pt-3 border-t border-border/30 mt-auto">
+            ${renderProductLogo(product, 28)}
+            <div class="flex-1 min-w-0">
+              <p class="font-heading font-bold text-foreground text-[13px]">${escapeHtml(product.name)}</p>
+              <div class="flex items-center gap-2">
+                ${renderRatingStars(product.rating || 0)}
+                <span class="text-[11px] text-muted-foreground">${escapeHtml(product.pricing_summary || '')}</span>
+              </div>
+            </div>
+            ${renderAffiliateButton(product, 'px-3 py-1.5 text-[11px] shrink-0')}
+          </div>` : ''}
+        </div>`;
+        }).join('')}
+      </div>
+    </section>
+    ` : ''}
+
+    ${freeVsPaid ? `
+    <div class="section-divider mb-12"></div>
+    <!-- ═══ 5. FREE VS PAID ═══ -->
+    <section id="nemokama-vs-mokama" class="mb-16 scroll-mt-20">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Nemokama ar mokama?</h2>
+        <p class="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">Atsakymas priklauso nuo jūsų situacijos. Štai praktinis palyginimas.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
+        <div class="card-premium p-5">
+          <div class="flex items-center gap-2.5 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-muted/60 flex items-center justify-center">${SVG.zap}</div>
+            <h3 class="font-heading font-bold text-foreground text-sm flex-1">${freeVsPaid.freeTitle}</h3>
+            <span class="chip-muted">${freeVsPaid.freePrice}</span>
+          </div>
+          <ul class="space-y-1.5 text-sm mb-4">
+            ${(freeVsPaid.freeItems || []).map(item => `<li class="flex items-start gap-2">${item.ok ? SVG.checkCircle : SVG.xCircle}<span class="text-[12px] text-muted-foreground leading-snug">${item.t}</span></li>`).join('')}
+          </ul>
+          <p class="text-[11px] text-muted-foreground border-t border-border/30 pt-2.5">${escapeHtml(freeVsPaid.freeNote || '')}</p>
+        </div>
+        <div class="card-premium-featured p-5">
+          <div class="flex items-center gap-2.5 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">${SVG.shield}</div>
+            <h3 class="font-heading font-bold text-foreground text-sm flex-1">${freeVsPaid.paidTitle}</h3>
+            <span class="chip-primary">${freeVsPaid.paidPrice}</span>
+          </div>
+          <ul class="space-y-1.5 text-sm mb-4">
+            ${(freeVsPaid.paidItems || []).map(item => `<li class="flex items-start gap-2">${item.ok ? SVG.checkCircle : SVG.xCircle}<span class="text-[12px] text-muted-foreground leading-snug">${item.t}</span></li>`).join('')}
+          </ul>
+          <p class="text-[11px] text-muted-foreground border-t border-border/30 pt-2.5">${escapeHtml(freeVsPaid.paidNote || '')}</p>
+        </div>
+      </div>
+    </section>
+    ` : ''}
+
+    ${buyerGuide.length > 0 ? `
+    <div class="section-divider mb-12"></div>
+    <!-- ═══ 6. HOW TO CHOOSE ═══ -->
+    <section id="kaip-pasirinkti" class="mb-16 scroll-mt-20">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Kaip pasirinkti</h2>
+        <p class="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">Atsakykite į šiuos klausimus — ir bus aišku, kuri programa jums tinka geriausiai.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
+        ${buyerGuide.map(item => `
+        <div class="card-premium p-4 h-full flex flex-col">
+          <div class="flex items-start gap-2.5 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-primary/8 border border-primary/10 flex items-center justify-center shrink-0">${SVG.helpCircle}</div>
+            <h3 class="font-heading font-bold text-foreground text-sm leading-snug pt-1.5">${escapeHtml(item.q)}</h3>
+          </div>
+          <p class="text-[12px] text-muted-foreground leading-relaxed flex-1">${escapeHtml(item.a)}</p>
+        </div>`).join('')}
+      </div>
+    </section>
+    ` : ''}
+
+    ${methodology.length > 0 ? `
+    <div class="section-divider mb-12"></div>
+    <!-- ═══ 7. METHODOLOGY ═══ -->
+    <section class="mb-16">
+      <div class="card-premium p-5 md:p-6 bg-muted/40">
+        <div class="flex items-start gap-3.5 mb-5">
+          <div class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">${SVG.badgeCheck}</div>
+          <div>
+            <h2 class="font-heading text-lg font-bold text-foreground">Kaip vertiname programas</h2>
+            <p class="text-xs text-muted-foreground mt-0.5">Kiekviena programa vertinama pagal ${methodology.length} kriterijus.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+          ${methodology.map(item => `
+          <div class="rounded-lg bg-card border border-border/40 p-3.5 flex gap-2.5 elevation-1">
+            <div class="w-7 h-7 rounded-md bg-primary/8 flex items-center justify-center shrink-0">${SVG.shield}</div>
+            <div>
+              <h3 class="font-heading font-semibold text-foreground text-xs mb-0.5">${escapeHtml(item.title)}</h3>
+              <p class="text-[11px] text-muted-foreground leading-relaxed">${escapeHtml(item.desc)}</p>
+            </div>
+          </div>`).join('')}
+        </div>
+        <p class="text-[10px] text-muted-foreground/50 mt-4 pt-3 border-t border-border/30">Redakcija yra nepriklausoma. Affiliate partnerystės neturi įtakos vertinimams ar rekomendacijų eiliškumui.</p>
+      </div>
+    </section>
+    ` : ''}
+
+    <!-- ═══ 8. FAQ ═══ -->
+    ${faqItems.length > 0 ? `
+    <section id="duk" class="mb-16 scroll-mt-20">
+      <FAQ items={${JSON.stringify(faqItems)}} title="Dažnai užduodami klausimai" />
+    </section>
+    ` : ''}
+
+    ${relatedGuides.length > 0 ? `
+    <!-- ═══ 9. RELATED GUIDES ═══ -->
+    <section class="mb-16">
+      <div class="mb-4">
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Kiti naudingi gidai</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+        ${relatedGuides.map(guide => `
+        <a href="${guide.path}" class="card-premium flex items-start gap-2.5 p-3.5 transition-all duration-200 group hover-lift">
+          <div class="w-7 h-7 rounded-md bg-primary/8 flex items-center justify-center shrink-0">${SVG.arrowRight}</div>
+          <div>
+            <span class="text-sm text-foreground font-semibold block group-hover:text-primary transition-colors leading-tight">${escapeHtml(guide.label)}</span>
+            <span class="text-[11px] text-muted-foreground">${escapeHtml(guide.desc)}</span>
+          </div>
+        </a>`).join('')}
+      </div>
+    </section>
+    ` : ''}
+
+    ${catArticles.length > 0 && relatedGuides.length === 0 ? `
     <!-- RELATED ARTICLES -->
     <section class="mb-12">
       <h2 class="font-heading text-xl font-bold text-foreground mb-5">Susiję gidai</h2>
@@ -2098,7 +2469,7 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
     </section>
     ` : ''}
 
-    ${faq.length > 0 ? `<FAQ items={${JSON.stringify(faq)}} />` : ''}
+    <!-- TRUST DISCLOSURE -->
     <TrustDisclosure />
   </div>
 </Base>`;
