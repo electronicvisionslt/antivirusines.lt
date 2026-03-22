@@ -304,12 +304,18 @@ import TrustDisclosure from '${article.path.split('/').length > 2 ? '../../' : '
 </Base>`;
 }
 
-function generateCategoryPage(category, articles) {
+function generateCategoryPage(category, articles, relatedCategories = [], categoryMap = {}) {
   const faq = parseFaq(category.faq);
-  const breadcrumbs = [
-    { label: 'Pradžia', path: '/' },
-    { label: category.name, path: category.path },
-  ];
+  const parentCategory = category.parent_id ? categoryMap[category.parent_id] : null;
+  const breadcrumbs = [{ label: 'Pradžia', path: '/' }];
+
+  if (parentCategory) {
+    breadcrumbs.push({ label: parentCategory.name, path: parentCategory.path });
+  }
+
+  breadcrumbs.push({ label: category.name, path: category.path });
+
+  const relatedHeading = category.parent_id ? 'Susijusios temos' : 'Temos šiame skyriuje';
 
   return `---
 import Base from '${category.path.split('/').filter(Boolean).length > 1 ? '../../' : '../'}layouts/Base.astro';
@@ -331,6 +337,21 @@ import TrustDisclosure from '${category.path.split('/').filter(Boolean).length >
       <p class="text-muted-foreground leading-relaxed">${escapeHtml(category.description || '')}</p>
     </div>
 
+    ${relatedCategories.length > 0 ? `
+    <section class="mb-12">
+      <h2 class="font-heading text-xl font-bold text-foreground mb-5">${relatedHeading}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        ${relatedCategories.map(item => `
+        <a href="${item.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">${escapeHtml(item.name)}</h3>
+          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">${escapeHtml(item.description || '')}</p>
+          <span class="inline-flex items-center gap-1.5 mt-3 text-[11px] font-heading font-semibold text-primary">Atverti temą ${SVG.chevronRight}</span>
+        </a>
+        `).join('')}
+      </div>
+    </section>
+    ` : ''}
+
     ${articles.length > 0 ? `
     <section class="mb-12">
       <h2 class="font-heading text-xl font-bold text-foreground mb-5">Straipsniai ir gidai</h2>
@@ -349,7 +370,7 @@ import TrustDisclosure from '${category.path.split('/').filter(Boolean).length >
     </section>
     ` : ''}
 
-    <FAQ items={${JSON.stringify(faq)}} />
+    ${faq.length > 0 ? `<FAQ items={${JSON.stringify(faq)}} />` : ''}
     <TrustDisclosure />
   </div>
 </Base>`;
