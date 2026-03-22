@@ -52,7 +52,7 @@ function writePage(relativePath, content) {
   const fullPath = join(PAGES_DIR, relativePath);
   ensureDir(dirname(fullPath));
   // Post-process: ensure all internal href links have trailing slashes
-  content = content.replace(/href="(/[a-z][^"]*[^/])"/g, (m, p) => {
+  content = content.replace(/href="(\/[a-z][^"]*[^/])"/g, (m, p) => {
     if (p.includes('#') || p.includes('?') || p.includes('.')) return m;
     return 'href="' + p + '/"';
   });
