@@ -53,6 +53,7 @@ if (canonical && !canonical.endsWith('/')) {
   <meta property="og:title" content={ogTitle || title} />
   {(ogDescription || description) && <meta property="og:description" content={ogDescription || description} />}
   {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta property="og:url" content={canonical} />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
