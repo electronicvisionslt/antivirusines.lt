@@ -203,7 +203,7 @@ function generateHomePage(data) {
   const top3 = data.products.filter(p => p.product_category === 'antivirus').slice(0, 3);
 
   const threatStats = [
-    { value: '560M+', label: 'Naujų kenkėjiškų programų 2025 m.', svgKey: 'shield' },
+    { value: '560M+', label: 'Naujų kenkėjiškų programų 2025 m.', svgKey: 'bug' },
     { value: '72%', label: 'Lietuvių patyrė kibernetinę grėsmę', svgKey: 'shield' },
     { value: '€4,200', label: 'Vid. nuostoliai nuo sukčiavimo', svgKey: 'lock' },
     { value: '43%', label: 'Atakų taikosi į mobiliuosius', svgKey: 'smartphone' },
@@ -228,19 +228,19 @@ function generateHomePage(data) {
   ];
 
   const trustPoints = [
-    { title: 'Aiškūs kriterijai', desc: 'Lyginame apsaugą, funkcijas, kainą ir naudojimo paprastumą.' },
-    { title: 'Patikimi šaltiniai', desc: 'Remiamės žinomų testavimo laboratorijų ir stiprių rinkos šaltinių duomenimis.' },
-    { title: 'Pritaikyta Lietuvai', desc: 'Informaciją pateikiame aiškiai, lietuviškai ir pagal vietinei auditorijai aktualius poreikius.' },
-    { title: 'Turinį peržiūrime reguliariai', desc: 'Atnaujiname puslapius, kai keičiasi kainos, funkcijos ar svarbūs testų rezultatai.' },
+    { title: 'Aiškūs kriterijai', desc: 'Lyginame apsaugą, funkcijas, kainą ir naudojimo paprastumą.', svgKey: 'eye' },
+    { title: 'Patikimi šaltiniai', desc: 'Remiamės žinomų testavimo laboratorijų ir stiprių rinkos šaltinių duomenimis.', svgKey: 'shieldCheck' },
+    { title: 'Pritaikyta Lietuvai', desc: 'Informaciją pateikiame aiškiai, lietuviškai ir pagal vietinei auditorijai aktualius poreikius.', svgKey: 'globe' },
+    { title: 'Turinį peržiūrime reguliariai', desc: 'Atnaujiname puslapius, kai keičiasi kainos, funkcijos ar svarbūs testų rezultatai.', svgKey: 'trendingUp' },
   ];
 
   const quickLinks = [
-    { label: 'Geriausios antivirusinės 2026', path: '/antivirusines-programos' },
-    { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos' },
-    { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui' },
-    { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui' },
-    { label: 'Tėvų kontrolės programėlės', path: '/tevu-kontrole' },
-    { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' },
+    { label: 'Geriausios antivirusinės 2026', path: '/antivirusines-programos', svgKey: 'award' },
+    { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos', svgKey: 'zap' },
+    { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui', svgKey: 'smartphone' },
+    { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui', svgKey: 'monitor' },
+    { label: 'Tėvų kontrolės programėlės', path: '/tevu-kontrole', svgKey: 'users' },
+    { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas', svgKey: 'key' },
   ];
 
   return `---
@@ -329,7 +329,7 @@ import FAQ from '../components/FAQ.astro';
           <a href="${link.path}" class="text-[11px] font-heading font-medium text-muted-foreground hover:text-primary px-2.5 py-1 rounded-md bg-muted/50 hover:bg-primary/8 transition-all duration-200">${link.label}</a>
           `).join('')}
         </div>` : ''}
-        <a href="${hub.path}" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto pt-4 ${hub.links.length > 0 ? 'pl-[3.75rem]' : ''} hover:underline">
+        <a href="${hub.path}" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto pt-4 pl-[3.75rem] hover:underline">
           Skaityti daugiau ${SVG.arrowRight}
         </a>
       </div>
@@ -400,7 +400,7 @@ import FAQ from '../components/FAQ.astro';
       ${trustPoints.map(point => `
       <div class="rounded-xl border border-border/50 bg-card p-5 text-center hover:shadow-md transition-all duration-300 glow-border h-full">
         <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
-          ${SVG.shield}
+          ${SVG[point.svgKey] || SVG.shield}
         </div>
         <h3 class="font-heading font-bold text-foreground text-sm mb-1">${point.title}</h3>
         <p class="text-xs text-muted-foreground leading-relaxed">${point.desc}</p>
@@ -416,7 +416,7 @@ import FAQ from '../components/FAQ.astro';
         ${quickLinks.map(item => `
         <a href="${item.path}" class="group flex items-center gap-3 p-3.5 rounded-lg border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
           <div class="w-8 h-8 rounded-lg bg-primary/8 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
-            ${SVG.shield}
+            ${SVG[item.svgKey] || SVG.shield}
           </div>
           <span class="text-sm font-heading font-medium text-foreground group-hover:text-primary transition-colors">${item.label}</span>
           <span class="ml-auto">${SVG.chevronRight}</span>
@@ -714,6 +714,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 /* SVG icon strings for static HTML */
 const SVG = {
   shield: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>',
+  bug: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3 3 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a6 6 0 1 1 12 0v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 9 3 7.4 3 5.47"/><path d="M6 13H2"/><path d="M3 21c0-1.7 1.3-3 3-3"/><path d="M17.47 9C19.4 9 21 7.4 21 5.47"/><path d="M22 13h-4"/><path d="M21 21c0-1.7-1.3-3-3-3"/></svg>',
   star: '<svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
   starEmpty: '<svg class="w-3.5 h-3.5 fill-muted text-muted-foreground/20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
   check: '<svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
@@ -729,10 +730,15 @@ const SVG = {
   zap: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
   helpCircle: '<svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
   smartphone: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
+  monitor: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
   users: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  key: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>',
   heart: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
   lock: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+  eye: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>',
   globe: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+  shieldCheck: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>',
+  trendingUp: '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg>',
   badgeCheck: '<svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>',
 };
 
