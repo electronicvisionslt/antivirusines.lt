@@ -11,6 +11,7 @@ interface Props {
   ogDescription?: string;
   ogImage?: string;
   noindex?: boolean;
+  jsonLd?: Record<string, unknown>;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   ogDescription,
   ogImage,
   noindex = false,
+  jsonLd,
 } = Astro.props;
 
 const siteName = 'antivirusines.lt';
@@ -37,6 +39,17 @@ if (!canonical) {
 if (canonical && !canonical.endsWith('/')) {
   canonical = canonical + '/';
 }
+// Default JSON-LD: WebSite schema for every page
+const defaultJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteName,
+  url: siteUrl,
+  inLanguage: 'lt',
+  description: description || 'Nepriklausomos antivirusinių programų apžvalgos, saugumo gidai ir patarimai lietuvių kalba.',
+};
+
+const structuredData = jsonLd || defaultJsonLd;
 ---
 <!DOCTYPE html>
 <html lang="lt">
@@ -48,12 +61,21 @@ if (canonical && !canonical.endsWith('/')) {
   <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
 
+  <!-- Hreflang — single-language site, self-referencing -->
+  <link rel="alternate" hreflang="lt" href={canonical} />
+  <link rel="alternate" hreflang="x-default" href={canonical} />
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={ogTitle || title} />
   {(ogDescription || description) && <meta property="og:description" content={ogDescription || description} />}
   {ogImage && <meta property="og:image" content={ogImage} />}
   <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:locale" content="lt_LT" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -114,6 +114,48 @@ export function usePageMeta(meta: SeoMeta) {
       createdElements.current = createdElements.current.filter(e => e !== canonical);
     }
 
+    // ── Hreflang (self-referencing lt + x-default) ──
+    for (const hl of ['lt', 'x-default']) {
+      const selector = `link[rel="alternate"][hreflang="${hl}"]`;
+      let el = document.querySelector(selector) as HTMLLinkElement | null;
+      if (canonicalUrl) {
+        if (el) {
+          prevValues.current.set(selector, el.href);
+          el.href = canonicalUrl;
+        } else {
+          el = document.createElement('link');
+          el.rel = 'alternate';
+          el.hreflang = hl;
+          el.href = canonicalUrl;
+          document.head.appendChild(el);
+          createdElements.current.push(el);
+        }
+      }
+    }
+
+    // ── JSON-LD (WebSite fallback) ──
+    const jsonLdId = 'ld-page-meta';
+    let ldScript = document.getElementById(jsonLdId) as HTMLScriptElement | null;
+    const ldData = {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: SITE_URL,
+      inLanguage: 'lt',
+      description: meta.description || DEFAULT_DESCRIPTION,
+    };
+    if (ldScript) {
+      prevValues.current.set(`#${jsonLdId}`, ldScript.textContent || '');
+      ldScript.textContent = JSON.stringify(ldData);
+    } else {
+      ldScript = document.createElement('script');
+      ldScript.type = 'application/ld+json';
+      ldScript.id = jsonLdId;
+      ldScript.textContent = JSON.stringify(ldData);
+      document.head.appendChild(ldScript);
+      createdElements.current.push(ldScript);
+    }
+
     // ── Cleanup function ──
     return () => {
       document.title = prevTitle;

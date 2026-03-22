@@ -468,6 +468,19 @@ import Base from '${article.path.split('/').length > 2 ? '../../' : '../'}layout
 import Breadcrumbs from '${article.path.split('/').length > 2 ? '../../' : '../'}components/Breadcrumbs.astro';
 import FAQ from '${article.path.split('/').length > 2 ? '../../' : '../'}components/FAQ.astro';
 import TrustDisclosure from '${article.path.split('/').length > 2 ? '../../' : '../'}components/TrustDisclosure.astro';
+
+const jsonLd = ${JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.seo_title || article.title,
+  description: article.meta_description || article.excerpt || '',
+  datePublished: article.published_at || article.created_at,
+  dateModified: article.updated_at,
+  ...(author ? { author: { '@type': 'Person', name: author.name } } : {}),
+  publisher: { '@type': 'Organization', name: 'antivirusines.lt' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://antivirusines.lt${ensureTrailingSlash(article.path)}` },
+  inLanguage: 'lt',
+})};
 ---
 
 <Base
@@ -475,6 +488,7 @@ import TrustDisclosure from '${article.path.split('/').length > 2 ? '../../' : '
   description="${escapeHtml(article.meta_description || article.excerpt || '')}"
   ${article.canonical_url ? `canonicalUrl="${escapeHtml(article.canonical_url)}"` : ''}
   ${article.noindex ? 'noindex={true}' : ''}
+  jsonLd={jsonLd}
 >
   <article class="container py-8" itemScope itemType="https://schema.org/Article">
     <Breadcrumbs items={${JSON.stringify(breadcrumbs)}} />
