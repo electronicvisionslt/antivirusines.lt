@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<Base title="Apie mus">
+  <div class="container py-8">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Apie mus","path":"/apie"}]} />
+    <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground mb-8">Apie mus</h1>
+    <div class="prose-article max-w-3xl">
+      <p>Informacija apie antivirusines.lt portalą.</p>
+    </div>
+  </div>
+</Base>

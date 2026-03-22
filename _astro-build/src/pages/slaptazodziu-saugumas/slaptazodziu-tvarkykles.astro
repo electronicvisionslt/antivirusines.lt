@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Geriausios slaptažodžių tvarkyklės 2026 — palyginimas ir apžvalgos"
+  description="Nepriklausomos slaptažodžių tvarkyklių apžvalgos. Palyginimas pagal saugumą, funkcijas, nemokamas versijas ir kainą. Raskite geriausią 2026 m."
+  
+>
+  <div class="container py-8">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Slaptažodžių saugumas","path":"/slaptazodziu-saugumas"},{"label":"Slaptažodžių tvarkyklės","path":"/slaptazodziu-saugumas/slaptazodziu-tvarkykles"}]} />
+
+    <div class="mb-10 max-w-2xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-3">Slaptažodžių tvarkyklės</h1>
+      <p class="text-muted-foreground leading-relaxed">Geriausios slaptažodžių tvarkyklės 2026 m. — nemokamos ir mokamos. Nepriklausomas palyginimas pagal saugumą, funkcijas ir kainą.</p>
+    </div>
+
+    
+
+    
+
+    
+    <TrustDisclosure />
+  </div>
+</Base>

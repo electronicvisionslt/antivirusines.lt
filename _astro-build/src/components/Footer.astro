@@ -1,0 +1,68 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border/60 mt-20 bg-muted/40">
+  <div class="container py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div class="lg:col-span-1">
+        <a href="/" class="flex items-center gap-2 mb-3 group">
+          <div class="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center">
+            <svg class="w-3.5 h-3.5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          </div>
+          <span class="font-heading font-bold text-sm text-foreground">
+            antivirusines<span class="text-gradient-primary">.lt</span>
+          </span>
+        </a>
+        <p class="text-xs text-muted-foreground leading-relaxed max-w-xs">
+          Nepriklausomos antivirusinių programų apžvalgos ir kibernetinio saugumo patarimai lietuvių kalba.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-heading font-semibold text-xs text-foreground mb-3 uppercase tracking-wider">Temos</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/antivirusines-programos" class="text-muted-foreground hover:text-primary transition-colors duration-200">Antivirusinės programos</a></li>
+          <li><a href="/tevu-kontrole" class="text-muted-foreground hover:text-primary transition-colors duration-200">Tėvų kontrolė</a></li>
+          <li><a href="/slaptazodziu-saugumas" class="text-muted-foreground hover:text-primary transition-colors duration-200">Slaptažodžių saugumas</a></li>
+          <li><a href="/virusai/kompiuterinis-virusas" class="text-muted-foreground hover:text-primary transition-colors duration-200">Virusai</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-heading font-semibold text-xs text-foreground mb-3 uppercase tracking-wider">Populiariausi</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/antivirusines-programos" class="text-muted-foreground hover:text-primary transition-colors duration-200">Geriausios antivirusinės</a></li>
+          <li><a href="/antivirusines-programos/nemokamos" class="text-muted-foreground hover:text-primary transition-colors duration-200">Nemokamos antivirusinės</a></li>
+          <li><a href="/antivirusines-programos/telefonui" class="text-muted-foreground hover:text-primary transition-colors duration-200">Antivirusinė telefonui</a></li>
+          <li><a href="/antivirusines-programos/kompiuteriui" class="text-muted-foreground hover:text-primary transition-colors duration-200">Antivirusinė kompiuteriui</a></li>
+          <li><a href="/tevu-kontrole" class="text-muted-foreground hover:text-primary transition-colors duration-200">Tėvų kontrolė</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-heading font-semibold text-xs text-foreground mb-3 uppercase tracking-wider">Projektas</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/apie" class="text-muted-foreground hover:text-primary transition-colors duration-200">Apie mus</a></li>
+          <li><a href="/autoriai/jonas-kazlauskas" class="text-muted-foreground hover:text-primary transition-colors duration-200">Autoriai</a></li>
+          <li><a href="/kontaktai" class="text-muted-foreground hover:text-primary transition-colors duration-200">Kontaktai</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-heading font-semibold text-xs text-foreground mb-3 uppercase tracking-wider">Teisinė informacija</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/affiliate-atskleidimas" class="text-muted-foreground hover:text-primary transition-colors duration-200">Affiliate atskleidimas</a></li>
+          <li><a href="/privatumo-politika" class="text-muted-foreground hover:text-primary transition-colors duration-200">Privatumo politika</a></li>
+          <li><a href="/slapuku-politika" class="text-muted-foreground hover:text-primary transition-colors duration-200">Slapukų politika</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-5 border-t border-border/60 text-center">
+      <p class="text-[11px] text-muted-foreground/60">
+        &copy; {year} antivirusines.lt. Visos teisės saugomos. Kai kuriose nuorodose naudojami affiliate partnerių saitai.
+      </p>
+    </div>
+  </div>
+</footer>

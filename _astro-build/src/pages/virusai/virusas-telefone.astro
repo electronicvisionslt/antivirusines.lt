@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Virusas telefone: požymiai, šalinimas ir apsauga"
+  description="Kaip suprasti, ar telefonas užkrėstas virusu? Praktinis gidas apie mobiliųjų virusų požymius, šalinimą ir prevenciją."
+  
+  
+>
+  <article class="container py-8" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Virusai","path":"/virusai"},{"label":"Virusas telefone: požymiai, šalinimas ir apsauga","path":"/virusai/virusas-telefone"}]} />
+
+    <div class="mb-10 max-w-3xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
+        Virusas telefone: požymiai, šalinimas ir apsauga
+      </h1>
+      <p class="text-muted-foreground leading-relaxed mb-5" itemProp="description">Kaip suprasti, ar telefonas užkrėstas virusu? Praktinis gidas apie mobiliųjų virusų požymius, šalinimą ir prevenciją.</p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        <span class="font-medium">Matas Jonaitis</span>
+        <time itemProp="dateModified" datetime="2026-03-20T16:41:24.649836+00:00">Atnaujinta: 2026-03-20</time>
+        <span>· 9 min skaitymo</span>
+      </div>
+    </div>
+
+    
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
+      <div>
+        <TrustDisclosure compact />
+
+        <div class="prose-article">
+          
+          <h2 id="pozymiai">Telefono viruso požymiai</h2>
+          <p>Dažniausi požymiai, kad telefonas gali būti užkrėstas: greitai senka baterija, padidėjęs duomenų naudojimas, neįprastos reklamos, lėtas veikimas ir nepažįstamos programos.</p>
+          
+          <h2 id="salinimas">Kaip pašalinti virusą iš telefono?</h2>
+          <p>Pirmiausia pabandykite paleisti telefoną saugiuoju režimu ir pašalinti įtartinas programas. Jei tai nepadeda, naudokite patikimą antivirusinę programą arba atstatykite gamyklinius nustatymus.</p>
+          
+
+          
+        </div>
+
+        
+
+        
+
+        <FAQ items={[{"a":"Tai labai reta, tačiau iPhone gali būti pažeidžiamas per sukčiavimo atakas ir nesaugias svetaines.","q":"Ar iPhone gali gauti virusą?"}]} />
+      </div>
+
+      
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              <li><a href="#pozymiai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Telefono viruso požymiai</a></li><li><a href="#salinimas" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip pašalinti virusą iš telefono?</a></li>
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      
+    </div>
+  </article>
+</Base>

@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Kompiuterinis virusas: kas tai, tipai ir kaip apsisaugoti"
+  description="Išsamus gidas apie kompiuterinius virusus – kaip jie veikia, kokie yra pagrindiniai tipai ir kaip efektyviai nuo jų apsisaugoti."
+  
+  
+>
+  <article class="container py-8" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Virusai","path":"/virusai"},{"label":"Kompiuterinis virusas: kas tai, tipai ir kaip apsisaugoti","path":"/virusai/kompiuterinis-virusas"}]} />
+
+    <div class="mb-10 max-w-3xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
+        Kompiuterinis virusas: kas tai, tipai ir kaip apsisaugoti
+      </h1>
+      <p class="text-muted-foreground leading-relaxed mb-5" itemProp="description">Išsamus gidas apie kompiuterinius virusus – kaip jie veikia, kokie yra pagrindiniai tipai ir kaip efektyviai nuo jų apsisaugoti.</p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        <span class="font-medium">Matas Jonaitis</span>
+        <time itemProp="dateModified" datetime="2026-03-20T16:41:24.649836+00:00">Atnaujinta: 2026-03-20</time>
+        <span>· 14 min skaitymo</span>
+      </div>
+    </div>
+
+    
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
+      <div>
+        <TrustDisclosure compact />
+
+        <div class="prose-article">
+          
+          <h2 id="kas-yra">Kas yra kompiuterinis virusas?</h2>
+          <p>Kompiuterinis virusas yra kenkėjiška programa, kuri gali replikuotis ir plisti iš vieno kompiuterio į kitą. Virusai gali sugadinti failus, pavogti duomenis arba sulėtinti sistemos darbą.</p>
+          
+          <h2 id="tipai">Pagrindiniai virusų tipai</h2>
+          <p>Egzistuoja daugybė skirtingų virusų tipų: failų virusai, makro virusai, boot sektoriaus virusai, trojanai, kirminai ir ransomware. Kiekvienas tipas turi savo plitimo būdą ir poveikį.</p>
+          
+          <h2 id="pozymiai">Kaip atpažinti užkrėstą kompiuterį?</h2>
+          <p>Pagrindiniai požymiai: kompiuteris veikia lėčiau nei įprastai, pasirodo neįprastos klaidos, naršyklė nukreipia į nežinomas svetaines, atsiranda nepažįstamų programų.</p>
+          
+          <h2 id="apsauga">Kaip apsisaugoti nuo virusų?</h2>
+          <p>Naudokite patikimą antivirusinę programą, reguliariai atnaujinkite operacinę sistemą, neatidarinėkite įtartinų el. laiškų priedų ir atsargiai elkitės su nežinomomis nuorodomis.</p>
+          
+
+          
+        </div>
+
+        
+
+        
+
+        <FAQ items={[{"a":"Dauguma virusų negali tiesiogiai sugadinti aparatinės įrangos, tačiau kai kurie gali perkaitinti procesorių ar sugadinti BIOS.","q":"Ar virusas gali sugadinti kompiuterio aparatinę įrangą?"}]} />
+      </div>
+
+      
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              <li><a href="#kas-yra" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kas yra kompiuterinis virusas?</a></li><li><a href="#tipai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Pagrindiniai virusų tipai</a></li><li><a href="#pozymiai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip atpažinti užkrėstą kompiuterį?</a></li><li><a href="#apsauga" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip apsisaugoti nuo virusų?</a></li>
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      
+    </div>
+  </article>
+</Base>

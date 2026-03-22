@@ -1,0 +1,119 @@
+---
+/*
+  Static header — mobile menu uses vanilla JS <details> trick.
+  Navigation links are hardcoded from navLinks in mockData.
+*/
+const navLinks = [
+  { path: '/antivirusines-programos', label: 'Antivirusinės programos', children: [
+    { path: '/antivirusines-programos', label: 'Geriausios antivirusinės 2026' },
+    { path: '/antivirusines-programos/nemokamos', label: 'Nemokamos antivirusinės' },
+    { path: '/antivirusines-programos/telefonui', label: 'Antivirusinė telefonui' },
+    { path: '/antivirusines-programos/kompiuteriui', label: 'Antivirusinė kompiuteriui' },
+  ]},
+  { path: '/tevu-kontrole', label: 'Tėvų kontrolė', children: [] },
+  { path: '/slaptazodziu-saugumas', label: 'Slaptažodžių saugumas', children: [
+    { path: '/slaptazodziu-saugumas/slaptazodziu-tvarkykles', label: 'Slaptažodžių tvarkyklės' },
+    { path: '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi', label: 'Gmail slaptažodis' },
+    { path: '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi', label: 'Wi-Fi slaptažodis' },
+    { path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi', label: 'Pamirštas slaptažodis' },
+  ]},
+  { path: '/virusai/kompiuterinis-virusas', label: 'Virusai', children: [
+    { path: '/virusai/virusas-telefone', label: 'Virusas telefone' },
+    { path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas', label: 'Virusų tikrinimas' },
+    { path: '/virusai/reklamos-virusas-telefone', label: 'Reklamos virusas' },
+  ]},
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="sticky top-0 z-50 glass border-b border-border/60">
+  <div class="container flex items-center justify-between h-14">
+    <a href="/" class="flex items-center gap-2 shrink-0 group">
+      <div class="w-7 h-7 rounded-md bg-primary/10 flex items-center justify-center">
+        <svg class="w-4 h-4 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+      </div>
+      <span class="font-heading font-bold text-base tracking-tight text-foreground">
+        antivirusines<span class="text-gradient-primary">.lt</span>
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-0.5">
+      {navLinks.map(link => {
+        const isActive = currentPath === link.path || (link.path !== '/' && currentPath.startsWith(link.path));
+        const hasChildren = link.children.length > 0;
+        return hasChildren ? (
+          <details class="relative group nav-dropdown">
+            <summary class={`flex items-center gap-1 px-3 py-1.5 text-[13px] font-medium rounded-md transition-all duration-200 cursor-pointer list-none ${
+              isActive ? 'text-primary bg-primary/8' : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+            }`}>
+              {link.label}
+              <svg class="w-3 h-3 transition-transform duration-200 dropdown-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="absolute top-full left-0 mt-1 w-56 rounded-lg border border-border/60 bg-card shadow-lg py-1 z-50">
+              {link.children.map(child => (
+                <a href={child.path} class={`block px-4 py-2 text-[13px] font-medium transition-colors duration-150 ${
+                  currentPath === child.path ? 'text-primary bg-primary/8' : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+                }`}>{child.label}</a>
+              ))}
+            </div>
+          </details>
+        ) : (
+          <a href={link.path} class={`relative px-3 py-1.5 text-[13px] font-medium rounded-md transition-all duration-200 ${
+            isActive ? 'text-primary bg-primary/8' : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+          }`}>{link.label}</a>
+        );
+      })}
+    </nav>
+
+    <div class="flex items-center gap-1">
+      <button class="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200" aria-label="Paieška">
+        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <details class="md:hidden nav-mobile">
+        <summary class="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all duration-200 cursor-pointer list-none" aria-label="Meniu">
+          <svg class="w-5 h-5 menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </summary>
+        <nav class="absolute left-0 right-0 top-full border-t border-border/60 bg-card">
+          <div class="container py-2 space-y-0.5">
+            {navLinks.map(link => (
+              <div>
+                <a href={link.path} class="block px-4 py-2.5 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground">{link.label}</a>
+                {link.children.length > 0 && (
+                  <div class="pl-4 space-y-0.5">
+                    {link.children.map(child => (
+                      <a href={child.path} class="block px-4 py-2 text-[13px] font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/60">{child.label}</a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Close dropdown when clicking outside */
+  details.nav-dropdown[open] > summary ~ div {
+    animation: fade-in 0.15s ease;
+  }
+  details.nav-dropdown[open] .dropdown-chevron {
+    transform: rotate(180deg);
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('details.nav-dropdown[open]').forEach(d => {
+      if (!d.contains(e.target)) d.removeAttribute('open');
+    });
+  });
+</script>
