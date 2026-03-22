@@ -3091,6 +3091,7 @@ export default defineConfig({
   console.log('✨ Conversion complete!');
   console.log(`   Output: ${BUILD_DIR}`);
   console.log('   Run: cd _astro-build && npm install && npm run build');
+  console.log('   Then: node scripts/seo-audit.mjs');
 }
 
 main().catch(err => {
