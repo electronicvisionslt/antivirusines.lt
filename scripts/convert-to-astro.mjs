@@ -1314,14 +1314,9 @@ const FLAGSHIP_PATHS = new Set([
   '/virusai/reklamos-virusas-telefone',
 ]);
 
-// Only truly rich, hand-crafted product landing pages should be preserved
-const PRODUCT_FLAGSHIP_PATHS = new Set([
-  '/antivirusines-programos',
-  '/antivirusines-programos/nemokamos',
-  '/antivirusines-programos/telefonui',
-  '/antivirusines-programos/kompiuteriui',
-  '/tevu-kontrole',
-]);
+// Preserve only the homepage; flagship landing pages must always be regenerated
+// so production cannot get stuck serving stale Astro snapshots.
+const PRODUCT_FLAGSHIP_PATHS = new Set([]);
 
 // ─── Flagship page metadata for all non-antivirus flagship paths ───
 const FLAGSHIP_META = {
@@ -1917,7 +1912,7 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
 </Base>`;
 }
 
-const CUSTOM_ASTRO_PATHS = new Set(['/', ...PRODUCT_FLAGSHIP_PATHS]);
+const CUSTOM_ASTRO_PATHS = new Set(['/']);
 
 // ─── CSS ───
 
