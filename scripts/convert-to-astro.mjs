@@ -825,6 +825,7 @@ function generateAntivirusLandingPage(category, products, catArticles) {
   const faq = parseFaq(category.faq);
   const top5 = products.filter(p => p.product_category === 'antivirus').slice(0, 5);
   const features = product => (typeof product.features === 'object' && product.features) || {};
+  const featureColsDef = getFeatureColumns({ productCategory: 'antivirus', featureSet: 'antivirus' }, top5);
   const findProduct = (key) => products.find(p => (p.name || '').includes(key) || (p.brand || '').includes(key));
   const bestOverall = top5[0];
   const bestFree = products.find(p => p.free_version);
