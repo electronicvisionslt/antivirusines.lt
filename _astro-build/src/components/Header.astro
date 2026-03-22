@@ -45,7 +45,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
         const hasChildren = link.children.length > 0;
         return hasChildren ? (
           <details class="relative group nav-dropdown">
-            <summary class={`relative flex items-center gap-1 px-3 py-1.5 text-[13px] font-medium rounded-md transition-all duration-200 cursor-pointer list-none ${
+            <summary class={`flex items-center gap-1 px-3 py-1.5 text-[13px] font-medium rounded-md transition-all duration-200 cursor-pointer list-none ${
               isActive ? 'text-primary bg-primary/8' : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
             }`}>
               {link.label}
@@ -110,9 +110,11 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   details.nav-dropdown[open] > summary ~ div {
     animation: fade-in 0.15s ease;
   }
+
   details.nav-dropdown[open] .dropdown-chevron {
     transform: rotate(180deg);
   }
+
   @keyframes fade-in {
     from { opacity: 0; transform: translateY(-4px); }
     to { opacity: 1; transform: translateY(0); }
