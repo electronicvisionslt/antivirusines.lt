@@ -1,0 +1,83 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Tėvų kontrolė vaiko telefone: viskas, ką reikia žinoti"
+  description="Kaip nustatyti tėvų kontrolę vaiko telefone? Geriausi sprendimai Android ir iPhone įrenginiams, praktiniai patarimai tėvams."
+  
+  
+>
+  <article class="container py-8" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Tėvų kontrolė","path":"/tevu-kontrole"},{"label":"Tėvų kontrolė vaiko telefone: viskas, ką reikia žinoti","path":"/tevu-kontrole/vaiko-telefone"}]} />
+
+    <div class="mb-10 max-w-3xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
+        Tėvų kontrolė vaiko telefone: viskas, ką reikia žinoti
+      </h1>
+      <p class="text-muted-foreground leading-relaxed mb-5" itemProp="description">Kaip nustatyti tėvų kontrolę vaiko telefone? Geriausi sprendimai Android ir iPhone įrenginiams, praktiniai patarimai tėvams.</p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        <span class="font-medium">Gabija Petraitytė</span>
+        <time itemProp="dateModified" datetime="2026-03-20T16:41:24.649836+00:00">Atnaujinta: 2026-03-20</time>
+        <span>· 11 min skaitymo</span>
+      </div>
+    </div>
+
+    
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
+      <div>
+        <TrustDisclosure compact />
+
+        <div class="prose-article">
+          
+          <h2 id="ivadas">Kodėl svarbu naudoti tėvų kontrolę?</h2>
+          <p>Vaikai vis daugiau laiko praleidžia prie ekranų, todėl tėvų kontrolės priemonės tampa būtinos norint užtikrinti jų saugumą skaitmeniniame pasaulyje.</p>
+          
+          <h2 id="android-nustatymai">Tėvų kontrolė Android telefone</h2>
+          <p>Android sistema siūlo kelis integruotus tėvų kontrolės sprendimus, taip pat galite naudoti trečiųjų šalių programas platesniam funkcionalumui.</p>
+          
+          <h2 id="iphone-nustatymai">Tėvų kontrolė iPhone telefone</h2>
+          <p>Apple Screen Time funkcija leidžia lengvai nustatyti laiko limitus, turinio filtrus ir privatumo nustatymus vaikų iPhone įrenginiuose.</p>
+          
+
+          
+        </div>
+
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+          <div class="rounded-xl border border-success/20 bg-success/5 p-5">
+            <h3 class="font-heading font-semibold text-success text-sm mb-3">✅ Privalumai</h3>
+            <ul class="space-y-2"><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Apsauga nuo netinkamo turinio</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Ekrano laiko valdymas</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Vietos stebėjimas</li></ul>
+          </div>
+          <div class="rounded-xl border border-destructive/20 bg-destructive/5 p-5">
+            <h3 class="font-heading font-semibold text-destructive text-sm mb-3">❌ Trūkumai</h3>
+            <ul class="space-y-2"><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>Vaikai gali bandyti apeiti</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>Reikalauja tėvų dėmesio nustatymams</li></ul>
+          </div>
+        </div>
+        
+
+        
+
+        <FAQ items={[{"a":"Populiariausios ir geriausiai vertinamos programos yra Qustodio, Bark ir Google Family Link.","q":"Kokia geriausia tėvų kontrolės programa?"}]} />
+      </div>
+
+      
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              <li><a href="#ivadas" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kodėl svarbu naudoti tėvų kontrolę?</a></li><li><a href="#android-nustatymai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Tėvų kontrolė Android telefone</a></li><li><a href="#iphone-nustatymai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Tėvų kontrolė iPhone telefone</a></li>
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      
+    </div>
+  </article>
+</Base>

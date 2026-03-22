@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Geriausios antivirusinės programos telefonui 2025 m."
+  description="Apsaugokite savo telefoną nuo virusų ir kenkėjiškų programų. Apžvelgiame geriausias antivirusines programas Android ir iOS įrenginiams."
+  
+  
+>
+  <article class="container py-8" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Antivirusinės programos","path":"/antivirusines-programos"},{"label":"Geriausios antivirusinės programos telefonui 2025 m.","path":"/antivirusines-programos/telefonui"}]} />
+
+    <div class="mb-10 max-w-3xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
+        Geriausios antivirusinės programos telefonui 2025 m.
+      </h1>
+      <p class="text-muted-foreground leading-relaxed mb-5" itemProp="description">Apsaugokite savo telefoną nuo virusų ir kenkėjiškų programų. Apžvelgiame geriausias antivirusines programas Android ir iOS įrenginiams.</p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        <span class="font-medium">Jonas Kazlauskas</span>
+        <time itemProp="dateModified" datetime="2026-03-20T16:41:24.649836+00:00">Atnaujinta: 2026-03-20</time>
+        <span>· 10 min skaitymo</span>
+      </div>
+    </div>
+
+    
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
+      <div>
+        <TrustDisclosure compact />
+
+        <div class="prose-article">
+          
+          <h2 id="ivadas">Ar telefonui reikia antivirusinės?</h2>
+          <p>Mobilieji įrenginiai tampa vis dažnesniu kibernetinių atakų taikiniu. Android telefonai yra ypač pažeidžiami dėl atviros ekosistemos, tačiau ir iPhone naudotojai turėtų būti budrūs.</p>
+          
+          <h2 id="android">Geriausios antivirusinės Android telefonams</h2>
+          <p>Android operacinė sistema yra populiariausias mobilusis taikiniu kenkėjiškoms programoms. Rekomenduojame rinktis antivirusinę su realaus laiko apsauga ir programų skenavimu.</p>
+          
+          <h2 id="ios">Antivirusinės iOS įrenginiams</h2>
+          <p>Nors iOS yra saugesnė sistema, antivirusinės programos vis tiek gali padėti apsaugoti nuo sukčiavimo svetainių ir nesaugių Wi-Fi tinklų.</p>
+          
+
+          
+        </div>
+
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+          <div class="rounded-xl border border-success/20 bg-success/5 p-5">
+            <h3 class="font-heading font-semibold text-success text-sm mb-3">✅ Privalumai</h3>
+            <ul class="space-y-2"><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Realaus laiko apsauga</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Wi-Fi saugumo tikrinimas</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Apsauga nuo sukčiavimo</li></ul>
+          </div>
+          <div class="rounded-xl border border-destructive/20 bg-destructive/5 p-5">
+            <h3 class="font-heading font-semibold text-destructive text-sm mb-3">❌ Trūkumai</h3>
+            <ul class="space-y-2"><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>Gali naudoti daugiau baterijos</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>Kai kurios funkcijos mokamos</li></ul>
+          </div>
+        </div>
+        
+
+        
+        <div class="rounded-xl border border-primary/15 bg-primary/[0.03] p-5 my-8">
+          <div class="flex gap-3">
+            <div class="w-1 rounded-full bg-primary/40 shrink-0"></div>
+            <div>
+              <h3 class="font-heading font-semibold text-foreground mb-2">Mūsų verdiktas</h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">Telefonui rekomenduojame Bitdefender Mobile Security arba Norton Mobile Security kaip patikimiausius sprendimus.</p>
+            </div>
+          </div>
+        </div>
+        
+
+        <FAQ items={[{"a":"Labai rekomenduojama, ypač jei diegiate programas ne tik iš Google Play parduotuvės.","q":"Ar Android telefonui būtina antivirusinė?"}]} />
+      </div>
+
+      
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              <li><a href="#ivadas" class="text-xs text-muted-foreground hover:text-primary transition-colors">Ar telefonui reikia antivirusinės?</a></li><li><a href="#android" class="text-xs text-muted-foreground hover:text-primary transition-colors">Geriausios antivirusinės Android telefonams</a></li><li><a href="#ios" class="text-xs text-muted-foreground hover:text-primary transition-colors">Antivirusinės iOS įrenginiams</a></li>
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      
+    </div>
+  </article>
+</Base>

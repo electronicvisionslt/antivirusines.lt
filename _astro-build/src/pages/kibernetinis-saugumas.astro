@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+import TrustDisclosure from '../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Kibernetinis saugumas"
+  description="Straipsniai apie kibernetinį saugumą ir apsaugą nuo grėsmių internete."
+  
+>
+  <div class="container py-8">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Kibernetinis saugumas","path":"/kibernetinis-saugumas"}]} />
+
+    <div class="mb-10 max-w-2xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-3">Kibernetinis saugumas</h1>
+      <p class="text-muted-foreground leading-relaxed">Straipsniai apie kibernetinį saugumą ir apsaugą nuo grėsmių internete.</p>
+    </div>
+
+    
+
+    
+    <section class="mb-12">
+      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Straipsniai ir gidai</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <a href="/kibernetinis-saugumas/kaip-apsaugoti-kompiuteri-nuo-virusu-2025" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Kaip apsaugoti kompiuterį nuo virusų 2025</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Išsamus vadovas, kaip apsaugoti savo kompiuterį nuo virusų ir kenkėjiškos programinės įrangos 2025 metais.</p>
+          <div class="flex items-center gap-2 mt-3 text-[11px] text-muted-foreground/60">
+            <time>2026-03-20</time>
+            
+          </div>
+        </a>
+        
+      </div>
+    </section>
+    
+
+    
+    <TrustDisclosure />
+  </div>
+</Base>

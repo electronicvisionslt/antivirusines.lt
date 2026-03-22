@@ -1,0 +1,169 @@
+---
+import Base from '../layouts/Base.astro';
+import TrustDisclosure from '../components/TrustDisclosure.astro';
+import FAQ from '../components/FAQ.astro';
+---
+
+<Base
+  title="Antivirusinių programų apžvalgos ir saugumo gidai 2026"
+  description="Nepriklausomos antivirusinių programų apžvalgos, palyginimai ir saugumo gidai lietuvių kalba. Raskite geriausią apsaugą savo įrenginiams."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden border-b border-border/40">
+    <div class="absolute inset-0 gradient-mesh"></div>
+    <div class="container relative py-16 md:py-24 lg:py-28">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-4 px-3 py-1.5 rounded-full bg-primary/8 border border-primary/12">
+          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <span>Nepriklausomos apžvalgos · Atnaujinta 2026</span>
+        </div>
+        <h1 class="font-heading text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-foreground leading-[1.08] tracking-tight mb-5">
+          Raskite geriausią<br />
+          <span class="text-gradient-primary">kibernetinę apsaugą</span>
+        </h1>
+        <p class="text-base md:text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
+          Objektyvūs antivirusinių programų palyginimai, saugumo gidai ir patarimai — viskas lietuvių kalba, be reklaminės šiukšlės.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/antivirusines-programos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 text-sm shadow-sm">
+            Peržiūrėti Top 5
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="/antivirusines-programos/nemokamos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-card border border-border/60 text-foreground font-heading font-semibold rounded-lg hover:bg-muted/60 transition-all duration-200 text-sm">
+            Nemokamos alternatyvos
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT HUBS -->
+  <section class="container py-14 md:py-20">
+    <div class="text-center mb-10">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-foreground">Kibernetinio saugumo centras</h2>
+      <p class="text-muted-foreground mt-2 max-w-lg mx-auto text-sm">Pasirinkite sritį, kuri jus domina — kiekviena tema turi detalius gidus ir palyginimus.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      
+      <div class="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg h-full flex flex-col">
+        <span class="absolute top-4 right-4 text-[10px] font-heading font-semibold text-primary bg-primary/8 border border-primary/12 px-2 py-0.5 rounded-full">Populiariausia</span>
+        <a href="/antivirusines-programos" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight mb-2">Antivirusinės programos</a>
+        <p class="text-sm text-muted-foreground leading-relaxed mb-4">Top 5 geriausių antivirusinių 2026 m. su detaliu palyginimu.</p>
+        <a href="/antivirusines-programos" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto hover:underline">
+          Skaityti daugiau
+          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      
+      <div class="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg h-full flex flex-col">
+        
+        <a href="/tevu-kontrole" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight mb-2">Tėvų kontrolė</a>
+        <p class="text-sm text-muted-foreground leading-relaxed mb-4">Geriausios programėlės vaikų apsaugai internete.</p>
+        <a href="/tevu-kontrole" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto hover:underline">
+          Skaityti daugiau
+          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      
+      <div class="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg h-full flex flex-col">
+        
+        <a href="/slaptazodziu-saugumas" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight mb-2">Slaptažodžių saugumas</a>
+        <p class="text-sm text-muted-foreground leading-relaxed mb-4">Kaip kurti stiprius slaptažodžius ir naudoti tvarkykles.</p>
+        <a href="/slaptazodziu-saugumas" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto hover:underline">
+          Skaityti daugiau
+          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      
+      <div class="group relative rounded-xl border border-border/50 bg-card p-5 md:p-6 glow-border glow-border-hover transition-all duration-300 hover:shadow-lg h-full flex flex-col">
+        
+        <a href="/virusai/kompiuterinis-virusas" class="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-200 leading-tight mb-2">Virusai ir grėsmės</a>
+        <p class="text-sm text-muted-foreground leading-relaxed mb-4">Kas yra kompiuterinis virusas ir kaip apsisaugoti.</p>
+        <a href="/virusai/kompiuterinis-virusas" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto hover:underline">
+          Skaityti daugiau
+          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      
+    </div>
+  </section>
+
+  
+  <!-- TOP 3 -->
+  <section class="border-y border-border/40 bg-muted/30">
+    <div class="container py-14 md:py-20">
+      <div class="text-center mb-10">
+        <h2 class="font-heading text-2xl md:text-3xl font-bold text-foreground">Top 3 antivirusinės programos</h2>
+        <p class="text-muted-foreground mt-2 max-w-lg mx-auto text-sm">Greitas žvilgsnis į geriausius sprendimus.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <div class="relative rounded-xl border bg-card p-5 border-primary/30 shadow-sm">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-heading font-bold text-primary-foreground bg-primary px-3 py-1 rounded-full shadow-sm">🥇 Nr. 1 pasirinkimas</div>
+          <div class="flex items-center gap-3 mb-4 mt-1">
+            <div class="w-10 h-10 rounded-lg bg-muted/60 border border-border/40 flex items-center justify-center overflow-hidden shrink-0">
+              <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/norton-logo.png" alt="Norton 360" class="w-7 h-7 object-contain" />
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-foreground text-sm">Norton 360</h3>
+              <div class="flex items-center gap-0.5">★★★★★<span class="text-xs text-muted-foreground ml-1">4.8/5</span></div>
+            </div>
+          </div>
+          <p class="text-xs text-muted-foreground mb-3 leading-relaxed">Visapusiška apsauga su VPN, slaptažodžių tvarkykle, debesų saugykla ir sukčių apsauga. Planai nuo 1 iki 10 įrenginių.</p>
+          <div class="flex items-center justify-between pt-3 border-t border-border/40">
+            <span class="text-xs text-muted-foreground">Nuo €19,99/m.</span>
+            <a href="https://norton.com/?aff=antivirusines" target="_blank" rel="noopener sponsored" class="text-xs px-3 py-1.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all">Išbandyti</a>
+          </div>
+        </div>
+        
+        <div class="relative rounded-xl border bg-card p-5 border-border/50">
+          
+          <div class="flex items-center gap-3 mb-4 mt-1">
+            <div class="w-10 h-10 rounded-lg bg-muted/60 border border-border/40 flex items-center justify-center overflow-hidden shrink-0">
+              <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/bitdefender-logo.png" alt="Bitdefender Total Security" class="w-7 h-7 object-contain" />
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-foreground text-sm">Bitdefender Total Security</h3>
+              <div class="flex items-center gap-0.5">★★★★★<span class="text-xs text-muted-foreground ml-1">4.7/5</span></div>
+            </div>
+          </div>
+          <p class="text-xs text-muted-foreground mb-3 leading-relaxed">AI paremta antivirusinė su 24/7 realaus laiko apsauga, slaptažodžių tvarkykle ir iki 5 įrenginių. Premium versijoje — neribota VPN ir sukčių apsauga.</p>
+          <div class="flex items-center justify-between pt-3 border-t border-border/40">
+            <span class="text-xs text-muted-foreground">Nuo $59,99/m.</span>
+            <a href="https://bitdefender.com/?aff=antivirusines" target="_blank" rel="noopener sponsored" class="text-xs px-3 py-1.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all">Išbandyti</a>
+          </div>
+        </div>
+        
+        <div class="relative rounded-xl border bg-card p-5 border-border/50">
+          
+          <div class="flex items-center gap-3 mb-4 mt-1">
+            <div class="w-10 h-10 rounded-lg bg-muted/60 border border-border/40 flex items-center justify-center overflow-hidden shrink-0">
+              <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/kaspersky-logo.png" alt="Kaspersky Plus" class="w-7 h-7 object-contain" />
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-foreground text-sm">Kaspersky Plus</h3>
+              <div class="flex items-center gap-0.5">★★★★★<span class="text-xs text-muted-foreground ml-1">4.5/5</span></div>
+            </div>
+          </div>
+          <p class="text-xs text-muted-foreground mb-3 leading-relaxed">Antivirusinė su dvikrypte ugniasiene, kriptovaliutų apsauga ir stalkerware aptikimu. Plus planas prideda neribotą VPN ir slaptažodžių tvarkyklę.</p>
+          <div class="flex items-center justify-between pt-3 border-t border-border/40">
+            <span class="text-xs text-muted-foreground">Nuo €19,99/m.</span>
+            <a href="https://kaspersky.com/?aff=antivirusines" target="_blank" rel="noopener sponsored" class="text-xs px-3 py-1.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all">Išbandyti</a>
+          </div>
+        </div>
+        
+      </div>
+      <div class="text-center mt-8">
+        <a href="/antivirusines-programos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 text-sm shadow-sm">
+          Žiūrėti visą Top 5 sąrašą
+        </a>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- TRUST DISCLOSURE -->
+  <section class="container py-14">
+    <TrustDisclosure />
+  </section>
+</Base>

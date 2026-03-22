@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+import TrustDisclosure from '../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Geriausios tėvų kontrolės programėlės 2026 — Top 5 vaiko telefonui"
+  description="Nepriklausomas tėvų kontrolės programų palyginimas. Qustodio, Norton Family, Kaspersky Safe Kids, Google Family Link ir Bark — kurią pasirinkti vaiko telefonui?"
+  
+>
+  <div class="container py-8">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Tėvų kontrolė","path":"/tevu-kontrole"}]} />
+
+    <div class="mb-10 max-w-2xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-3">Tėvų kontrolė</h1>
+      <p class="text-muted-foreground leading-relaxed">Geriausios tėvų kontrolės programėlės vaiko telefonui 2026 metais. Nepriklausomas Top 5 palyginimas: ekrano laikas, turinio filtravimas, GPS sekimas ir socialinių tinklų stebėjimas.</p>
+    </div>
+
+    
+
+    
+    <section class="mb-12">
+      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Straipsniai ir gidai</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <a href="/tevu-kontrole/vaiko-telefone" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Tėvų kontrolė vaiko telefone: viskas, ką reikia žinoti</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Kaip nustatyti tėvų kontrolę vaiko telefone? Geriausi sprendimai Android ir iPhone įrenginiams, praktiniai patarimai tėvams.</p>
+          <div class="flex items-center gap-2 mt-3 text-[11px] text-muted-foreground/60">
+            <time>2026-03-20</time>
+            <span>· 11 min</span>
+          </div>
+        </a>
+        
+      </div>
+    </section>
+    
+
+    <FAQ items={[{"a":"Taip. Tėvų kontrolės programos padeda apsaugoti vaikus nuo netinkamo turinio, valdyti ekrano laiką ir stebėti buvimo vietą. Svarbiausia — naudoti jas skaidriai, iš anksto aptarus taisykles su vaiku.","q":"Ar verta naudoti tėvų kontrolės programėlę?"},{"a":"Google Family Link yra geriausia nemokama programa Android vartotojams — siūlo ekrano laiko valdymą, programėlių patvirtinimą ir turinio filtravimą. Apple vartotojams — integruota Screen Time funkcija.","q":"Kokia geriausia nemokama tėvų kontrolės programa?"},{"a":"Taip, bet Apple riboja trečiųjų šalių programų galimybes. Qustodio ir Norton Family veikia iOS, tačiau kai kurios funkcijos (pvz., turinio blokavimas) gali būti ribotesnės nei Android. Papildomai galite naudoti Apple Screen Time.","q":"Ar tėvų kontrolės programos veikia iPhone?"},{"a":"Rekomenduojama pradėti nuo pat pirmo išmanaus įrenginio gavimo momento. Jaunesniems vaikams (6–10 m.) tinka paprastesni įrankiai kaip Google Family Link, paaugliams (11–16 m.) — pažangesni sprendimai kaip Qustodio ar Bark.","q":"Nuo kokio amžiaus verta diegti tėvų kontrolę?"},{"a":"Kai kurios programos (Qustodio, Bark) yra atsparesnės apėjimui ir negali būti pašalintos be tėvų leidimo. Tačiau vaikai gali bandyti naudoti VPN ar alternatyvias naršykles. Todėl svarbu pasirinkti programą, kuri apie tai perspėja.","q":"Ar vaikas gali apeiti tėvų kontrolės programą?"},{"a":"Kainos svyruoja nuo 0 € (Google Family Link) iki ~100 €/metus (Qustodio Premium). Dauguma programų siūlo 25–60 €/metus planus, apimančius 5–15 įrenginių. Norton Family dažnai įeina į Norton 360 paketą.","q":"Kiek kainuoja tėvų kontrolės programos?"},{"a":"Bark specializuojasi socialinių tinklų stebėjime — analizuoja 30+ platformų ir perspėja apie pavojingą turinį. Qustodio stebi YouTube, o Norton Family — paieškos istoriją. Nemokamos programos socialinių tinklų nestebima.","q":"Ar tėvų kontrolė stebės socialinus tinklus?"},{"a":"Specialistai rekomenduoja atvirą dialogą: paaiškinkite, kad tai saugumo priemonė, o ne bausmė. Aptarkite taisykles kartu, suteikite vaikui dalį kontrolės ir palaipsniui didinkite laisvę, kai vaikas parodo atsakingą elgesį.","q":"Kaip pasikalbėti su vaiku apie tėvų kontrolę?"}]} />
+    <TrustDisclosure />
+  </div>
+</Base>

@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="CMS Testas | SEO Pavadinimas"
+  description="Meta aprašymas iš CMS testavimo straipsnio."
+  
+  
+>
+  <article class="container py-8" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Testavimo kategorija","path":"/testavimas"},{"label":"CMS testas: publikuotas straipsnis","path":"/testavimas/cms-testas-publikuotas"}]} />
+
+    <div class="mb-10 max-w-3xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
+        CMS testas: publikuotas straipsnis
+      </h1>
+      <p class="text-muted-foreground leading-relaxed mb-5" itemProp="description">Šis straipsnis sukurtas per CMS ir turi būti matomas viešai.</p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        <span class="font-medium">Testas Autorius</span>
+        <time itemProp="dateModified" datetime="2026-03-20T15:52:42.855635+00:00">Atnaujinta: 2026-03-20</time>
+        <span>· 5 min skaitymo</span>
+      </div>
+    </div>
+
+    
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
+      <div>
+        <TrustDisclosure compact />
+
+        <div class="prose-article">
+          
+          <h2 id="pirma-sekcija">Pirma sekcija</h2>
+          <p>Turinys iš duomenų bazės, ne iš mock.</p>
+          
+
+          
+        </div>
+
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+          <div class="rounded-xl border border-success/20 bg-success/5 p-5">
+            <h3 class="font-heading font-semibold text-success text-sm mb-3">✅ Privalumai</h3>
+            <ul class="space-y-2"><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Veikia iš DB</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>SEO laukai valdomi</li></ul>
+          </div>
+          <div class="rounded-xl border border-destructive/20 bg-destructive/5 p-5">
+            <h3 class="font-heading font-semibold text-destructive text-sm mb-3">❌ Trūkumai</h3>
+            <ul class="space-y-2"><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>Dar reikia tobulinti</li></ul>
+          </div>
+        </div>
+        
+
+        
+        <div class="rounded-xl border border-primary/15 bg-primary/[0.03] p-5 my-8">
+          <div class="flex gap-3">
+            <div class="w-1 rounded-full bg-primary/40 shrink-0"></div>
+            <div>
+              <h3 class="font-heading font-semibold text-foreground mb-2">Mūsų verdiktas</h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">CMS integracija veikia teisingai.</p>
+            </div>
+          </div>
+        </div>
+        
+
+        <FAQ items={[{"a":"Taip, CMS turinys rodomas viešai.","q":"Ar tai veikia?"}]} />
+      </div>
+
+      
+    </div>
+  </article>
+</Base>

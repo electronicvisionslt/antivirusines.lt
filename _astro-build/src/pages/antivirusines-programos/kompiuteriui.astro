@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Geriausios antivirusinės programos kompiuteriui 2025 m."
+  description="Išsami antivirusinių programų kompiuteriui apžvalga. Windows ir Mac apsaugos sprendimai – nuo nemokamų iki premium variantų."
+  
+  
+>
+  <article class="container py-8" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Antivirusinės programos","path":"/antivirusines-programos"},{"label":"Geriausios antivirusinės programos kompiuteriui 2025 m.","path":"/antivirusines-programos/kompiuteriui"}]} />
+
+    <div class="mb-10 max-w-3xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
+        Geriausios antivirusinės programos kompiuteriui 2025 m.
+      </h1>
+      <p class="text-muted-foreground leading-relaxed mb-5" itemProp="description">Išsami antivirusinių programų kompiuteriui apžvalga. Windows ir Mac apsaugos sprendimai – nuo nemokamų iki premium variantų.</p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        <span class="font-medium">Jonas Kazlauskas</span>
+        <time itemProp="dateModified" datetime="2026-03-20T16:41:24.649836+00:00">Atnaujinta: 2026-03-20</time>
+        <span>· 15 min skaitymo</span>
+      </div>
+    </div>
+
+    
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
+      <div>
+        <TrustDisclosure compact />
+
+        <div class="prose-article">
+          
+          <h2 id="ivadas">Kaip išsirinkti antivirusinę kompiuteriui?</h2>
+          <p>Renkantis antivirusinę programą kompiuteriui, svarbu atsižvelgti į kelis pagrindinius kriterijus: apsaugos lygį, poveikį sistemos greičiui, papildomas funkcijas ir kainą.</p>
+          
+          <h2 id="windows">Geriausios antivirusinės Windows sistemai</h2>
+          <p>Windows yra populiariausia operacinė sistema ir dažniausias kibernetinių atakų taikinys. Todėl kokybiška antivirusinė programa yra būtina.</p>
+          
+          <h2 id="mac">Antivirusinės Mac kompiuteriams</h2>
+          <p>Nors Mac kompiuteriai tradiciniu laikomi saugesniais, grėsmių skaičius nuolat auga. Rekomenduojame naudoti specializuotą antivirusinę programą.</p>
+          
+
+          
+        </div>
+
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+          <div class="rounded-xl border border-success/20 bg-success/5 p-5">
+            <h3 class="font-heading font-semibold text-success text-sm mb-3">✅ Privalumai</h3>
+            <ul class="space-y-2"><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Visapusiška apsauga</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Ugniasienė</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Interneto apsauga</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Slaptažodžių tvarkyklė</li></ul>
+          </div>
+          <div class="rounded-xl border border-destructive/20 bg-destructive/5 p-5">
+            <h3 class="font-heading font-semibold text-destructive text-sm mb-3">❌ Trūkumai</h3>
+            <ul class="space-y-2"><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>Metinė prenumerata</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>Gali sulėtinti senesnius kompiuterius</li></ul>
+          </div>
+        </div>
+        
+
+        
+        <div class="rounded-xl border border-primary/15 bg-primary/[0.03] p-5 my-8">
+          <div class="flex gap-3">
+            <div class="w-1 rounded-full bg-primary/40 shrink-0"></div>
+            <div>
+              <h3 class="font-heading font-semibold text-foreground mb-2">Mūsų verdiktas</h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">Kompiuteriui rekomenduojame Norton 360 arba Bitdefender Total Security kaip geriausius visapusiškos apsaugos sprendimus.</p>
+            </div>
+          </div>
+        </div>
+        
+
+        <FAQ items={[{"a":"Windows Defender suteikia bazinę apsaugą, tačiau trečiųjų šalių antivirusinės paprastai siūlo pažangesnę apsaugą ir daugiau funkcijų.","q":"Ar pakanka Windows Defender?"}]} />
+      </div>
+
+      
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              <li><a href="#ivadas" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip išsirinkti antivirusinę kompiuteriui?</a></li><li><a href="#windows" class="text-xs text-muted-foreground hover:text-primary transition-colors">Geriausios antivirusinės Windows sistemai</a></li><li><a href="#mac" class="text-xs text-muted-foreground hover:text-primary transition-colors">Antivirusinės Mac kompiuteriams</a></li>
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      
+    </div>
+  </article>
+</Base>
