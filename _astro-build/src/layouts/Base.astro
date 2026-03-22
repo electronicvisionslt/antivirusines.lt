@@ -35,10 +35,10 @@ if (!canonical) {
   const path = Astro.url.pathname.replace(/\/?$/, '/');
   canonical = `${siteUrl}${path}`;
 }
+// Always ensure trailing slash on canonical
 if (canonical && !canonical.endsWith('/')) {
   canonical = canonical + '/';
 }
-
 // Default JSON-LD: WebSite schema for every page
 const defaultJsonLd = {
   '@context': 'https://schema.org',
