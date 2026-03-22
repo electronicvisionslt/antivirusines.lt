@@ -1091,7 +1091,32 @@ async function main() {
 
   // 1. Copy base skeleton
   console.log('📦 Copying Astro base skeleton...');
-  cpSync(BASE_DIR, BUILD_DIR, { recursive: true });
+  // Copy base skeleton WITHOUT overwriting existing pages
+  // First, ensure _astro-build exists
+  ensureDir(BUILD_DIR);
+  // Copy non-pages files from base (layouts, components, public, config)
+  const baseDirs = ['src/layouts', 'src/components', 'public'];
+  for (const dir of baseDirs) {
+    const srcDir = join(BASE_DIR, dir);
+    const destDir = join(BUILD_DIR, dir);
+    if (existsSync(srcDir)) {
+      cpSync(srcDir, destDir, { recursive: true });
+    }
+  }
+  // Copy root config files from base
+  const baseRootFiles = ['package.json', 'tsconfig.json'];
+  for (const file of baseRootFiles) {
+    const srcFile = join(BASE_DIR, file);
+    const destFile = join(BUILD_DIR, file);
+    if (existsSync(srcFile)) {
+      cpSync(srcFile, destFile);
+    }
+  }
+  // Copy astro.config if exists in base
+  const astroConfigBase = join(BASE_DIR, 'astro.config.mjs');
+  if (existsSync(astroConfigBase)) {
+    cpSync(astroConfigBase, join(BUILD_DIR, 'astro.config.mjs'));
+  }
 
   // 2. Copy global CSS
   console.log('🎨 Copying styles...');
@@ -1250,11 +1275,7 @@ export default defineConfig({
   console.log('\n📄 Generating pages...');
 
   // Homepage
-  if (shouldPreserveCustomPage('/')) {
-    console.log('  🛡️ Preserving custom Astro homepage');
-  } else {
-    writePage('index.astro', generateHomePage(data));
-  }
+  writePage('index.astro', generateHomePage(data));
 
   // 404
   writePage('404.astro', generate404Page());
@@ -1272,14 +1293,13 @@ export default defineConfig({
     const segments = category.path.split('/').filter(Boolean);
     const pagePath = segments.join('/') + '.astro';
 
-    if (shouldPreserveCustomPage(category.path)) {
-      console.log(`  🛡️ Preserving custom Astro page: ${category.path}`);
-      continue;
-    }
-
     if (category.path === '/antivirusines-programos') {
       console.log(`  ⚡ Flagship: ${category.path}`);
       writePage(pagePath, generateAntivirusLandingPage(category, data.products, catArticles));
+    } else if (FLAGSHIP_PATHS.has(category.path)) {
+      // All flagship paths get the rich antivirus-style landing template
+      console.log(`  ⚡ Flagship: ${category.path}`);
+      writePage(pagePath, generateFlagshipPage(category, data, catArticles, categoryMap));
     } else if (overlappingArticle) {
       console.log(`  📰 Category path uses article template: ${category.path}`);
       writePage(pagePath, generateArticlePage(overlappingArticle, categoryMap));
