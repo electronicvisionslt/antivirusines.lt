@@ -2220,7 +2220,7 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
     <!-- ═══ 2. TOP 5 ═══ -->
     <section id="top-5" class="mb-16 scroll-mt-20">
       <div class="mb-6">
-        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Top ${top5.length} pasirinkimai</h2>
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Top 5 pasirinkimai</h2>
         <p class="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">Programos, kurios šiandien siūlo geriausią apsaugos, funkcijų ir kainos derinį.</p>
       </div>
       <div class="space-y-3">
@@ -2230,10 +2230,11 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
         <div class="relative overflow-hidden transition-all duration-200 ${i === 0 ? 'card-premium-featured' : 'card-premium'}">
           ${i === 0 ? '<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary to-primary/40"></div>' : ''}
           <div class="p-4 md:p-5">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}">${i + 1}</span>
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}">${i + 1}</span>
               ${renderProductLogo(product, 36)}
-              <div class="min-w-0 flex-1">
+              <div class="min-w-0">
                 <div class="flex items-center gap-2 flex-wrap">
                   <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">${escapeHtml(product.name)}</h3>
                   ${i === 0 ? '<span class="chip-primary">Nr. 1</span>' : ''}
@@ -2242,30 +2243,79 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
                 <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">${escapeHtml(product.best_for || '')}</p>
               </div>
               ${renderRatingStars(product.rating || 0)}
-              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap hidden sm:block">${escapeHtml(product.pricing_summary || '')}</span>
-            </div>
-
-            <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">${escapeHtml(product.verdict || product.short_description || '')}</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-3">
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Privalumai</p>
-                <ul class="space-y-0.5">
-                  ${(product.pros || []).slice(0, 3).map(p => `<li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.checkCircle} ${escapeHtml(p)}</li>`).join('')}
-                </ul>
-              </div>
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
-                <ul class="space-y-0.5">
-                  ${(product.cons || []).slice(0, 2).map(c => `<li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.xCircle} ${escapeHtml(c)}</li>`).join('')}
-                </ul>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">${escapeHtml(product.pricing_summary || '')}</span>
+              <div class="justify-self-end">
+                ${renderAffiliateButton(product, 'px-5 py-2.5 text-sm whitespace-nowrap', 'Gauti pasiūlymą')}
               </div>
             </div>
 
-            <div class="flex items-center justify-between pt-3 border-t border-border/30">
-              <span class="text-sm font-heading font-bold text-foreground sm:hidden">${escapeHtml(product.pricing_summary || '')}</span>
-              ${renderPlatformTags(product.supported_platforms)}
-              ${renderAffiliateButton(product, 'px-5 py-2.5 text-sm whitespace-nowrap', 'Gauti pasiūlymą')}
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">${escapeHtml(product.verdict || product.short_description || '')}</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    ${(product.pros || []).slice(0, 3).map(p => `<li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.checkCircle} ${escapeHtml(p)}</li>`).join('')}
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    ${(product.cons || []).slice(0, 2).map(c => `<li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.xCircle} ${escapeHtml(c)}</li>`).join('')}
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  ${renderPlatformTags(product.supported_platforms)}
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    ${featureColumns.slice(0, 5).map(col => {
+                      const val = feats[col.key];
+                      return `<span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground">${val === true ? SVG.check : val === false ? SVG.x : `<span class="text-[10px] text-muted-foreground">${typeof val === 'string' ? escapeHtml(val) : ''}</span>`} ${escapeHtml(col.label)}</span>`;
+                    }).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}">${i + 1}</span>
+                ${renderProductLogo(product, 36)}
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">${escapeHtml(product.name)}</h3>
+                    ${i === 0 ? '<span class="chip-primary">Nr. 1</span>' : ''}
+                    ${product.free_version && i !== 0 ? '<span class="chip-success">Nemokama</span>' : ''}
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">${escapeHtml(product.best_for || '')}</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                ${renderRatingStars(product.rating || 0)}
+                <span class="text-sm font-heading font-bold text-foreground">${escapeHtml(product.pricing_summary || '')}</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">${escapeHtml(product.verdict || product.short_description || '')}</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    ${(product.pros || []).slice(0, 3).map(p => `<li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.checkCircle} ${escapeHtml(p)}</li>`).join('')}
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    ${(product.cons || []).slice(0, 2).map(c => `<li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.xCircle} ${escapeHtml(c)}</li>`).join('')}
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  ${renderPlatformTags(product.supported_platforms)}
+                </div>
+              </div>
+              ${renderAffiliateButton(product, 'px-5 py-2.5 text-sm w-full justify-center', 'Gauti pasiūlymą')}
             </div>
           </div>
         </div>`;
