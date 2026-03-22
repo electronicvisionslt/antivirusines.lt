@@ -14,8 +14,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} (.+)/$
 RewriteRule ^(.+)/$ /$1 [R=301,L]
 
-# Sitemap → Supabase edge function
-RewriteRule ^sitemap\.xml$ https://dkwffdnrailtqvrxiulw.supabase.co/functions/v1/sitemap [R=301,L]
+# Sitemap → PHP proxy to Supabase edge function
+RewriteRule ^sitemap\.xml$ /sitemap.php [L]
 
 # Clean URLs — serve .html files without extension
 RewriteCond %{REQUEST_FILENAME} !-f
