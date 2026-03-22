@@ -47,5 +47,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_astro-build/dist
           publish_branch: deploy
-          force_orphan: true
           commit_message: "Deploy: ${{ github.sha }}"
