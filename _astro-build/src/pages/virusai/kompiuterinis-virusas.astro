@@ -6,21 +6,19 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
 ---
 
 <Base
-  title="Kompiuterinis virusas: kas tai, tipai ir apsauga 2026"
-  description="Išsamus gidas apie kompiuterinius virusus — kaip jie veikia, pagrindiniai tipai ir kaip efektyviai apsisaugoti."
+  title="Kompiuterinis virusas: kas tai, tipai ir kaip apsisaugoti"
+  description="Išsamus gidas apie kompiuterinius virusus – kaip jie veikia, kokie yra pagrindiniai tipai ir kaip efektyviai nuo jų apsisaugoti."
+  
   
 >
-  <article class="container py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
-    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Virusai","path":"/virusai"},{"label":"Kompiuterinis virusas","path":"/virusai/kompiuterinis-virusas"}]} />
+  <article class="container py-8" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Virusai","path":"/virusai/"},{"label":"Kompiuterinis virusas: kas tai, tipai ir kaip apsisaugoti","path":"/virusai/kompiuterinis-virusas/"}]} />
 
-    <!-- HERO -->
-    <div class="mb-8">
-      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight" itemProp="headline">
-        Kompiuterinis virusas: kas tai ir kaip apsisaugoti
+    <div class="mb-10 max-w-3xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
+        Kompiuterinis virusas: kas tai, tipai ir kaip apsisaugoti
       </h1>
-      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-4" itemProp="description">
-        Viskas, ką reikia žinoti apie kompiuterinius virusus — tipai, plitimo būdai, atpažinimo požymiai ir efektyviausi apsaugos metodai.
-      </p>
+      <p class="text-muted-foreground leading-relaxed mb-5" itemProp="description">Išsamus gidas apie kompiuterinius virusus – kaip jie veikia, kokie yra pagrindiniai tipai ir kaip efektyviai nuo jų apsisaugoti.</p>
       <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
         <span class="font-medium">Matas Jonaitis</span>
         <time itemProp="dateModified" datetime="2026-03-20T16:41:24.649836+00:00">Atnaujinta: 2026-03-20</time>
@@ -28,99 +26,25 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
       </div>
     </div>
 
-    <TrustDisclosure compact />
+    
 
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-10">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
       <div>
-        
-        <!-- TABLE OF CONTENTS (mobile) -->
-        <nav class="rounded-lg border border-border/50 bg-card p-4 my-6 lg:hidden">
-          <h4 class="font-heading font-semibold text-xs text-foreground mb-2.5 uppercase tracking-wider">Turinys</h4>
-          <ol class="space-y-1.5">
-            
-            <li>
-              <a href="#kas-yra" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">01</span>
-                Kas yra kompiuterinis virusas?
-              </a>
-            </li>
-            <li>
-              <a href="#tipai" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">02</span>
-                Pagrindiniai virusų tipai
-              </a>
-            </li>
-            <li>
-              <a href="#pozymiai" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">03</span>
-                Kaip atpažinti užkrėstą kompiuterį?
-              </a>
-            </li>
-            <li>
-              <a href="#apsauga" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">04</span>
-                Kaip apsisaugoti nuo virusų?
-              </a>
-            </li>
-            <li>
-              <a href="#kas-tai" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">05</span>
-                Kas yra kompiuterinis virusas?
-              </a>
-            </li>
-            <li>
-              <a href="#plitimo-budai" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">06</span>
-                Kaip plinta virusai?
-              </a>
-            </li>
-            <li>
-              <a href="#salinimas" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">07</span>
-                Kaip pašalinti virusą
-              </a>
-            </li>
-          </ol>
-        </nav>
-        
+        <TrustDisclosure compact />
 
-        <!-- CONTENT SECTIONS -->
         <div class="prose-article">
           
-          <section class="mb-8 scroll-mt-20" id="kas-yra">
-            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Kas yra kompiuterinis virusas?</h2>
-            <p class="text-muted-foreground leading-relaxed">Kompiuterinis virusas yra kenkėjiška programa, kuri gali replikuotis ir plisti iš vieno kompiuterio į kitą. Virusai gali sugadinti failus, pavogti duomenis arba sulėtinti sistemos darbą.</p>
-          </section>
+          <h2 id="kas-yra">Kas yra kompiuterinis virusas?</h2>
+          <p>Kompiuterinis virusas yra kenkėjiška programa, kuri gali replikuotis ir plisti iš vieno kompiuterio į kitą. Virusai gali sugadinti failus, pavogti duomenis arba sulėtinti sistemos darbą.</p>
           
-          <section class="mb-8 scroll-mt-20" id="tipai">
-            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Pagrindiniai virusų tipai</h2>
-            <p class="text-muted-foreground leading-relaxed">Egzistuoja daugybė skirtingų virusų tipų: failų virusai, makro virusai, boot sektoriaus virusai, trojanai, kirminai ir ransomware. Kiekvienas tipas turi savo plitimo būdą ir poveikį.</p>
-          </section>
+          <h2 id="tipai">Pagrindiniai virusų tipai</h2>
+          <p>Egzistuoja daugybė skirtingų virusų tipų: failų virusai, makro virusai, boot sektoriaus virusai, trojanai, kirminai ir ransomware. Kiekvienas tipas turi savo plitimo būdą ir poveikį.</p>
           
-          <section class="mb-8 scroll-mt-20" id="pozymiai">
-            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Kaip atpažinti užkrėstą kompiuterį?</h2>
-            <p class="text-muted-foreground leading-relaxed">Pagrindiniai požymiai: kompiuteris veikia lėčiau nei įprastai, pasirodo neįprastos klaidos, naršyklė nukreipia į nežinomas svetaines, atsiranda nepažįstamų programų.</p>
-          </section>
+          <h2 id="pozymiai">Kaip atpažinti užkrėstą kompiuterį?</h2>
+          <p>Pagrindiniai požymiai: kompiuteris veikia lėčiau nei įprastai, pasirodo neįprastos klaidos, naršyklė nukreipia į nežinomas svetaines, atsiranda nepažįstamų programų.</p>
           
-          <section class="mb-8 scroll-mt-20" id="apsauga">
-            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Kaip apsisaugoti nuo virusų?</h2>
-            <p class="text-muted-foreground leading-relaxed">Naudokite patikimą antivirusinę programą, reguliariai atnaujinkite operacinę sistemą, neatidarinėkite įtartinų el. laiškų priedų ir atsargiai elkitės su nežinomomis nuorodomis.</p>
-          </section>
-          
-          <section class="mb-8 scroll-mt-20" id="kas-tai">
-            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Kas yra kompiuterinis virusas?</h2>
-            <p class="text-muted-foreground leading-relaxed">Kompiuterinis virusas — tai kenkėjiška programa, kuri gali kopijuoti save ir plisti tarp kompiuterių. Virusai prisijungia prie teisėtų failų ar programų ir aktyvuojasi, kai vartotojas atidaro užkrėstą failą. Jie gali sugadinti duomenis, sulėtinti sistemą arba suteikti įsilaužėliams prieigą prie jūsų kompiuterio.</p>
-          </section>
-          
-          <section class="mb-8 scroll-mt-20" id="plitimo-budai">
-            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Kaip plinta virusai?</h2>
-            <p class="text-muted-foreground leading-relaxed">Dažniausiai virusai plinta per: el. pašto priedus, užkrėstas svetaines, piratines programas ir žaidimus, USB laikmenas, socialinės inžinerijos atakas (apgaulingus pranešimus), ir pažeidžiamybes neapdorotose programose.</p>
-          </section>
-          
-          <section class="mb-8 scroll-mt-20" id="salinimas">
-            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Kaip pašalinti virusą</h2>
-            <p class="text-muted-foreground leading-relaxed">Paleiskite kompiuterį Safe Mode. Atlikite pilną sistemos skenavimą antivirusine programa. Pašalinkite aptiktas grėsmes. Pakeiskite visus svarbius slaptažodžius. Atnaujinkite operacinę sistemą. Jei virusas nepašalinamas — naudokite bootable antivirusinį diską (Kaspersky Rescue Disk, Norton Bootable Recovery).</p>
-          </section>
+          <h2 id="apsauga">Kaip apsisaugoti nuo virusų?</h2>
+          <p>Naudokite patikimą antivirusinę programą, reguliariai atnaujinkite operacinę sistemą, neatidarinėkite įtartinų el. laiškų priedų ir atsargiai elkitės su nežinomomis nuorodomis.</p>
           
 
           
@@ -130,19 +54,16 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
 
         
 
-        <FAQ items={[{"a":"Dauguma virusų negali tiesiogiai sugadinti aparatinės įrangos, tačiau kai kurie gali perkaitinti procesorių ar sugadinti BIOS.","q":"Ar virusas gali sugadinti kompiuterio aparatinę įrangą?"},{"q":"Kuo virusas skiriasi nuo kenkėjiškos programos (malware)?","a":"Virusas yra vienas iš malware tipų. Malware apima visas kenkėjiškas programas: virusus, trojanus, ransomware, spyware, adware ir kitas grėsmes."},{"q":"Ar Mac kompiuteriai gali gauti virusą?","a":"Taip, nors Mac sistemos yra saugesnės nei Windows, jos nėra imunitetinės. Pastaraisiais metais Mac malware skaičius nuolat auga."},{"q":"Ar Windows Defender pakanka apsaugai nuo virusų?","a":"Windows Defender suteikia bazinę apsaugą, bet trečiųjų šalių antivirusinės (Norton, Bitdefender) siūlo pažangesnę apsaugą su papildomomis funkcijomis."}]} />
-
-        
+        <FAQ items={[{"a":"Dauguma virusų negali tiesiogiai sugadinti aparatinės įrangos, tačiau kai kurie gali perkaitinti procesorių ar sugadinti BIOS.","q":"Ar virusas gali sugadinti kompiuterio aparatinę įrangą?"}]} />
       </div>
 
       
-      <!-- SIDEBAR TOC (desktop) -->
       <aside class="hidden lg:block">
         <div class="sticky top-20">
           <nav class="rounded-xl border border-border/50 bg-card p-4">
             <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
             <ul class="space-y-1.5">
-              <li><a href="#kas-yra" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kas yra kompiuterinis virusas?</a></li><li><a href="#tipai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Pagrindiniai virusų tipai</a></li><li><a href="#pozymiai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip atpažinti užkrėstą kompiuterį?</a></li><li><a href="#apsauga" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip apsisaugoti nuo virusų?</a></li><li><a href="#kas-tai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kas yra kompiuterinis virusas?</a></li><li><a href="#plitimo-budai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip plinta virusai?</a></li><li><a href="#salinimas" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip pašalinti virusą</a></li>
+              <li><a href="#kas-yra" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kas yra kompiuterinis virusas?</a></li><li><a href="#tipai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Pagrindiniai virusų tipai</a></li><li><a href="#pozymiai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip atpažinti užkrėstą kompiuterį?</a></li><li><a href="#apsauga" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip apsisaugoti nuo virusų?</a></li>
             </ul>
           </nav>
           <div class="mt-5"><TrustDisclosure compact /></div>
@@ -150,7 +71,5 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
       </aside>
       
     </div>
-
-    <TrustDisclosure />
   </article>
 </Base>
