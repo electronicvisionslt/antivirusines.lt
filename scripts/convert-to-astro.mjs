@@ -1953,13 +1953,14 @@ const FLAGSHIP_META = {
 };
 
 function generateFlagshipPage(category, data, catArticles, categoryMap) {
-  const meta = FLAGSHIP_META[category.path];
-  const depth = category.path.split('/').filter(Boolean).length;
+  const normalizedCategoryPath = normalizeRoutePath(category.path);
+  const meta = FLAGSHIP_META[normalizedCategoryPath];
+  const depth = normalizedCategoryPath.split('/').filter(Boolean).length;
   const prefix = depth > 1 ? '../../' : '../';
   const faq = parseFaq(category.faq);
 
   // For article-type flagships (virus guides, password guides), use article template with DB content
-  const overlappingArticle = data.articles.find(a => a.path === category.path);
+  const overlappingArticle = data.articles.find(a => normalizeRoutePath(a.path) === normalizedCategoryPath);
 
   // Guide pages with meta — generate rich guide template
   if (meta?.isGuide) {
