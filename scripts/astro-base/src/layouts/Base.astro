@@ -25,6 +25,18 @@ const {
 
 const siteName = 'antivirusines.lt';
 const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+
+// Auto-generate canonical from current URL if not explicitly provided
+const siteUrl = 'https://antivirusines.lt';
+let canonical = canonicalUrl;
+if (!canonical) {
+  const path = Astro.url.pathname.replace(/\/?$/, '/');
+  canonical = `${siteUrl}${path}`;
+}
+// Always ensure trailing slash on canonical
+if (canonical && !canonical.endsWith('/')) {
+  canonical = canonical + '/';
+}
 ---
 <!DOCTYPE html>
 <html lang="lt">
@@ -33,7 +45,7 @@ const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{fullTitle}</title>
   {description && <meta name="description" content={description} />}
-  {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+  <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
 
   <!-- Open Graph -->
