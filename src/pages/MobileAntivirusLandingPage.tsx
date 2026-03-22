@@ -79,7 +79,7 @@ const MobileAntivirusLandingPage = ({ category }: Props) => {
     canonicalUrl: category.canonicalUrl || undefined,
   });
 
-  const { data: products = [] } = useComparisonProducts('mobile-antivirus');
+  const { data: products = [] } = useComparisonProducts('antivirus');
   const top5 = products.slice(0, 5);
   const findProduct = (key: string) => products.find(p => p.name.includes(key) || p.brand.includes(key));
 
