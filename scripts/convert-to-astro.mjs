@@ -1618,6 +1618,8 @@ const FLAGSHIP_META = {
 
 function generateFlagshipPage(category, data, catArticles, categoryMap) {
   const meta = FLAGSHIP_META[category.path];
+  const depth = category.path.split('/').filter(Boolean).length;
+  const prefix = depth > 1 ? '../../' : '../';
   const faq = parseFaq(category.faq);
 
   // For article-type flagships (virus guides, password guides), use article template with DB content
