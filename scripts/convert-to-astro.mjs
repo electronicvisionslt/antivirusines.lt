@@ -591,7 +591,8 @@ function renderPlatformTags(platforms) {
   return `<div class="flex flex-wrap gap-1">${platforms.map(p => `<span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>${escapeHtml(p)}</span>`).join('')}</div>`;
 }
 
-const featureColsDef = [
+const FEATURE_COLUMNS_BY_CATEGORY = {
+  antivirus: [
   { key: 'Realaus laiko apsauga', label: 'Realaus laiko aps.' },
   { key: 'VPN', label: 'VPN' },
   { key: 'Slaptažodžių tvarkyklė', label: 'Slaptažodžiai' },
@@ -602,7 +603,223 @@ const featureColsDef = [
   { key: 'Dark web stebėjimas', label: 'Dark web' },
   { key: 'Tapatybės apsauga', label: 'Tapatybės aps.' },
   { key: 'Sukčių apsauga', label: 'Sukčių aps.' },
-];
+  ],
+  'parental-control': [
+    { key: 'Ekrano laiko valdymas', label: 'Ekrano laikas' },
+    { key: 'Turinio filtravimas', label: 'Turinio filtras' },
+    { key: 'GPS sekimas', label: 'GPS sekimas' },
+    { key: 'Geofencing', label: 'Geofencing' },
+    { key: 'Programėlių blokavimas', label: 'App blokavimas' },
+    { key: 'Socialinių tinklų stebėjimas', label: 'Soc. tinklai' },
+    { key: 'Ataskaitos', label: 'Ataskaitos' },
+    { key: 'Panikos mygtukas', label: 'SOS' },
+  ],
+  'password-manager': [
+    { key: 'Zero-knowledge šifravimas', label: 'Zero-knowledge' },
+    { key: 'Passkeys palaikymas', label: 'Passkeys' },
+    { key: '2FA / MFA', label: '2FA / MFA' },
+    { key: 'Saugumo auditas', label: 'Saugumo auditas' },
+    { key: 'Slaptažodžių dalinimasis', label: 'Dalinimasis' },
+    { key: 'Šeimos planas', label: 'Šeimos planas' },
+    { key: 'Nemokama versija', label: 'Nemokama versija' },
+  ],
+};
+
+const FALLBACK_PRODUCTS_BY_CATEGORY = {
+  'password-manager': [
+    {
+      name: '1Password',
+      brand: '1Password',
+      short_description: 'Premium klasės slaptažodžių tvarkyklė su puikiu UX, passkeys ir kelionių režimu.',
+      verdict: '1Password yra vienas stipriausių mokamų pasirinkimų vartotojams, kurie nori maksimalaus patogumo, stiprios apsaugos ir nepriekaištingos kelių įrenginių sinchronizacijos. Ypač stiprus šeimoms ir komandoms.',
+      pricing_summary: 'Nuo 2.99 €/mėn.',
+      free_version: false,
+      trial_available: true,
+      rating: 9.7,
+      affiliate_url: null,
+      logo_url: null,
+      supported_platforms: ['Windows', 'Mac', 'iOS', 'Android', 'Linux'],
+      best_for: 'Geriausias premium pasirinkimas daugumai vartotojų',
+      pros: ['Labai stiprus UX ir greitas autofill', 'Passkeys ir Travel Mode', 'Puikus šeimos planas'],
+      cons: ['Nėra visiškai nemokamo plano', 'Brangesnis už kai kuriuos konkurentus'],
+      features: {
+        'Zero-knowledge šifravimas': true,
+        'Passkeys palaikymas': true,
+        '2FA / MFA': true,
+        'Saugumo auditas': true,
+        'Slaptažodžių dalinimasis': true,
+        'Šeimos planas': true,
+        'Nemokama versija': false,
+      },
+    },
+    {
+      name: 'Bitwarden',
+      brand: 'Bitwarden',
+      short_description: 'Geriausias kainos ir kokybės santykis, open-source architektūra ir stipri nemokama versija.',
+      verdict: 'Bitwarden išlieka racionaliausias pasirinkimas, jei norite patikimos apsaugos, cross-platform veikimo ir skaidraus open-source modelio. Nemokama versija pakankamai stipri daugeliui žmonių.',
+      pricing_summary: 'Nemokamai / nuo 10 €/metus',
+      free_version: true,
+      trial_available: false,
+      rating: 9.5,
+      affiliate_url: null,
+      logo_url: null,
+      supported_platforms: ['Windows', 'Mac', 'iOS', 'Android', 'Linux'],
+      best_for: 'Geriausia nemokama ir open-source alternatyva',
+      pros: ['Open-source', 'Stipri nemokama versija', 'Pigūs premium planai'],
+      cons: ['Sąsaja mažiau polished nei 1Password', 'Kai kurios pažangios funkcijos tik premium'],
+      features: {
+        'Zero-knowledge šifravimas': true,
+        'Passkeys palaikymas': true,
+        '2FA / MFA': true,
+        'Saugumo auditas': true,
+        'Slaptažodžių dalinimasis': true,
+        'Šeimos planas': true,
+        'Nemokama versija': true,
+      },
+    },
+    {
+      name: 'NordPass',
+      brand: 'NordPass',
+      short_description: 'Paprasta naudoti tvarkyklė su geru saugumo auditu ir intuityviu onboarding.',
+      verdict: 'NordPass tinka vartotojams, kurie nori modernaus dizaino ir paprasto starto be techninių kliūčių. Ypač gerai pasiteisina kasdieniam naudojimui keliuose įrenginiuose.',
+      pricing_summary: 'Nuo 1.69 €/mėn.',
+      free_version: true,
+      trial_available: true,
+      rating: 9.2,
+      affiliate_url: null,
+      logo_url: null,
+      supported_platforms: ['Windows', 'Mac', 'iOS', 'Android', 'Linux'],
+      best_for: 'Paprastumui ir patogiam onboarding',
+      pros: ['Labai aiški sąsaja', 'Password Health ir breach scan', 'Passkeys palaikymas'],
+      cons: ['Nemokamoje versijoje ribotas lankstumas', 'Mažiau pažangių opcijų power-useriams'],
+      features: {
+        'Zero-knowledge šifravimas': true,
+        'Passkeys palaikymas': true,
+        '2FA / MFA': true,
+        'Saugumo auditas': true,
+        'Slaptažodžių dalinimasis': true,
+        'Šeimos planas': true,
+        'Nemokama versija': true,
+      },
+    },
+    {
+      name: 'Proton Pass',
+      brand: 'Proton',
+      short_description: 'Privatumo akcentas, patikima ekosistema ir stiprus nemokamas planas.',
+      verdict: 'Proton Pass yra geras pasirinkimas privatumą vertinantiems vartotojams, ypač jei jau naudojate Proton ekosistemą. Stipri bazinė apsauga ir aiški zero-knowledge kryptis.',
+      pricing_summary: 'Nemokamai / nuo 1.99 €/mėn.',
+      free_version: true,
+      trial_available: false,
+      rating: 9.0,
+      affiliate_url: null,
+      logo_url: null,
+      supported_platforms: ['Windows', 'Mac', 'iOS', 'Android', 'Web'],
+      best_for: 'Privatumui ir Proton naudotojams',
+      pros: ['Stipri privatumo reputacija', 'Alias el. pašto funkcijos', 'Patogi sąsaja'],
+      cons: ['Mažiau enterprise funkcijų', 'Jaunesnis produktas nei rinkos lyderiai'],
+      features: {
+        'Zero-knowledge šifravimas': true,
+        'Passkeys palaikymas': true,
+        '2FA / MFA': true,
+        'Saugumo auditas': true,
+        'Slaptažodžių dalinimasis': true,
+        'Šeimos planas': false,
+        'Nemokama versija': true,
+      },
+    },
+    {
+      name: 'RoboForm',
+      brand: 'RoboForm',
+      short_description: 'Patikimas veteranas su labai geru formų pildymu ir stabiliu autofill.',
+      verdict: 'RoboForm verta rinktis, jei jums svarbiausia stabilus autofill ir ilgametė reputacija. Jis kiek mažiau modernus vizualiai, bet labai tvirtas praktikoje.',
+      pricing_summary: 'Nuo 0.99 €/mėn.',
+      free_version: true,
+      trial_available: true,
+      rating: 8.8,
+      affiliate_url: null,
+      logo_url: null,
+      supported_platforms: ['Windows', 'Mac', 'iOS', 'Android'],
+      best_for: 'Stabiliam autofill ir formų pildymui',
+      pros: ['Puikus formų užpildymas', 'Geras kainos santykis', 'Ilga rinkos patirtis'],
+      cons: ['Vizualiai pasenęs', 'Passkeys palaikymas ne toks brandus'],
+      features: {
+        'Zero-knowledge šifravimas': true,
+        'Passkeys palaikymas': 'Ribotas',
+        '2FA / MFA': true,
+        'Saugumo auditas': true,
+        'Slaptažodžių dalinimasis': true,
+        'Šeimos planas': true,
+        'Nemokama versija': true,
+      },
+    },
+  ],
+};
+
+function getFeatureColumns(meta, products = []) {
+  const configKey = meta?.featureSet || meta?.productCategory || 'antivirus';
+  if (FEATURE_COLUMNS_BY_CATEGORY[configKey]) return FEATURE_COLUMNS_BY_CATEGORY[configKey];
+
+  const discovered = Object.keys((products[0] && typeof products[0].features === 'object' && products[0].features) || {})
+    .slice(0, 8)
+    .map(key => ({ key, label: key }));
+
+  return discovered;
+}
+
+function getFlagshipProducts(meta, allProducts) {
+  const exact = allProducts.filter(product => {
+    if (!meta?.productCategory) return false;
+    return product.product_category === meta.productCategory;
+  });
+
+  if (exact.length > 0) {
+    return exact.slice(0, 5);
+  }
+
+  const fallback = FALLBACK_PRODUCTS_BY_CATEGORY[meta?.productCategory] || [];
+  return fallback.slice(0, 5);
+}
+
+function generateComparisonMatrix(products, featureColumns) {
+  if (!products.length || !featureColumns.length) return '';
+
+  return `
+    <section id="palyginimas" class="mb-16 scroll-mt-20">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Detalus palyginimas</h2>
+        <p class="text-muted-foreground text-sm mt-1.5">Svarbiausios funkcijos vienoje aiškioje matricoje.</p>
+      </div>
+      <div class="overflow-x-auto rounded-xl border border-border/50 bg-card glow-border">
+        <table class="w-full min-w-[860px] text-sm">
+          <thead>
+            <tr class="border-b border-border/40 bg-muted/30">
+              <th class="sticky left-0 z-10 min-w-[210px] bg-muted/30 px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">Funkcija</th>
+              ${products.map((product, index) => `
+              <th class="px-4 py-3 text-left align-top ${index === 0 ? 'bg-primary/[0.04]' : ''}">
+                <div class="flex items-center gap-2.5 min-w-[120px]">
+                  ${renderProductLogo(product, 20)}
+                  <div>
+                    <div class="font-heading font-semibold text-foreground text-xs leading-tight">${escapeHtml(product.name)}</div>
+                    <div class="text-[11px] text-muted-foreground mt-1">${escapeHtml(product.pricing_summary || '')}</div>
+                  </div>
+                </div>
+              </th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>
+            ${featureColumns.map((column, rowIndex) => `
+            <tr class="border-b border-border/20 ${rowIndex % 2 === 0 ? 'bg-background/60' : 'bg-card'}">
+              <th scope="row" class="sticky left-0 z-[1] bg-inherit px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">${escapeHtml(column.label)}</th>
+              ${products.map((product, productIndex) => {
+                const productFeatures = (typeof product.features === 'object' && product.features) || {};
+                return `<td class="px-4 py-3 text-center align-middle ${productIndex === 0 ? 'bg-primary/[0.02]' : ''}">${renderFeatureCheck(productFeatures[column.key])}</td>`;
+              }).join('')}
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </section>`;
+}
 
 function generateAntivirusLandingPage(category, products, catArticles) {
   const faq = parseFaq(category.faq);
