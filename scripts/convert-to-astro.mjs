@@ -40,6 +40,16 @@ function writePage(relativePath, content) {
   console.log(`  ✅ ${relativePath}`);
 }
 
+function routeToPagePath(routePath) {
+  if (routePath === '/') return 'index.astro';
+  return routePath.split('/').filter(Boolean).join('/') + '.astro';
+}
+
+function shouldPreserveCustomPage(routePath) {
+  if (!CUSTOM_ASTRO_PATHS.has(routePath)) return false;
+  return existsSync(join(PAGES_DIR, routeToPagePath(routePath)));
+}
+
 function escapeHtml(str) {
   if (!str) return '';
   return str
@@ -1049,6 +1059,8 @@ const FLAGSHIP_PATHS = new Set([
   '/virusai/reklamos-virusas-telefone',
 ]);
 
+const CUSTOM_ASTRO_PATHS = new Set(['/', ...FLAGSHIP_PATHS]);
+
 // ─── CSS ───
 
 function generateGlobalCss() {
@@ -1238,7 +1250,11 @@ export default defineConfig({
   console.log('\n📄 Generating pages...');
 
   // Homepage
-  writePage('index.astro', generateHomePage(data));
+  if (shouldPreserveCustomPage('/')) {
+    console.log('  🛡️ Preserving custom Astro homepage');
+  } else {
+    writePage('index.astro', generateHomePage(data));
+  }
 
   // 404
   writePage('404.astro', generate404Page());
@@ -1255,6 +1271,11 @@ export default defineConfig({
     const overlappingArticle = articleByPath[category.path];
     const segments = category.path.split('/').filter(Boolean);
     const pagePath = segments.join('/') + '.astro';
+
+    if (shouldPreserveCustomPage(category.path)) {
+      console.log(`  🛡️ Preserving custom Astro page: ${category.path}`);
+      continue;
+    }
 
     if (category.path === '/antivirusines-programos') {
       console.log(`  ⚡ Flagship: ${category.path}`);
