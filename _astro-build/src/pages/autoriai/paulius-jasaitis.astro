@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+
+<Base
+  title="Paulius Jasaitis – Autorius | Antivirusinės.lt"
+  description="Paulius Jasaitis – kibernetinio saugumo ekspertas, rašantis apie antivirusines programas, slaptažodžių saugumą ir privatumą internete."
+>
+  <div class="container py-8">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Paulius Jasaitis","path":"/autoriai/paulius-jasaitis"}]} />
+
+    <div class="mb-10 max-w-2xl">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary font-heading font-bold text-xl">
+          PJ
+        </div>
+        <div>
+          <h1 class="font-heading text-2xl font-bold text-foreground">Paulius Jasaitis</h1>
+          
+          <div class="flex flex-wrap gap-1.5 mt-1">
+            <span class="chip-primary">Kibernetinis saugumas</span><span class="chip-primary">Antivirusinės programos</span><span class="chip-primary">Slaptažodžių saugumas</span><span class="chip-primary">Privatumas internete</span>
+          </div>
+          
+        </div>
+      </div>
+      <p class="text-muted-foreground leading-relaxed">Paulius Jasaitis – kibernetinio saugumo ekspertas ir technologijų entuziastas, padedantis lietuviams saugiai naršyti internete.</p>
+    </div>
+
+    
+    <section>
+      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Straipsniai</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <a href="/testavimas/cms-testas-publikuotas/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">CMS testas: publikuotas straipsnis</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Šis straipsnis sukurtas per CMS ir turi būti matomas viešai.</p>
+        </a>
+        
+        <a href="/kibernetinis-saugumas/kaip-apsaugoti-kompiuteri-nuo-virusu-2025/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Kaip apsaugoti kompiuterį nuo virusų 2025</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Išsamus vadovas, kaip apsaugoti savo kompiuterį nuo virusų ir kenkėjiškos programinės įrangos 2025 metais.</p>
+        </a>
+        
+        <a href="/antivirusines-programos/nemokamos/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Geriausios nemokamos antivirusinės programos 2025 m.</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Išsami nemokamų antivirusinių programų apžvalga. Palyginkite funkcijas, apsaugos lygį ir pasirinkite geriausią nemokamą antivirusinę.</p>
+        </a>
+        
+        <a href="/antivirusines-programos/telefonui/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Geriausios antivirusinės programos telefonui 2025 m.</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Apsaugokite savo telefoną nuo virusų ir kenkėjiškų programų. Apžvelgiame geriausias antivirusines programas Android ir iOS įrenginiams.</p>
+        </a>
+        
+        <a href="/antivirusines-programos/kompiuteriui/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Geriausios antivirusinės programos kompiuteriui 2025 m.</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Išsami antivirusinių programų kompiuteriui apžvalga. Windows ir Mac apsaugos sprendimai – nuo nemokamų iki premium variantų.</p>
+        </a>
+        
+        <a href="/tevu-kontrole/vaiko-telefone/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Tėvų kontrolė vaiko telefone: viskas, ką reikia žinoti</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Kaip nustatyti tėvų kontrolę vaiko telefone? Geriausi sprendimai Android ir iPhone įrenginiams, praktiniai patarimai tėvams.</p>
+        </a>
+        
+        <a href="/virusai/kompiuterinis-virusas/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Kompiuterinis virusas: kas tai, tipai ir kaip apsisaugoti</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Išsamus gidas apie kompiuterinius virusus – kaip jie veikia, kokie yra pagrindiniai tipai ir kaip efektyviai nuo jų apsisaugoti.</p>
+        </a>
+        
+        <a href="/virusai/virusas-telefone/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Virusas telefone: požymiai, šalinimas ir apsauga</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Kaip suprasti, ar telefonas užkrėstas virusu? Praktinis gidas apie mobiliųjų virusų požymius, šalinimą ir prevenciją.</p>
+        </a>
+        
+        <a href="/saugumo-patarimai/saugus-darbas-kompiuteriu/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Saugus darbas kompiuteriu: 15 esminių patarimų</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Praktiniai patarimai saugiam darbui kompiuteriu. Nuo slaptažodžių iki atsarginių kopijų – viskas, ką turite žinoti.</p>
+        </a>
+        
+      </div>
+    </section>
+    
+  </div>
+</Base>

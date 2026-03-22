@@ -3,6 +3,8 @@ import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import FAQ from '../../components/FAQ.astro';
 import TrustDisclosure from '../../components/TrustDisclosure.astro';
+
+const jsonLd = {"@context":"https://schema.org","@type":"Article","headline":"Geriausios nemokamos antivirusinės programos 2025 m.","description":"Išsami nemokamų antivirusinių programų apžvalga. Palyginkite funkcijas, apsaugos lygį ir pasirinkite geriausią nemokamą antivirusinę.","datePublished":"2025-03-15T00:00:00+00:00","dateModified":"2026-03-22T19:45:01.395177+00:00","author":{"@type":"Person","name":"Paulius Jasaitis"},"publisher":{"@type":"Organization","name":"antivirusines.lt"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://antivirusines.lt/antivirusines-programos/nemokamos/"},"inLanguage":"lt"};
 ---
 
 <Base
@@ -10,6 +12,7 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
   description="Išsami nemokamų antivirusinių programų apžvalga. Palyginkite funkcijas, apsaugos lygį ir pasirinkite geriausią nemokamą antivirusinę."
   
   
+  jsonLd={jsonLd}
 >
   <article class="container py-8" itemScope itemType="https://schema.org/Article">
     <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Antivirusinės programos","path":"/antivirusines-programos/"},{"label":"Geriausios nemokamos antivirusinės programos 2025 m.","path":"/antivirusines-programos/nemokamos/"}]} />
@@ -20,8 +23,8 @@ import TrustDisclosure from '../../components/TrustDisclosure.astro';
       </h1>
       <p class="text-muted-foreground leading-relaxed mb-5" itemProp="description">Išsami nemokamų antivirusinių programų apžvalga. Palyginkite funkcijas, apsaugos lygį ir pasirinkite geriausią nemokamą antivirusinę.</p>
       <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
-        <span class="font-medium">Jonas Kazlauskas</span>
-        <time itemProp="dateModified" datetime="2026-03-20T16:41:24.649836+00:00">Atnaujinta: 2026-03-20</time>
+        <span class="font-medium">Paulius Jasaitis</span>
+        <time itemProp="dateModified" datetime="2026-03-22T19:45:01.395177+00:00">Atnaujinta: 2026-03-22</time>
         <span>· 12 min skaitymo</span>
       </div>
     </div>
