@@ -223,8 +223,8 @@ function generateHomePage(data) {
       ],
     },
     { title: 'Tėvų kontrolė', desc: 'Geriausios programėlės vaikų apsaugai internete — ekrano laiko valdymas, turinio filtravimas.', path: '/tevu-kontrole', svgKey: 'users', links: [] },
-    { title: 'Slaptažodžių saugumas', desc: 'Kaip kurti stiprius slaptažodžius, naudoti tvarkykles ir apsaugoti paskyras.', path: '/slaptazodziu-saugumas', svgKey: 'lock', links: [] },
-    { title: 'Virusai ir grėsmės', desc: 'Kas yra kompiuterinis virusas, kaip veikia malware ir kaip nuo jų apsisaugoti.', path: '/virusai/kompiuterinis-virusas', svgKey: 'shield', links: [] },
+    { title: 'Slaptažodžių saugumas', desc: 'Kaip kurti stiprius slaptažodžius, naudoti tvarkykles ir apsaugoti paskyras.', path: '/slaptazodziu-saugumas', svgKey: 'key', links: [] },
+    { title: 'Virusai ir grėsmės', desc: 'Kas yra kompiuterinis virusas, kaip veikia malware ir kaip nuo jų apsisaugoti.', path: '/virusai/kompiuterinis-virusas', svgKey: 'bug', links: [] },
   ];
 
   const trustPoints = [
