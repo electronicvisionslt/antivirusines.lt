@@ -304,7 +304,7 @@ import FAQ from '../components/FAQ.astro';
   <section class="container py-14 md:py-20">
     <div class="text-center mb-10">
       <div class="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-3">
-        ${SVG.zap}
+        ${SVG.sparkles}
         <span>Tyrinėkite pagal temą</span>
       </div>
       <h2 class="font-heading text-2xl md:text-3xl font-bold text-foreground">Kibernetinio saugumo centras</h2>
