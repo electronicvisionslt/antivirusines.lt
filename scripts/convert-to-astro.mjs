@@ -1096,6 +1096,15 @@ const FLAGSHIP_PATHS = new Set([
   '/virusai/reklamos-virusas-telefone',
 ]);
 
+// Only truly rich, hand-crafted product landing pages should be preserved
+const PRODUCT_FLAGSHIP_PATHS = new Set([
+  '/antivirusines-programos',
+  '/antivirusines-programos/nemokamos',
+  '/antivirusines-programos/telefonui',
+  '/antivirusines-programos/kompiuteriui',
+  '/tevu-kontrole',
+]);
+
 // ─── Flagship page metadata for all non-antivirus flagship paths ───
 const FLAGSHIP_META = {
   '/antivirusines-programos/nemokamos': {
@@ -1147,6 +1156,121 @@ const FLAGSHIP_META = {
     productCategory: 'password-manager',
     breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }, { label: 'Slaptažodžių tvarkyklės', path: '/slaptazodziu-saugumas/slaptazodziu-tvarkykles' }],
   },
+  '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi': {
+    title: 'Kaip pakeisti Gmail slaptažodį 2026 — žingsnis po žingsnio',
+    description: 'Išsami instrukcija, kaip pakeisti Gmail slaptažodį kompiuteryje ir telefone. Patarimai dėl saugaus slaptažodžio.',
+    heroTitle: 'Kaip pakeisti Gmail slaptažodį',
+    heroDesc: 'Žingsnis po žingsnio instrukcija, kaip pakeisti Gmail slaptažodį kompiuteryje ir telefone — su saugumo patarimais.',
+    isGuide: true,
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }, { label: 'Gmail slaptažodis', path: '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi' }],
+    guideSections: [
+      { id: 'kompiuteryje', title: 'Kaip pakeisti Gmail slaptažodį kompiuteryje', content: 'Prisijunkite prie myaccount.google.com, eikite į „Sauga" → „Prisijungimas prie Google" → „Slaptažodis". Įveskite dabartinį slaptažodį, tada sukurkite naują — mažiausiai 12 simbolių su raidėmis, skaičiais ir specialiais ženklais.' },
+      { id: 'telefone', title: 'Kaip pakeisti Gmail slaptažodį telefone', content: 'Atidarykite Gmail programėlę, bakstelėkite profilio nuotrauką → „Google paskyros valdymas" → „Sauga" → „Slaptažodis". Patvirtinkite tapatybę piršto atspaudu arba PIN kodu, tada įveskite naują slaptažodį.' },
+      { id: 'dvieju-veiksniu', title: 'Dviejų veiksnių autentifikacija (2FA)', content: 'Po slaptažodžio pakeitimo rekomenduojame įjungti 2FA: eikite į „Sauga" → „Prisijungimo būdai" → „Dviejų veiksnių patvirtinimas". Galite naudoti Google Authenticator, SMS kodus arba fizinį saugos raktą.' },
+      { id: 'patarimai', title: 'Saugaus slaptažodžio patarimai', content: 'Naudokite unikalų slaptažodį kiekvienai paskyrai. Rekomenduojama naudoti slaptažodžių tvarkyklę (1Password, Bitwarden). Venkite asmeninės informacijos — gimimo datų, vardų, augintinių vardų. Idealus slaptažodis: 14+ simbolių, mišrios raidės, skaičiai ir simboliai.' },
+    ],
+    guideFaq: [
+      { q: 'Kaip pakeisti Gmail slaptažodį, jei pamiršau senąjį?', a: 'Eikite į accounts.google.com/signin/recovery ir sekite atkūrimo žingsnius — Google pasiūlys patvirtinti tapatybę per telefoną arba alternatyvų el. paštą.' },
+      { q: 'Ar slaptažodžio keitimas atjungia kitus įrenginius?', a: 'Taip, pakeitus Gmail slaptažodį visi kiti įrenginiai bus atjungti ir turėsite prisijungti iš naujo su nauju slaptažodžiu.' },
+      { q: 'Kaip dažnai reikėtų keisti Gmail slaptažodį?', a: 'NIST rekomenduoja keisti slaptažodį tik įtarus kompromitavimą. Svarbiau naudoti stiprų, unikalų slaptažodį su 2FA, nei keisti jį reguliariai.' },
+    ],
+  },
+  '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi': {
+    title: 'Kaip pakeisti WiFi slaptažodį 2026 — instrukcija visiems routeriams',
+    description: 'Kaip pakeisti WiFi slaptažodį per maršrutizatoriaus nustatymus. Instrukcija TP-Link, ASUS, Netgear, Huawei ir kitiems routeriams.',
+    heroTitle: 'Kaip pakeisti WiFi slaptažodį',
+    heroDesc: 'Universali instrukcija WiFi slaptažodžio keitimui per maršrutizatoriaus nustatymus — tinka visiems populiariausiems routeriams.',
+    isGuide: true,
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }, { label: 'WiFi slaptažodis', path: '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi' }],
+    guideSections: [
+      { id: 'prisijungimas', title: '1. Prisijunkite prie routerio', content: 'Atidarykite naršyklę ir įveskite routerio IP adresą (dažniausiai 192.168.0.1 arba 192.168.1.1). Prisijunkite su admin vartotoju — slaptažodis paprastai nurodytas ant routerio lipduko apačioje.' },
+      { id: 'nustatymai', title: '2. Raskite WiFi nustatymus', content: 'Ieškokite skyriaus „Wireless", „WiFi Settings" arba „Belaidis tinklas". Kiekvieno gamintojo sąsaja šiek tiek skiriasi, bet WiFi nustatymai visada yra pagrindinėse kategorijose.' },
+      { id: 'keitimas', title: '3. Pakeiskite slaptažodį', content: 'Laukelyje „Password", „Pre-Shared Key" arba „Passphrase" įveskite naują slaptažodį. Rekomenduojama: WPA3 arba WPA2 šifravimas, mažiausiai 12 simbolių. Išsaugokite nustatymus.' },
+      { id: 'po-keitimo', title: '4. Prijunkite įrenginius iš naujo', content: 'Pakeitę WiFi slaptažodį, visi prijungti įrenginiai bus atjungti. Kiekviename įrenginyje pasirinkite savo WiFi tinklą ir įveskite naują slaptažodį.' },
+      { id: 'routeriai', title: 'Nustatymai pagal gamintoją', content: 'TP-Link: 192.168.0.1 → Wireless → Security. ASUS: router.asus.com → Advanced Settings → Wireless. Netgear: routerlogin.net → Wireless. Huawei: 192.168.3.1 → My WiFi. Telia/Tele2: dažniausiai 192.168.1.1, admin/admin.' },
+    ],
+    guideFaq: [
+      { q: 'Kaip sužinoti routerio IP adresą?', a: 'Windows: atidarykite Command Prompt ir įveskite „ipconfig" — ieškokite „Default Gateway". Mac: System Preferences → Network → Advanced → TCP/IP.' },
+      { q: 'Kaip pakeisti WiFi slaptažodį telefone?', a: 'Atidarykite telefono naršyklę ir įveskite routerio IP adresą. Prisijunkite kaip admin ir keiskite slaptažodį lygiai taip pat kaip kompiuteryje.' },
+      { q: 'Kokį WiFi šifravimą pasirinkti?', a: 'Visada rinkitės WPA3 (jei palaiko routeris) arba WPA2-PSK (AES). Venkite WEP ir WPA — jie nesaugūs.' },
+    ],
+  },
+  '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi': {
+    title: 'Ką daryti pamiršus slaptažodį 2026 — atkūrimo gidas',
+    description: 'Pamiršote slaptažodį? Kaip atkurti Gmail, Facebook, Instagram ir kitų paskyrų slaptažodžius. Žingsnis po žingsnio instrukcija.',
+    heroTitle: 'Ką daryti pamiršus slaptažodį',
+    heroDesc: 'Pamiršote slaptažodį? Praktinis gidas, kaip atkurti prieigą prie Gmail, Facebook, Instagram ir kitų paskyrų.',
+    isGuide: true,
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }, { label: 'Pamirštas slaptažodis', path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi' }],
+    guideSections: [
+      { id: 'google', title: 'Gmail / Google paskyra', content: 'Eikite į accounts.google.com/signin/recovery. Google pasiūlys kelis atkūrimo būdus: SMS kodą, alternatyvų el. paštą arba saugos klausimus. Jei turite nustatytą atkūrimo telefoną — procesas užtrunka 2 minutes.' },
+      { id: 'facebook', title: 'Facebook paskyra', content: 'Paspauskite „Pamiršote slaptažodį?" prisijungimo puslapyje. Įveskite el. paštą arba telefono numerį. Facebook atsiųs atkūrimo kodą. Jei nebeturite prieigos prie el. pašto — naudokite „Identifikuokite save" funkciją su draugų pagalba.' },
+      { id: 'instagram', title: 'Instagram paskyra', content: 'Prisijungimo ekrane bakstelėkite „Pamiršau slaptažodį". Įveskite vartotojo vardą arba el. paštą. Instagram atsiųs prisijungimo nuorodą arba SMS kodą. Taip pat galite prisijungti per Facebook, jei paskyros susietos.' },
+      { id: 'bendri-patarimai', title: 'Bendri patarimai visoms paskyroms', content: 'Visada turėkite nustatytą atkūrimo el. paštą ir telefono numerį. Naudokite slaptažodžių tvarkyklę (1Password, Bitwarden), kad nereikėtų prisiminti slaptažodžių. Įjunkite dviejų veiksnių autentifikaciją (2FA) visose svarbiose paskyrose.' },
+      { id: 'prevencija', title: 'Kaip ateityje išvengti šios problemos', content: 'Rekomenduojame: 1) Naudoti slaptažodžių tvarkyklę, kuri saugiai saugo visus slaptažodžius. 2) Nustatyti atkūrimo kontaktus visose paskyrose. 3) Užsirašyti pagrindinių paskyrų atkūrimo kodus saugioje vietoje. 4) Naudoti biometrinį prisijungimą (pirštų atspaudus, Face ID) kur įmanoma.' },
+    ],
+    guideFaq: [
+      { q: 'Ar galima atkurti slaptažodį be telefono ir el. pašto?', a: 'Tai sudėtingiau, bet įmanoma. Daugelis platformų siūlo alternatyvius atkūrimo būdus: tapatybės patvirtinimą, saugos klausimus arba kreipimąsi į palaikymo tarnybą su asmens dokumentu.' },
+      { q: 'Kiek laiko užtrunka slaptažodžio atkūrimas?', a: 'Su atkūrimo telefonu ar el. paštu — 2-5 minutės. Be jų — nuo kelių valandų iki kelių dienų, priklausomai nuo platformos.' },
+      { q: 'Ar saugūs slaptažodžių tvarkyklės?', a: 'Taip, patikimos tvarkyklės (1Password, Bitwarden) naudoja end-to-end šifravimą. Net jei tvarkyklės serveriai būtų pažeisti, jūsų slaptažodžiai išliktų užšifruoti.' },
+    ],
+  },
+  '/virusai/kompiuterinis-virusas': {
+    title: 'Kompiuterinis virusas: kas tai, tipai ir apsauga 2026',
+    description: 'Išsamus gidas apie kompiuterinius virusus — kaip jie veikia, pagrindiniai tipai ir kaip efektyviai apsisaugoti.',
+    heroTitle: 'Kompiuterinis virusas: kas tai ir kaip apsisaugoti',
+    heroDesc: 'Viskas, ką reikia žinoti apie kompiuterinius virusus — tipai, plitimo būdai, atpažinimo požymiai ir efektyviausi apsaugos metodai.',
+    isGuide: true,
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' }, { label: 'Kompiuterinis virusas', path: '/virusai/kompiuterinis-virusas' }],
+  },
+  '/virusai/virusas-telefone': {
+    title: 'Virusas telefone: požymiai, šalinimas ir apsauga 2026',
+    description: 'Kaip suprasti, ar telefonas užkrėstas virusu? Praktinis gidas apie mobiliųjų virusų požymius, šalinimą ir prevenciją.',
+    heroTitle: 'Virusas telefone: ką daryti?',
+    heroDesc: 'Kaip atpažinti, pašalinti ir apsisaugoti nuo virusų telefone — praktinis gidas Android ir iOS naudotojams.',
+    isGuide: true,
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' }, { label: 'Virusas telefone', path: '/virusai/virusas-telefone' }],
+  },
+  '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas': {
+    title: 'Kaip patikrinti ar kompiuteryje yra virusas 2026',
+    description: 'Žingsnis po žingsnio instrukcija, kaip patikrinti ar kompiuteryje yra virusas. Windows ir Mac metodai.',
+    heroTitle: 'Kaip patikrinti ar kompiuteryje yra virusas',
+    heroDesc: 'Praktinis gidas: kaip nuskaityti kompiuterį dėl virusų, atpažinti infekciją ir pašalinti kenkėjiškas programas.',
+    isGuide: true,
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' }, { label: 'Virusų patikra', path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas' }],
+    guideSections: [
+      { id: 'pozymiai', title: 'Infekcijos požymiai', content: 'Pagrindiniai požymiai, kad kompiuteryje gali būti virusas: sistema veikia žymiai lėčiau, atsiranda nepažįstamų programų, naršyklė nukreipia į keistas svetaines, pasirodo neįprasti iššokantys langai, kietasis diskas neįprastai aktyvus, antivirusinė programa išjungta be jūsų žinios.' },
+      { id: 'windows-skenavimas', title: 'Virusų skenavimas Windows sistemoje', content: 'Windows 10/11 turi integruotą Windows Security (Defender): Nustatymai → Atnaujinimas ir sauga → Windows Security → Virusų ir grėsmių apsauga → Pilnas skenavimas. Rekomenduojame papildomai naudoti Malwarebytes nemokamą skenerį antrajai nuomonei.' },
+      { id: 'mac-skenavimas', title: 'Virusų skenavimas Mac sistemoje', content: 'Mac turi integruotą XProtect, bet papildomam skenavimui naudokite Malwarebytes for Mac (nemokama versija) arba Bitdefender. Atidarykite Activity Monitor ir ieškokite neįprastų procesų, kurie naudoja daug CPU.' },
+      { id: 'salinimas', title: 'Virusų šalinimas', content: 'Paleiskite kompiuterį Safe Mode (F8 Windows, Shift palaikant Mac). Atlikite pilną skenavimą antivirusine programa. Pašalinkite aptiktas grėsmes. Pakeiskite visus svarbius slaptažodžius. Atnaujinkite operacinę sistemą ir programas.' },
+      { id: 'prevencija', title: 'Prevencija ateičiai', content: 'Naudokite patikimą antivirusinę programą su realaus laiko apsauga. Reguliariai atnaujinkite operacinę sistemą. Neatidarinėkite įtartinų el. laiškų priedų. Atsisiųskite programas tik iš oficialių šaltinių. Reguliariai darykite atsargines kopijas.' },
+    ],
+    guideFaq: [
+      { q: 'Ar Windows Defender pakanka apsaugai?', a: 'Windows Defender suteikia bazinę apsaugą, bet trečiųjų šalių antivirusinės (Norton, Bitdefender) siūlo pažangesnę apsaugą, VPN ir papildomas funkcijas.' },
+      { q: 'Ar virusas gali sugadinti kompiuterį fiziškai?', a: 'Tiesiogiai ne, bet kai kurie virusai gali perkaitinti procesorių ar sugadinti BIOS/UEFI firmware, kas netiesiogiai gali pakenkti aparatūrai.' },
+      { q: 'Kaip dažnai reikia skenuoti kompiuterį?', a: 'Su realaus laiko apsauga — pilną skenavimą rekomenduojame kartą per savaitę. Be antivirusinės — bent kartą per dieną.' },
+    ],
+  },
+  '/virusai/reklamos-virusas-telefone': {
+    title: 'Reklamos virusas telefone: kaip pašalinti 2026',
+    description: 'Kaip pašalinti reklamos virusą iš telefono. Adware šalinimas Android ir iOS — žingsnis po žingsnio instrukcija.',
+    heroTitle: 'Reklamos virusas telefone: kaip pašalinti',
+    heroDesc: 'Iššokančios reklamos telefone? Greičiausiai tai adware — reklamos virusas. Kaip jį atpažinti ir pašalinti iš Android ir iOS.',
+    isGuide: true,
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' }, { label: 'Reklamos virusas', path: '/virusai/reklamos-virusas-telefone' }],
+    guideSections: [
+      { id: 'kas-tai', title: 'Kas yra reklamos virusas (adware)?', content: 'Adware — tai kenkėjiška programinė įranga, kuri rodo nepageidaujamas reklamas telefone. Ji gali atsirasti per užkrėstas programėles, nesaugias svetaines arba apgaulingus pranešimus. Adware gali rodyti iššokančius langus, peradresuoti naršyklę ir net sekti jūsų veiklą.' },
+      { id: 'pozymiai', title: 'Adware požymiai telefone', content: 'Dažniausiai matomi požymiai: iššokančios reklamos net nesinaudojant naršykle, naršyklės nukreipimai į reklaminius puslapius, naujos nepažįstamos programėlės, padidėjęs duomenų naudojimas, greitai senka baterija, telefonas veikia lėčiau.' },
+      { id: 'salinimas-android', title: 'Adware šalinimas Android', content: '1) Paleiskite Safe Mode (palaikykite maitinimo mygtuką → ilgai spauskite „Išjungti" → „Safe Mode"). 2) Eikite į Nustatymai → Programos ir pašalinkite įtartinas programėles. 3) Išvalykite naršyklės talpyklą ir duomenis. 4) Nuskenuokite su Malwarebytes arba Norton Mobile Security.' },
+      { id: 'salinimas-ios', title: 'Adware šalinimas iPhone', content: '1) Atnaujinkite iOS iki naujausios versijos. 2) Pašalinkite neseniai įdiegtas įtartinas programėles. 3) Safari → Nustatymai → Išvalyti istoriją ir svetainių duomenis. 4) Jei problema išlieka — atstatykite tinklo nustatymus arba atlikite gamyklinį atstatymą.' },
+      { id: 'prevencija', title: 'Kaip išvengti adware ateityje', content: 'Diekite programėles tik iš Google Play arba App Store. Atidžiai skaitykite programėlių leidimus prieš diegiant. Naudokite reklamos blokavimo naršyklę. Vengikte spausti ant įtartinų reklamų ir pranešimų. Naudokite antivirusinę su realaus laiko apsauga.' },
+    ],
+    guideFaq: [
+      { q: 'Ar reklamos virusas gali pavogti duomenis?', a: 'Paprastas adware dažniausiai tik rodo reklamas, bet pažangesni variantai gali sekti naršymo istoriją, rinkti asmeninius duomenis ir net vogti prisijungimo informaciją.' },
+      { q: 'Ar iPhone gali gauti reklamos virusą?', a: 'iOS sistema yra saugesnė, bet reklamos virusai vis tiek gali pasireikšti per kenkėjiškas svetaines, neteisėtus konfigūracijos profilius arba per užkrėstas programėles.' },
+      { q: 'Ar pakanka pašalinti programėlę, kad atsikratyčiau adware?', a: 'Dažnai taip, bet rekomenduojame papildomai išvalyti naršyklės duomenis ir nuskenuoti telefoną antivirusine programa, nes adware gali palikti liekanas.' },
+    ],
+  },
 };
 
 function generateFlagshipPage(category, data, catArticles, categoryMap) {
@@ -1157,8 +1281,10 @@ function generateFlagshipPage(category, data, catArticles, categoryMap) {
 
   // For article-type flagships (virus guides, password guides), use article template with DB content
   const overlappingArticle = data.articles.find(a => a.path === category.path);
-  if (overlappingArticle && !meta) {
-    return generateArticlePage(overlappingArticle, categoryMap);
+
+  // Guide pages with meta — generate rich guide template
+  if (meta?.isGuide) {
+    return generateGuideFlagshipPage(category, meta, overlappingArticle, data, catArticles, categoryMap);
   }
 
   // For hub pages without products (like /slaptazodziu-saugumas)
@@ -1175,6 +1301,11 @@ function generateFlagshipPage(category, data, catArticles, categoryMap) {
     }).slice(0, 5);
 
     return generateProductFlagshipPage(category, meta, products, faq, catArticles, prefix);
+  }
+
+  // Fallback: if has overlapping article, use article template
+  if (overlappingArticle) {
+    return generateArticlePage(overlappingArticle, categoryMap);
   }
 
   // Fallback: generate as category page
@@ -1431,7 +1562,7 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
 </Base>`;
 }
 
-const CUSTOM_ASTRO_PATHS = new Set(['/', ...FLAGSHIP_PATHS]);
+const CUSTOM_ASTRO_PATHS = new Set(['/', ...PRODUCT_FLAGSHIP_PATHS]);
 
 // ─── CSS ───
 
