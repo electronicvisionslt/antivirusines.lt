@@ -304,12 +304,18 @@ import TrustDisclosure from '${article.path.split('/').length > 2 ? '../../' : '
 </Base>`;
 }
 
-function generateCategoryPage(category, articles) {
+function generateCategoryPage(category, articles, relatedCategories = [], categoryMap = {}) {
   const faq = parseFaq(category.faq);
-  const breadcrumbs = [
-    { label: 'Pradžia', path: '/' },
-    { label: category.name, path: category.path },
-  ];
+  const parentCategory = category.parent_id ? categoryMap[category.parent_id] : null;
+  const breadcrumbs = [{ label: 'Pradžia', path: '/' }];
+
+  if (parentCategory) {
+    breadcrumbs.push({ label: parentCategory.name, path: parentCategory.path });
+  }
+
+  breadcrumbs.push({ label: category.name, path: category.path });
+
+  const relatedHeading = category.parent_id ? 'Susijusios temos' : 'Temos šiame skyriuje';
 
   return `---
 import Base from '${category.path.split('/').filter(Boolean).length > 1 ? '../../' : '../'}layouts/Base.astro';
@@ -331,6 +337,21 @@ import TrustDisclosure from '${category.path.split('/').filter(Boolean).length >
       <p class="text-muted-foreground leading-relaxed">${escapeHtml(category.description || '')}</p>
     </div>
 
+    ${relatedCategories.length > 0 ? `
+    <section class="mb-12">
+      <h2 class="font-heading text-xl font-bold text-foreground mb-5">${relatedHeading}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        ${relatedCategories.map(item => `
+        <a href="${item.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">${escapeHtml(item.name)}</h3>
+          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">${escapeHtml(item.description || '')}</p>
+          <span class="inline-flex items-center gap-1.5 mt-3 text-[11px] font-heading font-semibold text-primary">Atverti temą ${SVG.chevronRight}</span>
+        </a>
+        `).join('')}
+      </div>
+    </section>
+    ` : ''}
+
     ${articles.length > 0 ? `
     <section class="mb-12">
       <h2 class="font-heading text-xl font-bold text-foreground mb-5">Straipsniai ir gidai</h2>
@@ -349,7 +370,7 @@ import TrustDisclosure from '${category.path.split('/').filter(Boolean).length >
     </section>
     ` : ''}
 
-    <FAQ items={${JSON.stringify(faq)}} />
+    ${faq.length > 0 ? `<FAQ items={${JSON.stringify(faq)}} />` : ''}
     <TrustDisclosure />
   </div>
 </Base>`;
@@ -1171,8 +1192,24 @@ export default defineConfig({
 
   // Build lookup maps
   const categoryMap = {};
+  const categoryByPath = {};
+  const articleByPath = {};
+  const childCategoriesByParent = {};
+
   for (const cat of data.categories) {
     categoryMap[cat.id] = cat;
+    categoryByPath[cat.path] = cat;
+
+    if (cat.parent_id) {
+      if (!childCategoriesByParent[cat.parent_id]) {
+        childCategoriesByParent[cat.parent_id] = [];
+      }
+      childCategoriesByParent[cat.parent_id].push(cat);
+    }
+  }
+
+  for (const article of data.articles) {
+    articleByPath[article.path] = article;
   }
 
   // Articles grouped by category
@@ -1211,27 +1248,29 @@ export default defineConfig({
     writePage(page.path, page.content);
   }
 
-  // Category pages (flagship pages get dedicated templates)
+  // Category pages
   for (const category of data.categories) {
     const catArticles = articlesByCategory[category.id] || [];
+    const relatedCategories = childCategoriesByParent[category.id] || [];
+    const overlappingArticle = articleByPath[category.path];
     const segments = category.path.split('/').filter(Boolean);
     const pagePath = segments.join('/') + '.astro';
 
     if (category.path === '/antivirusines-programos') {
       console.log(`  ⚡ Flagship: ${category.path}`);
       writePage(pagePath, generateAntivirusLandingPage(category, data.products, catArticles));
-    } else if (FLAGSHIP_PATHS.has(category.path)) {
-      console.log(`  ⚡ Flagship: ${category.path} (using category template for now)`);
-      writePage(pagePath, generateCategoryPage(category, catArticles));
+    } else if (overlappingArticle) {
+      console.log(`  📰 Category path uses article template: ${category.path}`);
+      writePage(pagePath, generateArticlePage(overlappingArticle, categoryMap));
     } else {
-      writePage(pagePath, generateCategoryPage(category, catArticles));
+      writePage(pagePath, generateCategoryPage(category, catArticles, relatedCategories, categoryMap));
     }
   }
 
   // Article pages
   for (const article of data.articles) {
-    // Skip if the path overlaps with a category (flagship pages handle this)
-    const isCategory = data.categories.some(c => c.path === article.path);
+    // Skip if the path overlaps with a category (category route already generated)
+    const isCategory = !!categoryByPath[article.path];
     if (isCategory) continue;
 
     const segments = article.path.split('/').filter(Boolean);
