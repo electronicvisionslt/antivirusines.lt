@@ -1192,8 +1192,24 @@ export default defineConfig({
 
   // Build lookup maps
   const categoryMap = {};
+  const categoryByPath = {};
+  const articleByPath = {};
+  const childCategoriesByParent = {};
+
   for (const cat of data.categories) {
     categoryMap[cat.id] = cat;
+    categoryByPath[cat.path] = cat;
+
+    if (cat.parent_id) {
+      if (!childCategoriesByParent[cat.parent_id]) {
+        childCategoriesByParent[cat.parent_id] = [];
+      }
+      childCategoriesByParent[cat.parent_id].push(cat);
+    }
+  }
+
+  for (const article of data.articles) {
+    articleByPath[article.path] = article;
   }
 
   // Articles grouped by category
@@ -1232,27 +1248,29 @@ export default defineConfig({
     writePage(page.path, page.content);
   }
 
-  // Category pages (flagship pages get dedicated templates)
+  // Category pages
   for (const category of data.categories) {
     const catArticles = articlesByCategory[category.id] || [];
+    const relatedCategories = childCategoriesByParent[category.id] || [];
+    const overlappingArticle = articleByPath[category.path];
     const segments = category.path.split('/').filter(Boolean);
     const pagePath = segments.join('/') + '.astro';
 
     if (category.path === '/antivirusines-programos') {
       console.log(`  ⚡ Flagship: ${category.path}`);
       writePage(pagePath, generateAntivirusLandingPage(category, data.products, catArticles));
-    } else if (FLAGSHIP_PATHS.has(category.path)) {
-      console.log(`  ⚡ Flagship: ${category.path} (using category template for now)`);
-      writePage(pagePath, generateCategoryPage(category, catArticles));
+    } else if (overlappingArticle) {
+      console.log(`  📰 Category path uses article template: ${category.path}`);
+      writePage(pagePath, generateArticlePage(overlappingArticle, categoryMap));
     } else {
-      writePage(pagePath, generateCategoryPage(category, catArticles));
+      writePage(pagePath, generateCategoryPage(category, catArticles, relatedCategories, categoryMap));
     }
   }
 
   // Article pages
   for (const article of data.articles) {
-    // Skip if the path overlaps with a category (flagship pages handle this)
-    const isCategory = data.categories.some(c => c.path === article.path);
+    // Skip if the path overlaps with a category (category route already generated)
+    const isCategory = !!categoryByPath[article.path];
     if (isCategory) continue;
 
     const segments = article.path.split('/').filter(Boolean);
