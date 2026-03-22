@@ -1303,11 +1303,13 @@ const FLAGSHIP_PATHS = new Set([
   '/antivirusines-programos/telefonui',
   '/antivirusines-programos/kompiuteriui',
   '/tevu-kontrole',
+  '/tevu-kontrole/vaiko-telefone',
   '/slaptazodziu-saugumas',
   '/slaptazodziu-saugumas/slaptazodziu-tvarkykles',
   '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi',
   '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi',
   '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi',
+  '/virusai',
   '/virusai/kompiuterinis-virusas',
   '/virusai/virusas-telefone',
   '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas',
@@ -1353,12 +1355,37 @@ const FLAGSHIP_META = {
     productCategory: 'parental-control',
     breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Tėvų kontrolė', path: '/tevu-kontrole' }],
   },
+  '/tevu-kontrole/vaiko-telefone': {
+    title: 'Tėvų kontrolė vaiko telefone 2026 — ką būtina žinoti',
+    description: 'Praktinis gidas apie tėvų kontrolę vaiko telefone: ekrano laikas, turinio filtravimas, lokacija ir saugumo nustatymai.',
+    heroTitle: 'Tėvų kontrolė vaiko telefone',
+    heroDesc: 'Kaip saugiai valdyti vaiko telefoną, stebėti naudojimą ir nustatyti aiškias skaitmenines ribas be perteklinės kontrolės.',
+    isGuide: true,
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Tėvų kontrolė', path: '/tevu-kontrole' }, { label: 'Vaiko telefone', path: '/tevu-kontrole/vaiko-telefone' }],
+    guideSections: [
+      { id: 'kada-reikia', title: 'Kada verta įjungti tėvų kontrolę?', content: 'Tėvų kontrolė ypač naudinga, kai vaikas pradeda savarankiškai naudotis telefonu, diegti programėles ir leisti laiką socialiniuose tinkluose. Ji padeda valdyti ekrano laiką, apsaugoti nuo netinkamo turinio ir aiškiai nustatyti taisykles.' },
+      { id: 'ka-nustatyti', title: 'Svarbiausi nustatymai telefone', content: 'Pirmiausia rekomenduojame nustatyti programėlių laiko limitus, amžiaus ribojimus, lokacijos bendrinimą ir pirkimų patvirtinimą. Taip pat verta išjungti programėlių diegimą iš neoficialių šaltinių ir įjungti saugios paieškos filtrus.' },
+      { id: 'android-ios', title: 'Android ir iPhone sprendimai', content: 'Android telefonuose dažniausiai naudojamos Google Family Link, Qustodio ar Norton Family programos. iPhone naudotojai gali pradėti nuo Screen Time ir Family Sharing, o pažangesnei kontrolei naudoti papildomas programėles su turinio filtravimu.' },
+      { id: 'balansas', title: 'Kaip išlaikyti balansą tarp saugumo ir pasitikėjimo', content: 'Tėvų kontrolė veikia geriausiai tada, kai ji derinama su aiškiu pokalbiu su vaiku. Paaiškinkite, kokie ribojimai nustatyti ir kodėl jie reikalingi, o ne stebėkite slapta. Taip auginamas pasitikėjimas ir ugdomi geri skaitmeniniai įpročiai.' },
+    ],
+    guideFaq: [
+      { q: 'Ar tėvų kontrolė gali blokuoti TikTok ir YouTube?', a: 'Taip, dauguma tėvų kontrolės sprendimų leidžia visiškai blokuoti konkrečias programėles arba riboti jų naudojimo laiką pagal dienos laiką ir trukmę.' },
+      { q: 'Ar galima matyti vaiko buvimo vietą realiu laiku?', a: 'Taip, jei telefone įjungta lokacija ir pasirinktas sprendimas palaiko GPS sekimą. Šią funkciją siūlo daugelis populiarių tėvų kontrolės programėlių.' },
+      { q: 'Kokia programa geriausia mažesniems vaikams?', a: 'Mažesniems vaikams dažniausiai pakanka paprastesnių sprendimų su stipriu turinio filtravimu ir ekrano laiko valdymu, pvz., Google Family Link arba Qustodio.' },
+    ],
+  },
   '/slaptazodziu-saugumas': {
     title: 'Slaptažodžių saugumas 2026 — patarimai ir gidai',
     description: 'Viskas apie slaptažodžių saugumą: kaip sukurti stiprų slaptažodį, kur jį saugoti, kaip pakeisti ir ką daryti pamiršus.',
     heroTitle: 'Slaptažodžių saugumas',
     heroDesc: 'Kaip sukurti stiprų slaptažodį, naudoti slaptažodžių tvarkykles ir apsaugoti paskyras nuo įsilaužimo.',
     isHub: true,
+    featuredCards: [
+      { path: '/slaptazodziu-saugumas/slaptazodziu-tvarkykles', label: 'Slaptažodžių tvarkyklės', desc: 'Geriausi įrankiai stiprių ir unikalių slaptažodžių saugojimui.' },
+      { path: '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi', label: 'Kaip pakeisti Gmail slaptažodį', desc: 'Greita instrukcija kompiuteryje ir telefone.' },
+      { path: '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi', label: 'Kaip pakeisti WiFi slaptažodį', desc: 'Routerio nustatymai ir saugus šifravimas.' },
+      { path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi', label: 'Pamiršau slaptažodį', desc: 'Kaip atkurti prieigą prie svarbių paskyrų.' },
+    ],
     breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }],
   },
   '/slaptazodziu-saugumas/slaptazodziu-tvarkykles': {
@@ -1428,13 +1455,27 @@ const FLAGSHIP_META = {
       { q: 'Ar saugūs slaptažodžių tvarkyklės?', a: 'Taip, patikimos tvarkyklės (1Password, Bitwarden) naudoja end-to-end šifravimą. Net jei tvarkyklės serveriai būtų pažeisti, jūsų slaptažodžiai išliktų užšifruoti.' },
     ],
   },
+  '/virusai': {
+    title: 'Virusai ir grėsmės 2026 — kaip atpažinti ir apsisaugoti',
+    description: 'Praktiniai gidai apie kompiuterinius ir mobiliuosius virusus, jų požymius, patikrą, šalinimą ir prevenciją.',
+    heroTitle: 'Virusai ir skaitmeninės grėsmės',
+    heroDesc: 'Kaip atpažinti pavojingą elgesį, patikrinti įrenginį ir apsaugoti kompiuterį ar telefoną nuo virusų, adware ir kitų grėsmių.',
+    isHub: true,
+    featuredCards: [
+      { path: '/virusai/kompiuterinis-virusas', label: 'Kompiuterinis virusas', desc: 'Kas tai, kaip plinta ir ką daryti užsikrėtus.' },
+      { path: '/virusai/virusas-telefone', label: 'Virusas telefone', desc: 'Požymiai, šalinimas ir apsauga Android bei iPhone.' },
+      { path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas', label: 'Kaip patikrinti kompiuterį', desc: 'Pilnas skenavimas ir infekcijos požymių patikra.' },
+      { path: '/virusai/reklamos-virusas-telefone', label: 'Reklamos virusas telefone', desc: 'Kaip pašalinti adware ir sustabdyti iššokančias reklamas.' },
+    ],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai' }],
+  },
   '/virusai/kompiuterinis-virusas': {
     title: 'Kompiuterinis virusas: kas tai, tipai ir apsauga 2026',
     description: 'Išsamus gidas apie kompiuterinius virusus — kaip jie veikia, pagrindiniai tipai ir kaip efektyviai apsisaugoti.',
     heroTitle: 'Kompiuterinis virusas: kas tai ir kaip apsisaugoti',
     heroDesc: 'Viskas, ką reikia žinoti apie kompiuterinius virusus — tipai, plitimo būdai, atpažinimo požymiai ir efektyviausi apsaugos metodai.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' }, { label: 'Kompiuterinis virusas', path: '/virusai/kompiuterinis-virusas' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai' }, { label: 'Kompiuterinis virusas', path: '/virusai/kompiuterinis-virusas' }],
     guideSections: [
       { id: 'kas-tai', title: 'Kas yra kompiuterinis virusas?', content: 'Kompiuterinis virusas — tai kenkėjiška programa, kuri gali kopijuoti save ir plisti tarp kompiuterių. Virusai prisijungia prie teisėtų failų ar programų ir aktyvuojasi, kai vartotojas atidaro užkrėstą failą. Jie gali sugadinti duomenis, sulėtinti sistemą arba suteikti įsilaužėliams prieigą prie jūsų kompiuterio.' },
       { id: 'tipai', title: 'Pagrindiniai virusų tipai', content: 'Failų virusai — prisijungia prie vykdomųjų failų (.exe). Makro virusai — plinta per Office dokumentus. Rootkit — slepiasi operacinės sistemos lygyje. Ransomware — užšifruoja failus ir reikalauja išpirkos. Trojanai — apsimeta teisėtomis programomis. Šnipinėjimo programos (spyware) — seka vartotojo veiklą ir vagia duomenis.' },
@@ -1455,7 +1496,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Virusas telefone: ką daryti?',
     heroDesc: 'Kaip atpažinti, pašalinti ir apsisaugoti nuo virusų telefone — praktinis gidas Android ir iOS naudotojams.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' }, { label: 'Virusas telefone', path: '/virusai/virusas-telefone' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai' }, { label: 'Virusas telefone', path: '/virusai/virusas-telefone' }],
     guideSections: [
       { id: 'pozymiai', title: 'Kaip atpažinti virusą telefone?', content: 'Pagrindiniai požymiai: telefonas veikia žymiai lėčiau, baterija greitai senka, padidėjęs duomenų naudojimas, atsiranda nepažįstamų programėlių, iššokančios reklamos, telefonas kaista be priežasties, neįprasti SMS ar skambučiai kontaktų sąraše.' },
       { id: 'android', title: 'Virusų šalinimas Android telefone', content: '1) Paleiskite Safe Mode (palaikykite maitinimo mygtuką → ilgai spauskite „Išjungti" → „Safe Mode"). 2) Eikite į Nustatymai → Programos ir pašalinkite neseniai įdiegtas įtartinas programėles. 3) Nuskenuokite telefoną su Norton Mobile Security arba Malwarebytes. 4) Išvalykite naršyklės talpyklą. 5) Jei problema lieka — atstatykite gamyklinius nustatymus (prieš tai padarykite atsarginę kopiją).' },
@@ -1475,7 +1516,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Kaip patikrinti ar kompiuteryje yra virusas',
     heroDesc: 'Praktinis gidas: kaip nuskaityti kompiuterį dėl virusų, atpažinti infekciją ir pašalinti kenkėjiškas programas.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' }, { label: 'Virusų patikra', path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai' }, { label: 'Virusų patikra', path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas' }],
     guideSections: [
       { id: 'pozymiai', title: 'Infekcijos požymiai', content: 'Pagrindiniai požymiai, kad kompiuteryje gali būti virusas: sistema veikia žymiai lėčiau, atsiranda nepažįstamų programų, naršyklė nukreipia į keistas svetaines, pasirodo neįprasti iššokantys langai, kietasis diskas neįprastai aktyvus, antivirusinė programa išjungta be jūsų žinios.' },
       { id: 'windows-skenavimas', title: 'Virusų skenavimas Windows sistemoje', content: 'Windows 10/11 turi integruotą Windows Security (Defender): Nustatymai → Atnaujinimas ir sauga → Windows Security → Virusų ir grėsmių apsauga → Pilnas skenavimas. Rekomenduojame papildomai naudoti Malwarebytes nemokamą skenerį antrajai nuomonei.' },
@@ -1495,7 +1536,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Reklamos virusas telefone: kaip pašalinti',
     heroDesc: 'Iššokančios reklamos telefone? Greičiausiai tai adware — reklamos virusas. Kaip jį atpažinti ir pašalinti iš Android ir iOS.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/kompiuterinis-virusas' }, { label: 'Reklamos virusas', path: '/virusai/reklamos-virusas-telefone' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai' }, { label: 'Reklamos virusas', path: '/virusai/reklamos-virusas-telefone' }],
     guideSections: [
       { id: 'kas-tai', title: 'Kas yra reklamos virusas (adware)?', content: 'Adware — tai kenkėjiška programinė įranga, kuri rodo nepageidaujamas reklamas telefone. Ji gali atsirasti per užkrėstas programėles, nesaugias svetaines arba apgaulingus pranešimus. Adware gali rodyti iššokančius langus, peradresuoti naršyklę ir net sekti jūsų veiklą.' },
       { id: 'pozymiai', title: 'Adware požymiai telefone', content: 'Dažniausiai matomi požymiai: iššokančios reklamos net nesinaudojant naršykle, naršyklės nukreipimai į reklaminius puslapius, naujos nepažįstamos programėlės, padidėjęs duomenų naudojimas, greitai senka baterija, telefonas veikia lėčiau.' },
@@ -1552,6 +1593,8 @@ function generateHubFlagshipPage(category, meta, data, catArticles, categoryMap)
   const prefix = depth > 1 ? '../../' : '../';
   const faq = parseFaq(category.faq);
   const childCategories = data.categories.filter(c => c.parent_id === category.id);
+  const featuredCards = Array.isArray(meta.featuredCards) ? meta.featuredCards : [];
+  const visibleArticles = catArticles.filter(a => a.path !== category.path);
 
   return `---
 import Base from '${prefix}layouts/Base.astro';
@@ -1565,23 +1608,61 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
   description="${escapeHtml(category.meta_description || meta.description)}"
   ${category.canonical_url ? `canonicalUrl="${escapeHtml(category.canonical_url)}"` : ''}
 >
-  <div class="container py-8 max-w-4xl">
+  <div class="container py-8 max-w-5xl mx-auto">
     <Breadcrumbs items={${JSON.stringify(meta.breadcrumbs)}} />
 
-    <!-- HERO -->
-    <section class="mb-10">
+    <section class="mb-8">
       <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
         ${meta.heroTitle}
       </h1>
       <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
         ${meta.heroDesc}
       </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        <div class="card-premium-featured p-4">
+          <p class="section-label text-[9px] mb-1.5">Pagrindinis tikslas</p>
+          <p class="text-sm text-foreground font-semibold leading-tight">Greitai rasti aiškius praktinius gidus</p>
+        </div>
+        <div class="card-premium p-4">
+          <p class="section-label text-[9px] mb-1.5">Kas viduje</p>
+          <p class="text-sm text-foreground font-semibold leading-tight">Instrukcijos, palyginimai ir DUK vienoje vietoje</p>
+        </div>
+        <div class="card-premium p-4">
+          <p class="section-label text-[9px] mb-1.5">Atnaujinama</p>
+          <p class="text-sm text-foreground font-semibold leading-tight">Turinys sinchronizuojamas su publikacijomis iš DB</p>
+        </div>
+      </div>
     </section>
 
+    <div class="section-divider mb-10"></div>
+
+    ${featuredCards.length > 0 ? `
+    <section class="mb-14">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground">Svarbiausi gidai</h2>
+        <p class="text-muted-foreground text-sm mt-1.5">Greita prieiga prie labiausiai ieškomų temų šiame skyriuje.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        ${featuredCards.map(card => `
+        <a href="${card.path}" class="card-premium group p-5 transition-all duration-300 hover-lift">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-xl bg-primary/8 border border-primary/12 flex items-center justify-center shrink-0">${SVG.arrowRight}</div>
+            <div>
+              <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-1.5">${escapeHtml(card.label)}</h3>
+              <p class="text-xs text-muted-foreground leading-relaxed">${escapeHtml(card.desc)}</p>
+            </div>
+          </div>
+        </a>
+        `).join('')}
+      </div>
+    </section>
+    ` : ''}
+
     ${childCategories.length > 0 ? `
-    <!-- CHILD CATEGORIES -->
-    <section class="mb-12">
-      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Temos šiame skyriuje</h2>
+    <section class="mb-14">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground">Temos šiame skyriuje</h2>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         ${childCategories.map(child => `
         <a href="${child.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
@@ -1594,15 +1675,16 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
     </section>
     ` : ''}
 
-    ${catArticles.length > 0 ? `
-    <!-- ARTICLES -->
-    <section class="mb-12">
-      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Gidai ir patarimai</h2>
+    ${visibleArticles.length > 0 ? `
+    <section class="mb-14">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground">Gidai ir patarimai</h2>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        ${catArticles.map(a => `
+        ${visibleArticles.map(a => `
         <a href="${a.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
           <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">${escapeHtml(a.title)}</h3>
-          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">${escapeHtml(a.excerpt || '')}</p>
+          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">${escapeHtml(a.excerpt || a.meta_description || '')}</p>
           <div class="flex items-center gap-2 mt-3 text-[11px] text-muted-foreground/60">
             <time>${a.updated_at?.split('T')[0]}</time>
             ${a.read_time ? `<span>· ${a.read_time}</span>` : ''}
@@ -1612,6 +1694,32 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
       </div>
     </section>
     ` : ''}
+
+    <section class="mb-14">
+      <div class="card-premium p-5 md:p-6 bg-muted/40">
+        <div class="flex items-start gap-3.5 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">${SVG.badgeCheck}</div>
+          <div>
+            <h2 class="font-heading text-lg font-bold text-foreground">Kaip naudotis šiuo skyriumi</h2>
+            <p class="text-xs text-muted-foreground mt-0.5">Rekomenduojama seka, kad greitai rastumėte atsakymą.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
+            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">1. Pasirinkite temą</h3>
+            <p class="text-[11px] text-muted-foreground leading-relaxed">Atsidarykite konkretų gidą pagal situaciją: keitimas, atkūrimas, šalinimas ar palyginimas.</p>
+          </div>
+          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
+            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">2. Sekite žingsnius</h3>
+            <p class="text-[11px] text-muted-foreground leading-relaxed">Kiekvienas puslapis turi aiškią struktūrą, TOC ir trumpus veiksmus be perteklinės informacijos.</p>
+          </div>
+          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
+            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">3. Pereikite prie susijusių gidų</h3>
+            <p class="text-[11px] text-muted-foreground leading-relaxed">Jei tema susijusi, apačioje rasite nuorodas į kitus aktualius straipsnius ir landingus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     ${faq.length > 0 ? `<FAQ items={${JSON.stringify(faq)}} />` : ''}
     <TrustDisclosure />
