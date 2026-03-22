@@ -22,6 +22,13 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+/** Ensure a path has a trailing slash */
+function ensureTrailingSlash(path) {
+  if (!path || path === '/') return path;
+  return path.endsWith('/') ? path : path + '/';
+}
+
+
 const ROOT = process.cwd();
 const BUILD_DIR = join(ROOT, '_astro-build');
 const BASE_DIR = join(ROOT, 'scripts', 'astro-base');
