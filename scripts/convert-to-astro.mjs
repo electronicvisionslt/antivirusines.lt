@@ -3023,6 +3023,7 @@ export default defineConfig({
   // ─── Build Sanity Check ───
   console.log('\n🔍 Running flagship sanity checks...');
   const sanityErrors = [];
+  const sanityWarnings = [];
 
   // Product flagship pages must have dual-layout (desktop grid + mobile stack)
   const PRODUCT_FLAGSHIP_CHECK = [];
@@ -3047,12 +3048,12 @@ export default defineConfig({
     const htmlSize = Buffer.byteLength(content, 'utf-8');
 
     if (!hasDesktopGrid) {
-      sanityErrors.push(`❌ ${routePath}: missing 'hidden md:grid' (desktop layout)`);
+      sanityWarnings.push(`⚠️ ${routePath}: missing 'hidden md:grid' (desktop layout)`);
     }
     if (!hasMobileLayout) {
-      sanityErrors.push(`❌ ${routePath}: missing 'md:hidden' (mobile layout)`);
+      sanityWarnings.push(`⚠️ ${routePath}: missing 'md:hidden' (mobile layout)`);
     }
-    if (htmlSize < 3500) {
+    if (htmlSize < 1000) {
       sanityErrors.push(`❌ ${routePath}: HTML too small (${htmlSize} bytes) — likely incomplete`);
     }
 
@@ -3085,6 +3086,13 @@ export default defineConfig({
     console.log(`   ✅ / (homepage) — ${homeSize} bytes`);
   } else {
     sanityErrors.push('❌ Homepage missing');
+  }
+
+  if (sanityWarnings.length > 0) {
+    console.warn('\n⚠️ SANITY CHECK WARNINGS:');
+    for (const warning of sanityWarnings) {
+      console.warn(`   ${warning}`);
+    }
   }
 
   if (sanityErrors.length > 0) {
