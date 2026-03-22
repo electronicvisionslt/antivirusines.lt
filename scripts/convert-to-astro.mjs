@@ -1329,7 +1329,7 @@ const FLAGSHIP_META = {
     description: 'Nepriklausomas nemokamų antivirusinių programų palyginimas. Avast, Bitdefender Free, AVG, Avira ir Windows Defender — kurią pasirinkti?',
     heroTitle: 'Geriausios nemokamos antivirusinės programos 2026&nbsp;m.',
     heroDesc: 'Išanalizavome populiariausias nemokamas antivirusines programas pagal apsaugos efektyvumą, papildomas funkcijas ir sistemos poveikį.',
-    productCategory: 'antivirus',
+    productCategory: 'free-antivirus',
     filterFree: true,
     breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos' }, { label: 'Nemokamos', path: '/antivirusines-programos/nemokamos' }],
   },
@@ -1338,7 +1338,7 @@ const FLAGSHIP_META = {
     description: 'Nepriklausomas antivirusinių programų telefonams palyginimas. Norton, Bitdefender, Kaspersky, ESET ir Avast — kurią pasirinkti?',
     heroTitle: 'Geriausia antivirusinė telefonui 2026&nbsp;m.',
     heroDesc: 'Kurios antivirusinės programos geriausiai apsaugos jūsų telefoną? Palyginome populiariausius sprendimus Android ir iOS.',
-    productCategory: 'antivirus',
+    productCategory: 'mobile-antivirus',
     breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos' }, { label: 'Telefonui', path: '/antivirusines-programos/telefonui' }],
   },
   '/antivirusines-programos/kompiuteriui': {
@@ -1346,7 +1346,7 @@ const FLAGSHIP_META = {
     description: 'Nepriklausomas antivirusinių programų palyginimas Windows ir Mac kompiuteriams. Norton, Bitdefender, ESET, Kaspersky — kurią pasirinkti?',
     heroTitle: 'Geriausia antivirusinė kompiuteriui 2026&nbsp;m.',
     heroDesc: 'Kuriuos antivirusinius sprendimus rinktis Windows ar Mac kompiuteriui? Detalus palyginimas su kainomis ir funkcijomis.',
-    productCategory: 'antivirus',
+    productCategory: 'desktop-antivirus',
     breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos' }, { label: 'Kompiuteriui', path: '/antivirusines-programos/kompiuteriui' }],
   },
   '/tevu-kontrole': {
@@ -1536,11 +1536,7 @@ function generateFlagshipPage(category, data, catArticles, categoryMap) {
 
   // For product-comparison flagships, generate rich landing
   if (meta) {
-    const products = data.products.filter(p => {
-      if (meta.filterFree) return p.free_version === true;
-      if (meta.productCategory === 'antivirus') return p.product_category === 'antivirus';
-      return p.product_category === (meta.productCategory || 'antivirus');
-    }).slice(0, 5);
+    const products = getFlagshipProducts(meta, data.products);
 
     return generateProductFlagshipPage(category, meta, products, faq, catArticles, prefix);
   }
@@ -1632,6 +1628,8 @@ function generateProductFlagshipPage(category, meta, products, faq, catArticles,
   const features = product => (typeof product.features === 'object' && product.features) || {};
   const bestOverall = top5[0];
   const bestFree = products.find(p => p.free_version);
+  const featureColumns = getFeatureColumns(meta, top5);
+  const comparisonMatrix = generateComparisonMatrix(top5, featureColumns);
 
   return `---
 import Base from '${prefix}layouts/Base.astro';
@@ -1659,7 +1657,7 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
 
       ${top5.length > 0 ? `
       <!-- Quick winner badges -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 mb-6">
         ${bestOverall ? `
         <div class="card-premium-featured p-3.5 flex items-center gap-3">
           ${renderProductLogo(bestOverall, 32)}
@@ -1676,6 +1674,15 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
             <span class="chip-success mb-1">Geriausia nemokama</span>
             <span class="text-sm text-foreground font-semibold block leading-tight">${escapeHtml(bestFree.name)}</span>
             <span class="text-[11px] text-muted-foreground">${escapeHtml(bestFree.pricing_summary)}</span>
+          </div>
+        </div>` : ''}
+        ${top5[1] ? `
+        <div class="card-premium p-3.5 flex items-center gap-3">
+          ${renderProductLogo(top5[1], 32)}
+          <div class="min-w-0">
+            <span class="chip-muted mb-1">Stipri alternatyva</span>
+            <span class="text-sm text-foreground font-semibold block leading-tight">${escapeHtml(top5[1].name)}</span>
+            <span class="text-[11px] text-muted-foreground">${escapeHtml(top5[1].pricing_summary || top5[1].best_for || '')}</span>
           </div>
         </div>` : ''}
       </div>
@@ -1745,43 +1752,7 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
     <div class="section-divider mb-12"></div>
 
     <!-- COMPARISON TABLE -->
-    ${top5.length > 0 ? `
-    <section id="palyginimas" class="mb-16 scroll-mt-20">
-      <div class="mb-5">
-        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Detalus palyginimas</h2>
-        <p class="text-muted-foreground text-sm mt-1.5">Visos pagrindinės funkcijos vienoje lentelėje.</p>
-      </div>
-      <div class="overflow-x-auto rounded-xl border border-border/50">
-        <table class="w-full text-left text-sm">
-          <thead>
-            <tr class="border-b border-border/40 bg-muted/30">
-              <th class="px-4 py-3 font-heading font-semibold text-foreground text-xs">Programa</th>
-              <th class="px-3 py-3 font-heading font-semibold text-foreground text-xs text-center">Įvertinimas</th>
-              <th class="px-3 py-3 font-heading font-semibold text-foreground text-xs">Kaina</th>
-              ${featureColsDef.slice(0, 6).map(col => `<th class="px-2 py-3 font-heading font-semibold text-foreground text-[10px] text-center whitespace-nowrap">${col.label}</th>`).join('')}
-            </tr>
-          </thead>
-          <tbody>
-            ${top5.map((p, i) => {
-              const feats = features(p);
-              return `
-            <tr class="border-b border-border/20 ${i === 0 ? 'bg-primary/[0.02]' : 'hover:bg-muted/30'}">
-              <td class="px-4 py-3">
-                <div class="flex items-center gap-2">
-                  ${renderProductLogo(p, 20)}
-                  <span class="font-heading font-semibold text-foreground text-xs">${escapeHtml(p.name)}</span>
-                </div>
-              </td>
-              <td class="px-3 py-3 text-center">${renderRatingStars(p.rating || 0)}</td>
-              <td class="px-3 py-3 text-xs font-heading font-semibold text-foreground">${escapeHtml(p.pricing_summary || '')}</td>
-              ${featureColsDef.slice(0, 6).map(col => `<td class="px-2 py-3 text-center">${renderFeatureCheck(feats[col.key])}</td>`).join('')}
-            </tr>`;
-            }).join('')}
-          </tbody>
-        </table>
-      </div>
-    </section>
-    ` : ''}
+    ${comparisonMatrix}
 
     ${catArticles.length > 0 ? `
     <!-- RELATED ARTICLES -->
