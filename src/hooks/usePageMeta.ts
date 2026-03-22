@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 import type { SeoMeta } from '@/types/content';
 
 const SITE_NAME = 'antivirusines.lt';
@@ -35,37 +35,71 @@ function getCanonicalUrl(explicitCanonical?: string) {
 }
 
 export function usePageMeta(meta: SeoMeta) {
-  const canonicalUrl = getCanonicalUrl(meta.canonicalUrl);
-  const title = meta.title
-    ? meta.title.includes(SITE_NAME)
-      ? meta.title
-      : `${meta.title} | ${SITE_NAME}`
-    : SITE_NAME;
+  useEffect(() => {
+    const canonicalUrl = getCanonicalUrl(meta.canonicalUrl);
+    const title = meta.title
+      ? meta.title.includes(SITE_NAME)
+        ? meta.title
+        : `${meta.title} | ${SITE_NAME}`
+      : SITE_NAME;
 
-  const ldData = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: SITE_NAME,
-    url: SITE_URL,
-    inLanguage: 'lt',
-    description: meta.description || DEFAULT_DESCRIPTION,
-  };
+    document.title = title;
 
-  return (
-    <Helmet prioritizeSeoTags>
-      <title>{title}</title>
-      <meta name="description" content={meta.description || DEFAULT_DESCRIPTION} />
-      <meta property="og:title" content={meta.ogTitle || meta.title || SITE_NAME} />
-      <meta property="og:description" content={meta.ogDescription || meta.description || DEFAULT_DESCRIPTION} />
-      <meta property="og:type" content="article" />
-      <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta name="robots" content={meta.noindex ? 'noindex, nofollow' : 'index, follow'} />
-      {meta.ogImage ? <meta property="og:image" content={meta.ogImage} /> : null}
-      <link rel="canonical" href={canonicalUrl} />
-      <link rel="alternate" hrefLang="lt" href={canonicalUrl} />
-      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
-      <script type="application/ld+json">{JSON.stringify(ldData)}</script>
-    </Helmet>
-  );
+    const upsertMeta = (attr: 'name' | 'property', key: string, content?: string) => {
+      const selector = `meta[${attr}="${key}"]`;
+      let el = document.head.querySelector(selector) as HTMLMetaElement | null;
+      if (!content) {
+        el?.remove();
+        return;
+      }
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.content = content;
+    };
+
+    const upsertLink = (selector: string, attrs: Record<string, string>) => {
+      let el = document.head.querySelector(selector) as HTMLLinkElement | null;
+      if (!el) {
+        el = document.createElement('link');
+        document.head.appendChild(el);
+      }
+      Object.entries(attrs).forEach(([key, value]) => {
+        el!.setAttribute(key, value);
+      });
+    };
+
+    upsertMeta('name', 'description', meta.description || DEFAULT_DESCRIPTION);
+    upsertMeta('name', 'robots', meta.noindex ? 'noindex, nofollow' : 'index, follow');
+    upsertMeta('property', 'og:title', meta.ogTitle || meta.title || SITE_NAME);
+    upsertMeta('property', 'og:description', meta.ogDescription || meta.description || DEFAULT_DESCRIPTION);
+    upsertMeta('property', 'og:type', 'article');
+    upsertMeta('property', 'og:site_name', SITE_NAME);
+    upsertMeta('property', 'og:url', canonicalUrl);
+    upsertMeta('property', 'og:image', meta.ogImage || undefined);
+
+    upsertLink('link[rel="canonical"]', { rel: 'canonical', href: canonicalUrl });
+    upsertLink('link[rel="alternate"][hreflang="lt"]', { rel: 'alternate', hreflang: 'lt', href: canonicalUrl });
+    upsertLink('link[rel="alternate"][hreflang="x-default"]', { rel: 'alternate', hreflang: 'x-default', href: canonicalUrl });
+
+    const ldData = {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: SITE_URL,
+      inLanguage: 'lt',
+      description: meta.description || DEFAULT_DESCRIPTION,
+    };
+
+    let script = document.head.querySelector('script[data-seo="json-ld"]') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-seo', 'json-ld');
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(ldData);
+  }, [meta.title, meta.description, meta.ogTitle, meta.ogDescription, meta.ogImage, meta.canonicalUrl, meta.noindex]);
 }
