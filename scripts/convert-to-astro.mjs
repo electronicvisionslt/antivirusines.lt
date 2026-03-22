@@ -1937,9 +1937,16 @@ function generateHubFlagshipPage(category, meta, data, catArticles, categoryMap)
   const depth = category.path.split('/').filter(Boolean).length;
   const prefix = depth > 1 ? '../../' : '../';
   const faq = parseFaq(category.faq);
+  const hubFaq = meta.hubFaq || [];
+  const finalFaq = faq.length > 0 ? faq : hubFaq;
   const childCategories = data.categories.filter(c => c.parent_id === category.id);
   const featuredCards = Array.isArray(meta.featuredCards) ? meta.featuredCards : [];
   const visibleArticles = catArticles.filter(a => a.path !== category.path);
+  const stats = meta.stats || [];
+  const strengthExamples = meta.strengthExamples || [];
+  const dosDonts = meta.dosDonts || [];
+  const recommendedTools = meta.recommendedTools || [];
+  const crossLinks = meta.crossLinks || [];
 
   return `---
 import Base from '${prefix}layouts/Base.astro';
@@ -1953,255 +1960,172 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
   description="${escapeHtml(category.meta_description || meta.description)}"
   ${category.canonical_url ? `canonicalUrl="${escapeHtml(category.canonical_url)}"` : ''}
 >
-  <div class="container py-8 max-w-5xl mx-auto">
+  <div class="container py-8 max-w-4xl mx-auto">
     <Breadcrumbs items={${JSON.stringify(meta.breadcrumbs)}} />
 
-    <section class="mb-8">
-      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
+    <!-- HERO -->
+    <div class="mb-10">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="section-label">Slaptažodžių saugumas</span>
+        <span class="chip-muted text-[10px]">Atnaujinta 2026</span>
+      </div>
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4">
         ${meta.heroTitle}
       </h1>
-      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
+      <p class="text-muted-foreground leading-relaxed max-w-2xl">
         ${meta.heroDesc}
       </p>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-        <div class="card-premium-featured p-4">
-          <p class="section-label text-[9px] mb-1.5">Pagrindinis tikslas</p>
-          <p class="text-sm text-foreground font-semibold leading-tight">Greitai rasti aiškius praktinius gidus</p>
-        </div>
-        <div class="card-premium p-4">
-          <p class="section-label text-[9px] mb-1.5">Kas viduje</p>
-          <p class="text-sm text-foreground font-semibold leading-tight">Instrukcijos, palyginimai ir DUK vienoje vietoje</p>
-        </div>
-        <div class="card-premium p-4">
-          <p class="section-label text-[9px] mb-1.5">Atnaujinama</p>
-          <p class="text-sm text-foreground font-semibold leading-tight">Turinys sinchronizuojamas su publikacijomis iš DB</p>
-        </div>
-      </div>
-    </section>
+    </div>
 
-    <div class="section-divider mb-10"></div>
+    ${stats.length > 0 ? `
+    <!-- STATS BAR -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+      ${stats.map(s => `
+      <div class="bg-card border border-border/50 rounded-xl p-4 text-center">
+        <div class="w-5 h-5 text-primary mx-auto mb-2">${SVG.shield}</div>
+        <div class="font-heading text-xl font-bold text-foreground">${s.value}</div>
+        <div class="text-xs text-muted-foreground leading-snug mt-1">${s.label}</div>
+      </div>`).join('')}
+    </div>
+    ` : ''}
 
     ${featuredCards.length > 0 ? `
-    <section class="mb-14">
-      <div class="mb-5">
-        <h2 class="font-heading text-2xl font-bold text-foreground">Svarbiausi gidai</h2>
-        <p class="text-muted-foreground text-sm mt-1.5">Greita prieiga prie labiausiai ieškomų temų šiame skyriuje.</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        ${featuredCards.map(card => `
-        <a href="${card.path}" class="card-premium group p-5 transition-all duration-300 hover-lift">
-          <div class="flex items-start gap-3">
-            <div class="w-9 h-9 rounded-xl bg-primary/8 border border-primary/12 flex items-center justify-center shrink-0">${SVG.arrowRight}</div>
-            <div>
-              <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-1.5">${escapeHtml(card.label)}</h3>
-              <p class="text-xs text-muted-foreground leading-relaxed">${escapeHtml(card.desc)}</p>
-            </div>
+    <!-- GUIDES GRID -->
+    <div class="mb-5">
+      <div class="section-label text-[10px] mb-1.5">Praktiniai gidai</div>
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-foreground">Žingsnis po žingsnio instrukcijos</h2>
+      <p class="text-sm text-muted-foreground mt-1">Dažniausiai ieškomi slaptažodžių klausimai su aiškiomis instrukcijomis</p>
+    </div>
+    <div class="grid gap-3 mb-12">
+      ${featuredCards.map(card => `
+      <a href="${card.path}" class="group flex items-start gap-4 p-5 bg-card border border-border/50 rounded-xl hover:border-primary/30 hover:shadow-sm transition-all duration-200">
+        <div class="rounded-lg bg-primary/8 p-2.5 shrink-0 group-hover:bg-primary/15 transition-colors">
+          ${SVG.arrowRight}
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            ${card.tag ? `<span class="chip-muted text-[10px]">${card.tag}</span>` : ''}
+            ${card.readTime ? `<span class="text-[10px] text-muted-foreground flex items-center gap-0.5">${card.readTime}</span>` : ''}
           </div>
-        </a>
-        `).join('')}
-      </div>
-    </section>
+          <h3 class="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">${escapeHtml(card.label)}</h3>
+          <p class="text-sm text-muted-foreground mt-1 leading-relaxed">${escapeHtml(card.desc)}</p>
+        </div>
+        <span class="mt-3 shrink-0">${SVG.chevronRight}</span>
+      </a>`).join('')}
+    </div>
     ` : ''}
 
-    ${childCategories.length > 0 ? `
-    <section class="mb-14">
-      <div class="mb-5">
-        <h2 class="font-heading text-2xl font-bold text-foreground">Temos šiame skyriuje</h2>
+    ${strengthExamples.length > 0 ? `
+    <!-- PASSWORD STRENGTH TABLE -->
+    <div class="mb-5">
+      <div class="section-label text-[10px] mb-1.5">Ar jūsų slaptažodis saugus?</div>
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-foreground">Slaptažodžio stiprumo pavyzdžiai</h2>
+    </div>
+    <div class="bg-card border border-border/50 rounded-xl overflow-hidden mb-12">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-border/50 bg-muted/30">
+              <th class="text-left font-medium text-muted-foreground p-3">Slaptažodis</th>
+              <th class="text-left font-medium text-muted-foreground p-3">Stiprumas</th>
+              <th class="text-left font-medium text-muted-foreground p-3">Nulaužimo laikas</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${strengthExamples.map(ex => `
+            <tr class="border-b border-border/30 last:border-0">
+              <td class="p-3 font-mono text-xs">${escapeHtml(ex.password)}</td>
+              <td class="p-3"><span class="inline-flex px-2 py-0.5 rounded-md text-xs font-medium ${ex.bg} ${ex.color}">${ex.strength}</span></td>
+              <td class="p-3 text-muted-foreground">${ex.time}</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        ${childCategories.map(child => `
-        <a href="${child.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
-          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">${escapeHtml(child.name)}</h3>
-          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">${escapeHtml(child.description || '')}</p>
-          <span class="inline-flex items-center gap-1.5 mt-3 text-[11px] font-heading font-semibold text-primary">Atverti temą ${SVG.chevronRight}</span>
-        </a>
-        `).join('')}
+      <div class="px-4 py-3 bg-muted/20 border-t border-border/30">
+        <p class="text-xs text-muted-foreground">* Nulaužimo laikai paremti 2025–2026 m. GPU benchmarkais. Stiprūs passphrase tipo slaptažodžiai yra itin sunkiai nulaužiami.</p>
       </div>
-    </section>
+    </div>
     ` : ''}
 
-    ${visibleArticles.length > 0 ? `
-    <section class="mb-14">
-      <div class="mb-5">
-        <h2 class="font-heading text-2xl font-bold text-foreground">Gidai ir patarimai</h2>
+    ${dosDonts.length > 0 ? `
+    <!-- DO'S & DON'TS -->
+    <div class="mb-5">
+      <div class="section-label text-[10px] mb-1.5">NIST 2026 gairės</div>
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-foreground">Ką daryti ir ko nedaryti</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-3 mb-12">
+      <div class="bg-card border border-success/20 rounded-xl p-5">
+        <h3 class="font-heading font-semibold text-success flex items-center gap-2 mb-3">
+          ${SVG.checkCircle} Taip — darykite
+        </h3>
+        <ul class="space-y-2.5">
+          ${dosDonts.map(d => `
+          <li class="flex items-start gap-2 text-sm text-foreground">
+            ${SVG.checkCircle}
+            <span>${escapeHtml(d.do)}</span>
+          </li>`).join('')}
+        </ul>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        ${visibleArticles.map(a => `
-        <a href="${a.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
-          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">${escapeHtml(a.title)}</h3>
-          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">${escapeHtml(a.excerpt || a.meta_description || '')}</p>
-          <div class="flex items-center gap-2 mt-3 text-[11px] text-muted-foreground/60">
-            <time>${a.updated_at?.split('T')[0]}</time>
-            ${a.read_time ? `<span>· ${a.read_time}</span>` : ''}
-          </div>
-        </a>
-        `).join('')}
+      <div class="bg-card border border-destructive/20 rounded-xl p-5">
+        <h3 class="font-heading font-semibold text-destructive flex items-center gap-2 mb-3">
+          ${SVG.xCircle} Ne — venkite
+        </h3>
+        <ul class="space-y-2.5">
+          ${dosDonts.map(d => `
+          <li class="flex items-start gap-2 text-sm text-foreground">
+            ${SVG.xCircle}
+            <span>${escapeHtml(d.dont)}</span>
+          </li>`).join('')}
+        </ul>
       </div>
-    </section>
+    </div>
     ` : ''}
 
-    <section class="mb-14">
-      <div class="card-premium p-5 md:p-6 bg-muted/40">
-        <div class="flex items-start gap-3.5 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">${SVG.badgeCheck}</div>
+    ${recommendedTools.length > 0 ? `
+    <!-- RECOMMENDED TOOLS -->
+    <div class="mb-5">
+      <div class="section-label text-[10px] mb-1.5">Rekomenduojami įrankiai</div>
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-foreground">Slaptažodžių tvarkyklės</h2>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-3 mb-12">
+      ${recommendedTools.map(tool => `
+      <div class="bg-card border border-border/50 rounded-xl p-5">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="font-heading font-semibold text-foreground">${escapeHtml(tool.name)}</h3>
+          <span class="chip-muted text-[10px]">${escapeHtml(tool.tag)}</span>
+        </div>
+        <p class="text-sm text-muted-foreground leading-relaxed mb-3">${escapeHtml(tool.desc)}</p>
+        <a href="${escapeHtml(tool.url)}" target="_blank" rel="noopener noreferrer"
+          class="text-xs font-medium text-primary hover:text-primary/80 inline-flex items-center gap-1 transition-colors">
+          Sužinoti daugiau ${SVG.arrowRight}
+        </a>
+      </div>`).join('')}
+    </div>
+    ` : ''}
+
+    ${finalFaq.length > 0 ? `<FAQ items={${JSON.stringify(finalFaq)}} />` : ''}
+
+    ${crossLinks.length > 0 ? `
+    <!-- CROSS-CLUSTER LINKS -->
+    <div class="mt-10 mb-6">
+      <h2 class="font-heading text-lg font-bold text-foreground mb-3">Susiję saugumo gidai</h2>
+      <div class="grid sm:grid-cols-2 gap-3">
+        ${crossLinks.map(link => `
+        <a href="${link.path}" class="group flex items-start gap-3 p-4 bg-card border border-border/50 rounded-xl hover:border-primary/30 transition-colors">
+          ${SVG.shield}
           <div>
-            <h2 class="font-heading text-lg font-bold text-foreground">Kaip naudotis šiuo skyriumi</h2>
-            <p class="text-xs text-muted-foreground mt-0.5">Rekomenduojama seka, kad greitai rastumėte atsakymą.</p>
+            <h3 class="font-heading font-semibold text-sm text-foreground group-hover:text-primary transition-colors">${escapeHtml(link.title)}</h3>
+            <p class="text-xs text-muted-foreground mt-0.5">${escapeHtml(link.desc)}</p>
           </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
-            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">1. Pasirinkite temą</h3>
-            <p class="text-[11px] text-muted-foreground leading-relaxed">Atsidarykite konkretų gidą pagal situaciją: keitimas, atkūrimas, šalinimas ar palyginimas.</p>
-          </div>
-          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
-            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">2. Sekite žingsnius</h3>
-            <p class="text-[11px] text-muted-foreground leading-relaxed">Kiekvienas puslapis turi aiškią struktūrą, TOC ir trumpus veiksmus be perteklinės informacijos.</p>
-          </div>
-          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
-            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">3. Pereikite prie susijusių gidų</h3>
-            <p class="text-[11px] text-muted-foreground leading-relaxed">Jei tema susijusi, apačioje rasite nuorodas į kitus aktualius straipsnius ir landingus.</p>
-          </div>
-        </div>
+        </a>`).join('')}
       </div>
-    </section>
+    </div>
+    ` : ''}
 
-    ${faq.length > 0 ? `<FAQ items={${JSON.stringify(faq)}} />` : ''}
     <TrustDisclosure />
   </div>
 </Base>`;
 }
-
-function generateProductFlagshipPage(category, meta, products, faq, catArticles, prefix) {
-  const top5 = products;
-  const features = product => (typeof product.features === 'object' && product.features) || {};
-  const bestOverall = top5[0];
-  const bestFree = products.find(p => p.free_version);
-  const featureColumns = getFeatureColumns(meta, top5);
-  const comparisonMatrix = generateComparisonMatrix(top5, featureColumns);
-
-  return `---
-import Base from '${prefix}layouts/Base.astro';
-import Breadcrumbs from '${prefix}components/Breadcrumbs.astro';
-import FAQ from '${prefix}components/FAQ.astro';
-import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
----
-
-<Base
-  title="${escapeHtml(category.seo_title || meta.title)}"
-  description="${escapeHtml(category.meta_description || meta.description)}"
-  ${category.canonical_url ? `canonicalUrl="${escapeHtml(category.canonical_url)}"` : ''}
->
-  <div class="container py-8 max-w-5xl mx-auto">
-    <Breadcrumbs items={${JSON.stringify(meta.breadcrumbs)}} />
-
-    <!-- HERO -->
-    <section class="mb-8">
-      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
-        ${meta.heroTitle}
-      </h1>
-      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
-        ${meta.heroDesc}
-      </p>
-
-      ${top5.length > 0 ? `
-      <!-- Quick winner badges -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 mb-6">
-        ${bestOverall ? `
-        <div class="card-premium-featured p-3.5 flex items-center gap-3">
-          ${renderProductLogo(bestOverall, 32)}
-          <div class="min-w-0">
-            <span class="chip-primary mb-1">Geriausia 2026</span>
-            <span class="text-sm text-foreground font-semibold block leading-tight">${escapeHtml(bestOverall.name)}</span>
-            <span class="text-[11px] text-muted-foreground">${escapeHtml(bestOverall.pricing_summary)}</span>
-          </div>
-        </div>` : ''}
-        ${bestFree ? `
-        <div class="card-premium p-3.5 flex items-center gap-3">
-          ${renderProductLogo(bestFree, 32)}
-          <div class="min-w-0">
-            <span class="chip-success mb-1">Geriausia nemokama</span>
-            <span class="text-sm text-foreground font-semibold block leading-tight">${escapeHtml(bestFree.name)}</span>
-            <span class="text-[11px] text-muted-foreground">${escapeHtml(bestFree.pricing_summary)}</span>
-          </div>
-        </div>` : ''}
-        ${top5[1] ? `
-        <div class="card-premium p-3.5 flex items-center gap-3">
-          ${renderProductLogo(top5[1], 32)}
-          <div class="min-w-0">
-            <span class="chip-muted mb-1">Stipri alternatyva</span>
-            <span class="text-sm text-foreground font-semibold block leading-tight">${escapeHtml(top5[1].name)}</span>
-            <span class="text-[11px] text-muted-foreground">${escapeHtml(top5[1].pricing_summary || top5[1].best_for || '')}</span>
-          </div>
-        </div>` : ''}
-      </div>
-      ` : ''}
-    </section>
-
-    <div class="section-divider mb-10"></div>
-
-    ${top5.length > 0 ? `
-    <!-- TOP 5 -->
-    <section id="top-5" class="mb-16 scroll-mt-20">
-      <div class="mb-6">
-        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Top ${top5.length} pasirinkimai</h2>
-        <p class="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">Programos, kurios šiandien siūlo geriausią apsaugos, funkcijų ir kainos derinį.</p>
-      </div>
-      <div class="space-y-3">
-        ${top5.map((product, i) => {
-          const feats = features(product);
-          return `
-        <div class="relative overflow-hidden transition-all duration-200 ${i === 0 ? 'card-premium-featured' : 'card-premium'}">
-          ${i === 0 ? '<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary to-primary/40"></div>' : ''}
-          <div class="p-4 md:p-5">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 ${i === 0 ? 'text-primary' : 'text-muted-foreground/25'}">${i + 1}</span>
-              ${renderProductLogo(product, 36)}
-              <div class="min-w-0 flex-1">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">${escapeHtml(product.name)}</h3>
-                  ${i === 0 ? '<span class="chip-primary">Nr. 1</span>' : ''}
-                  ${product.free_version && i !== 0 ? '<span class="chip-success">Nemokama</span>' : ''}
-                </div>
-                <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">${escapeHtml(product.best_for || '')}</p>
-              </div>
-              ${renderRatingStars(product.rating || 0)}
-              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap hidden sm:block">${escapeHtml(product.pricing_summary || '')}</span>
-            </div>
-
-            <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">${escapeHtml(product.verdict || product.short_description || '')}</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-3">
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Privalumai</p>
-                <ul class="space-y-0.5">
-                  ${(product.pros || []).slice(0, 3).map(p => `<li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.checkCircle} ${escapeHtml(p)}</li>`).join('')}
-                </ul>
-              </div>
-              <div>
-                <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
-                <ul class="space-y-0.5">
-                  ${(product.cons || []).slice(0, 2).map(c => `<li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug">${SVG.xCircle} ${escapeHtml(c)}</li>`).join('')}
-                </ul>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-between pt-3 border-t border-border/30">
-              <span class="text-sm font-heading font-bold text-foreground sm:hidden">${escapeHtml(product.pricing_summary || '')}</span>
-              ${renderPlatformTags(product.supported_platforms)}
-              ${renderAffiliateButton(product, 'px-5 py-2.5 text-sm whitespace-nowrap', 'Gauti pasiūlymą')}
-            </div>
-          </div>
-        </div>`;
-        }).join('')}
-      </div>
-    </section>
-    ` : ''}
-
-    <div class="section-divider mb-12"></div>
-
-    <!-- COMPARISON TABLE -->
-    ${comparisonMatrix}
 
     ${catArticles.length > 0 ? `
     <!-- RELATED ARTICLES -->
