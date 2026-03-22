@@ -400,7 +400,7 @@ import FAQ from '../components/FAQ.astro';
       ${trustPoints.map(point => `
       <div class="rounded-xl border border-border/50 bg-card p-5 text-center hover:shadow-md transition-all duration-300 glow-border h-full">
         <div class="w-11 h-11 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
-          ${SVG[point.svgKey] || SVG.shield}
+          ${svgSized(SVG[point.svgKey] || SVG.shield, 'w-5 h-5')}
         </div>
         <h3 class="font-heading font-bold text-foreground text-sm mb-1">${point.title}</h3>
         <p class="text-xs text-muted-foreground leading-relaxed">${point.desc}</p>
