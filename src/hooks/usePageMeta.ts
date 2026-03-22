@@ -2,7 +2,37 @@ import { useEffect, useRef } from 'react';
 import type { SeoMeta } from '@/types/content';
 
 const SITE_NAME = 'antivirusines.lt';
+const SITE_URL = 'https://antivirusines.lt';
 const DEFAULT_DESCRIPTION = 'Nepriklausomos antivirusinių programų apžvalgos, saugumo gidai ir patarimai lietuvių kalba.';
+
+function ensureTrailingSlash(pathname: string) {
+  if (!pathname || pathname === '/') return '/';
+  return pathname.endsWith('/') ? pathname : `${pathname}/`;
+}
+
+function getCanonicalUrl(explicitCanonical?: string) {
+  if (explicitCanonical) {
+    try {
+      const url = new URL(explicitCanonical, SITE_URL);
+      url.pathname = ensureTrailingSlash(url.pathname);
+      return url.toString();
+    } catch {
+      return explicitCanonical;
+    }
+  }
+
+  if (typeof window === 'undefined') {
+    return SITE_URL;
+  }
+
+  const url = new URL(window.location.href);
+  url.protocol = 'https:';
+  url.host = new URL(SITE_URL).host;
+  url.pathname = ensureTrailingSlash(url.pathname);
+  url.search = '';
+  url.hash = '';
+  return url.toString();
+}
 
 /**
  * Manages document <head> meta tags with full cleanup on unmount and route change.
@@ -13,6 +43,8 @@ export function usePageMeta(meta: SeoMeta) {
   const prevValues = useRef<Map<string, string>>(new Map());
 
   useEffect(() => {
+    const canonicalUrl = getCanonicalUrl(meta.canonicalUrl);
+
     // Clean up anything from previous render
     cleanup();
 
@@ -32,6 +64,7 @@ export function usePageMeta(meta: SeoMeta) {
       { attr: 'property', key: 'og:image', content: meta.ogImage || undefined },
       { attr: 'property', key: 'og:type', content: 'article' },
       { attr: 'property', key: 'og:site_name', content: SITE_NAME },
+      { attr: 'property', key: 'og:url', content: canonicalUrl },
       { attr: 'name', key: 'robots', content: meta.noindex ? 'noindex, nofollow' : 'index, follow' },
     ];
 
@@ -65,14 +98,14 @@ export function usePageMeta(meta: SeoMeta) {
 
     // ── Canonical ──
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (meta.canonicalUrl) {
+    if (canonicalUrl) {
       if (canonical) {
         prevValues.current.set('link[rel="canonical"]', canonical.href);
-        canonical.href = meta.canonicalUrl;
+        canonical.href = canonicalUrl;
       } else {
         canonical = document.createElement('link');
         canonical.rel = 'canonical';
-        canonical.href = meta.canonicalUrl;
+        canonical.href = canonicalUrl;
         document.head.appendChild(canonical);
         createdElements.current.push(canonical);
       }
