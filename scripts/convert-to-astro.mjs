@@ -2963,7 +2963,85 @@ export default defineConfig({
 
   printFlagshipDiagnosticsSummary();
 
-  console.log('\n✨ Conversion complete!');
+  // ─── Build Sanity Check ───
+  console.log('\n🔍 Running flagship sanity checks...');
+  const sanityErrors = [];
+
+  // Product flagship pages must have dual-layout (desktop grid + mobile stack)
+  const PRODUCT_FLAGSHIP_CHECK = [];
+  for (const path of FLAGSHIP_PATHS) {
+    const meta = FLAGSHIP_META[path];
+    if (meta && !meta.isGuide && !meta.isHub) {
+      PRODUCT_FLAGSHIP_CHECK.push(path);
+    }
+  }
+  // Also check /antivirusines-programos (uses dedicated generator)
+  PRODUCT_FLAGSHIP_CHECK.push('/antivirusines-programos');
+
+  for (const routePath of PRODUCT_FLAGSHIP_CHECK) {
+    const pagePath = routeToPagePath(routePath);
+    const fullPath = join(PAGES_DIR, pagePath);
+    if (!existsSync(fullPath)) {
+      sanityErrors.push(`❌ Missing flagship page: ${routePath} (expected ${pagePath})`);
+      continue;
+    }
+    const content = readFileSync(fullPath, 'utf-8');
+    const hasDesktopGrid = content.includes('hidden md:grid');
+    const hasMobileLayout = content.includes('md:hidden');
+    const htmlSize = Buffer.byteLength(content, 'utf-8');
+
+    if (!hasDesktopGrid) {
+      sanityErrors.push(`❌ ${routePath}: missing 'hidden md:grid' (desktop layout)`);
+    }
+    if (!hasMobileLayout) {
+      sanityErrors.push(`❌ ${routePath}: missing 'md:hidden' (mobile layout)`);
+    }
+    if (htmlSize < 5000) {
+      sanityErrors.push(`❌ ${routePath}: HTML too small (${htmlSize} bytes) — likely incomplete`);
+    }
+
+    console.log(`   ${hasDesktopGrid && hasMobileLayout ? '✅' : '⚠️'} ${routePath} — ${htmlSize} bytes, desktop=${hasDesktopGrid}, mobile=${hasMobileLayout}`);
+  }
+
+  // Check all flagship pages for minimum size
+  for (const routePath of FLAGSHIP_PATHS) {
+    if (PRODUCT_FLAGSHIP_CHECK.includes(routePath)) continue; // already checked
+    const pagePath = routeToPagePath(routePath);
+    const fullPath = join(PAGES_DIR, pagePath);
+    if (!existsSync(fullPath)) {
+      sanityErrors.push(`❌ Missing flagship page: ${routePath}`);
+      continue;
+    }
+    const htmlSize = Buffer.byteLength(readFileSync(fullPath, 'utf-8'), 'utf-8');
+    if (htmlSize < 3000) {
+      sanityErrors.push(`❌ ${routePath}: HTML too small (${htmlSize} bytes) — likely incomplete`);
+    }
+    console.log(`   ✅ ${routePath} — ${htmlSize} bytes`);
+  }
+
+  // Check homepage
+  const homePath = join(PAGES_DIR, 'index.astro');
+  if (existsSync(homePath)) {
+    const homeSize = Buffer.byteLength(readFileSync(homePath, 'utf-8'), 'utf-8');
+    if (homeSize < 5000) {
+      sanityErrors.push(`❌ Homepage too small (${homeSize} bytes)`);
+    }
+    console.log(`   ✅ / (homepage) — ${homeSize} bytes`);
+  } else {
+    sanityErrors.push('❌ Homepage missing');
+  }
+
+  if (sanityErrors.length > 0) {
+    console.error('\n🚨 SANITY CHECK FAILED:');
+    for (const err of sanityErrors) {
+      console.error(`   ${err}`);
+    }
+    process.exit(1);
+  }
+
+  console.log('   ✅ All sanity checks passed!\n');
+
+  console.log('✨ Conversion complete!');
   console.log(`   Output: ${BUILD_DIR}`);
   console.log('   Run: cd _astro-build && npm install && npm run build');
 }
