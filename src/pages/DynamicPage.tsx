@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
 import { usePublicArticle, usePublicCategory } from '@/hooks/usePublicData';
+import { isFlagshipPath } from '@/lib/flagshipPaths';
 import ArticlePage from './ArticlePage';
 import CategoryPage from './CategoryPage';
 import NotFound from './NotFound';
@@ -26,8 +27,8 @@ const DynamicPage = () => {
     );
   }
 
-  // Category takes priority — structural/landing pages override articles
-  if (category) {
+  // Only flagship/hub paths should override article rendering when both exist.
+  if (category && (!article || isFlagshipPath(category.path))) {
     return <CategoryPage category={category} />;
   }
 
