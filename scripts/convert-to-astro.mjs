@@ -208,9 +208,11 @@ async function fetchAllData() {
 
   console.log(`  📄 ${articles?.length || 0} articles, 📁 ${categories?.length || 0} categories, ✍️ ${authors?.length || 0} authors, 📦 ${products?.length || 0} products`);
 
+  // Normalize all paths to have trailing slashes
+  const norm = arr => (arr || []).map(item => item.path ? { ...item, path: ensureTrailingSlash(item.path) } : item);
   return {
-    articles: articles || [],
-    categories: categories || [],
+    articles: norm(articles),
+    categories: norm(categories),
     authors: authors || [],
     products: products || [],
   };
@@ -232,18 +234,18 @@ function generateHomePage(data) {
     {
       title: 'Antivirusinės programos',
       desc: 'Top 5 geriausių antivirusinių 2026 m. su detaliu palyginimu, kainomis ir funkcijomis.',
-      path: '/antivirusines-programos',
+      path: '/antivirusines-programos/',
       tag: 'Populiariausia',
       svgKey: 'shield',
       links: [
-        { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos' },
-        { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui' },
-        { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui' },
+        { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos/' },
+        { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui/' },
+        { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui/' },
       ],
     },
-    { title: 'Tėvų kontrolė', desc: 'Geriausios programėlės vaikų apsaugai internete — ekrano laiko valdymas, turinio filtravimas.', path: '/tevu-kontrole', svgKey: 'users', links: [] },
-    { title: 'Slaptažodžių saugumas', desc: 'Kaip kurti stiprius slaptažodžius, naudoti tvarkykles ir apsaugoti paskyras.', path: '/slaptazodziu-saugumas', svgKey: 'key', links: [] },
-    { title: 'Virusai ir grėsmės', desc: 'Kas yra kompiuterinis virusas, kaip veikia malware ir kaip nuo jų apsisaugoti.', path: '/virusai/kompiuterinis-virusas', svgKey: 'bug', links: [] },
+    { title: 'Tėvų kontrolė', desc: 'Geriausios programėlės vaikų apsaugai internete — ekrano laiko valdymas, turinio filtravimas.', path: '/tevu-kontrole/', svgKey: 'users', links: [] },
+    { title: 'Slaptažodžių saugumas', desc: 'Kaip kurti stiprius slaptažodžius, naudoti tvarkykles ir apsaugoti paskyras.', path: '/slaptazodziu-saugumas/', svgKey: 'key', links: [] },
+    { title: 'Virusai ir grėsmės', desc: 'Kas yra kompiuterinis virusas, kaip veikia malware ir kaip nuo jų apsisaugoti.', path: '/virusai/kompiuterinis-virusas/', svgKey: 'bug', links: [] },
   ];
 
   const trustPoints = [
@@ -254,12 +256,12 @@ function generateHomePage(data) {
   ];
 
   const quickLinks = [
-    { label: 'Geriausios antivirusinės 2026', path: '/antivirusines-programos', svgKey: 'award' },
-    { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos', svgKey: 'zap' },
-    { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui', svgKey: 'smartphone' },
-    { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui', svgKey: 'monitor' },
-    { label: 'Tėvų kontrolės programėlės', path: '/tevu-kontrole', svgKey: 'users' },
-    { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas', svgKey: 'key' },
+    { label: 'Geriausios antivirusinės 2026', path: '/antivirusines-programos/', svgKey: 'award' },
+    { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos/', svgKey: 'zap' },
+    { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui/', svgKey: 'smartphone' },
+    { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui/', svgKey: 'monitor' },
+    { label: 'Tėvų kontrolės programėlės', path: '/tevu-kontrole/', svgKey: 'users' },
+    { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas/', svgKey: 'key' },
   ];
 
   return `---
@@ -289,11 +291,11 @@ import FAQ from '../components/FAQ.astro';
           Objektyvūs antivirusinių programų palyginimai, saugumo gidai ir patarimai — viskas lietuvių kalba, be reklaminės šiukšlės.
         </p>
         <div class="flex flex-wrap gap-3">
-          <a href="/antivirusines-programos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 text-sm shadow-sm">
+          <a href="/antivirusines-programos/" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 text-sm shadow-sm">
             Peržiūrėti Top 5
             ${SVG.arrowRight}
           </a>
-          <a href="/antivirusines-programos/nemokamos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-card border border-border/60 text-foreground font-heading font-semibold rounded-lg hover:bg-muted/60 transition-all duration-200 text-sm">
+          <a href="/antivirusines-programos/nemokamos/" class="inline-flex items-center gap-2 px-5 py-2.5 bg-card border border-border/60 text-foreground font-heading font-semibold rounded-lg hover:bg-muted/60 transition-all duration-200 text-sm">
             Nemokamos alternatyvos
           </a>
         </div>
@@ -398,7 +400,7 @@ import FAQ from '../components/FAQ.astro';
         `).join('')}
       </div>
       <div class="text-center mt-8">
-        <a href="/antivirusines-programos" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 text-sm shadow-sm">
+        <a href="/antivirusines-programos/" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-heading font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 text-sm shadow-sm">
           Žiūrėti visą Top 5 sąrašą ${SVG.arrowRight}
         </a>
       </div>
@@ -1093,11 +1095,11 @@ function generateAntivirusLandingPage(category, products, catArticles) {
   ];
 
   const relatedGuides = [
-    { path: '/antivirusines-programos/nemokamos', label: 'Nemokamos antivirusinės programos', desc: 'Geriausi nemokami sprendimai bazinei apsaugai' },
-    { path: '/antivirusines-programos/telefonui', label: 'Antivirusinė telefonui', desc: 'Android ir iOS apsaugos gidas' },
-    { path: '/antivirusines-programos/kompiuteriui', label: 'Antivirusinė kompiuteriui', desc: 'Windows ir Mac apsaugos palyginimas' },
-    { path: '/virusai/kompiuterinis-virusas', label: 'Kas yra kompiuterinis virusas?', desc: 'Virusų tipai ir kaip jie veikia' },
-    { path: '/virusai/virusas-telefone', label: 'Kaip pašalinti virusą iš telefono', desc: 'Žingsnis po žingsnio gidas' },
+    { path: '/antivirusines-programos/nemokamos/', label: 'Nemokamos antivirusinės programos', desc: 'Geriausi nemokami sprendimai bazinei apsaugai' },
+    { path: '/antivirusines-programos/telefonui/', label: 'Antivirusinė telefonui', desc: 'Android ir iOS apsaugos gidas' },
+    { path: '/antivirusines-programos/kompiuteriui/', label: 'Antivirusinė kompiuteriui', desc: 'Windows ir Mac apsaugos palyginimas' },
+    { path: '/virusai/kompiuterinis-virusas/', label: 'Kas yra kompiuterinis virusas?', desc: 'Virusų tipai ir kaip jie veikia' },
+    { path: '/virusai/virusas-telefone/', label: 'Kaip pašalinti virusą iš telefono', desc: 'Žingsnis po žingsnio gidas' },
   ];
 
   return `---
@@ -1113,7 +1115,7 @@ import TrustDisclosure from '../components/TrustDisclosure.astro';
   ${category.canonical_url ? `canonicalUrl="${escapeHtml(category.canonical_url)}"` : ''}
 >
   <div class="container py-8 max-w-5xl mx-auto">
-    <Breadcrumbs items={${JSON.stringify([{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos' }])}} />
+    <Breadcrumbs items={${JSON.stringify([{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos/' }])}} />
 
     <!-- ═══ 1. HERO ═══ -->
     <section class="mb-8">
@@ -1426,9 +1428,9 @@ import TrustDisclosure from '../components/TrustDisclosure.astro';
       </div>
       <div class="flex flex-wrap gap-2">
         ${[
-          { path: '/antivirusines-programos/nemokamos', label: 'Nemokamos antivirusinės' },
-          { path: '/antivirusines-programos/telefonui', label: 'Antivirusinė telefonui' },
-          { path: '/antivirusines-programos/kompiuteriui', label: 'Antivirusinė kompiuteriui' },
+          { path: '/antivirusines-programos/nemokamos/', label: 'Nemokamos antivirusinės' },
+          { path: '/antivirusines-programos/telefonui/', label: 'Antivirusinė telefonui' },
+          { path: '/antivirusines-programos/kompiuteriui/', label: 'Antivirusinė kompiuteriui' },
         ].map(link => `<a href="${link.path}" class="text-xs font-heading font-semibold px-3.5 py-2 rounded-lg bg-card text-primary hover:bg-primary/5 border border-border/50 transition-all duration-200 inline-flex items-center gap-1.5 elevation-1">${escapeHtml(link.label)} ${SVG.chevronRight}</a>`).join('')}
       </div>
     </section>
@@ -1544,7 +1546,7 @@ const FLAGSHIP_META = {
     heroDesc: 'Išanalizavome populiariausias nemokamas antivirusines programas pagal apsaugos efektyvumą, papildomas funkcijas ir sistemos poveikį.',
     productCategory: 'free-antivirus',
     filterFree: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos' }, { label: 'Nemokamos', path: '/antivirusines-programos/nemokamos' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos/' }, { label: 'Nemokamos', path: '/antivirusines-programos/nemokamos/' }],
   },
   '/antivirusines-programos/telefonui': {
     title: 'Geriausia antivirusinė telefonui 2026 — Top 5 Android ir iOS',
@@ -1552,7 +1554,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Geriausia antivirusinė telefonui 2026&nbsp;m.',
     heroDesc: 'Kurios antivirusinės programos geriausiai apsaugos jūsų telefoną? Palyginome populiariausius sprendimus Android ir iOS.',
     productCategory: 'mobile-antivirus',
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos' }, { label: 'Telefonui', path: '/antivirusines-programos/telefonui' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos/' }, { label: 'Telefonui', path: '/antivirusines-programos/telefonui/' }],
   },
   '/antivirusines-programos/kompiuteriui': {
     title: 'Geriausia antivirusinė kompiuteriui 2026 — Windows ir Mac palyginimas',
@@ -1560,7 +1562,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Geriausia antivirusinė kompiuteriui 2026&nbsp;m.',
     heroDesc: 'Kuriuos antivirusinius sprendimus rinktis Windows ar Mac kompiuteriui? Detalus palyginimas su kainomis ir funkcijomis.',
     productCategory: 'desktop-antivirus',
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos' }, { label: 'Kompiuteriui', path: '/antivirusines-programos/kompiuteriui' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Antivirusinės programos', path: '/antivirusines-programos/' }, { label: 'Kompiuteriui', path: '/antivirusines-programos/kompiuteriui/' }],
   },
   '/tevu-kontrole': {
     title: 'Geriausios tėvų kontrolės programėlės 2026 — Top 5 vaiko telefonui',
@@ -1568,7 +1570,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Geriausios tėvų kontrolės programėlės 2026&nbsp;m.',
     heroDesc: 'Raskite geriausią tėvų kontrolės programą vaiko telefonui. Ekrano laiko valdymas, turinio filtravimas ir GPS sekimas.',
     productCategory: 'parental-control',
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Tėvų kontrolė', path: '/tevu-kontrole' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Tėvų kontrolė', path: '/tevu-kontrole/' }],
     jumpLinks: [
       { href: '#top-5', label: 'Top 5', svg: 'award' },
       { href: '#palyginimas', label: 'Palyginimas', svg: 'barChart' },
@@ -1606,11 +1608,11 @@ const FLAGSHIP_META = {
       { title: 'Apėjimo atsparumas', desc: 'Ar vaikas gali lengvai pašalinti ar apeiti programą? Ar VPN gali išjungti filtrus?' },
     ],
     relatedGuides: [
-      { path: '/tevu-kontrole/vaiko-telefone', label: 'Tėvų kontrolė vaiko telefone', desc: 'Kaip nustatyti tėvų kontrolę žingsnis po žingsnio' },
-      { path: '/antivirusines-programos', label: 'Geriausios antivirusinės', desc: 'Top 5 antivirusinių palyginimas' },
-      { path: '/antivirusines-programos/telefonui', label: 'Antivirusinė telefonui', desc: 'Android ir iOS apsaugos gidas' },
-      { path: '/virusai/virusas-telefone', label: 'Virusas telefone', desc: 'Kaip pašalinti virusą iš telefono' },
-      { path: '/slaptazodziu-saugumas', label: 'Slaptažodžių saugumas', desc: 'Kaip sukurti stiprų slaptažodį' },
+      { path: '/tevu-kontrole/vaiko-telefone/', label: 'Tėvų kontrolė vaiko telefone', desc: 'Kaip nustatyti tėvų kontrolę žingsnis po žingsnio' },
+      { path: '/antivirusines-programos/', label: 'Geriausios antivirusinės', desc: 'Top 5 antivirusinių palyginimas' },
+      { path: '/antivirusines-programos/telefonui/', label: 'Antivirusinė telefonui', desc: 'Android ir iOS apsaugos gidas' },
+      { path: '/virusai/virusas-telefone/', label: 'Virusas telefone', desc: 'Kaip pašalinti virusą iš telefono' },
+      { path: '/slaptazodziu-saugumas/', label: 'Slaptažodžių saugumas', desc: 'Kaip sukurti stiprų slaptažodį' },
     ],
     pillarFaq: [
       { q: 'Nuo kokio amžiaus reikia tėvų kontrolės?', a: 'Rekomenduojame nuo 6–7 metų, kai vaikas pradeda savarankiškai naudotis telefonu ar planšete.' },
@@ -1626,7 +1628,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Tėvų kontrolė vaiko telefone',
     heroDesc: 'Kaip saugiai valdyti vaiko telefoną, stebėti naudojimą ir nustatyti aiškias skaitmenines ribas be perteklinės kontrolės.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Tėvų kontrolė', path: '/tevu-kontrole' }, { label: 'Vaiko telefone', path: '/tevu-kontrole/vaiko-telefone' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Tėvų kontrolė', path: '/tevu-kontrole/' }, { label: 'Vaiko telefone', path: '/tevu-kontrole/vaiko-telefone/' }],
     guideSections: [
       { id: 'kada-reikia', title: 'Kada verta įjungti tėvų kontrolę?', content: 'Tėvų kontrolė ypač naudinga, kai vaikas pradeda savarankiškai naudotis telefonu, diegti programėles ir leisti laiką socialiniuose tinkluose. Ji padeda valdyti ekrano laiką, apsaugoti nuo netinkamo turinio ir aiškiai nustatyti taisykles.' },
       { id: 'ka-nustatyti', title: 'Svarbiausi nustatymai telefone', content: 'Pirmiausia rekomenduojame nustatyti programėlių laiko limitus, amžiaus ribojimus, lokacijos bendrinimą ir pirkimų patvirtinimą. Taip pat verta išjungti programėlių diegimą iš neoficialių šaltinių ir įjungti saugios paieškos filtrus.' },
@@ -1646,10 +1648,10 @@ const FLAGSHIP_META = {
     heroDesc: 'Stiprus slaptažodis — pirmoji gynybos linija nuo kibernetinių grėsmių. Šiame hub\'e rasite praktinius gidus, kaip kurti, keisti ir saugoti slaptažodžius pagal naujausias 2026 m. NIST rekomendacijas.',
     isHub: true,
     featuredCards: [
-      { path: '/slaptazodziu-saugumas/slaptazodziu-tvarkykles', label: 'Geriausios slaptažodžių tvarkyklės 2026', desc: 'Nepriklausomas palyginimas: 1Password, Bitwarden, NordPass, RoboForm ir Proton Pass — kuri geriausia jums?', tag: 'Palyginimas', readTime: '8 min' },
-      { path: '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi', label: 'Kaip pakeisti Gmail slaptažodį', desc: 'Žingsnis po žingsnio instrukcija kompiuteryje ir telefone. Taip pat — kaip įjungti dviejų veiksnių autentifikaciją.', tag: 'How-to', readTime: '4 min' },
-      { path: '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi', label: 'Kaip pakeisti WiFi slaptažodį', desc: 'Instrukcija populiariausiems routeriams: TP-Link, Huawei, Asus, Telia ir kitiems. Su nuotraukomis.', tag: 'How-to', readTime: '5 min' },
-      { path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi', label: 'Ką daryti pamiršus slaptažodį', desc: 'Kaip atkurti prieigą prie Gmail, Facebook, Instagram ir kitų paskyrų. Prevencijos patarimai ateičiai.', tag: 'Gidas', readTime: '6 min' },
+      { path: '/slaptazodziu-saugumas/slaptazodziu-tvarkykles/', label: 'Geriausios slaptažodžių tvarkyklės 2026', desc: 'Nepriklausomas palyginimas: 1Password, Bitwarden, NordPass, RoboForm ir Proton Pass — kuri geriausia jums?', tag: 'Palyginimas', readTime: '8 min' },
+      { path: '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi/', label: 'Kaip pakeisti Gmail slaptažodį', desc: 'Žingsnis po žingsnio instrukcija kompiuteryje ir telefone. Taip pat — kaip įjungti dviejų veiksnių autentifikaciją.', tag: 'How-to', readTime: '4 min' },
+      { path: '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi/', label: 'Kaip pakeisti WiFi slaptažodį', desc: 'Instrukcija populiariausiems routeriams: TP-Link, Huawei, Asus, Telia ir kitiems. Su nuotraukomis.', tag: 'How-to', readTime: '5 min' },
+      { path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi/', label: 'Ką daryti pamiršus slaptažodį', desc: 'Kaip atkurti prieigą prie Gmail, Facebook, Instagram ir kitų paskyrų. Prevencijos patarimai ateičiai.', tag: 'Gidas', readTime: '6 min' },
     ],
     stats: [
       { value: '85,6%', label: 'Įprastų slaptažodžių AI nulaužia per <10 sek.' },
@@ -1676,8 +1678,8 @@ const FLAGSHIP_META = {
       { name: 'NordPass', desc: 'Paprasta naudoti, XChaCha20 šifravimas. Data Breach Scanner funkcija.', tag: 'Nuo 1,49 $/mėn.', url: 'https://nordpass.com' },
     ],
     crossLinks: [
-      { path: '/antivirusines-programos', title: 'Geriausios antivirusinės programos 2026', desc: 'Antivirusinės apsaugo nuo keyloggerių ir spyware — pagrindinių slaptažodžių vagysčių priežasčių' },
-      { path: '/virusai/kompiuterinis-virusas', title: 'Kompiuterinis virusas: tipai ir apsauga', desc: 'Sužinokite, kaip virusai vagia slaptažodžius ir kaip nuo to apsisaugoti' },
+      { path: '/antivirusines-programos/', title: 'Geriausios antivirusinės programos 2026', desc: 'Antivirusinės apsaugo nuo keyloggerių ir spyware — pagrindinių slaptažodžių vagysčių priežasčių' },
+      { path: '/virusai/kompiuterinis-virusas/', title: 'Kompiuterinis virusas: tipai ir apsauga', desc: 'Sužinokite, kaip virusai vagia slaptažodžius ir kaip nuo to apsisaugoti' },
     ],
     hubFaq: [
       { q: 'Koks turėtų būti saugus slaptažodis 2026 metais?', a: 'Pagal naujausias NIST gaires, saugus slaptažodis turėtų būti bent 15 simbolių ilgio. Geriausia naudoti passphrase — 3–5 atsitiktinių žodžių kombinaciją su skaičiumi ar simboliu.' },
@@ -1687,7 +1689,7 @@ const FLAGSHIP_META = {
       { q: 'Ką daryti, jei mano slaptažodis buvo nutekėjęs?', a: 'Nedelsiant pakeiskite slaptažodį toje paskyroje ir visose kitose, kur naudojote tą patį. Įjunkite 2FA. Patikrinkite haveibeenpwned.com.' },
       { q: 'Ar naršyklės slaptažodžių saugojimas yra saugus?', a: 'Naršyklės siūlo bazinį saugojimą, tačiau jis nėra toks saugus kaip dedikuota tvarkyklė. Naršyklės saugykla dažnai neturi master password.' },
     ],
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas/' }],
   },
   '/slaptazodziu-saugumas/slaptazodziu-tvarkykles': {
     title: 'Geriausios slaptažodžių tvarkyklės 2026 — palyginimas ir apžvalgos',
@@ -1695,7 +1697,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Geriausios slaptažodžių tvarkyklės 2026&nbsp;m.',
     heroDesc: 'Kuri slaptažodžių tvarkyklė geriausia? 1Password, Bitwarden, NordPass, RoboForm ir Proton Pass detalus palyginimas.',
     productCategory: 'password-manager',
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }, { label: 'Slaptažodžių tvarkyklės', path: '/slaptazodziu-saugumas/slaptazodziu-tvarkykles' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas/' }, { label: 'Slaptažodžių tvarkyklės', path: '/slaptazodziu-saugumas/slaptazodziu-tvarkykles/' }],
     jumpLinks: [
       { href: '#top-5', label: 'Top 5', svg: 'award' },
       { href: '#palyginimas', label: 'Palyginimas', svg: 'barChart' },
@@ -1735,8 +1737,8 @@ const FLAGSHIP_META = {
       ],
       paidNote: 'Tinka: šeimoms, keliems įrenginiams, pažangiems naudotojams.',
       crossLinks: [
-        { path: '/slaptazodziu-saugumas', label: 'Slaptažodžių saugumo patarimai' },
-        { path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi', label: 'Ką daryti pamiršus slaptažodį' },
+        { path: '/slaptazodziu-saugumas/', label: 'Slaptažodžių saugumo patarimai' },
+        { path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi/', label: 'Ką daryti pamiršus slaptažodį' },
       ],
     },
     buyerGuide: [
@@ -1765,11 +1767,11 @@ const FLAGSHIP_META = {
       { title: 'Kelių įrenginių palaikymas', desc: 'Sinchronizacija, naršyklių plėtiniai ir mobiliosios programėlės.' },
     ],
     relatedGuides: [
-      { path: '/slaptazodziu-saugumas', label: 'Slaptažodžių saugumo centras', desc: 'NIST 2026 gairės ir praktiniai patarimai' },
-      { path: '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi', label: 'Kaip pakeisti Gmail slaptažodį', desc: 'Žingsnis po žingsnio instrukcija' },
-      { path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi', label: 'Ką daryti pamiršus slaptažodį', desc: 'Atkūrimo gidas populiariausioms paskyroms' },
-      { path: '/antivirusines-programos', label: 'Antivirusinės programos 2026', desc: 'Apsauga nuo keyloggerių ir spyware' },
-      { path: '/virusai/kompiuterinis-virusas', label: 'Kompiuterinis virusas', desc: 'Kaip virusai vagia slaptažodžius' },
+      { path: '/slaptazodziu-saugumas/', label: 'Slaptažodžių saugumo centras', desc: 'NIST 2026 gairės ir praktiniai patarimai' },
+      { path: '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi/', label: 'Kaip pakeisti Gmail slaptažodį', desc: 'Žingsnis po žingsnio instrukcija' },
+      { path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi/', label: 'Ką daryti pamiršus slaptažodį', desc: 'Atkūrimo gidas populiariausioms paskyroms' },
+      { path: '/antivirusines-programos/', label: 'Antivirusinės programos 2026', desc: 'Apsauga nuo keyloggerių ir spyware' },
+      { path: '/virusai/kompiuterinis-virusas/', label: 'Kompiuterinis virusas', desc: 'Kaip virusai vagia slaptažodžius' },
     ],
   },
   '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi': {
@@ -1778,7 +1780,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Kaip pakeisti Gmail slaptažodį',
     heroDesc: 'Žingsnis po žingsnio instrukcija, kaip pakeisti Gmail slaptažodį kompiuteryje ir telefone — su saugumo patarimais.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }, { label: 'Gmail slaptažodis', path: '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas/' }, { label: 'Gmail slaptažodis', path: '/slaptazodziu-saugumas/kaip-pakeisti-gmail-slaptazodi/' }],
     guideSections: [
       { id: 'kompiuteryje', title: 'Kaip pakeisti Gmail slaptažodį kompiuteryje', content: 'Prisijunkite prie myaccount.google.com, eikite į „Sauga" → „Prisijungimas prie Google" → „Slaptažodis". Įveskite dabartinį slaptažodį, tada sukurkite naują — mažiausiai 12 simbolių su raidėmis, skaičiais ir specialiais ženklais.' },
       { id: 'telefone', title: 'Kaip pakeisti Gmail slaptažodį telefone', content: 'Atidarykite Gmail programėlę, bakstelėkite profilio nuotrauką → „Google paskyros valdymas" → „Sauga" → „Slaptažodis". Patvirtinkite tapatybę piršto atspaudu arba PIN kodu, tada įveskite naują slaptažodį.' },
@@ -1797,7 +1799,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Kaip pakeisti WiFi slaptažodį',
     heroDesc: 'Universali instrukcija WiFi slaptažodžio keitimui per maršrutizatoriaus nustatymus — tinka visiems populiariausiems routeriams.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }, { label: 'WiFi slaptažodis', path: '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas/' }, { label: 'WiFi slaptažodis', path: '/slaptazodziu-saugumas/kaip-pakeisti-wifi-slaptazodi/' }],
     guideSections: [
       { id: 'prisijungimas', title: '1. Prisijunkite prie routerio', content: 'Atidarykite naršyklę ir įveskite routerio IP adresą (dažniausiai 192.168.0.1 arba 192.168.1.1). Prisijunkite su admin vartotoju — slaptažodis paprastai nurodytas ant routerio lipduko apačioje.' },
       { id: 'nustatymai', title: '2. Raskite WiFi nustatymus', content: 'Ieškokite skyriaus „Wireless", „WiFi Settings" arba „Belaidis tinklas". Kiekvieno gamintojo sąsaja šiek tiek skiriasi, bet WiFi nustatymai visada yra pagrindinėse kategorijose.' },
@@ -1817,7 +1819,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Ką daryti pamiršus slaptažodį',
     heroDesc: 'Pamiršote slaptažodį? Praktinis gidas, kaip atkurti prieigą prie Gmail, Facebook, Instagram ir kitų paskyrų.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas' }, { label: 'Pamirštas slaptažodis', path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Slaptažodžių saugumas', path: '/slaptazodziu-saugumas/' }, { label: 'Pamirštas slaptažodis', path: '/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi/' }],
     guideSections: [
       { id: 'google', title: 'Gmail / Google paskyra', content: 'Eikite į accounts.google.com/signin/recovery. Google pasiūlys kelis atkūrimo būdus: SMS kodą, alternatyvų el. paštą arba saugos klausimus. Jei turite nustatytą atkūrimo telefoną — procesas užtrunka 2 minutes.' },
       { id: 'facebook', title: 'Facebook paskyra', content: 'Paspauskite „Pamiršote slaptažodį?" prisijungimo puslapyje. Įveskite el. paštą arba telefono numerį. Facebook atsiųs atkūrimo kodą. Jei nebeturite prieigos prie el. pašto — naudokite „Identifikuokite save" funkciją su draugų pagalba.' },
@@ -1838,12 +1840,12 @@ const FLAGSHIP_META = {
     heroDesc: 'Kaip atpažinti pavojingą elgesį, patikrinti įrenginį ir apsaugoti kompiuterį ar telefoną nuo virusų, adware ir kitų grėsmių.',
     isHub: true,
     featuredCards: [
-      { path: '/virusai/kompiuterinis-virusas', label: 'Kompiuterinis virusas', desc: 'Kas tai, kaip plinta ir ką daryti užsikrėtus.' },
-      { path: '/virusai/virusas-telefone', label: 'Virusas telefone', desc: 'Požymiai, šalinimas ir apsauga Android bei iPhone.' },
-      { path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas', label: 'Kaip patikrinti kompiuterį', desc: 'Pilnas skenavimas ir infekcijos požymių patikra.' },
-      { path: '/virusai/reklamos-virusas-telefone', label: 'Reklamos virusas telefone', desc: 'Kaip pašalinti adware ir sustabdyti iššokančias reklamas.' },
+      { path: '/virusai/kompiuterinis-virusas/', label: 'Kompiuterinis virusas', desc: 'Kas tai, kaip plinta ir ką daryti užsikrėtus.' },
+      { path: '/virusai/virusas-telefone/', label: 'Virusas telefone', desc: 'Požymiai, šalinimas ir apsauga Android bei iPhone.' },
+      { path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas/', label: 'Kaip patikrinti kompiuterį', desc: 'Pilnas skenavimas ir infekcijos požymių patikra.' },
+      { path: '/virusai/reklamos-virusas-telefone/', label: 'Reklamos virusas telefone', desc: 'Kaip pašalinti adware ir sustabdyti iššokančias reklamas.' },
     ],
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/' }],
   },
   '/virusai/kompiuterinis-virusas': {
     title: 'Kompiuterinis virusas: kas tai, tipai ir apsauga 2026',
@@ -1851,7 +1853,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Kompiuterinis virusas: kas tai ir kaip apsisaugoti',
     heroDesc: 'Viskas, ką reikia žinoti apie kompiuterinius virusus — tipai, plitimo būdai, atpažinimo požymiai ir efektyviausi apsaugos metodai.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai' }, { label: 'Kompiuterinis virusas', path: '/virusai/kompiuterinis-virusas' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/' }, { label: 'Kompiuterinis virusas', path: '/virusai/kompiuterinis-virusas/' }],
     guideSections: [
       { id: 'kas-tai', title: 'Kas yra kompiuterinis virusas?', content: 'Kompiuterinis virusas — tai kenkėjiška programa, kuri gali kopijuoti save ir plisti tarp kompiuterių. Virusai prisijungia prie teisėtų failų ar programų ir aktyvuojasi, kai vartotojas atidaro užkrėstą failą. Jie gali sugadinti duomenis, sulėtinti sistemą arba suteikti įsilaužėliams prieigą prie jūsų kompiuterio.' },
       { id: 'tipai', title: 'Pagrindiniai virusų tipai', content: 'Failų virusai — prisijungia prie vykdomųjų failų (.exe). Makro virusai — plinta per Office dokumentus. Rootkit — slepiasi operacinės sistemos lygyje. Ransomware — užšifruoja failus ir reikalauja išpirkos. Trojanai — apsimeta teisėtomis programomis. Šnipinėjimo programos (spyware) — seka vartotojo veiklą ir vagia duomenis.' },
@@ -1872,7 +1874,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Virusas telefone: ką daryti?',
     heroDesc: 'Kaip atpažinti, pašalinti ir apsisaugoti nuo virusų telefone — praktinis gidas Android ir iOS naudotojams.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai' }, { label: 'Virusas telefone', path: '/virusai/virusas-telefone' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/' }, { label: 'Virusas telefone', path: '/virusai/virusas-telefone/' }],
     guideSections: [
       { id: 'pozymiai', title: 'Kaip atpažinti virusą telefone?', content: 'Pagrindiniai požymiai: telefonas veikia žymiai lėčiau, baterija greitai senka, padidėjęs duomenų naudojimas, atsiranda nepažįstamų programėlių, iššokančios reklamos, telefonas kaista be priežasties, neįprasti SMS ar skambučiai kontaktų sąraše.' },
       { id: 'android', title: 'Virusų šalinimas Android telefone', content: '1) Paleiskite Safe Mode (palaikykite maitinimo mygtuką → ilgai spauskite „Išjungti" → „Safe Mode"). 2) Eikite į Nustatymai → Programos ir pašalinkite neseniai įdiegtas įtartinas programėles. 3) Nuskenuokite telefoną su Norton Mobile Security arba Malwarebytes. 4) Išvalykite naršyklės talpyklą. 5) Jei problema lieka — atstatykite gamyklinius nustatymus (prieš tai padarykite atsarginę kopiją).' },
@@ -1892,7 +1894,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Kaip patikrinti ar kompiuteryje yra virusas',
     heroDesc: 'Praktinis gidas: kaip nuskaityti kompiuterį dėl virusų, atpažinti infekciją ir pašalinti kenkėjiškas programas.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai' }, { label: 'Virusų patikra', path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/' }, { label: 'Virusų patikra', path: '/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas/' }],
     guideSections: [
       { id: 'pozymiai', title: 'Infekcijos požymiai', content: 'Pagrindiniai požymiai, kad kompiuteryje gali būti virusas: sistema veikia žymiai lėčiau, atsiranda nepažįstamų programų, naršyklė nukreipia į keistas svetaines, pasirodo neįprasti iššokantys langai, kietasis diskas neįprastai aktyvus, antivirusinė programa išjungta be jūsų žinios.' },
       { id: 'windows-skenavimas', title: 'Virusų skenavimas Windows sistemoje', content: 'Windows 10/11 turi integruotą Windows Security (Defender): Nustatymai → Atnaujinimas ir sauga → Windows Security → Virusų ir grėsmių apsauga → Pilnas skenavimas. Rekomenduojame papildomai naudoti Malwarebytes nemokamą skenerį antrajai nuomonei.' },
@@ -1912,7 +1914,7 @@ const FLAGSHIP_META = {
     heroTitle: 'Reklamos virusas telefone: kaip pašalinti',
     heroDesc: 'Iššokančios reklamos telefone? Greičiausiai tai adware — reklamos virusas. Kaip jį atpažinti ir pašalinti iš Android ir iOS.',
     isGuide: true,
-    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai' }, { label: 'Reklamos virusas', path: '/virusai/reklamos-virusas-telefone' }],
+    breadcrumbs: [{ label: 'Pradžia', path: '/' }, { label: 'Virusai', path: '/virusai/' }, { label: 'Reklamos virusas', path: '/virusai/reklamos-virusas-telefone/' }],
     guideSections: [
       { id: 'kas-tai', title: 'Kas yra reklamos virusas (adware)?', content: 'Adware — tai kenkėjiška programinė įranga, kuri rodo nepageidaujamas reklamas telefone. Ji gali atsirasti per užkrėstas programėles, nesaugias svetaines arba apgaulingus pranešimus. Adware gali rodyti iššokančius langus, peradresuoti naršyklę ir net sekti jūsų veiklą.' },
       { id: 'pozymiai', title: 'Adware požymiai telefone', content: 'Dažniausiai matomi požymiai: iššokančios reklamos net nesinaudojant naršykle, naršyklės nukreipimai į reklaminius puslapius, naujos nepažįstamos programėlės, padidėjęs duomenų naudojimas, greitai senka baterija, telefonas veikia lėčiau.' },
