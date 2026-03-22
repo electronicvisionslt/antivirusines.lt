@@ -101,5 +101,12 @@ export function usePageMeta(meta: SeoMeta) {
       document.head.appendChild(script);
     }
     script.textContent = JSON.stringify(ldData);
+
+    console.info('seo-debug', {
+      canonical: (document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null)?.href ?? null,
+      ogUrl: (document.head.querySelector('meta[property="og:url"]') as HTMLMetaElement | null)?.content ?? null,
+      hreflangLt: (document.head.querySelector('link[rel="alternate"][hreflang="lt"]') as HTMLLinkElement | null)?.href ?? null,
+      jsonLd: Boolean(document.head.querySelector('script[data-seo="json-ld"]')),
+    });
   }, [meta.title, meta.description, meta.ogTitle, meta.ogDescription, meta.ogImage, meta.canonicalUrl, meta.noindex]);
 }
