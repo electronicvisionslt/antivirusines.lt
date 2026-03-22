@@ -6,79 +6,107 @@ import TrustDisclosure from '../components/TrustDisclosure.astro';
 ---
 
 <Base
-  title="Virusai"
-  description="Informacija apie kompiuterinius virusus, jų tipus, atpažinimą ir šalinimą."
+  title="Virusai ir grėsmės 2026 — kaip atpažinti ir apsisaugoti"
+  description="Praktiniai gidai apie kompiuterinius ir mobiliuosius virusus, jų požymius, patikrą, šalinimą ir prevenciją."
   
 >
-  <div class="container py-8">
+  <div class="container py-8 max-w-4xl mx-auto">
     <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Virusai","path":"/virusai/"}]} />
 
-    <div class="mb-10 max-w-2xl">
-      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-3">Virusai</h1>
-      <p class="text-muted-foreground leading-relaxed">Informacija apie kompiuterinius virusus, jų tipus, atpažinimą ir šalinimą.</p>
+    <!-- HERO -->
+    <div class="mb-10">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="section-label">Slaptažodžių saugumas</span>
+        <span class="chip-muted text-[10px]">Atnaujinta 2026</span>
+      </div>
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4">
+        Virusai ir skaitmeninės grėsmės
+      </h1>
+      <p class="text-muted-foreground leading-relaxed max-w-2xl">
+        Kaip atpažinti pavojingą elgesį, patikrinti įrenginį ir apsaugoti kompiuterį ar telefoną nuo virusų, adware ir kitų grėsmių.
+      </p>
     </div>
 
     
-    <section class="mb-12">
-      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Temos šiame skyriuje</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        
-        <a href="/virusai/kompiuterinis-virusas/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
-          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Kompiuterinis virusas</h3>
-          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">Kas yra kompiuterinis virusas, kokie yra pagrindiniai tipai ir kaip apsisaugoti.</p>
-          <span class="inline-flex items-center gap-1.5 mt-3 text-[11px] font-heading font-semibold text-primary">Atverti temą <svg class="w-4 h-4 text-muted-foreground/30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </a>
-        
-        <a href="/virusai/virusas-telefone/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
-          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Virusas telefone</h3>
-          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">Kaip atpažinti ir pašalinti virusą iš telefono. Android ir iOS apsaugos gidas.</p>
-          <span class="inline-flex items-center gap-1.5 mt-3 text-[11px] font-heading font-semibold text-primary">Atverti temą <svg class="w-4 h-4 text-muted-foreground/30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </a>
-        
-        <a href="/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
-          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Kaip patikrinti ar kompiuteryje yra virusas</h3>
-          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">Praktinis gidas: simptomai ir patikrinimo būdai kompiuterio virusams aptikti.</p>
-          <span class="inline-flex items-center gap-1.5 mt-3 text-[11px] font-heading font-semibold text-primary">Atverti temą <svg class="w-4 h-4 text-muted-foreground/30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </a>
-        
-        <a href="/virusai/reklamos-virusas-telefone/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
-          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Reklamos virusas telefone</h3>
-          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">Kaip pašalinti reklaminį virusą iš telefono — pop-up reklamos, adware šalinimas.</p>
-          <span class="inline-flex items-center gap-1.5 mt-3 text-[11px] font-heading font-semibold text-primary">Atverti temą <svg class="w-4 h-4 text-muted-foreground/30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </a>
-        
-      </div>
-    </section>
+
+    
+    <!-- GUIDES GRID -->
+    <div class="mb-5">
+      <div class="section-label text-[10px] mb-1.5">Praktiniai gidai</div>
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-foreground">Žingsnis po žingsnio instrukcijos</h2>
+      <p class="text-sm text-muted-foreground mt-1">Dažniausiai ieškomi slaptažodžių klausimai su aiškiomis instrukcijomis</p>
+    </div>
+    <div class="grid gap-3 mb-12">
+      
+      <a href="/virusai/kompiuterinis-virusas/" class="group flex items-start gap-4 p-5 bg-card border border-border/50 rounded-xl hover:border-primary/30 hover:shadow-sm transition-all duration-200">
+        <div class="rounded-lg bg-primary/8 p-2.5 shrink-0 group-hover:bg-primary/15 transition-colors">
+          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            
+            
+          </div>
+          <h3 class="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">Kompiuterinis virusas</h3>
+          <p class="text-sm text-muted-foreground mt-1 leading-relaxed">Kas tai, kaip plinta ir ką daryti užsikrėtus.</p>
+        </div>
+        <span class="mt-3 shrink-0"><svg class="w-4 h-4 text-muted-foreground/30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </a>
+      <a href="/virusai/virusas-telefone/" class="group flex items-start gap-4 p-5 bg-card border border-border/50 rounded-xl hover:border-primary/30 hover:shadow-sm transition-all duration-200">
+        <div class="rounded-lg bg-primary/8 p-2.5 shrink-0 group-hover:bg-primary/15 transition-colors">
+          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            
+            
+          </div>
+          <h3 class="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">Virusas telefone</h3>
+          <p class="text-sm text-muted-foreground mt-1 leading-relaxed">Požymiai, šalinimas ir apsauga Android bei iPhone.</p>
+        </div>
+        <span class="mt-3 shrink-0"><svg class="w-4 h-4 text-muted-foreground/30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </a>
+      <a href="/virusai/kaip-patikrinti-ar-kompiuteryje-yra-virusas/" class="group flex items-start gap-4 p-5 bg-card border border-border/50 rounded-xl hover:border-primary/30 hover:shadow-sm transition-all duration-200">
+        <div class="rounded-lg bg-primary/8 p-2.5 shrink-0 group-hover:bg-primary/15 transition-colors">
+          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            
+            
+          </div>
+          <h3 class="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">Kaip patikrinti kompiuterį</h3>
+          <p class="text-sm text-muted-foreground mt-1 leading-relaxed">Pilnas skenavimas ir infekcijos požymių patikra.</p>
+        </div>
+        <span class="mt-3 shrink-0"><svg class="w-4 h-4 text-muted-foreground/30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </a>
+      <a href="/virusai/reklamos-virusas-telefone/" class="group flex items-start gap-4 p-5 bg-card border border-border/50 rounded-xl hover:border-primary/30 hover:shadow-sm transition-all duration-200">
+        <div class="rounded-lg bg-primary/8 p-2.5 shrink-0 group-hover:bg-primary/15 transition-colors">
+          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            
+            
+          </div>
+          <h3 class="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">Reklamos virusas telefone</h3>
+          <p class="text-sm text-muted-foreground mt-1 leading-relaxed">Kaip pašalinti adware ir sustabdyti iššokančias reklamas.</p>
+        </div>
+        <span class="mt-3 shrink-0"><svg class="w-4 h-4 text-muted-foreground/30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </a>
+    </div>
     
 
     
-    <section class="mb-12">
-      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Straipsniai ir gidai</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        
-        <a href="/virusai/kompiuterinis-virusas/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
-          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Kompiuterinis virusas: kas tai, tipai ir kaip apsisaugoti</h3>
-          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Išsamus gidas apie kompiuterinius virusus – kaip jie veikia, kokie yra pagrindiniai tipai ir kaip efektyviai nuo jų apsisaugoti.</p>
-          <div class="flex items-center gap-2 mt-3 text-[11px] text-muted-foreground/60">
-            <time>2026-03-22</time>
-            <span>· 14 min</span>
-          </div>
-        </a>
-        
-        <a href="/virusai/virusas-telefone/" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
-          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Virusas telefone: požymiai, šalinimas ir apsauga</h3>
-          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Kaip suprasti, ar telefonas užkrėstas virusu? Praktinis gidas apie mobiliųjų virusų požymius, šalinimą ir prevenciją.</p>
-          <div class="flex items-center gap-2 mt-3 text-[11px] text-muted-foreground/60">
-            <time>2026-03-22</time>
-            <span>· 9 min</span>
-          </div>
-        </a>
-        
-      </div>
-    </section>
+
     
 
     
+
+    
+
+    
+
     <TrustDisclosure />
   </div>
 </Base>

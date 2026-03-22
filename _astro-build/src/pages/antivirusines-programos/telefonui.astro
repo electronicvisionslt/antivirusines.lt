@@ -3,94 +3,730 @@ import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import FAQ from '../../components/FAQ.astro';
 import TrustDisclosure from '../../components/TrustDisclosure.astro';
-
-const jsonLd = {"@context":"https://schema.org","@type":"Article","headline":"Geriausios antivirusinės programos telefonui 2025 m.","description":"Apsaugokite savo telefoną nuo virusų ir kenkėjiškų programų. Apžvelgiame geriausias antivirusines programas Android ir iOS įrenginiams.","datePublished":"2025-02-28T00:00:00+00:00","dateModified":"2026-03-22T19:45:01.395177+00:00","author":{"@type":"Person","name":"Paulius Jasaitis"},"publisher":{"@type":"Organization","name":"antivirusines.lt"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://antivirusines.lt/antivirusines-programos/telefonui/"},"inLanguage":"lt"};
 ---
 
 <Base
-  title="Geriausios antivirusinės programos telefonui 2025 m."
-  description="Apsaugokite savo telefoną nuo virusų ir kenkėjiškų programų. Apžvelgiame geriausias antivirusines programas Android ir iOS įrenginiams."
+  title="Geriausia antivirusinė telefonui 2026 — Top 5 Android ir iOS"
+  description="Nepriklausomas antivirusinių programų telefonams palyginimas. Norton, Bitdefender, Kaspersky, Avira ir Avast — kurią pasirinkti Android ar iPhone?"
   
-  
-  jsonLd={jsonLd}
 >
-  <article class="container py-8" itemScope itemType="https://schema.org/Article">
-    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Antivirusinės programos","path":"/antivirusines-programos/"},{"label":"Geriausios antivirusinės programos telefonui 2025 m.","path":"/antivirusines-programos/telefonui/"}]} />
+  <div class="container py-8 max-w-5xl mx-auto">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Antivirusinės programos","path":"/antivirusines-programos/"},{"label":"Telefonui","path":"/antivirusines-programos/telefonui/"}]} />
 
-    <div class="mb-10 max-w-3xl">
-      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
-        Geriausios antivirusinės programos telefonui 2025 m.
+    <!-- ═══ 1. HERO ═══ -->
+    <section class="mb-8">
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
+        Geriausia antivirusinė telefonui 2026&nbsp;m.
       </h1>
-      <p class="text-muted-foreground leading-relaxed mb-5" itemProp="description">Apsaugokite savo telefoną nuo virusų ir kenkėjiškų programų. Apžvelgiame geriausias antivirusines programas Android ir iOS įrenginiams.</p>
-      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
-        <span class="font-medium">Paulius Jasaitis</span>
-        <time itemProp="dateModified" datetime="2026-03-22T19:45:01.395177+00:00">Atnaujinta: 2026-03-22</time>
-        <span>· 10 min skaitymo</span>
-      </div>
+      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
+        Kurios antivirusinės programos geriausiai apsaugos jūsų telefoną? Palyginome populiariausius sprendimus Android ir iOS.
+      </p>
+
+      
+      <!-- Quick winner badges -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 mb-6">
+        
+        <div class="card-premium-featured p-3.5 flex items-center gap-3">
+          <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:44px;height:44px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/norton-logo.png" alt="Norton Mobile Security logotipas" width="32" height="32" class="object-contain" loading="lazy" />
     </div>
+          <div class="min-w-0">
+            <span class="chip-primary mb-1">Geriausia 2026</span>
+            <span class="text-sm text-foreground font-semibold block leading-tight">Norton Mobile Security</span>
+            <span class="text-[11px] text-muted-foreground">Nuo 19.99 €/m.</span>
+          </div>
+        </div>
+        
+        <div class="card-premium p-3.5 flex items-center gap-3">
+          <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:44px;height:44px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/bitdefender-logo.png" alt="Bitdefender Mobile Security logotipas" width="32" height="32" class="object-contain" loading="lazy" />
+    </div>
+          <div class="min-w-0">
+            <span class="chip-success mb-1">Geriausia nemokama</span>
+            <span class="text-sm text-foreground font-semibold block leading-tight">Bitdefender Mobile Security</span>
+            <span class="text-[11px] text-muted-foreground">Nuo 14.99 €/m.</span>
+          </div>
+        </div>
+        
+      </div>
+      
+
+      
+    </section>
+
+    <div class="section-divider mb-10"></div>
 
     
-
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
-      <div>
-        <TrustDisclosure compact />
-
-        <div class="prose-article">
-          
-          <h2 id="ivadas">Ar telefonui reikia antivirusinės?</h2>
-          <p>Mobilieji įrenginiai tampa vis dažnesniu kibernetinių atakų taikiniu. Android telefonai yra ypač pažeidžiami dėl atviros ekosistemos, tačiau ir iPhone naudotojai turėtų būti budrūs.</p>
-          
-          <h2 id="android">Geriausios antivirusinės Android telefonams</h2>
-          <p>Android operacinė sistema yra populiariausias mobilusis taikiniu kenkėjiškoms programoms. Rekomenduojame rinktis antivirusinę su realaus laiko apsauga ir programų skenavimu.</p>
-          
-          <h2 id="ios">Antivirusinės iOS įrenginiams</h2>
-          <p>Nors iOS yra saugesnė sistema, antivirusinės programos vis tiek gali padėti apsaugoti nuo sukčiavimo svetainių ir nesaugių Wi-Fi tinklų.</p>
-          
-
-          
-        </div>
-
+    <!-- ═══ 2. TOP 5 ═══ -->
+    <section id="top-5" class="mb-16 scroll-mt-20">
+      <div class="mb-6">
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Top 5 pasirinkimai</h2>
+        <p class="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">Programos, kurios šiandien siūlo geriausią apsaugos, funkcijų ir kainos derinį.</p>
+      </div>
+      <div class="space-y-3">
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
-          <div class="rounded-xl border border-success/20 bg-success/5 p-5">
-            <h3 class="font-heading font-semibold text-success text-sm mb-3">✅ Privalumai</h3>
-            <ul class="space-y-2"><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Realaus laiko apsauga</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Wi-Fi saugumo tikrinimas</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-success shrink-0">+</span>Apsauga nuo sukčiavimo</li></ul>
-          </div>
-          <div class="rounded-xl border border-destructive/20 bg-destructive/5 p-5">
-            <h3 class="font-heading font-semibold text-destructive text-sm mb-3">❌ Trūkumai</h3>
-            <ul class="space-y-2"><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>Gali naudoti daugiau baterijos</li><li class="text-sm text-muted-foreground flex items-start gap-2"><span class="text-destructive shrink-0">−</span>Kai kurios funkcijos mokamos</li></ul>
-          </div>
-        </div>
-        
+        <div class="relative overflow-hidden transition-all duration-200 card-premium-featured">
+          <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary to-primary/40"></div>
+          <div class="p-4 md:p-5">
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 text-primary">1</span>
+              <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:48px;height:48px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/norton-logo.png" alt="Norton Mobile Security logotipas" width="36" height="36" class="object-contain" loading="lazy" />
+    </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Norton Mobile Security</h3>
+                  <span class="chip-primary">Nr. 1</span>
+                  
+                </div>
+                <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Geriausia bendra apsauga Android ir iOS</p>
+              </div>
+              <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.8</span>
+  </div>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">Nuo 19.99 €/m.</span>
+              <div class="justify-self-end">
+                <a href="https://www.norton.com/products/norton-mobile-security" target="_blank" rel="nofollow sponsored noopener noreferrer"
+    class="inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary px-5 py-2.5 text-sm whitespace-nowrap">
+    Gauti pasiūlymą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+              </div>
+            </div>
 
-        
-        <div class="rounded-xl border border-primary/15 bg-primary/[0.03] p-5 my-8">
-          <div class="flex gap-3">
-            <div class="w-1 rounded-full bg-primary/40 shrink-0"></div>
-            <div>
-              <h3 class="font-heading font-semibold text-foreground mb-2">Mūsų verdiktas</h3>
-              <p class="text-sm text-muted-foreground leading-relaxed">Telefonui rekomenduojame Bitdefender Mobile Security arba Norton Mobile Security kaip patikimiausius sprendimus.</p>
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">Norton Mobile Security yra absoliutus lyderis tarp mobiliųjų antivirusinių. Android versijoje — 100% kenkėjiškų programų aptikimas, pažangi phishing apsauga ir App Advisor. iOS versijoje — scam SMS aptikimas, dark web stebėjimas ir neribotas VPN. Vienintelis trūkumas — nėra nemokamo plano, tačiau 60 dienų pinigų grąžinimo garantija leidžia išbandyti be rizikos.</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 100% kenkėjiškų programų aptikimas Android</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> AI sukčiavimo apsauga SMS ir skambučiams</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Neribotas VPN su automatinio Wi-Fi apsauga</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Nėra nemokamo plano</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> VPN reikalauja atskiro atsisiuntimo iOS</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span></div>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    <span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> VPN</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anti-theft</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anti-phishing</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Wi-Fi apsauga</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Tėvų kontrolė</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-primary">1</span>
+                <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:48px;height:48px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/norton-logo.png" alt="Norton Mobile Security logotipas" width="36" height="36" class="object-contain" loading="lazy" />
+    </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Norton Mobile Security</h3>
+                    <span class="chip-primary">Nr. 1</span>
+                    
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Geriausia bendra apsauga Android ir iOS</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.8</span>
+  </div>
+                <span class="text-sm font-heading font-bold text-foreground">Nuo 19.99 €/m.</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">Norton Mobile Security yra absoliutus lyderis tarp mobiliųjų antivirusinių. Android versijoje — 100% kenkėjiškų programų aptikimas, pažangi phishing apsauga ir App Advisor. iOS versijoje — scam SMS aptikimas, dark web stebėjimas ir neribotas VPN. Vienintelis trūkumas — nėra nemokamo plano, tačiau 60 dienų pinigų grąžinimo garantija leidžia išbandyti be rizikos.</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 100% kenkėjiškų programų aptikimas Android</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> AI sukčiavimo apsauga SMS ir skambučiams</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Neribotas VPN su automatinio Wi-Fi apsauga</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Nėra nemokamo plano</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> VPN reikalauja atskiro atsisiuntimo iOS</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span></div>
+                </div>
+              </div>
+              <a href="https://www.norton.com/products/norton-mobile-security" target="_blank" rel="nofollow sponsored noopener noreferrer"
+    class="inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary px-5 py-2.5 text-sm w-full justify-center">
+    Gauti pasiūlymą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
             </div>
           </div>
         </div>
-        
-
-        <FAQ items={[{"a":"Labai rekomenduojama, ypač jei diegiate programas ne tik iš Google Play parduotuvės.","q":"Ar Android telefonui būtina antivirusinė?"}]} />
-      </div>
-
-      
-      <aside class="hidden lg:block">
-        <div class="sticky top-20">
-          <nav class="rounded-xl border border-border/50 bg-card p-4">
-            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
-            <ul class="space-y-1.5">
-              <li><a href="#ivadas" class="text-xs text-muted-foreground hover:text-primary transition-colors">Ar telefonui reikia antivirusinės?</a></li><li><a href="#android" class="text-xs text-muted-foreground hover:text-primary transition-colors">Geriausios antivirusinės Android telefonams</a></li><li><a href="#ios" class="text-xs text-muted-foreground hover:text-primary transition-colors">Antivirusinės iOS įrenginiams</a></li>
-            </ul>
-          </nav>
-          <div class="mt-5"><TrustDisclosure compact /></div>
-        </div>
-      </aside>
-      
+        <div class="relative overflow-hidden transition-all duration-200 card-premium">
+          
+          <div class="p-4 md:p-5">
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 text-muted-foreground/25">2</span>
+              <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:48px;height:48px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/bitdefender-logo.png" alt="Bitdefender Mobile Security logotipas" width="36" height="36" class="object-contain" loading="lazy" />
     </div>
-  </article>
+              <div class="min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Bitdefender Mobile Security</h3>
+                  
+                  <span class="chip-success">Nemokama</span>
+                </div>
+                <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Lengviausia ir efektyviausia apsauga</p>
+              </div>
+              <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.6</span>
+  </div>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">Nuo 14.99 €/m.</span>
+              <div class="justify-self-end">
+                <a href="https://www.bitdefender.com/solutions/mobile-security-android.html" target="_blank" rel="nofollow sponsored noopener noreferrer"
+    class="inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary px-5 py-2.5 text-sm whitespace-nowrap">
+    Gauti pasiūlymą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+              </div>
+            </div>
+
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">Bitdefender Mobile Security pasižymi aukščiausiais nepriklausomų laboratorijų vertinimais ir mažiausiu poveikiu telefono našumui. Android versija siūlo realaus laiko apsaugą, anti-phishing ir programų privatumo auditą. iOS versijoje — VPN, duomenų nutekėjimo tikrinimas ir žiniatinklio apsauga. Nemokama Android versija siūlo bazinį skenavimą.</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Aukščiausi AV-Test laboratorijos balai</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Minimalus poveikis baterijai ir našumui</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Programų privatumo auditas</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Nemokama versija labai ribota</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> VPN limituotas iki 200 MB/d. baziniame plane</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span></div>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    <span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><span class="text-[10px] text-muted-foreground">200 MB/d.</span> VPN</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anti-theft</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anti-phishing</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Wi-Fi apsauga</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Tėvų kontrolė</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">2</span>
+                <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:48px;height:48px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/bitdefender-logo.png" alt="Bitdefender Mobile Security logotipas" width="36" height="36" class="object-contain" loading="lazy" />
+    </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Bitdefender Mobile Security</h3>
+                    
+                    <span class="chip-success">Nemokama</span>
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Lengviausia ir efektyviausia apsauga</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.6</span>
+  </div>
+                <span class="text-sm font-heading font-bold text-foreground">Nuo 14.99 €/m.</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">Bitdefender Mobile Security pasižymi aukščiausiais nepriklausomų laboratorijų vertinimais ir mažiausiu poveikiu telefono našumui. Android versija siūlo realaus laiko apsaugą, anti-phishing ir programų privatumo auditą. iOS versijoje — VPN, duomenų nutekėjimo tikrinimas ir žiniatinklio apsauga. Nemokama Android versija siūlo bazinį skenavimą.</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Aukščiausi AV-Test laboratorijos balai</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Minimalus poveikis baterijai ir našumui</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Programų privatumo auditas</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Nemokama versija labai ribota</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> VPN limituotas iki 200 MB/d. baziniame plane</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span></div>
+                </div>
+              </div>
+              <a href="https://www.bitdefender.com/solutions/mobile-security-android.html" target="_blank" rel="nofollow sponsored noopener noreferrer"
+    class="inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary px-5 py-2.5 text-sm w-full justify-center">
+    Gauti pasiūlymą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+            </div>
+          </div>
+        </div>
+        <div class="relative overflow-hidden transition-all duration-200 card-premium">
+          
+          <div class="p-4 md:p-5">
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 text-muted-foreground/25">3</span>
+              <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:48px;height:48px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/kaspersky-logo.png" alt="Kaspersky Mobile logotipas" width="36" height="36" class="object-contain" loading="lazy" />
+    </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Kaspersky Mobile</h3>
+                  
+                  <span class="chip-success">Nemokama</span>
+                </div>
+                <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Stipriausia anti-phishing ir anti-theft apsauga</p>
+              </div>
+              <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.4</span>
+  </div>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">Nuo 11.99 €/m.</span>
+              <div class="justify-self-end">
+                <a href="https://www.kaspersky.com/android-antivirus" target="_blank" rel="nofollow sponsored noopener noreferrer"
+    class="inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary px-5 py-2.5 text-sm whitespace-nowrap">
+    Gauti pasiūlymą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+              </div>
+            </div>
+
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">Kaspersky Mobile yra puikus pasirinkimas tiems, kam svarbi anti-theft funkcionalumas ir phishing apsauga. Android versija aptinka 99.9% kenkėjiškų programų ir turi pažangiausią vagystės apsaugą — nuotolinį užrakinimą, duomenų ištrynimą ir mugshot funkciją. iOS versijoje — VPN, slaptažodžių tvarkyklė ir QR kodų saugumo tikrintuvas.</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 99.9% kenkėjiškų programų aptikimas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Pažangiausia anti-theft su mugshot</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> QR kodų saugumo tikrintuvas</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Kai kurios funkcijos ribojamos ES rinkoje</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> iOS versija siūlo mažiau funkcijų</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span></div>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    <span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> VPN</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anti-theft</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anti-phishing</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Wi-Fi apsauga</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Tėvų kontrolė</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">3</span>
+                <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:48px;height:48px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/kaspersky-logo.png" alt="Kaspersky Mobile logotipas" width="36" height="36" class="object-contain" loading="lazy" />
+    </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Kaspersky Mobile</h3>
+                    
+                    <span class="chip-success">Nemokama</span>
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Stipriausia anti-phishing ir anti-theft apsauga</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.4</span>
+  </div>
+                <span class="text-sm font-heading font-bold text-foreground">Nuo 11.99 €/m.</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">Kaspersky Mobile yra puikus pasirinkimas tiems, kam svarbi anti-theft funkcionalumas ir phishing apsauga. Android versija aptinka 99.9% kenkėjiškų programų ir turi pažangiausią vagystės apsaugą — nuotolinį užrakinimą, duomenų ištrynimą ir mugshot funkciją. iOS versijoje — VPN, slaptažodžių tvarkyklė ir QR kodų saugumo tikrintuvas.</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 99.9% kenkėjiškų programų aptikimas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Pažangiausia anti-theft su mugshot</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> QR kodų saugumo tikrintuvas</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Kai kurios funkcijos ribojamos ES rinkoje</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> iOS versija siūlo mažiau funkcijų</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span></div>
+                </div>
+              </div>
+              <a href="https://www.kaspersky.com/android-antivirus" target="_blank" rel="nofollow sponsored noopener noreferrer"
+    class="inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary px-5 py-2.5 text-sm w-full justify-center">
+    Gauti pasiūlymą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+            </div>
+          </div>
+        </div>
+        <div class="relative overflow-hidden transition-all duration-200 card-premium">
+          
+          <div class="p-4 md:p-5">
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 text-muted-foreground/25">4</span>
+              <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:48px;height:48px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/avira-logo.png" alt="Avira Mobile Security logotipas" width="36" height="36" class="object-contain" loading="lazy" />
+    </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Avira Mobile Security</h3>
+                  
+                  <span class="chip-success">Nemokama</span>
+                </div>
+                <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Daugiausiai nemokamų funkcijų</p>
+              </div>
+              <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.1</span>
+  </div>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">Nuo 0 € (Premium 26.99 €/m.)</span>
+              <div class="justify-self-end">
+                <a href="https://www.avira.com/en/free-antivirus-android" target="_blank" rel="nofollow sponsored noopener noreferrer"
+    class="inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary px-5 py-2.5 text-sm whitespace-nowrap">
+    Gauti pasiūlymą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+              </div>
+            </div>
+
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">Avira Mobile Security išsiskiria turtingiausiu nemokamų funkcijų rinkiniu tarp mobiliųjų antivirusinių. Nemokamoje versijoje gausite VPN (100 MB/d.), programų privatumo auditą, tapatybės apsaugą ir anti-theft. Android versijoje veikia realaus laiko skenavimas, o iOS — žiniatinklio apsauga ir duomenų nutekėjimo tikrinimas. Puikus pasirinkimas tiems, kas nori maksimalios apsaugos be mokėjimo.</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Daugiausiai nemokamų funkcijų</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Nemokamas VPN (100 MB/d.)</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Programų privatumo auditas</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> VPN limituotas nemokamoje versijoje</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Reklamos nemokamoje versijoje</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span></div>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    <span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><span class="text-[10px] text-muted-foreground">100 MB/d.</span> VPN</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anti-theft</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anti-phishing</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Wi-Fi apsauga</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Tėvų kontrolė</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">4</span>
+                <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:48px;height:48px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/avira-logo.png" alt="Avira Mobile Security logotipas" width="36" height="36" class="object-contain" loading="lazy" />
+    </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Avira Mobile Security</h3>
+                    
+                    <span class="chip-success">Nemokama</span>
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Daugiausiai nemokamų funkcijų</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">9.1</span>
+  </div>
+                <span class="text-sm font-heading font-bold text-foreground">Nuo 0 € (Premium 26.99 €/m.)</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">Avira Mobile Security išsiskiria turtingiausiu nemokamų funkcijų rinkiniu tarp mobiliųjų antivirusinių. Nemokamoje versijoje gausite VPN (100 MB/d.), programų privatumo auditą, tapatybės apsaugą ir anti-theft. Android versijoje veikia realaus laiko skenavimas, o iOS — žiniatinklio apsauga ir duomenų nutekėjimo tikrinimas. Puikus pasirinkimas tiems, kas nori maksimalios apsaugos be mokėjimo.</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Daugiausiai nemokamų funkcijų</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Nemokamas VPN (100 MB/d.)</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Programų privatumo auditas</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> VPN limituotas nemokamoje versijoje</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Reklamos nemokamoje versijoje</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span></div>
+                </div>
+              </div>
+              <a href="https://www.avira.com/en/free-antivirus-android" target="_blank" rel="nofollow sponsored noopener noreferrer"
+    class="inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary px-5 py-2.5 text-sm w-full justify-center">
+    Gauti pasiūlymą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+            </div>
+          </div>
+        </div>
+        <div class="relative overflow-hidden transition-all duration-200 card-premium">
+          
+          <div class="p-4 md:p-5">
+            <!-- Desktop: compact header row -->
+            <div class="hidden md:grid md:grid-cols-[28px_52px_1fr_120px_110px_160px] lg:grid-cols-[30px_52px_1fr_130px_120px_170px] items-center gap-x-3">
+              <span class="font-heading font-extrabold text-2xl tabular-nums text-center shrink-0 text-muted-foreground/25">5</span>
+              <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:48px;height:48px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/avast-logo.png" alt="Avast Mobile Security logotipas" width="36" height="36" class="object-contain" loading="lazy" />
+    </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Avast Mobile Security</h3>
+                  
+                  <span class="chip-success">Nemokama</span>
+                </div>
+                <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Patikima nemokama apsauga su Wi-Fi saugumu</p>
+              </div>
+              <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">8.9</span>
+  </div>
+              <span class="text-sm font-heading font-bold text-foreground whitespace-nowrap">Nuo 0 € (Premium 19.99 €/m.)</span>
+              <div class="justify-self-end">
+                <a href="https://www.avast.com/free-mobile-security" target="_blank" rel="nofollow sponsored noopener noreferrer"
+    class="inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary px-5 py-2.5 text-sm whitespace-nowrap">
+    Gauti pasiūlymą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+              </div>
+            </div>
+
+            <!-- Desktop: verdict + details -->
+            <div class="hidden md:block mt-3 pt-3 border-t border-border/30">
+              <p class="text-[12.5px] text-muted-foreground leading-relaxed mb-3">Avast Mobile Security yra viena populiariausių nemokamų mobiliųjų antivirusinių su daugiau nei 100 mln. atsisiuntimų. Nemokama Android versija siūlo programų skenavimą, Wi-Fi saugumo tikrinimą, nuotraukų saugyklą ir RAM optimizavimą. iOS versijoje — VPN, slaptažodžių tikrintuvas ir duomenų nutekėjimo stebėjimas. Tačiau nemokamoje versijoje yra reklamos.</p>
+              <div class="grid grid-cols-3 gap-x-4 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Stiprus nemokamas programų skenavimas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Wi-Fi saugumo tikrinimas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Nuotraukų saugykla (Photo Vault)</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Reklamos nemokamoje versijoje</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Kai kurios funkcijos užrakintos už premium</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1.5">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span></div>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                    <span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> VPN</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anti-theft</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Anti-phishing</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Wi-Fi apsauga</span><span class="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Tėvų kontrolė</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-heading font-extrabold text-2xl tabular-nums w-7 text-center shrink-0 text-muted-foreground/25">5</span>
+                <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:48px;height:48px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/avast-logo.png" alt="Avast Mobile Security logotipas" width="36" height="36" class="object-contain" loading="lazy" />
+    </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="font-heading font-bold text-foreground text-[15px] leading-tight">Avast Mobile Security</h3>
+                    
+                    <span class="chip-success">Nemokama</span>
+                  </div>
+                  <p class="text-[11px] text-muted-foreground mt-0.5 leading-snug">Patikima nemokama apsauga su Wi-Fi saugumu</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-2">
+                <div class="flex items-center gap-0.5">
+    <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="ml-1.5 text-xs font-bold text-foreground tabular-nums">8.9</span>
+  </div>
+                <span class="text-sm font-heading font-bold text-foreground">Nuo 0 € (Premium 19.99 €/m.)</span>
+              </div>
+              <p class="text-[12px] text-muted-foreground leading-relaxed mb-2">Avast Mobile Security yra viena populiariausių nemokamų mobiliųjų antivirusinių su daugiau nei 100 mln. atsisiuntimų. Nemokama Android versija siūlo programų skenavimą, Wi-Fi saugumo tikrinimą, nuotraukų saugyklą ir RAM optimizavimą. iOS versijoje — VPN, slaptažodžių tikrintuvas ir duomenų nutekėjimo stebėjimas. Tačiau nemokamoje versijoje yra reklamos.</p>
+              <div class="mb-2 pt-2 border-t border-border/30 grid grid-cols-1 gap-y-2">
+                <div>
+                  <p class="section-label text-[9px] mb-1">Privalumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Stiprus nemokamas programų skenavimas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Wi-Fi saugumo tikrinimas</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-success shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Nuotraukų saugykla (Photo Vault)</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Trūkumai</p>
+                  <ul class="space-y-0.5">
+                    <li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Reklamos nemokamoje versijoje</li><li class="flex items-start gap-1.5 text-[12px] text-muted-foreground leading-snug"><svg class="w-3.5 h-3.5 text-muted-foreground/30 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Kai kurios funkcijos užrakintos už premium</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="section-label text-[9px] mb-1">Platformos</p>
+                  <div class="flex flex-wrap gap-1"><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>Android</span><span class="chip-muted"><span class="w-2.5 h-2.5 inline-block"></span>iOS</span></div>
+                </div>
+              </div>
+              <a href="https://www.avast.com/free-mobile-security" target="_blank" rel="nofollow sponsored noopener noreferrer"
+    class="inline-flex items-center justify-center gap-1.5 font-heading font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] elevation-primary px-5 py-2.5 text-sm w-full justify-center">
+    Gauti pasiūlymą <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <div class="section-divider mb-12"></div>
+
+    <!-- ═══ 3. COMPARISON TABLE ═══ -->
+    
+    <section id="palyginimas" class="mb-16 scroll-mt-20">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground leading-tight">Detalus palyginimas</h2>
+        <p class="text-muted-foreground text-sm mt-1.5">Svarbiausios funkcijos vienoje aiškioje matricoje.</p>
+      </div>
+      <div class="overflow-x-auto rounded-xl border border-border/50 bg-card glow-border">
+        <table class="w-full min-w-[860px] text-sm">
+          <thead>
+            <tr class="border-b border-border/40 bg-muted/30">
+              <th class="sticky left-0 z-10 min-w-[210px] bg-muted/30 px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">Funkcija</th>
+              
+              <th class="px-4 py-3 text-left align-top bg-primary/[0.04]">
+                <div class="flex items-center gap-2.5 min-w-[120px]">
+                  <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:32px;height:32px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/norton-logo.png" alt="Norton Mobile Security logotipas" width="20" height="20" class="object-contain" loading="lazy" />
+    </div>
+                  <div>
+                    <div class="font-heading font-semibold text-foreground text-xs leading-tight">Norton Mobile Security</div>
+                    <div class="text-[11px] text-muted-foreground mt-1">Nuo 19.99 €/m.</div>
+                  </div>
+                </div>
+              </th>
+              <th class="px-4 py-3 text-left align-top ">
+                <div class="flex items-center gap-2.5 min-w-[120px]">
+                  <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:32px;height:32px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/bitdefender-logo.png" alt="Bitdefender Mobile Security logotipas" width="20" height="20" class="object-contain" loading="lazy" />
+    </div>
+                  <div>
+                    <div class="font-heading font-semibold text-foreground text-xs leading-tight">Bitdefender Mobile Security</div>
+                    <div class="text-[11px] text-muted-foreground mt-1">Nuo 14.99 €/m.</div>
+                  </div>
+                </div>
+              </th>
+              <th class="px-4 py-3 text-left align-top ">
+                <div class="flex items-center gap-2.5 min-w-[120px]">
+                  <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:32px;height:32px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/kaspersky-logo.png" alt="Kaspersky Mobile logotipas" width="20" height="20" class="object-contain" loading="lazy" />
+    </div>
+                  <div>
+                    <div class="font-heading font-semibold text-foreground text-xs leading-tight">Kaspersky Mobile</div>
+                    <div class="text-[11px] text-muted-foreground mt-1">Nuo 11.99 €/m.</div>
+                  </div>
+                </div>
+              </th>
+              <th class="px-4 py-3 text-left align-top ">
+                <div class="flex items-center gap-2.5 min-w-[120px]">
+                  <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:32px;height:32px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/avira-logo.png" alt="Avira Mobile Security logotipas" width="20" height="20" class="object-contain" loading="lazy" />
+    </div>
+                  <div>
+                    <div class="font-heading font-semibold text-foreground text-xs leading-tight">Avira Mobile Security</div>
+                    <div class="text-[11px] text-muted-foreground mt-1">Nuo 0 € (Premium 26.99 €/m.)</div>
+                  </div>
+                </div>
+              </th>
+              <th class="px-4 py-3 text-left align-top ">
+                <div class="flex items-center gap-2.5 min-w-[120px]">
+                  <div class="rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 elevation-1 overflow-hidden" style="width:32px;height:32px">
+      <img src="https://dkwffdnrailtqvrxiulw.supabase.co/storage/v1/object/public/media/logos/avast-logo.png" alt="Avast Mobile Security logotipas" width="20" height="20" class="object-contain" loading="lazy" />
+    </div>
+                  <div>
+                    <div class="font-heading font-semibold text-foreground text-xs leading-tight">Avast Mobile Security</div>
+                    <div class="text-[11px] text-muted-foreground mt-1">Nuo 0 € (Premium 19.99 €/m.)</div>
+                  </div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr class="border-b border-border/20 bg-background/60">
+              <th scope="row" class="sticky left-0 z-[1] bg-inherit px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">VPN</th>
+              <td class="px-4 py-3 text-center align-middle bg-primary/[0.02]"><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="text-xs text-muted-foreground">200 MB/d.</span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="text-xs text-muted-foreground">100 MB/d.</span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            </tr>
+            <tr class="border-b border-border/20 bg-card">
+              <th scope="row" class="sticky left-0 z-[1] bg-inherit px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">Anti-theft</th>
+              <td class="px-4 py-3 text-center align-middle bg-primary/[0.02]"><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr class="border-b border-border/20 bg-background/60">
+              <th scope="row" class="sticky left-0 z-[1] bg-inherit px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">Anti-phishing</th>
+              <td class="px-4 py-3 text-center align-middle bg-primary/[0.02]"><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr class="border-b border-border/20 bg-card">
+              <th scope="row" class="sticky left-0 z-[1] bg-inherit px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">Wi-Fi apsauga</th>
+              <td class="px-4 py-3 text-center align-middle bg-primary/[0.02]"><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr class="border-b border-border/20 bg-background/60">
+              <th scope="row" class="sticky left-0 z-[1] bg-inherit px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">Tėvų kontrolė</th>
+              <td class="px-4 py-3 text-center align-middle bg-primary/[0.02]"><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            </tr>
+            <tr class="border-b border-border/20 bg-card">
+              <th scope="row" class="sticky left-0 z-[1] bg-inherit px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">Dark web stebėjimas</th>
+              <td class="px-4 py-3 text-center align-middle bg-primary/[0.02]"><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-muted-foreground/25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            </tr>
+            <tr class="border-b border-border/20 bg-background/60">
+              <th scope="row" class="sticky left-0 z-[1] bg-inherit px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">Programų skenavimas</th>
+              <td class="px-4 py-3 text-center align-middle bg-primary/[0.02]"><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+            <tr class="border-b border-border/20 bg-card">
+              <th scope="row" class="sticky left-0 z-[1] bg-inherit px-4 py-3 text-left font-heading font-semibold text-foreground text-xs">Realaus laiko apsauga</th>
+              <td class="px-4 py-3 text-center align-middle bg-primary/[0.02]"><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td><td class="px-4 py-3 text-center align-middle "><span class="flex justify-center"><svg class="w-3.5 h-3.5 text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- ═══ 8. FAQ ═══ -->
+    
+    <section id="duk" class="mb-16 scroll-mt-20">
+      <FAQ items={[{"a":"Taip, Android yra atviresnė sistema nei iOS ir labiau pažeidžiama kenkėjiškų programų. Google Play Protect aptinka tik ~70% grėsmių, todėl papildoma antivirusinė žymiai padidina saugumą, ypač jei diegiate programas ne iš oficialios parduotuvės.","q":"Ar Android telefonui reikia antivirusinės?"},{"a":"iOS sistema yra labai saugi dėl \"sandbox\" architektūros, tačiau ji neapsaugo nuo phishing atakų, pavojingų Wi-Fi tinklų ar duomenų nutekėjimų. iOS saugumo programos suteikia VPN, dark web stebėjimą ir apsaugą nuo sukčiavimo.","q":"Ar iPhone reikia antivirusinės programos?"},{"a":"Nemokamos versijos dažniausiai siūlo bazinį skenavimą ir apsaugą nuo kenkėjiškų programų. Mokamos versijos prideda VPN, slaptažodžių tvarkyklę, tėvų kontrolę, tapatybės apsaugą ir prioritetinę pagalbą.","q":"Kuo skiriasi nemokama ir mokama antivirusinė telefonui?"},{"a":"Modernios antivirusinės programos optimizuotos mobiliesiems ir turi minimalų poveikį baterijos veikimui bei greičiui. Geriausios programos (Bitdefender, Norton) naudoja debesų technologijas skenavimui.","q":"Ar antivirusinė lėtina telefoną?"},{"a":"Avast Mobile Security ir Bitdefender Free siūlo geriausią nemokamą apsaugą Android platformoje. Avast turi programų skenavimą ir Wi-Fi apsaugą, o Bitdefender — realaus laiko apsaugą su minimaliu sistemos poveikiu.","q":"Kokia geriausia nemokama antivirusinė Android telefonui?"},{"a":"Laikykite sistemą atnaujintą, diekite programas tik iš oficialių parduotuvių, nenaudokite viešų Wi-Fi be VPN, įjunkite dviejų faktorių autentifikaciją ir būkite atsargūs su nuorodomis SMS žinutėse.","q":"Kaip apsaugoti telefoną be antivirusinės?"}]} title="Dažnai užduodami klausimai" />
+    </section>
+    
+
+    
+
+    
+
+    <!-- TRUST DISCLOSURE -->
+    <TrustDisclosure />
+  </div>
 </Base>
