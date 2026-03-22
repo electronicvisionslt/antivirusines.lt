@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+
+<Base
+  title="Jonas Kazlauskas"
+  description="Kibernetinio saugumo ekspertas su daugiau nei 8 metų patirtimi IT sektoriuje. Specializuojasi antivirusinės programinės įrangos testavime ir vertinime. Reguliariai dalyvauja kibernetinio saugumo konferencijose."
+>
+  <div class="container py-8">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Jonas Kazlauskas","path":"/autoriai/jonas-kazlauskas"}]} />
+
+    <div class="mb-10 max-w-2xl">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary font-heading font-bold text-xl">
+          JK
+        </div>
+        <div>
+          <h1 class="font-heading text-2xl font-bold text-foreground">Jonas Kazlauskas</h1>
+          
+          <div class="flex flex-wrap gap-1.5 mt-1">
+            <span class="chip-primary">Antivirusinė programinė įranga</span><span class="chip-primary">Tinklo saugumas</span><span class="chip-primary">Kibernetinės grėsmės</span>
+          </div>
+          
+        </div>
+      </div>
+      <p class="text-muted-foreground leading-relaxed">Kibernetinio saugumo ekspertas su daugiau nei 8 metų patirtimi IT sektoriuje. Specializuojasi antivirusinės programinės įrangos testavime ir vertinime. Reguliariai dalyvauja kibernetinio saugumo konferencijose.</p>
+    </div>
+
+    
+    <section>
+      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Straipsniai</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <a href="/antivirusines-programos/nemokamos" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Geriausios nemokamos antivirusinės programos 2025 m.</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Išsami nemokamų antivirusinių programų apžvalga. Palyginkite funkcijas, apsaugos lygį ir pasirinkite geriausią nemokamą antivirusinę.</p>
+        </a>
+        
+        <a href="/antivirusines-programos/telefonui" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Geriausios antivirusinės programos telefonui 2025 m.</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Apsaugokite savo telefoną nuo virusų ir kenkėjiškų programų. Apžvelgiame geriausias antivirusines programas Android ir iOS įrenginiams.</p>
+        </a>
+        
+        <a href="/antivirusines-programos/kompiuteriui" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Geriausios antivirusinės programos kompiuteriui 2025 m.</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Išsami antivirusinių programų kompiuteriui apžvalga. Windows ir Mac apsaugos sprendimai – nuo nemokamų iki premium variantų.</p>
+        </a>
+        
+      </div>
+    </section>
+    
+  </div>
+</Base>

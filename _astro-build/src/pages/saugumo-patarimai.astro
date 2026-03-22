@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+import TrustDisclosure from '../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Saugumo patarimai"
+  description="Praktiniai kibernetinio saugumo patarimai kasdieniam naudojimui."
+  
+>
+  <div class="container py-8">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Saugumo patarimai","path":"/saugumo-patarimai"}]} />
+
+    <div class="mb-10 max-w-2xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-3">Saugumo patarimai</h1>
+      <p class="text-muted-foreground leading-relaxed">Praktiniai kibernetinio saugumo patarimai kasdieniam naudojimui.</p>
+    </div>
+
+    
+
+    
+    <section class="mb-12">
+      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Straipsniai ir gidai</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <a href="/saugumo-patarimai/saugus-darbas-kompiuteriu" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
+          <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">Saugus darbas kompiuteriu: 15 esminių patarimų</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">Praktiniai patarimai saugiam darbui kompiuteriu. Nuo slaptažodžių iki atsarginių kopijų – viskas, ką turite žinoti.</p>
+          <div class="flex items-center gap-2 mt-3 text-[11px] text-muted-foreground/60">
+            <time>2026-03-20</time>
+            <span>· 8 min</span>
+          </div>
+        </a>
+        
+      </div>
+    </section>
+    
+
+    
+    <TrustDisclosure />
+  </div>
+</Base>

@@ -1,0 +1,134 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Ką daryti pamiršus slaptažodį 2026 — atkūrimo gidas"
+  description="Pamiršote slaptažodį? Kaip atkurti Gmail, Facebook, Instagram ir kitų paskyrų slaptažodžius. Žingsnis po žingsnio instrukcija."
+  
+>
+  <article class="container py-8 max-w-4xl" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Slaptažodžių saugumas","path":"/slaptazodziu-saugumas"},{"label":"Pamirštas slaptažodis","path":"/slaptazodziu-saugumas/ka-daryti-pamirsus-slaptazodi"}]} />
+
+    <!-- HERO -->
+    <div class="mb-8">
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight" itemProp="headline">
+        Ką daryti pamiršus slaptažodį
+      </h1>
+      <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-4" itemProp="description">
+        Pamiršote slaptažodį? Praktinis gidas, kaip atkurti prieigą prie Gmail, Facebook, Instagram ir kitų paskyrų.
+      </p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        
+        <time>Atnaujinta: 2026</time>
+        
+      </div>
+    </div>
+
+    <TrustDisclosure compact />
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-10">
+      <div>
+        
+        <!-- TABLE OF CONTENTS (mobile) -->
+        <nav class="rounded-lg border border-border/50 bg-card p-4 my-6 lg:hidden">
+          <h4 class="font-heading font-semibold text-xs text-foreground mb-2.5 uppercase tracking-wider">Turinys</h4>
+          <ol class="space-y-1.5">
+            
+            <li>
+              <a href="#google" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">01</span>
+                Gmail / Google paskyra
+              </a>
+            </li>
+            <li>
+              <a href="#facebook" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">02</span>
+                Facebook paskyra
+              </a>
+            </li>
+            <li>
+              <a href="#instagram" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">03</span>
+                Instagram paskyra
+              </a>
+            </li>
+            <li>
+              <a href="#bendri-patarimai" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">04</span>
+                Bendri patarimai visoms paskyroms
+              </a>
+            </li>
+            <li>
+              <a href="#prevencija" class="flex items-baseline gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                <span class="text-[10px] text-muted-foreground/35 font-mono tabular-nums group-hover:text-primary/50 transition-colors duration-200">05</span>
+                Kaip ateityje išvengti šios problemos
+              </a>
+            </li>
+          </ol>
+        </nav>
+        
+
+        <!-- CONTENT SECTIONS -->
+        <div class="prose-article">
+          
+          <section class="mb-8 scroll-mt-20" id="google">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Gmail / Google paskyra</h2>
+            <p class="text-muted-foreground leading-relaxed">Eikite į accounts.google.com/signin/recovery. Google pasiūlys kelis atkūrimo būdus: SMS kodą, alternatyvų el. paštą arba saugos klausimus. Jei turite nustatytą atkūrimo telefoną — procesas užtrunka 2 minutes.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="facebook">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Facebook paskyra</h2>
+            <p class="text-muted-foreground leading-relaxed">Paspauskite „Pamiršote slaptažodį?&quot; prisijungimo puslapyje. Įveskite el. paštą arba telefono numerį. Facebook atsiųs atkūrimo kodą. Jei nebeturite prieigos prie el. pašto — naudokite „Identifikuokite save&quot; funkciją su draugų pagalba.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="instagram">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Instagram paskyra</h2>
+            <p class="text-muted-foreground leading-relaxed">Prisijungimo ekrane bakstelėkite „Pamiršau slaptažodį&quot;. Įveskite vartotojo vardą arba el. paštą. Instagram atsiųs prisijungimo nuorodą arba SMS kodą. Taip pat galite prisijungti per Facebook, jei paskyros susietos.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="bendri-patarimai">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Bendri patarimai visoms paskyroms</h2>
+            <p class="text-muted-foreground leading-relaxed">Visada turėkite nustatytą atkūrimo el. paštą ir telefono numerį. Naudokite slaptažodžių tvarkyklę (1Password, Bitwarden), kad nereikėtų prisiminti slaptažodžių. Įjunkite dviejų veiksnių autentifikaciją (2FA) visose svarbiose paskyrose.</p>
+          </section>
+          
+          <section class="mb-8 scroll-mt-20" id="prevencija">
+            <h2 class="font-heading text-xl font-bold text-foreground mb-3">Kaip ateityje išvengti šios problemos</h2>
+            <p class="text-muted-foreground leading-relaxed">Rekomenduojame: 1) Naudoti slaptažodžių tvarkyklę, kuri saugiai saugo visus slaptažodžius. 2) Nustatyti atkūrimo kontaktus visose paskyrose. 3) Užsirašyti pagrindinių paskyrų atkūrimo kodus saugioje vietoje. 4) Naudoti biometrinį prisijungimą (pirštų atspaudus, Face ID) kur įmanoma.</p>
+          </section>
+          
+
+          
+        </div>
+
+        
+
+        
+
+        <FAQ items={[{"q":"Ar galima atkurti slaptažodį be telefono ir el. pašto?","a":"Tai sudėtingiau, bet įmanoma. Daugelis platformų siūlo alternatyvius atkūrimo būdus: tapatybės patvirtinimą, saugos klausimus arba kreipimąsi į palaikymo tarnybą su asmens dokumentu."},{"q":"Kiek laiko užtrunka slaptažodžio atkūrimas?","a":"Su atkūrimo telefonu ar el. paštu — 2-5 minutės. Be jų — nuo kelių valandų iki kelių dienų, priklausomai nuo platformos."},{"q":"Ar saugūs slaptažodžių tvarkyklės?","a":"Taip, patikimos tvarkyklės (1Password, Bitwarden) naudoja end-to-end šifravimą. Net jei tvarkyklės serveriai būtų pažeisti, jūsų slaptažodžiai išliktų užšifruoti."}]} />
+
+        
+      </div>
+
+      
+      <!-- SIDEBAR TOC (desktop) -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              <li><a href="#google" class="text-xs text-muted-foreground hover:text-primary transition-colors">Gmail / Google paskyra</a></li><li><a href="#facebook" class="text-xs text-muted-foreground hover:text-primary transition-colors">Facebook paskyra</a></li><li><a href="#instagram" class="text-xs text-muted-foreground hover:text-primary transition-colors">Instagram paskyra</a></li><li><a href="#bendri-patarimai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Bendri patarimai visoms paskyroms</a></li><li><a href="#prevencija" class="text-xs text-muted-foreground hover:text-primary transition-colors">Kaip ateityje išvengti šios problemos</a></li>
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      
+    </div>
+
+    <TrustDisclosure />
+  </article>
+</Base>

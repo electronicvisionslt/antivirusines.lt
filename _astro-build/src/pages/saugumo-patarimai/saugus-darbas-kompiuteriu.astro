@@ -1,0 +1,72 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import TrustDisclosure from '../../components/TrustDisclosure.astro';
+---
+
+<Base
+  title="Saugus darbas kompiuteriu: 15 esminių patarimų"
+  description="Praktiniai patarimai saugiam darbui kompiuteriu. Nuo slaptažodžių iki atsarginių kopijų – viskas, ką turite žinoti."
+  
+  
+>
+  <article class="container py-8" itemScope itemType="https://schema.org/Article">
+    <Breadcrumbs items={[{"label":"Pradžia","path":"/"},{"label":"Saugumo patarimai","path":"/saugumo-patarimai"},{"label":"Saugus darbas kompiuteriu: 15 esminių patarimų","path":"/saugumo-patarimai/saugus-darbas-kompiuteriu"}]} />
+
+    <div class="mb-10 max-w-3xl">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
+        Saugus darbas kompiuteriu: 15 esminių patarimų
+      </h1>
+      <p class="text-muted-foreground leading-relaxed mb-5" itemProp="description">Praktiniai patarimai saugiam darbui kompiuteriu. Nuo slaptažodžių iki atsarginių kopijų – viskas, ką turite žinoti.</p>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground/70">
+        <span class="font-medium">Gabija Petraitytė</span>
+        <time itemProp="dateModified" datetime="2026-03-20T16:41:24.649836+00:00">Atnaujinta: 2026-03-20</time>
+        <span>· 8 min skaitymo</span>
+      </div>
+    </div>
+
+    
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
+      <div>
+        <TrustDisclosure compact />
+
+        <div class="prose-article">
+          
+          <h2 id="pagrindai">Saugumo pagrindai</h2>
+          <p>Saugus darbas kompiuteriu prasideda nuo kelių esminių principų: stiprūs slaptažodžiai, reguliarūs atnaujinimai, atsargumas su el. laiškais ir patikima antivirusinė programa.</p>
+          
+          <h2 id="slaptazodziai">Slaptažodžių saugumas</h2>
+          <p>Naudokite unikalius, sudėtingus slaptažodžius kiekvienai paskyrai. Slaptažodžių tvarkyklė gali padėti valdyti daugybę slaptažodžių be rizikos juos pamiršti.</p>
+          
+          <h2 id="atsargines-kopijos">Atsarginės kopijos</h2>
+          <p>Reguliariai darykite svarbių failų atsargines kopijas. Naudokite 3-2-1 taisyklę: 3 kopijos, 2 skirtingos laikmenos, 1 kopija kitoje vietoje.</p>
+          
+
+          
+        </div>
+
+        
+
+        
+
+        <FAQ items={[{"a":"Šiuolaikinės rekomendacijos siūlo keisti slaptažodžius tik tada, kai įtariate, kad jie galėjo būti pažeisti, o ne reguliariai kas kelis mėnesius.","q":"Kaip dažnai reikia keisti slaptažodžius?"}]} />
+      </div>
+
+      
+      <aside class="hidden lg:block">
+        <div class="sticky top-20">
+          <nav class="rounded-xl border border-border/50 bg-card p-4">
+            <h3 class="font-heading font-semibold text-foreground text-sm mb-3">Turinys</h3>
+            <ul class="space-y-1.5">
+              <li><a href="#pagrindai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Saugumo pagrindai</a></li><li><a href="#slaptazodziai" class="text-xs text-muted-foreground hover:text-primary transition-colors">Slaptažodžių saugumas</a></li><li><a href="#atsargines-kopijos" class="text-xs text-muted-foreground hover:text-primary transition-colors">Atsarginės kopijos</a></li>
+            </ul>
+          </nav>
+          <div class="mt-5"><TrustDisclosure compact /></div>
+        </div>
+      </aside>
+      
+    </div>
+  </article>
+</Base>
