@@ -1552,6 +1552,8 @@ function generateHubFlagshipPage(category, meta, data, catArticles, categoryMap)
   const prefix = depth > 1 ? '../../' : '../';
   const faq = parseFaq(category.faq);
   const childCategories = data.categories.filter(c => c.parent_id === category.id);
+  const featuredCards = Array.isArray(meta.featuredCards) ? meta.featuredCards : [];
+  const visibleArticles = catArticles.filter(a => a.path !== category.path);
 
   return `---
 import Base from '${prefix}layouts/Base.astro';
@@ -1565,23 +1567,61 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
   description="${escapeHtml(category.meta_description || meta.description)}"
   ${category.canonical_url ? `canonicalUrl="${escapeHtml(category.canonical_url)}"` : ''}
 >
-  <div class="container py-8 max-w-4xl">
+  <div class="container py-8 max-w-5xl mx-auto">
     <Breadcrumbs items={${JSON.stringify(meta.breadcrumbs)}} />
 
-    <!-- HERO -->
-    <section class="mb-10">
+    <section class="mb-8">
       <h1 class="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
         ${meta.heroTitle}
       </h1>
       <p class="text-muted-foreground text-[15px] leading-relaxed max-w-2xl mb-6">
         ${meta.heroDesc}
       </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        <div class="card-premium-featured p-4">
+          <p class="section-label text-[9px] mb-1.5">Pagrindinis tikslas</p>
+          <p class="text-sm text-foreground font-semibold leading-tight">Greitai rasti aiškius praktinius gidus</p>
+        </div>
+        <div class="card-premium p-4">
+          <p class="section-label text-[9px] mb-1.5">Kas viduje</p>
+          <p class="text-sm text-foreground font-semibold leading-tight">Instrukcijos, palyginimai ir DUK vienoje vietoje</p>
+        </div>
+        <div class="card-premium p-4">
+          <p class="section-label text-[9px] mb-1.5">Atnaujinama</p>
+          <p class="text-sm text-foreground font-semibold leading-tight">Turinys sinchronizuojamas su publikacijomis iš DB</p>
+        </div>
+      </div>
     </section>
 
+    <div class="section-divider mb-10"></div>
+
+    ${featuredCards.length > 0 ? `
+    <section class="mb-14">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground">Svarbiausi gidai</h2>
+        <p class="text-muted-foreground text-sm mt-1.5">Greita prieiga prie labiausiai ieškomų temų šiame skyriuje.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        ${featuredCards.map(card => `
+        <a href="${card.path}" class="card-premium group p-5 transition-all duration-300 hover-lift">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-xl bg-primary/8 border border-primary/12 flex items-center justify-center shrink-0">${SVG.arrowRight}</div>
+            <div>
+              <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-1.5">${escapeHtml(card.label)}</h3>
+              <p class="text-xs text-muted-foreground leading-relaxed">${escapeHtml(card.desc)}</p>
+            </div>
+          </div>
+        </a>
+        `).join('')}
+      </div>
+    </section>
+    ` : ''}
+
     ${childCategories.length > 0 ? `
-    <!-- CHILD CATEGORIES -->
-    <section class="mb-12">
-      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Temos šiame skyriuje</h2>
+    <section class="mb-14">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground">Temos šiame skyriuje</h2>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         ${childCategories.map(child => `
         <a href="${child.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
@@ -1594,15 +1634,16 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
     </section>
     ` : ''}
 
-    ${catArticles.length > 0 ? `
-    <!-- ARTICLES -->
-    <section class="mb-12">
-      <h2 class="font-heading text-xl font-bold text-foreground mb-5">Gidai ir patarimai</h2>
+    ${visibleArticles.length > 0 ? `
+    <section class="mb-14">
+      <div class="mb-5">
+        <h2 class="font-heading text-2xl font-bold text-foreground">Gidai ir patarimai</h2>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        ${catArticles.map(a => `
+        ${visibleArticles.map(a => `
         <a href="${a.path}" class="group rounded-xl border border-border/50 bg-card p-5 hover:shadow-md hover:border-primary/20 transition-all duration-300">
           <h3 class="font-heading font-bold text-foreground text-sm group-hover:text-primary transition-colors mb-2">${escapeHtml(a.title)}</h3>
-          <p class="text-xs text-muted-foreground line-clamp-2 leading-relaxed">${escapeHtml(a.excerpt || '')}</p>
+          <p class="text-xs text-muted-foreground line-clamp-3 leading-relaxed">${escapeHtml(a.excerpt || a.meta_description || '')}</p>
           <div class="flex items-center gap-2 mt-3 text-[11px] text-muted-foreground/60">
             <time>${a.updated_at?.split('T')[0]}</time>
             ${a.read_time ? `<span>· ${a.read_time}</span>` : ''}
@@ -1612,6 +1653,32 @@ import TrustDisclosure from '${prefix}components/TrustDisclosure.astro';
       </div>
     </section>
     ` : ''}
+
+    <section class="mb-14">
+      <div class="card-premium p-5 md:p-6 bg-muted/40">
+        <div class="flex items-start gap-3.5 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/12 flex items-center justify-center shrink-0">${SVG.badgeCheck}</div>
+          <div>
+            <h2 class="font-heading text-lg font-bold text-foreground">Kaip naudotis šiuo skyriumi</h2>
+            <p class="text-xs text-muted-foreground mt-0.5">Rekomenduojama seka, kad greitai rastumėte atsakymą.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
+            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">1. Pasirinkite temą</h3>
+            <p class="text-[11px] text-muted-foreground leading-relaxed">Atsidarykite konkretų gidą pagal situaciją: keitimas, atkūrimas, šalinimas ar palyginimas.</p>
+          </div>
+          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
+            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">2. Sekite žingsnius</h3>
+            <p class="text-[11px] text-muted-foreground leading-relaxed">Kiekvienas puslapis turi aiškią struktūrą, TOC ir trumpus veiksmus be perteklinės informacijos.</p>
+          </div>
+          <div class="rounded-lg bg-card border border-border/40 p-3.5 elevation-1">
+            <h3 class="font-heading font-semibold text-foreground text-xs mb-1">3. Pereikite prie susijusių gidų</h3>
+            <p class="text-[11px] text-muted-foreground leading-relaxed">Jei tema susijusi, apačioje rasite nuorodas į kitus aktualius straipsnius ir landingus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     ${faq.length > 0 ? `<FAQ items={${JSON.stringify(faq)}} />` : ''}
     <TrustDisclosure />
