@@ -108,7 +108,7 @@ const ArticlePage = ({ article }: Props) => {
               {article.sections.map((section, i) => (
                 <ScrollReveal key={section.id} delay={i * 50}>
                   <h2 id={section.id}>{section.title}</h2>
-                  <p>{section.content}</p>
+                  <div dangerouslySetInnerHTML={{ __html: section.content }} />
                 </ScrollReveal>
               ))}
 
