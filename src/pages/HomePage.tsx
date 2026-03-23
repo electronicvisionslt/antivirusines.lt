@@ -84,7 +84,7 @@ const HomePage = () => {
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 text-[11px] font-heading font-semibold text-primary uppercase tracking-[0.12em] mb-4 px-3 py-1.5 rounded-full bg-primary/8 border border-primary/12">
                 <Shield className="w-3.5 h-3.5" />
-                <span>Nepriklausomos apžvalgos · Atnaujinta 2026</span>
+                <span>Nepriklausomos apžvalgos</span>
               </div>
               <h1 className="font-heading text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-foreground leading-[1.08] tracking-tight mb-5">
                 Raskite geriausią
