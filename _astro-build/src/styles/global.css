@@ -240,9 +240,15 @@
     @apply text-primary underline underline-offset-2 hover:text-primary/80 transition-colors;
   }
   .prose-article img {
-    @apply my-8 rounded-xl border border-border/50;
+    @apply mt-8 mb-2 rounded-xl border border-border/50;
+  }
+  .prose-article img + p {
+    @apply mb-8 text-sm text-muted-foreground/70;
   }
   .prose-article figure {
     @apply my-8;
+  }
+  .prose-article figure figcaption {
+    @apply mt-2 text-sm text-muted-foreground/70;
   }
 }
