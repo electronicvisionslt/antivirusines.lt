@@ -239,6 +239,34 @@
   .prose-article a {
     @apply text-primary underline underline-offset-2 hover:text-primary/80 transition-colors;
   }
+  .prose-article table {
+    @apply w-full my-8 text-sm border-collapse overflow-hidden rounded-xl;
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 1px 3px hsla(220, 20%, 10%, 0.04), 0 4px 12px hsla(220, 20%, 10%, 0.02);
+  }
+  .prose-article thead {
+    background: hsl(var(--primary) / 0.06);
+  }
+  .prose-article th {
+    @apply px-4 py-3 text-left text-xs font-heading font-semibold uppercase tracking-wider text-foreground;
+    border-bottom: 2px solid hsl(var(--primary) / 0.15);
+  }
+  .prose-article td {
+    @apply px-4 py-3 text-muted-foreground;
+    border-bottom: 1px solid hsl(var(--border) / 0.5);
+  }
+  .prose-article tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .prose-article tbody tr:hover {
+    background: hsl(var(--muted) / 0.3);
+  }
+  .prose-article tbody tr:nth-child(even) {
+    background: hsl(var(--muted) / 0.15);
+  }
+  .prose-article tbody tr:nth-child(even):hover {
+    background: hsl(var(--muted) / 0.35);
+  }
   .prose-article img {
     @apply mt-8 mb-2 rounded-xl border border-border/50;
   }
