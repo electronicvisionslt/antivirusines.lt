@@ -260,7 +260,7 @@ export const articles: Record<string, Article> = {
 };
 
 
-export const navLinks: { label: string; path: string; children?: { label: string; path: string }[] }[] = [
+export const navLinks: { label: string; path: string; children?: { label: string; path: string; divider?: boolean; children?: { label: string; path: string }[] }[] }[] = [
   {
     label: 'Antivirusinės',
     path: '/antivirusines-programos',
@@ -269,6 +269,9 @@ export const navLinks: { label: string; path: string; children?: { label: string
       { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos' },
       { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui' },
       { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui' },
+      { label: 'Apžvalgos', path: '/antivirusines-programos/norton-360-apzvalga', divider: true, children: [
+        { label: 'Norton 360 apžvalga', path: '/antivirusines-programos/norton-360-apzvalga' },
+      ]},
     ],
   },
   { label: 'Tėvų kontrolė', path: '/tevu-kontrole' },
