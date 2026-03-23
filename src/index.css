@@ -239,4 +239,10 @@
   .prose-article a {
     @apply text-primary underline underline-offset-2 hover:text-primary/80 transition-colors;
   }
+  .prose-article img {
+    @apply my-8 rounded-xl border border-border/50;
+  }
+  .prose-article figure {
+    @apply my-8;
+  }
 }
