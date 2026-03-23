@@ -526,7 +526,7 @@ const jsonLd = ${JSON.stringify({
         <div class="prose-article">
           ${sections.map(s => `
           <h2 id="${s.id}">${escapeHtml(s.title)}</h2>
-          <p>${escapeHtml(s.content)}</p>
+          ${s.content}
           `).join('')}
 
           ${!sections.length && article.body ? article.body : ''}
