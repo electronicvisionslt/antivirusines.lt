@@ -8,6 +8,7 @@ import {
   getArticlesByAuthor as getMockArticlesByAuthor,
 } from '@/data/mockData';
 import type { Json } from '@/integrations/supabase/types';
+import { enhanceArticleHtml } from '@/lib/articleImageContent';
 
 // ─── Helpers ───
 
@@ -24,7 +25,10 @@ function parseSections(sections: Json | null): { id: string; title: string; cont
   return sections.filter(
     (s): s is { id: string; title: string; content: string } =>
       typeof s === 'object' && s !== null && 'id' in s && 'title' in s && 'content' in s
-  );
+  ).map((section) => ({
+    ...section,
+    content: enhanceArticleHtml(section.content),
+  }));
 }
 
 function generateInitials(name: string): string {

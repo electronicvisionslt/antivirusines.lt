@@ -11,6 +11,7 @@ import RelatedArticles from '@/components/content/RelatedArticles';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import { useArticleProducts } from '@/hooks/usePublicData';
+import { toWebpPath } from '@/lib/articleImageContent';
 import type { PublicArticle } from '@/types/content';
 
 interface Props {
@@ -81,11 +82,14 @@ const ArticlePage = ({ article }: Props) => {
         {article.featuredImage && (
           <ScrollReveal>
             <div className="rounded-xl overflow-hidden border border-border/50 mb-10 max-w-3xl">
-              <img
-                src={article.featuredImage}
-                alt={article.featuredImageAlt || article.title}
-                className="w-full h-auto object-cover"
-              />
+              <picture>
+                <source srcSet={toWebpPath(article.featuredImage)} type="image/webp" />
+                <img
+                  src={article.featuredImage}
+                  alt={article.featuredImageAlt || article.title}
+                  className="w-full h-auto object-cover"
+                />
+              </picture>
             </div>
           </ScrollReveal>
         )}
