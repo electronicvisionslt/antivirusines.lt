@@ -78,11 +78,21 @@ const HomePage = () => {
     <PageLayout>
       {/* ═══ HERO ═══ */}
       <section className="relative overflow-hidden">
-        {/* Decorative background */}
+        {/* Animated decorative background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 gradient-mesh opacity-80" />
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-[100px] -translate-y-1/2 translate-x-1/4" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/[0.02] blur-[80px] translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute inset-0 gradient-mesh-animated opacity-90" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/[0.04] blur-[100px] -translate-y-1/2 translate-x-1/4 animate-pulse-glow" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/[0.03] blur-[80px] translate-y-1/2 -translate-x-1/4 animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+        </div>
+
+        {/* Floating shield icons */}
+        <div className="absolute inset-0 pointer-events-none hidden md:block" aria-hidden="true">
+          <Shield className="absolute top-[18%] right-[12%] w-8 h-8 text-primary/[0.08] float-slow" />
+          <Lock className="absolute top-[35%] right-[8%] w-6 h-6 text-primary/[0.06] float-medium" style={{ animationDelay: '1s' }} />
+          <ShieldCheck className="absolute top-[22%] right-[28%] w-10 h-10 text-primary/[0.07] float-fast" style={{ animationDelay: '2s' }} />
+          <Key className="absolute top-[55%] right-[15%] w-5 h-5 text-primary/[0.05] float-slow" style={{ animationDelay: '0.5s' }} />
+          <Eye className="absolute top-[45%] right-[30%] w-7 h-7 text-primary/[0.06] float-medium" style={{ animationDelay: '3s' }} />
+          <Globe className="absolute top-[65%] right-[22%] w-6 h-6 text-primary/[0.05] float-fast" style={{ animationDelay: '1.5s' }} />
         </div>
 
         <div className="container relative pt-20 pb-16 md:pt-28 md:pb-24 lg:pt-36 lg:pb-28">
