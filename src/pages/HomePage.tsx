@@ -79,11 +79,10 @@ const HomePage = () => {
     <PageLayout>
       {/* ═══ HERO ═══ */}
       <section className="relative overflow-hidden">
-        {/* Animated decorative background */}
+        {/* Animated particle grid + gradient background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 gradient-mesh-animated opacity-90" />
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/[0.04] blur-[100px] -translate-y-1/2 translate-x-1/4 animate-pulse-glow" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/[0.03] blur-[80px] translate-y-1/2 -translate-x-1/4 animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+          <div className="absolute inset-0 gradient-mesh-animated opacity-60" />
+          <ParticleGrid />
         </div>
 
         {/* Floating shield icons */}
