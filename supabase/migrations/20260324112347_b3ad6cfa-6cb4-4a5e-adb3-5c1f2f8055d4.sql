@@ -1,0 +1,1 @@
+UPDATE articles SET status = 'archived', noindex = true WHERE id = 'cccccccc-0000-0000-0000-000000000001';
