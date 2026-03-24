@@ -13,6 +13,7 @@ import type { PublicCategory } from '@/types/content';
 import { Link } from 'react-router-dom';
 import { useState, useMemo } from 'react';
 import { ProductLogo, RatingStars, AffiliateButton, FeatureCheck, PlatformTags, SectionHeading, useUpdatedLabel } from '@/components/landing/LandingShared';
+import LandingHeroBackground from '@/components/site/LandingHeroBackground';
 
 interface Props { category: PublicCategory }
 
@@ -128,7 +129,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
         ]} />
 
         {/* ═══ 1. HERO ═══ */}
-        <section className="mb-8">
+        <LandingHeroBackground variant="security">
 
           <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
             Geriausios antivirusinės programos 2026&nbsp;m.

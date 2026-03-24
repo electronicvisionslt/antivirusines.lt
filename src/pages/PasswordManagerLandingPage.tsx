@@ -217,7 +217,7 @@ const PasswordManagerLandingPage = ({ category }: Props) => {
         ]} />
 
         {/* ═══ 1. HERO ═══ */}
-        <section className="mb-8">
+        <LandingHeroBackground variant="password">
           <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
             Geriausios slaptažodžių tvarkyklės 2026&nbsp;m.
           </h1>
