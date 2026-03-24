@@ -93,6 +93,8 @@ const PasswordSecurityHubPage = ({ category }: Props) => {
     description: category.metaDescription || 'Viskas apie slaptažodžių saugumą: kaip sukurti stiprų slaptažodį, kur jį saugoti, kaip pakeisti ir ką daryti pamiršus. Praktiniai gidai ir patarimai.',
   });
 
+  const { data: landingArticle } = usePublicArticle(category.path);
+
   return (
     <PageLayout>
       <div className="container py-8 max-w-4xl">
@@ -105,6 +107,10 @@ const PasswordSecurityHubPage = ({ category }: Props) => {
         <LandingHeroBackground variant="password">
           <ScrollReveal>
             <div>
+              <LandingFeatureImage
+                src={landingArticle?.featuredImage}
+                alt={landingArticle?.featuredImageAlt || category.title}
+              />
               <div className="flex items-center gap-2 mb-3">
                 <span className="section-label">Slaptažodžių saugumas</span>
                 <span className="chip-muted text-[10px]">Atnaujinta 2026</span>
