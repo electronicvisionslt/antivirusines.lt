@@ -9,11 +9,11 @@ import Breadcrumbs from '@/components/site/Breadcrumbs';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
-import { useComparisonProducts, type PublicProduct } from '@/hooks/usePublicData';
+import { useComparisonProducts, usePublicArticle, type PublicProduct } from '@/hooks/usePublicData';
 import type { PublicCategory } from '@/types/content';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { ProductLogo, RatingStars, AffiliateButton, FeatureCheck, PlatformTags, SectionHeading, useUpdatedLabel } from '@/components/landing/LandingShared';
+import { ProductLogo, RatingStars, AffiliateButton, FeatureCheck, PlatformTags, SectionHeading, LandingFeatureImage, useUpdatedLabel } from '@/components/landing/LandingShared';
 import LandingHeroBackground from '@/components/site/LandingHeroBackground';
 
 interface Props { category: PublicCategory }
@@ -80,6 +80,7 @@ const ParentalControlLandingPage = ({ category }: Props) => {
     canonicalUrl: category.canonicalUrl || undefined,
   });
 
+  const { data: landingArticle } = usePublicArticle(category.path);
   const { data: products = [] } = useComparisonProducts('parental-control');
   const top5 = products.slice(0, 5);
   const findProduct = (key: string) => products.find(p => p.name.includes(key) || p.brand.includes(key));
@@ -102,7 +103,10 @@ const ParentalControlLandingPage = ({ category }: Props) => {
 
         {/* ═══ 1. HERO ═══ */}
         <LandingHeroBackground variant="family">
-
+          <LandingFeatureImage
+            src={landingArticle?.featuredImage}
+            alt={landingArticle?.featuredImageAlt || category.title}
+          />
           <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
             Geriausios tėvų kontrolės programėlės vaiko telefonui 2026&nbsp;m.
           </h1>

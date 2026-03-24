@@ -8,8 +8,9 @@ import Breadcrumbs from '@/components/site/Breadcrumbs';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
+import { usePublicArticle } from '@/hooks/usePublicData';
 import { Link } from 'react-router-dom';
-import { SectionHeading, useUpdatedLabel } from '@/components/landing/LandingShared';
+import { SectionHeading, LandingFeatureImage, useUpdatedLabel } from '@/components/landing/LandingShared';
 import LandingHeroBackground from '@/components/site/LandingHeroBackground';
 import type { PublicCategory } from '@/types/content';
 
@@ -208,6 +209,8 @@ const PasswordManagerLandingPage = ({ category }: Props) => {
     canonicalUrl: category.canonicalUrl || undefined,
   });
 
+  const { data: landingArticle } = usePublicArticle(category.path);
+
   return (
     <PageLayout>
       <div className="container py-8 max-w-5xl mx-auto">
@@ -219,6 +222,10 @@ const PasswordManagerLandingPage = ({ category }: Props) => {
 
         {/* ═══ 1. HERO ═══ */}
         <LandingHeroBackground variant="password">
+          <LandingFeatureImage
+            src={landingArticle?.featuredImage}
+            alt={landingArticle?.featuredImageAlt || category.title}
+          />
           <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.85rem] font-extrabold text-foreground leading-[1.08] mb-3 tracking-tight">
             Geriausios slaptažodžių tvarkyklės 2026&nbsp;m.
           </h1>
