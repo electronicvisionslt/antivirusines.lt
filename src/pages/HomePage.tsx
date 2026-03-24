@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import PageLayout from '@/components/site/PageLayout';
 import ScrollReveal from '@/components/site/ScrollReveal';
+import ParticleGrid from '@/components/site/ParticleGrid';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import { useComparisonProducts, type PublicProduct } from '@/hooks/usePublicData';
