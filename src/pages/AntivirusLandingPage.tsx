@@ -186,7 +186,7 @@ const AntivirusLandingPage = ({ category }: Props) => {
               );
             })}
           </nav>
-        </section>
+        </LandingHeroBackground>
 
         {/* Divider */}
         <div className="section-divider mb-10" />

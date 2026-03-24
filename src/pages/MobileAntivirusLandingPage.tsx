@@ -159,7 +159,7 @@ const MobileAntivirusLandingPage = ({ category }: Props) => {
               );
             })}
           </nav>
-        </section>
+        </LandingHeroBackground>
 
         <div className="section-divider mb-10" />
 
