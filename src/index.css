@@ -271,9 +271,25 @@
   }
   .prose-article ul, .prose-article ol {
     @apply mb-5 pl-6 space-y-2 text-muted-foreground;
+    list-style-position: outside;
+  }
+  .prose-article ul {
+    list-style-type: disc;
+  }
+  .prose-article ol {
+    list-style-type: decimal;
+  }
+  .prose-article ul ul {
+    list-style-type: circle;
+  }
+  .prose-article ol ol {
+    list-style-type: lower-alpha;
   }
   .prose-article li {
     @apply leading-relaxed;
+  }
+  .prose-article li::marker {
+    color: hsl(var(--foreground) / 0.72);
   }
   .prose-article a {
     @apply text-primary underline underline-offset-2 hover:text-primary/80 transition-colors;
