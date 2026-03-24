@@ -8,6 +8,7 @@ import Breadcrumbs from '@/components/site/Breadcrumbs';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import ScrollReveal from '@/components/site/ScrollReveal';
+import LandingHeroBackground from '@/components/site/LandingHeroBackground';
 import { usePageMeta } from '@/hooks/usePageMeta';
 import { Link } from 'react-router-dom';
 import { SectionHeading } from '@/components/landing/LandingShared';
@@ -100,22 +101,24 @@ const PasswordSecurityHubPage = ({ category }: Props) => {
         ]} />
 
         {/* ── Hero ── */}
-        <ScrollReveal>
-          <div className="mb-10">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="section-label">Slaptažodžių saugumas</span>
-              <span className="chip-muted text-[10px]">Atnaujinta 2026</span>
+        <LandingHeroBackground variant="password">
+          <ScrollReveal>
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="section-label">Slaptažodžių saugumas</span>
+                <span className="chip-muted text-[10px]">Atnaujinta 2026</span>
+              </div>
+              <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4">
+                Slaptažodžių saugumas: kaip apsaugoti savo paskyras
+              </h1>
+              <p className="text-muted-foreground leading-relaxed max-w-2xl">
+                Stiprus slaptažodis — pirmoji gynybos linija nuo kibernetinių grėsmių. 
+                Šiame hub'e rasite praktinius gidus, kaip kurti, keisti ir saugoti slaptažodžius pagal 
+                naujausias 2026 m. NIST rekomendacijas.
+              </p>
             </div>
-            <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4">
-              Slaptažodžių saugumas: kaip apsaugoti savo paskyras
-            </h1>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl">
-              Stiprus slaptažodis — pirmoji gynybos linija nuo kibernetinių grėsmių. 
-              Šiame hub'e rasite praktinius gidus, kaip kurti, keisti ir saugoti slaptažodžius pagal 
-              naujausias 2026 m. NIST rekomendacijas.
-            </p>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
+        </LandingHeroBackground>
 
         {/* ── Stats bar ── */}
         <ScrollReveal delay={50}>
