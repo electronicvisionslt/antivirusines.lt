@@ -57,6 +57,21 @@ const ArticlePage = ({ article }: Props) => {
       <article className="container py-8" itemScope itemType="https://schema.org/Article">
         <Breadcrumbs path={article.path} items={breadcrumbItems} />
 
+        {article.featuredImage && (
+          <ScrollReveal>
+            <div className="rounded-xl overflow-hidden border border-border/50 mb-8 max-w-3xl">
+              <picture>
+                <source srcSet={toWebpPath(article.featuredImage)} type="image/webp" />
+                <img
+                  src={article.featuredImage}
+                  alt={article.featuredImageAlt || article.title}
+                  className="w-full h-auto object-cover"
+                />
+              </picture>
+            </div>
+          </ScrollReveal>
+        )}
+
         <ScrollReveal>
           <div className="mb-10 max-w-3xl">
             <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4" itemProp="headline">
@@ -79,20 +94,6 @@ const ArticlePage = ({ article }: Props) => {
           </div>
         </ScrollReveal>
 
-        {article.featuredImage && (
-          <ScrollReveal>
-            <div className="rounded-xl overflow-hidden border border-border/50 mb-10 max-w-3xl">
-              <picture>
-                <source srcSet={toWebpPath(article.featuredImage)} type="image/webp" />
-                <img
-                  src={article.featuredImage}
-                  alt={article.featuredImageAlt || article.title}
-                  className="w-full h-auto object-cover"
-                />
-              </picture>
-            </div>
-          </ScrollReveal>
-        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
           <div>
