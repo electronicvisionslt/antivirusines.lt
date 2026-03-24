@@ -8,11 +8,11 @@ import Breadcrumbs from '@/components/site/Breadcrumbs';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
-import { useComparisonProducts, type PublicProduct } from '@/hooks/usePublicData';
+import { useComparisonProducts, usePublicArticle, type PublicProduct } from '@/hooks/usePublicData';
 import type { PublicCategory } from '@/types/content';
 import { Link } from 'react-router-dom';
 import { useState, useMemo } from 'react';
-import { ProductLogo, RatingStars, AffiliateButton, FeatureCheck, PlatformTags, SectionHeading, useUpdatedLabel } from '@/components/landing/LandingShared';
+import { ProductLogo, RatingStars, AffiliateButton, FeatureCheck, PlatformTags, SectionHeading, LandingFeatureImage, useUpdatedLabel } from '@/components/landing/LandingShared';
 import LandingHeroBackground from '@/components/site/LandingHeroBackground';
 
 interface Props { category: PublicCategory }

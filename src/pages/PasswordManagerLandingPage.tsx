@@ -8,8 +8,9 @@ import Breadcrumbs from '@/components/site/Breadcrumbs';
 import FAQAccordion from '@/components/content/FAQAccordion';
 import TrustDisclosure from '@/components/content/TrustDisclosure';
 import { usePageMeta } from '@/hooks/usePageMeta';
+import { usePublicArticle } from '@/hooks/usePublicData';
 import { Link } from 'react-router-dom';
-import { SectionHeading, useUpdatedLabel } from '@/components/landing/LandingShared';
+import { SectionHeading, LandingFeatureImage, useUpdatedLabel } from '@/components/landing/LandingShared';
 import LandingHeroBackground from '@/components/site/LandingHeroBackground';
 import type { PublicCategory } from '@/types/content';
 

@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { Star, ExternalLink, Check, X, Monitor, Laptop, Smartphone, Globe } from 'lucide-react';
 import type { PublicProduct } from '@/hooks/usePublicData';
+import { toWebpPath } from '@/lib/articleImageContent';
 
 /* ── ProductLogo ── */
 export function ProductLogo({ product, size = 40 }: { product: PublicProduct; size?: number }) {
@@ -76,6 +77,20 @@ export function SectionHeading({ label, title, subtitle, className = '' }: { lab
       {label && <span className="section-label mb-2 block">{label}</span>}
       <h2 className="font-heading text-2xl font-bold text-foreground leading-tight">{title}</h2>
       {subtitle && <p className="text-muted-foreground text-sm mt-1.5 max-w-xl leading-relaxed">{subtitle}</p>}
+    </div>
+  );
+}
+
+/* ── LandingFeatureImage ── */
+export function LandingFeatureImage({ src, alt }: { src?: string | null; alt?: string | null }) {
+  if (!src) return null;
+
+  return (
+    <div className="mb-8 overflow-hidden rounded-xl border border-border/50">
+      <picture>
+        <source srcSet={toWebpPath(src)} type="image/webp" />
+        <img src={src} alt={alt || ''} className="w-full h-auto object-cover" loading="eager" />
+      </picture>
     </div>
   );
 }

@@ -10,8 +10,9 @@ import TrustDisclosure from '@/components/content/TrustDisclosure';
 import ScrollReveal from '@/components/site/ScrollReveal';
 import LandingHeroBackground from '@/components/site/LandingHeroBackground';
 import { usePageMeta } from '@/hooks/usePageMeta';
+import { usePublicArticle } from '@/hooks/usePublicData';
 import { Link } from 'react-router-dom';
-import { SectionHeading } from '@/components/landing/LandingShared';
+import { SectionHeading, LandingFeatureImage } from '@/components/landing/LandingShared';
 import type { PublicCategory } from '@/types/content';
 
 interface Props { category: PublicCategory }
