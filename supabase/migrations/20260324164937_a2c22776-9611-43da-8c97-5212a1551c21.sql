@@ -1,0 +1,13 @@
+UPDATE articles SET featured_image = '/images/reviews/norton/norton-feature.png', featured_image_alt = 'Norton 360 apžvalga 2026 – feature image su Norton logotipu' WHERE slug = 'norton-360-apzvalga';
+UPDATE articles SET featured_image = '/images/reviews/bitdefender/bitdefender-feature.png', featured_image_alt = 'Bitdefender apžvalga 2026 – feature image su Bitdefender logotipu' WHERE slug = 'bitdefender-apzvalga';
+UPDATE articles SET featured_image = '/images/reviews/kaspersky/kaspersky-feature.png', featured_image_alt = 'Kaspersky Plus apžvalga 2026 – feature image su Kaspersky logotipu' WHERE slug = 'kaspersky-plus-apzvalga';
+UPDATE articles SET featured_image = '/images/reviews/eset/eset-feature.png', featured_image_alt = 'ESET Home Security apžvalga 2026 – feature image su ESET logotipu' WHERE slug = 'eset-home-security-apzvalga';
+UPDATE articles SET featured_image = '/images/reviews/avast/avast-feature.png', featured_image_alt = 'Avast apžvalga 2026 – feature image su Avast logotipu' WHERE slug = 'avast-apzvalga';
+UPDATE articles SET featured_image = '/images/articles/apsaugoti-kompiuteri-feature.png', featured_image_alt = 'Kaip apsaugoti kompiuterį nuo virusų – feature image' WHERE slug = 'kaip-apsaugoti-kompiuteri-nuo-virusu-2025';
+UPDATE articles SET featured_image = '/images/articles/nemokamos-feature.png', featured_image_alt = 'Geriausios nemokamos antivirusinės programos – feature image' WHERE slug = 'nemokamos';
+UPDATE articles SET featured_image = '/images/articles/telefonui-feature.png', featured_image_alt = 'Antivirusinės programos telefonui – feature image' WHERE slug = 'telefonui';
+UPDATE articles SET featured_image = '/images/articles/kompiuteriui-feature.png', featured_image_alt = 'Antivirusinės programos kompiuteriui – feature image' WHERE slug = 'kompiuteriui';
+UPDATE articles SET featured_image = '/images/articles/tevu-kontrole-feature.png', featured_image_alt = 'Tėvų kontrolė vaiko telefone – feature image' WHERE slug = 'vaiko-telefone';
+UPDATE articles SET featured_image = '/images/articles/virusas-telefone-feature.png', featured_image_alt = 'Virusas telefone – feature image' WHERE slug = 'virusas-telefone';
+UPDATE articles SET featured_image = '/images/articles/kompiuterinis-virusas-feature.png', featured_image_alt = 'Kompiuterinis virusas – feature image' WHERE slug = 'kompiuterinis-virusas';
+UPDATE articles SET featured_image = '/images/articles/saugus-darbas-feature.png', featured_image_alt = 'Saugus darbas kompiuteriu – feature image' WHERE slug = 'saugus-darbas-kompiuteriu';
