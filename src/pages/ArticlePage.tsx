@@ -108,11 +108,33 @@ const ArticlePage = ({ article }: Props) => {
               </ScrollReveal>
             )}
 
+            {articleProducts && articleProducts.length > 0 && (
+              <ScrollReveal>
+                <AffiliateCTA
+                  productName={articleProducts[0].name}
+                  description={articleProducts[0].shortDescription}
+                  price={articleProducts[0].pricingSummary}
+                  affiliateUrl={articleProducts[0].affiliateUrl}
+                  ctaText="Išbandyti dabar"
+                />
+              </ScrollReveal>
+            )}
+
             <div className="prose-article">
               {article.sections.map((section, i) => (
                 <ScrollReveal key={section.id} delay={i * 50}>
                   <h2 id={section.id}>{section.title}</h2>
                   <div dangerouslySetInnerHTML={{ __html: section.content }} />
+                  {/* Insert mid-article CTA after 2nd section */}
+                  {i === 1 && articleProducts && articleProducts.length > 0 && (
+                    <AffiliateCTA
+                      productName={articleProducts[0].name}
+                      description={articleProducts[0].shortDescription}
+                      price={articleProducts[0].pricingSummary}
+                      affiliateUrl={articleProducts[0].affiliateUrl}
+                      ctaText="Gauti geriausią kainą"
+                    />
+                  )}
                 </ScrollReveal>
               ))}
 
