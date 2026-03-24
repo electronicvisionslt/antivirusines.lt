@@ -94,20 +94,6 @@ const ArticlePage = ({ article }: Props) => {
           </div>
         </ScrollReveal>
 
-        {article.featuredImage && (
-          <ScrollReveal>
-            <div className="rounded-xl overflow-hidden border border-border/50 mb-10 max-w-3xl">
-              <picture>
-                <source srcSet={toWebpPath(article.featuredImage)} type="image/webp" />
-                <img
-                  src={article.featuredImage}
-                  alt={article.featuredImageAlt || article.title}
-                  className="w-full h-auto object-cover"
-                />
-              </picture>
-            </div>
-          </ScrollReveal>
-        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
           <div>
