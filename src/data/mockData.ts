@@ -271,6 +271,10 @@ export const navLinks: { label: string; path: string; children?: { label: string
       { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui' },
       { label: 'Apžvalgos', path: '/antivirusines-programos/norton-360-apzvalga', divider: true, children: [
         { label: 'Norton 360 apžvalga', path: '/antivirusines-programos/norton-360-apzvalga' },
+        { label: 'Bitdefender apžvalga', path: '/antivirusines-programos/bitdefender-apzvalga' },
+        { label: 'Kaspersky Plus apžvalga', path: '/antivirusines-programos/kaspersky-plus-apzvalga' },
+        { label: 'ESET Home Security apžvalga', path: '/antivirusines-programos/eset-home-security-apzvalga' },
+        { label: 'Avast apžvalga', path: '/antivirusines-programos/avast-apzvalga' },
       ]},
     ],
   },
