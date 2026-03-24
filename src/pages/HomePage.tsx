@@ -21,32 +21,24 @@ const hubCards = [
     desc: 'Top 5 geriausių antivirusinių 2026 m. su detaliu palyginimu, kainomis ir funkcijomis.',
     path: '/antivirusines-programos',
     tag: 'Populiariausia',
-    links: [
-      { label: 'Nemokamos antivirusinės', path: '/antivirusines-programos/nemokamos' },
-      { label: 'Antivirusinė telefonui', path: '/antivirusines-programos/telefonui' },
-      { label: 'Antivirusinė kompiuteriui', path: '/antivirusines-programos/kompiuteriui' },
-    ],
   },
   {
     icon: Users,
     title: 'Tėvų kontrolė',
     desc: 'Geriausios programėlės vaikų apsaugai internete — ekrano laiko valdymas, turinio filtravimas.',
     path: '/tevu-kontrole',
-    links: [],
   },
   {
     icon: Key,
     title: 'Slaptažodžių saugumas',
     desc: 'Kaip kurti stiprius slaptažodžius, naudoti tvarkykles ir apsaugoti paskyras.',
     path: '/slaptazodziu-saugumas',
-    links: [],
   },
   {
     icon: Bug,
     title: 'Virusai ir grėsmės',
     desc: 'Kas yra kompiuterinis virusas, kaip veikia malware ir kaip nuo jų apsisaugoti.',
     path: '/virusai/kompiuterinis-virusas',
-    links: [],
   },
 ];
 
@@ -190,20 +182,6 @@ const HomePage = () => {
                     </div>
                   </div>
 
-                  {hub.links.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-1 pl-16">
-                      {hub.links.map(link => (
-                        <Link
-                          key={link.path}
-                          to={link.path}
-                          onClick={e => e.stopPropagation()}
-                          className="text-[11px] font-heading font-medium text-muted-foreground hover:text-primary px-3 py-1.5 rounded-lg bg-muted/40 hover:bg-primary/[0.06] border border-transparent hover:border-primary/10 transition-all duration-200"
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
 
                   <div className="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary mt-auto pt-5 pl-16 group-hover:gap-2.5 transition-all duration-200">
                     Skaityti daugiau
